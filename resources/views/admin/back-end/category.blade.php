@@ -37,8 +37,8 @@
 
                                         <td>
                                             <div class="category-icon">
-                                                <img src="{{ back-end/assets/images/product/$category->IconUrl }}"
-                                                     class="img-fluid" alt="">
+                                                <img src="{{ asset('back-end/assets/images/store-icons/' . $category->IconUrl) }}" class="img-fluid" alt="">
+
                                             </div>
                                         </td>
 
@@ -51,7 +51,7 @@
                                                 </li>
 
                                                 <li>
-                                                    <a href="javascript:void(0)">
+                                                    <a href="{{ route('editCategory', ['id' => $category->id]) }}">
                                                         <i class="ri-pencil-line"></i>
                                                     </a>
                                                 </li>

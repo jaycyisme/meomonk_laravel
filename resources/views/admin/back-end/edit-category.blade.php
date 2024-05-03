@@ -15,12 +15,14 @@
                                 </div>
 
                                 <div class="theme-form theme-form-2 mega-form">
-                                    <form action="{{ route('storeCategory') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('updateCategory', ['id' => $categories->id]) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="id" value="{{ $categories->id }}">
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Category Name</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" name="Name" placeholder="Category Name">
+                                                <input class="form-control" type="text" name="Name" value="{{ $categories->Name }}" placeholder="Category Name">
                                             </div>
                                         </div>
 
@@ -38,9 +40,8 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary">Add Category</button>
+                                        <button type="submit" class="btn btn-primary">Edit Category</button>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
