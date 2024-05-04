@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.back-end.category', compact('categories'));
+        // Lấy ra những category có isActive bằng 1
+    $categories = Category::where('isActive', 1)->get();
+
+    return view('admin.back-end.category', compact('categories'));
     }
 
     public function create()
@@ -78,6 +81,15 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('category')->with('success', 'Category updated successfully.');
+    }
+
+    public function softDelete($id)
+    {
+        $category = Category::find($id);
+        $category->isActive = 0;
+        $category->save();
+
+        return redirect()->route('category')->with('success', 'Category deleted successfully.');
     }
 
 }
