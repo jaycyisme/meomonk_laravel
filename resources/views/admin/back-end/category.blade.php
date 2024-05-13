@@ -33,11 +33,11 @@
                                     <tbody>
                                     @foreach($categories as $category)
                                     <tr>
-                                        <td>{{ $category->Name }}</td>
+                                        <td>{{ $category->name }}</td>
 
                                         <td>
                                             <div class="category-icon">
-                                                <img src="{{ asset('back-end/assets/images/store-icons/' . $category->IconUrl) }}" class="img-fluid" alt="">
+                                                <img src="{{ asset('back-end/assets/images/store-icons/' . $category->icon_url) }}" class="img-fluid" alt="">
 
                                             </div>
                                         </td>

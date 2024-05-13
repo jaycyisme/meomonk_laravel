@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Attribute extends Model
 {
     use HasFactory;
-    protected $table = 'category';
+    protected $table = 'attribute';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'icon_url', 'image_url'];
+    protected $fillable = ['name', 'value'];
 }

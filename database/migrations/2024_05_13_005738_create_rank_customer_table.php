@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('point');
             $table->string('description', 100);
             $table->string('name', 100);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

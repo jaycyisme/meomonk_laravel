@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class BillService extends Model
 {
     use HasFactory;
-    protected $table = 'category';
+    protected $table = 'bill_service';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'icon_url', 'image_url'];
+    protected $fillable = ['ticket_id', 'service_id', 'using_time', 'address'];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -10,8 +11,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        // Lấy ra những category có isActive bằng 1
-    $categories = Category::where('isActive', 1)->get();
+        // Lấy ra những category có is_active bằng 1
+    $categories = Category::where('is_active', 1)->get();
 
     return view('admin.back-end.category', compact('categories'));
     }
@@ -25,24 +26,24 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
     $request->validate([
-        'Name' => 'required',
-        'ImageUrl' => 'required|mimes:jpg,png,jpeg,svg|max:5048',
-        'IconUrl' => 'required|mimes:jpg,png,jpeg,svg|max:5048'
+        'name' => 'required',
+        'icon_url' => 'required|mimes:jpg,png,jpeg,svg|max:5048',
+        'image_url' => 'required|mimes:jpg,png,jpeg,svg|max:5048'
     ]);
 
     // Tạo tên hình ảnh cho ImageUrl và IconUrl
-    $imageName = 'ImageUrl_' . time() . '.' . $request->file('ImageUrl')->extension();
-    $iconName = 'IconUrl_' . time() . '.' . $request->file('IconUrl')->extension();
+    $imageName = 'image_url' . time() . '.' . $request->file('image_url')->extension();
+    $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
 
     // Di chuyển và lưu hình ảnh
-    $request->file('ImageUrl')->move(public_path('back-end/assets/images/store-images'), $imageName);
-    $request->file('IconUrl')->move(public_path('back-end/assets/images/store-icons'), $iconName);
+    $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
+    $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
 
     // Lưu dữ liệu vào database
     $category = Category::create([
-        'Name' => $request->input('Name'),
-        'ImageUrl' => $imageName,
-        'IconUrl' => $iconName
+        'name' => $request->input('name'),
+        'image_url' => $imageName,
+        'icon_url' => $iconName
     ]);
     $category->save();
 
@@ -56,26 +57,26 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id) {
         $request->validate([
-            'Name' => 'required',
-            'ImageUrl' => 'nullable|mimes:jpg,png,jpeg,svg|max:5048',
-            'IconUrl' => 'nullable|mimes:jpg,png,jpeg,svg|max:5048'
+            'name' => 'required',
+            'image_url' => 'nullable|mimes:jpg,png,jpeg,svg|max:5048',
+            'icon_url' => 'nullable|mimes:jpg,png,jpeg,svg|max:5048'
         ]);
 
         $category = Category::find($id);
 
-        $category->Name = $request->input('Name');
+        $category->name = $request->input('name');
 
         // Xử lý ảnh
-        if ($request->hasFile('ImageUrl')) {
-            $imageName = 'ImageUrl_' . time() . '.' . $request->file('ImageUrl')->extension();
-            $request->file('ImageUrl')->move(public_path('back-end/assets/images/store-images'), $imageName);
-            $category->ImageUrl = $imageName;
+        if ($request->hasFile('image_url')) {
+            $imageName = 'image_url' . time() . '.' . $request->file('image_url')->extension();
+            $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
+            $category->image_url = $imageName;
         }
 
-        if ($request->hasFile('IconUrl')) {
-            $iconName = 'IconUrl_' . time() . '.' . $request->file('IconUrl')->extension();
-            $request->file('IconUrl')->move(public_path('back-end/assets/images/store-icons'), $iconName);
-            $category->IconUrl = $iconName;
+        if ($request->hasFile('icon_url')) {
+            $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
+            $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
+            $category->icon_url = $iconName;
         }
 
         $category->save();
@@ -87,14 +88,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         // Xác định đường dẫn của hình ảnh và biểu tượng
-        $imageUrl = public_path('back-end/assets/images/store-images/' . $category->ImageUrl);
-        $iconUrl = public_path('back-end/assets/images/store-icons/' . $category->IconUrl);
+        $image_url = public_path('back-end/assets/images/store-images/' . $category->image_url);
+        $icon_url = public_path('back-end/assets/images/store-icons/' . $category->icon_url);
 
         // Xóa hình ảnh và biểu tượng khỏi ổ đĩa
-        File::delete($imageUrl);
-        File::delete($iconUrl);
+        File::delete($image_url);
+        File::delete($icon_url);
         // Cập nhật trạng thái isActive của category
-        $category->isActive = 0;
+        $category->is_active = 0;
         $category->save();
 
         return redirect()->route('category')->with('success', 'Category deleted successfully.');

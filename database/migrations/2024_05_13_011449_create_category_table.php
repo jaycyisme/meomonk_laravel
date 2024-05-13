@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('icon_url', 255);
             $table->string('image_url', 255);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('price');
             $table->string('description', 255);
             $table->string('image', 100);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->integer('quantity');
             $table->unsignedBigInteger('service_status_id');
             $table->timestamps();

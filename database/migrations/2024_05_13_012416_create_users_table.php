@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('phone_number');
             $table->unsignedBigInteger('rank_customer_id');
             $table->unsignedBigInteger('user_status_id');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('role_id');
             $table->rememberToken();
             $table->timestamps();

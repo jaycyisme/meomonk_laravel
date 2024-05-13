@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('promotion', function (Blueprint $table) {
             $table->id();
             $table->integer('percent');
-            $table->integer('quantity');
             $table->string('type', 100);
             $table->date('start_time');
             $table->date('end_time');
             $table->string('description', 100);
             $table->string('name', 100);
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('rank_customer_id');
             $table->timestamps();
 

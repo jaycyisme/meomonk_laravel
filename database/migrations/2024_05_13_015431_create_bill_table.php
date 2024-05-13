@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('promotion_id');
             $table->unsignedBigInteger('bill_status_id');
             $table->unsignedBigInteger('payment_method_id');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

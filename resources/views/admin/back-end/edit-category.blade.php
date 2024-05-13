@@ -22,21 +22,21 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Category Name</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="text" name="Name" value="{{ $categories->Name }}" placeholder="Category Name">
+                                                <input class="form-control" type="text" name="name" value="{{ $categories->name }}" placeholder="Category Name">
                                             </div>
                                         </div>
 
                                         <div class="mb-4 row align-items-center">
                                             <label class="col-sm-3 col-form-label form-label-title">Category Image</label>
                                             <div class="form-group col-sm-9">
-                                                <input type="file" name="ImageUrl" class="form-control">
+                                                <input type="file" name="image_url" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="mb-4 row align-items-center">
                                             <label class="col-sm-3 form-label-title">Select Category Icon</label>
                                             <div class="form-group col-sm-9">
-                                                <input type="file" name="IconUrl" class="form-control">
+                                                <input type="file" name="icon_url" class="form-control">
                                             </div>
                                         </div>
 
