@@ -6,7 +6,17 @@ use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 
+//FRONT_END
+
 Route::get('/index', [PagesController::class, 'index']);
+
+Route::get('/about-us', [PagesController::class, 'aboutUs']);
+
+Route::get('/blog-detail', [PagesController::class, 'blogDetail']);
+
+
+
+//BACK_END
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 

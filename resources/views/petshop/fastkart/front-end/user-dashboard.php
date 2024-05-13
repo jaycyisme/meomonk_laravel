@@ -2300,7 +2300,6 @@
     <!-- User Dashboard Section End -->
 
     <!-- Footer Section Start -->
-<<<<<<< HEAD
     <footer class="section-t-space">
         <div class="container-fluid-lg">
             <div class="service-section">
