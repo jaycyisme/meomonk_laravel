@@ -86,6 +86,14 @@ class CategoryController extends Controller
     public function softDelete($id)
     {
         $category = Category::find($id);
+        // Xác định đường dẫn của hình ảnh và biểu tượng
+        $imageUrl = public_path('back-end/assets/images/store-images/' . $category->ImageUrl);
+        $iconUrl = public_path('back-end/assets/images/store-icons/' . $category->IconUrl);
+
+        // Xóa hình ảnh và biểu tượng khỏi ổ đĩa
+        File::delete($imageUrl);
+        File::delete($iconUrl);
+        // Cập nhật trạng thái isActive của category
         $category->isActive = 0;
         $category->save();
 
