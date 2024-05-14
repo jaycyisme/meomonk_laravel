@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
@@ -8,11 +10,51 @@ use Illuminate\Support\Facades\Route;
 
 //FRONT_END
 
-Route::get('/index', [PagesController::class, 'index']);
+Route::get('/index', [PagesController::class, 'index'])->name('index');
 
 Route::get('/about-us', [PagesController::class, 'aboutUs']);
 
 Route::get('/blog-detail', [PagesController::class, 'blogDetail']);
+
+Route::get('/blog-grid', [PagesController::class, 'blogGrid']);
+
+Route::get('/blog-list', [PagesController::class, 'blogList']);
+
+Route::get('/cart', [PagesController::class, 'cart']);
+
+Route::get('/checkout', [PagesController::class, 'checkout']);
+
+Route::get('/contact-us', [PagesController::class, 'contactUs']);
+
+Route::get('/faq', [PagesController::class, 'faq']);
+
+Route::get('/login', [PagesController::class, 'login'])->name('login');
+
+Route::get('/order-success', [PagesController::class, 'orderSuccess']);
+
+Route::get('/order-user-tracking', [PagesController::class, 'orderUserTracking']);
+
+Route::get('/otp', [PagesController::class, 'otp'])->name('otp');
+
+Route::get('/product-accordion', [PagesController::class, 'productAccordion']);
+
+Route::get('/product-bottom-thumbnail', [PagesController::class, 'productBottomThumbnail']);
+
+Route::get('/product-bundle', [PagesController::class, 'productBundle']);
+
+Route::get('/product-circle', [PagesController::class, 'productCircle']);
+
+Route::get('/search', [PagesController::class, 'search']);
+
+Route::get('/shop-banner', [PagesController::class, 'shopBanner']);
+
+Route::get('/shop-category-slider', [PagesController::class, 'shopCategorySlider']);
+
+Route::get('/shop-left-sidebar', [PagesController::class, 'shopLeftSidebar']);
+
+Route::get('/sign-up', [PagesController::class, 'signUp'])->name('signUp');
+
+Route::get('/user-dashboard', [PagesController::class, 'userDashboard']);
 
 
 
@@ -67,3 +109,18 @@ Route::get('/reports', [PagesController::class, 'reportList'])->name('reportList
 // Route::prefix('')->group(function(){
 //     Route::get('/category', [CategoryController::class, 'index']);
 // });
+
+
+
+// Route::get('/otp', [AuthenticationController::class, 'sendEmail']);
+
+
+
+
+//Authentication
+// Route::get('/register', [CategoryController::class, 'signUpIndex'])->name('signUp');
+Route::post('/add-customer', [AuthenticationController::class, 'signUp'])->name('addUser');
+
+Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name('verifyOtp');
+
+Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');

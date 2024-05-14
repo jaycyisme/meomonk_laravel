@@ -249,11 +249,11 @@
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">
                                                     <i></i>
-                                                    <a href="login.php">Log In</a>
+                                                    <a href="{{ route('login') }}">Log In</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="sign-up.php">Register</a>
+                                                    <a href="{{ route('signUp') }}">Register</a>
                                                 </li>
 
                                                 <li class="product-box-contain">
