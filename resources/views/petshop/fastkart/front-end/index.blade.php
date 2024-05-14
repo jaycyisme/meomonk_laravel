@@ -120,7 +120,7 @@
             <div class="banner-slider">
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -135,7 +135,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -150,7 +150,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -165,7 +165,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="../assets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -310,7 +310,7 @@
 
                         <div class="ratio_156 section-t-space">
                             <div class="home-contain hover-effect">
-                                <img src="../assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
                                     alt="" />
                                 <div class="home-detail p-top-left home-p-medium">
                                     <div>
@@ -331,7 +331,7 @@
 
                         <div class="ratio_medium section-t-space">
                             <div class="home-contain hover-effect">
-                                <img src="../assets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload"
                                     alt="" />
                                 <div class="home-detail p-top-left home-p-medium">
                                     <div>
@@ -360,7 +360,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/23.png"
+                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/23.png"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
@@ -379,7 +379,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/24.png"
+                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/24.png"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
@@ -400,7 +400,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/25.png"
+                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/25.png"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
@@ -419,7 +419,7 @@
                                     <li class="mb-0">
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/26.png"
+                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/26.png"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
@@ -457,7 +457,7 @@
 
                                     <div class="review-profile">
                                         <div class="review-image">
-                                            <img src="../assets/images/vegetable/review/1.jpg"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/review/1.jpg"
                                                 class="img-fluid blur-up lazyload" alt="" />
                                         </div>
                                         <div class="review-detail">
@@ -535,7 +535,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/1.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/1.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -626,7 +626,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/2.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/2.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -721,7 +721,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/3.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/3.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -815,7 +815,7 @@
                                                 </div>
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/4.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/4.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -911,7 +911,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/5.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/5.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1002,7 +1002,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/6.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/6.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1100,7 +1100,7 @@
                                                 </div>
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/7.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/7.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1191,7 +1191,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/8.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/8.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1287,7 +1287,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/9.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/9.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1378,7 +1378,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/10.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/10.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1473,7 +1473,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/3.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/3.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1564,7 +1564,7 @@
                                             <div class="product-box">
                                                 <div class="product-image">
                                                     <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/vegetable/product/5.png"
+                                                        <img src="{{asset('front-end')}}/assets/images/vegetable/product/5.png"
                                                             class="img-fluid blur-up lazyload" alt="" />
                                                     </a>
                                                     <ul class="product-option">
@@ -1742,7 +1742,7 @@
                         <div class="row g-md-4 g-3">
                             <div class="col-md-6">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload"
                                         alt="" />
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -1760,7 +1760,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload"
                                         alt="" />
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -1797,7 +1797,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/1.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/1.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -1889,7 +1889,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/2.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/2.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -1981,7 +1981,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/3.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/3.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -2073,7 +2073,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/4.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/4.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -2165,7 +2165,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/5.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/5.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -2257,7 +2257,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="../assets/images/vegetable/product/4.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/4.png"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -2347,7 +2347,7 @@
 
                     <div class="section-t-space">
                         <div class="banner-contain">
-                            <img src="../assets/images/vegetable/banner/15.jpg" class="bg-img blur-up lazyload"
+                            <img src="{{asset('front-end')}}/assets/images/vegetable/banner/15.jpg" class="bg-img blur-up lazyload"
                                 alt="" />
                             <div class="banner-details p-center p-4 text-white text-center">
                                 <div>
@@ -2364,7 +2364,7 @@
                         <div class="row g-md-4 g-3">
                             <div class="col-xxl-8 col-xl-12 col-md-7">
                                 <div class="banner-contain hover-effect">
-                                    <img src="../assets/images/vegetable/banner/12.jpg" class="bg-img blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/vegetable/banner/12.jpg" class="bg-img blur-up lazyload"
                                         alt="" />
                                     <div class="banner-details p-center-left p-4">
                                         <div>
@@ -2387,7 +2387,7 @@
 
                             <div class="col-xxl-4 col-xl-12 col-md-5">
                                 <a href="shop-left-sidebar.php" class="banner-contain hover-effect h-100">
-                                    <img src="../assets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
                                         alt="" />
                                     <div class="banner-details p-center-left p-4 h-100">
                                         <div>
@@ -2424,7 +2424,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/11.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/11.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2443,7 +2443,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/12.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/12.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2462,7 +2462,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/13.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/13.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2481,7 +2481,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/14.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/14.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2504,7 +2504,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/15.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/15.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2523,7 +2523,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/16.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/16.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2542,7 +2542,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/17.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/17.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2561,7 +2561,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/18.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/18.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2584,7 +2584,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/19.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/19.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2605,7 +2605,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/20.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/20.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2624,7 +2624,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/21.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/21.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2643,7 +2643,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="../assets/images/vegetable/product/22.png"
+                                            <img src="{{asset('front-end')}}/assets/images/vegetable/product/22.png"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -2664,7 +2664,7 @@
 
                     <div class="section-t-space">
                         <div class="banner-contain hover-effect">
-                            <img src="../assets/images/vegetable/banner/14.jpg" class="bg-img blur-up lazyload"
+                            <img src="{{asset('front-end')}}/assets/images/vegetable/banner/14.jpg" class="bg-img blur-up lazyload"
                                 alt="" />
                             <div class="banner-details p-center banner-b-space w-100 text-center">
                                 <div>
@@ -2697,7 +2697,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.php" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
+                                        <img src="{{asset('front-end')}}/assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
@@ -2713,7 +2713,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.php" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
+                                        <img src="{{asset('front-end')}}/assets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
@@ -2729,7 +2729,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.php" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
+                                        <img src="{{asset('front-end')}}/assets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
@@ -2745,7 +2745,7 @@
                             <div class="blog-box">
                                 <div class="blog-box-image">
                                     <a href="blog-detail.php" class="blog-image">
-                                        <img src="../assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
+                                        <img src="{{asset('front-end')}}/assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>

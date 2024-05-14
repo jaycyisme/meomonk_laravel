@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('verify_code')->nullable();
             $table->string('username', 100);
             $table->string('password', 100);
-            $table->integer('point');
+            $table->integer('point')->default(0);
             $table->integer('phone_number');
-            $table->unsignedBigInteger('rank_customer_id');
-            $table->unsignedBigInteger('user_status_id');
+            $table->unsignedBigInteger('rank_customer_id')->default(1);
+            $table->unsignedBigInteger('user_status_id')->default(1);
             $table->boolean('is_active')->default(true);
-            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('role_id')->default(2);
             $table->rememberToken();
             $table->timestamps();
 

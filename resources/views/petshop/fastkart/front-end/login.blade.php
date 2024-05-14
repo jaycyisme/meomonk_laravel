@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                 <div class="image-contain">
-                    <img src="../assets/images/inner-page/log-in.png" class="img-fluid" alt="">
+                    <img src="{{ asset('front-end/assets/images/inner-page/log-in.png') }}" class="img-fluid" alt="">
                 </div>
             </div>
 
@@ -83,18 +83,18 @@
                     </div>
 
                     <div class="input-box">
-                        <form class="row g-4">
+                        <form class="row g-4" method="POST" action="{{ route('loginFunction') }}">
+                            @csrf
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating log-in-form">
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                    <label for="email">Email Address</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                    <label for="username">Username</label>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating log-in-form">
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                     <label for="password">Password</label>
                                 </div>
                             </div>
@@ -102,8 +102,7 @@
                             <div class="col-12">
                                 <div class="forgot-box">
                                     <div class="form-check ps-0 m-0 remember-box">
-                                        <input class="checkbox_animated check-box" type="checkbox"
-                                            id="flexCheckDefault">
+                                        <input class="checkbox_animated check-box" type="checkbox" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                                     </div>
                                     <a href="forgot.php" class="forgot-password">Forgot Password?</a>
@@ -111,11 +110,16 @@
                             </div>
 
                             <div class="col-12">
-                                <button class="btn btn-animation w-100 justify-content-center" type="submit">Log
-                                    In</button>
+                                <button class="btn btn-animation w-100 justify-content-center" type="submit">Log In</button>
                             </div>
                         </form>
                     </div>
+
+                    @if (session('error'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <div class="other-log-in">
                         <h6>or</h6>
@@ -125,26 +129,20 @@
                         <ul>
                             <li>
                                 <a href="https://www.google.com/" class="btn google-button w-100">
-                                    <img src="../assets/images/inner-page/google.png" class="blur-up lazyload"
-                                        alt=""> Log In with Google
+                                    <img src="{{ asset('front-end/assets/images/inner-page/google.png') }}" class="blur-up lazyload" alt=""> Log In with Google
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.facebook.com/" class="btn google-button w-100">
-                                    <img src="../assets/images/inner-page/facebook.png" class="blur-up lazyload"
-                                        alt=""> Log In with Facebook
+                                    <img src="{{ asset('front-end/assets/images/inner-page/facebook.png') }}" class="blur-up lazyload" alt=""> Log In with Facebook
                                 </a>
                             </li>
                         </ul>
                     </div>
 
-                    <div class="other-log-in">
-                        <h6></h6>
-                    </div>
-
                     <div class="sign-up-box">
                         <h4>Don't have an account?</h4>
-                        <a href="sign-up.php">Sign Up</a>
+                        <a href="{{ route('signUp') }}">Sign Up</a>
                     </div>
                 </div>
             </div>
