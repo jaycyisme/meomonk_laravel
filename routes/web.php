@@ -36,13 +36,15 @@ Route::get('/order-user-tracking', [PagesController::class, 'orderUserTracking']
 
 Route::get('/otp', [PagesController::class, 'otp'])->name('otp');
 
-Route::get('/product-accordion', [PagesController::class, 'productAccordion']);
+Route::get('/product-toy', [PagesController::class, 'productToy']);
 
 Route::get('/product-bottom-thumbnail', [PagesController::class, 'productBottomThumbnail']);
 
-Route::get('/product-bundle', [PagesController::class, 'productBundle']);
+Route::get('/product-food', [PagesController::class, 'productFood']);
 
-Route::get('/product-circle', [PagesController::class, 'productCircle']);
+Route::get('/product-service', [PagesController::class, 'productService']);
+
+Route::get('/product-pharmacy', [PagesController::class, 'productPharmacy']);
 
 Route::get('/search', [PagesController::class, 'search']);
 

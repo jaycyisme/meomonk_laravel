@@ -1,46 +1,5 @@
 @extends('petshop.fastkart.front-end.app')
 @section('content')
-<!-- mobile fix menu start -->
-<div class="mobile-menu d-md-none d-block mobile-cart">
-    <ul>
-        <li class="active">
-            <a href="index.php">
-                <i class="iconly-Home icli"></i>
-                <span>Home</span>
-            </a>
-        </li>
-
-        <li class="mobile-category">
-            <a href="javascript:void(0)">
-                <i class="iconly-Category icli js-link"></i>
-                <span>Category</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="search.php" class="search-box">
-                <i class="iconly-Search icli"></i>
-                <span>Search</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="wishlist.php" class="notifi-wishlist">
-                <i class="iconly-Heart icli"></i>
-                <span>My Wish</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="cart.php">
-                <i class="iconly-Bag-2 icli fly-cate"></i>
-                <span>Cart</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<!-- mobile fix menu end -->
-
 <!-- Breadcrumb Section Start -->
 <section class="breadcrumb-section pt-0">
     <div class="container-fluid-lg">
@@ -79,48 +38,48 @@
                                     <div class="product-main no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/23.jpg" id="img-1"
-                                                    data-zoom-image="../assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/1.jpg" id="img-1"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/1.jpg" class="
                                                     img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/2.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/2.jpg" class="
                                                     img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/25.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/25.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/3.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/3.jpg" class="
                                                     img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/26.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/26.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/4.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/4.jpg" class="
                                                     img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/5.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/5.jpg" class="
                                                     img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/6.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/product/category/6.jpg" class="
                                                     img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -131,42 +90,42 @@
                                     <div class="left-slider-image left-slider no-arrow slick-top">
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/1.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/2.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/25.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/3.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/26.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/4.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/5.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/product/category/6.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -178,8 +137,19 @@
 
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
-                            <h6 class="offer-top">30% Off</h6>
-                            <h2 class="name">Full Sleeve T Shirts for Men</h2>
+                            <div class="product-count">
+                                <ul>
+                                    <li class="">
+                                        <i data-feather="zap"></i>
+                                        <h6 class="lang">38 Customers Ordered</h6>
+                                    </li>
+                                    <li class="">
+                                        <i data-feather="eye"></i>
+                                        <h6 class="lang">15 Active View in this item</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h2 class="name">Creamy Chocolate Cake</h2>
                             <div class="price-rating">
                                 <h3 class="theme-color price">$49.50 <del class="text-content">$58.46</del> <span
                                         class="offer theme-color">(8% off)</span></h3>
@@ -206,43 +176,35 @@
                             </div>
 
                             <div class="product-contain">
-                                <p class="w-100">I find great comfort in awkwardness. I have never been cool, but I
-                                    have felt cool. I have been in the cool spot, but I was not really cool; I was
-                                    just trying to be hip or cool.</p>
+                                <p>Lollipop cake chocolate chocolate cake dessert jujubes. Shortbread sugar plum
+                                    dessert
+                                    powder cookie sweet brownie. Cake cookie apple pie dessert sugar plum muffin
+                                    cheesecake.
+                                </p>
                             </div>
 
-                            <div class="product-package">
+                            {{-- <div class="product-package">
                                 <div class="product-title">
-                                    <h4>Size </h4>
+                                    <h4>Weight</h4>
                                 </div>
-
-                                <ul class="circle select-package">
-                                    <li class="form-check">
-                                        <input class="form-check-input" checked type="radio" name="size" id="small">
-                                        <label class="form-check-label" for="small">
-                                            <span>S</span>
-                                        </label>
+                                <ul class="select-package">
+                                    <li>
+                                        <a href="javascript:void(0)" class="active">1/2 KG</a>
                                     </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="medium">
-                                        <label class="form-check-label" for="medium">
-                                            <span>M</span>
-                                        </label>
+                                    <li>
+                                        <a href="javascript:void(0)">1 KG</a>
                                     </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="large">
-                                        <label class="form-check-label" for="large">
-                                            <span>L</span>
-                                        </label>
+                                    <li>
+                                        <a href="javascript:void(0)">1.5 KG</a>
                                     </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="xl">
-                                        <label class="form-check-label" for="xl">
-                                            <span>XL</span>
-                                        </label>
+                                    <li>
+                                        <a href="javascript:void(0)">Red Roses</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">With Pink Roses</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
                             <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                 data-hours="1" data-minutes="2" data-seconds="3">
@@ -288,25 +250,26 @@
 
 
                             <div class="note-box product-package">
-                                <div class="cart_qty qty-box product-qty">
-                                    <div class="input-group">
-                                        <button type="button" class="qty-left-minus" data-type="minus"
-                                            data-field="">
+                                {{-- <div class="cart_qty qty-box product-qty">
+                                    <div class="input-group bg-white">
+                                        <button type="button" class="qty-left-minus bg-gray"
+                                            data-type="minus" data-field="">
                                             <i class="fa fa-minus"></i>
                                         </button>
                                         <input class="form-control input-number qty-input" type="text"
-                                            name="quantity" value="1">
-                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
+                                            name="quantity" value="0">
+                                        <button type="button" class="qty-right-plus bg-gray"
+                                            data-type="plus" data-field="">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <button onclick="location.href = 'cart.php';"
-                                    class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                    class="btn btn-md bg-dark cart-button text-white w-100">Booking</button>
                             </div>
 
-                            <div class="buy-box">
+                            {{-- <div class="buy-box">
                                 <a href="wishlist.php">
                                     <i data-feather="heart"></i>
                                     <span>Add To Wishlist</span>
@@ -316,7 +279,7 @@
                                     <i data-feather="shuffle"></i>
                                     <span>Add To Compare</span>
                                 </a>
-                            </div>
+                            </div> --}}
 
                             <div class="pickup-box">
                                 <div class="product-title">
@@ -324,17 +287,18 @@
                                 </div>
 
                                 <div class="pickup-detail">
-                                    <h4 class="text-content w-100">I would like the people that buy my clothes to
-                                        understand that for me it's one small piece of art. I love the 2000s because
-                                        everyone started to love haute couture. The only way to do something in
-                                        depth is to work hard.</h4>
+                                    <h4 class="text-content">Lollipop cake chocolate chocolate cake dessert jujubes.
+                                        Shortbread sugar plum dessert powder cookie sweet brownie.</h4>
                                 </div>
 
                                 <div class="product-info">
                                     <ul class="product-info-list product-info-list-2">
-                                        <li>Type : <a href="javascript:void(0)">Long Sleeve</a></li>
+                                        <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
+                                        <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
                                         <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                        <li>Stock : <a href="javascript:void(0)">5 Items Left</a></li>
+                                        <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>
+                                        <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
+                                                href="javascript:void(0)">Backery</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -386,7 +350,7 @@
                     <div class="vendor-box">
                         <div class="vendor-contain">
                             <div class="vendor-image">
-                                <img src="../assets/images/product/vendor.png" class="blur-up lazyload" alt="">
+                                <img src="{{asset('front-end')}}/assets/images/product/vendor.png" class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="vendor-name">
@@ -469,18 +433,20 @@
                                     <div class="product-box product-box-bg wow fadeInUp">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/27.png"
+                                                <img src="{{asset('front-end')}}/assets/images/cake/product/1.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
                                         <div class="product-detail">
                                             <a href="product-left-thumbnail.php">
-                                                <h6 class="name">Women Flare Bell Bottom Jeans</h6>
+                                                <h6 class="name">
+                                                    Muffets & Tuffets Whole Wheat Bread 400 g
+                                                </h6>
                                             </a>
 
                                             <h5 class="sold text-content">
                                                 <span class="theme-color price">$26.69</span>
-                                                <del>$28.56</del>
+                                                <del>28.56</del>
                                             </h5>
                                         </div>
                                     </div>
@@ -490,18 +456,20 @@
                                     <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/28.png"
+                                                <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
                                         <div class="product-detail">
                                             <a href="product-left-thumbnail.php">
-                                                <h6 class="name">Women Straight Fit Jeans</h6>
+                                                <h6 class="name">
+                                                    Fresh Bread and Pastry Flour 200 g
+                                                </h6>
                                             </a>
 
                                             <h5 class="sold text-content">
                                                 <span class="theme-color price">$26.69</span>
-                                                <del>$28.56</del>
+                                                <del>28.56</del>
                                             </h5>
                                         </div>
                                     </div>
@@ -511,18 +479,19 @@
                                     <div class="product-box product-box-bg wow fadeInUp">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/29.png"
+                                                <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
                                         <div class="product-detail">
                                             <a href="product-left-thumbnail.php">
-                                                <h6 class="name">Women Polyester Activewear</h6>
+                                                <h6 class="name">Peanut Butter Bite Premium Butter Cookies 600 g
+                                                </h6>
                                             </a>
 
                                             <h5 class="sold text-content">
                                                 <span class="theme-color price">$26.69</span>
-                                                <del>$28.56</del>
+                                                <del>28.56</del>
                                             </h5>
                                         </div>
                                     </div>
@@ -536,7 +505,7 @@
                                     <div class="form-check">
                                         <input class="checkbox_animated" type="checkbox" value="" id="check1">
                                         <label class="form-check-label" for="check1">
-                                            <span class="color color-1"> Men Gym Co-Ord Set
+                                            <span class="color color-1"> Cupe-Cake 500 g
                                                 <span>$12</span></span>
                                         </label>
                                     </div>
@@ -546,7 +515,7 @@
                                     <div class="form-check">
                                         <input class="checkbox_animated" type="checkbox" value="" id="check2">
                                         <label class="form-check-label" for="check2">
-                                            <span class="color color-1"> Women Polyester Activewear
+                                            <span class="color color-1"> Fresh Bread
                                                 <span>$15</span></span>
                                         </label>
                                     </div>
@@ -556,7 +525,7 @@
                                     <div class="form-check">
                                         <input class="checkbox_animated" type="checkbox" value="" id="check3">
                                         <label class="form-check-label" for="check3">
-                                            <span class="color color-1"> Long Sleeve Top
+                                            <span class="color color-1"> Black Forest
                                                 <span>$12</span></span>
                                         </label>
                                     </div>
@@ -592,12 +561,14 @@
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info"
-                                type="button" role="tab">Additional info</button>
+                                type="button" role="tab">Additional
+                                info</button>
                         </li>
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care"
-                                type="button" role="tab">Care Instructions</button>
+                                type="button" role="tab">Care
+                                Instructions</button>
                         </li>
 
                         <li class="nav-item" role="presentation">
@@ -639,7 +610,7 @@
                                 </div>
 
                                 <div class="banner-contain nav-desh">
-                                    <img src="../assets/images/vegetable/banner/14.jpg"
+                                    <img src="{{asset('front-end')}}/assets/images/vegetable/banner/14.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                     <div class="banner-details p-center banner-b-space w-100 text-center">
                                         <div>
@@ -830,7 +801,7 @@
                                                         <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
-                                                                    src="../assets/images/review/1.jpg">
+                                                                    src="{{asset('front-end')}}/assets/images/review/1.jpg">
                                                             </div>
                                                         </div>
                                                         <div class="people-comment">
@@ -882,7 +853,7 @@
                                                         <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
-                                                                    src="../assets/images/review/2.jpg">
+                                                                    src="{{asset('front-end')}}/assets/images/review/2.jpg">
                                                             </div>
                                                         </div>
                                                         <div class="people-comment">
@@ -935,7 +906,7 @@
                                                         <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
-                                                                    src="../assets/images/review/3.jpg">
+                                                                    src="{{asset('front-end')}}/assets/images/review/3.jpg">
                                                             </div>
                                                         </div>
                                                         <div class="people-comment">
@@ -989,7 +960,7 @@
                                                         <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
-                                                                    src="../assets/images/review/4.jpg">
+                                                                    src="{{asset('front-end')}}/assets/images/review/4.jpg">
                                                             </div>
                                                         </div>
                                                         <div class="people-comment">
@@ -1042,7 +1013,7 @@
                                                         <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
-                                                                    src="../assets/images/review/5.jpg">
+                                                                    src="{{asset('front-end')}}/assets/images/review/5.jpg">
                                                             </div>
                                                         </div>
                                                         <div class="people-comment">
@@ -1120,7 +1091,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-2.php">
-                                        <img src="../assets/images/cake/product/11.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/11.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1207,7 +1178,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/2.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1293,7 +1264,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/3.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1380,7 +1351,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/4.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/4.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1467,7 +1438,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/5.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/5.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1554,7 +1525,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/6.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/6.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1643,7 +1614,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/7.png" class="img-fluid" alt="">
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/7.png" class="img-fluid" alt="">
                                     </a>
 
                                     <ul class="product-option">

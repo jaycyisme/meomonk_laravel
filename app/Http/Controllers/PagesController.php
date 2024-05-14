@@ -59,20 +59,24 @@ class PagesController extends Controller
         return view('.petshop.fastkart.front-end.otp');
     }
 
-    public function productAccordion() {
-        return view('.petshop.fastkart.front-end.product-accordion');
+    public function productToy() {
+        return view('.petshop.fastkart.front-end.product-toy');
     }
 
     public function productBottomThumbnail() {
         return view('.petshop.fastkart.front-end.product-bottom-thumbnail');
     }
 
-    public function productBundle() {
-        return view('.petshop.fastkart.front-end.product-bundle');
+    public function productFood() {
+        return view('.petshop.fastkart.front-end.product-food');
     }
 
-    public function productCircle() {
-        return view('.petshop.fastkart.front-end.product-circle');
+    public function productPharmacy() {
+        return view('.petshop.fastkart.front-end.product-pharmacy');
+    }
+
+    public function productService() {
+        return view('.petshop.fastkart.front-end.product-service');
     }
 
     public function search() {
@@ -88,7 +92,7 @@ class PagesController extends Controller
     }
 
     public function shopLeftSidebar() {
-        return view('.petshop.fastkart.front-end.shop-left-sidebar');
+        return view('.petshop.fastkart.front-end.shop-category');
     }
 
     public function signUp() {

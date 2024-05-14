@@ -13,12 +13,12 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'name' => 'Product 1',
+            'name' => 'cat-blue-buffalo-72',
             'category_id' => 1,
             'animal_id' => 1,
             'price' => 100.50,
             'description' => 'Description for Product 1',
-            'image' => 'image1.png',
+            'image' => '1.png',
             'quantity' => 10,
             'product_status_id' => 1,
             'brand_id' => 1,

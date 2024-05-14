@@ -73,7 +73,7 @@
                 <div class="slider-1 slider-animate product-wrapper no-arrow">
                     <div>
                         <div class="banner-contain-2 hover-effect">
-                            <img src="../assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
+                            <img src="{{asset('front-end')}}/assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
                             <div
                                 class="banner-detail p-center-right position-relative shop-banner ms-auto banner-small">
                                 <div>
@@ -86,7 +86,7 @@
 
                     <div>
                         <div class="banner-contain-2 hover-effect">
-                            <img src="../assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
+                            <img src="{{asset('front-end')}}/assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
                             <div
                                 class="banner-detail p-center-right position-relative shop-banner ms-auto banner-small">
                                 <div>
@@ -99,7 +99,7 @@
 
                     <div>
                         <div class="banner-contain-2 hover-effect">
-                            <img src="../assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
+                            <img src="{{asset('front-end')}}/assets/images/shop/1.jpg" class="bg-img rounded-3 blur-up lazyload" alt="">
                             <div
                                 class="banner-detail p-center-right position-relative shop-banner ms-auto banner-small">
                                 <div>
@@ -889,7 +889,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/2.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -978,7 +978,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/3.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1068,7 +1068,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/4.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/4.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1160,7 +1160,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/5.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/5.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1250,7 +1250,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/6.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/6.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1343,7 +1343,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/7.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/7.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1435,7 +1435,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/2.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1524,7 +1524,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/3.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1615,7 +1615,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/4.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/4.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1706,7 +1706,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/5.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/5.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1797,7 +1797,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/6.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/6.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1889,7 +1889,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/7.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/7.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1981,7 +1981,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/2.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -2070,7 +2070,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/3.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 

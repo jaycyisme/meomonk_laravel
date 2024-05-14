@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="contact-image">
-                                <img src="../assets/images/inner-page/contact-us.png"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/contact-us.png"
                                     class="img-fluid blur-up lazyloaded" alt="">
                             </div>
                         </div>
@@ -225,10 +225,7 @@
 <section class="map-section">
     <div class="container-fluid p-0">
         <div class="map-box">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2994.3803116994895!2d55.29773782339708!3d25.222534631321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m5!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!3m2!1d25.2048493!2d55.2707828!4m0!5e1!3m2!1sen!2sin!4v1652217109535!5m2!1sen!2sin"
-                style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.816939728027!2d105.7393833750318!3d21.040009480612184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135096b31fa7abb%3A0xff645782804911af!2zVHLGsOG7nW5nIMSR4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgxJDDtG5nIMOB!5e0!3m2!1svi!2s!4v1715698543296!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>

@@ -79,48 +79,48 @@
                                     <div class="product-main no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/23.jpg" id="img-1"
-                                                    data-zoom-image="../assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" id="img-1"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
                                                     img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
                                                     img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/25.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/25.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/25.jpg" class="
                                                     img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/26.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/26.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/26.jpg" class="
                                                     img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
                                                     img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="../assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
+                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
                                                     img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -131,42 +131,42 @@
                                     <div class="left-slider-image left-slider no-arrow slick-top">
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/25.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/26.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/23.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="../assets/images/fashion/product/24.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -242,7 +242,7 @@
                                     <h4>Size </h4>
                                 </div>
 
-                                <ul class="circle select-package">
+                                {{-- <ul class="circle select-package">
                                     <li class="form-check">
                                         <input class="form-check-input" checked type="radio" name="size" id="small">
                                         <label class="form-check-label" for="small">
@@ -267,7 +267,7 @@
                                             <span>XL</span>
                                         </label>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
 
                             <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
@@ -412,7 +412,7 @@
                     <div class="vendor-box">
                         <div class="vendor-contain">
                             <div class="vendor-image">
-                                <img src="../assets/images/product/vendor.png" class="blur-up lazyload" alt="">
+                                <img src="{{asset('front-end')}}/assets/images/product/vendor.png" class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="vendor-name">
@@ -495,7 +495,7 @@
                                     <div class="product-box product-box-bg wow fadeInUp">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/27.png"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/27.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
@@ -516,7 +516,7 @@
                                     <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/28.png"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/28.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
@@ -537,7 +537,7 @@
                                     <div class="product-box product-box-bg wow fadeInUp">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.php">
-                                                <img src="../assets/images/fashion/product/29.png"
+                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/29.png"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                         </div>
@@ -841,7 +841,7 @@
                                                                 <div>
                                                                     <div class="people-image people-text">
                                                                         <img alt="user" class="img-fluid "
-                                                                            src="../assets/images/review/1.jpg">
+                                                                            src="{{asset('front-end')}}/assets/images/review/1.jpg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="people-comment">
@@ -895,7 +895,7 @@
                                                                 <div>
                                                                     <div class="people-image people-text">
                                                                         <img alt="user" class="img-fluid "
-                                                                            src="../assets/images/review/2.jpg">
+                                                                            src="{{asset('front-end')}}/assets/images/review/2.jpg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="people-comment">
@@ -950,7 +950,7 @@
                                                                 <div>
                                                                     <div class="people-image people-text">
                                                                         <img alt="user" class="img-fluid "
-                                                                            src="../assets/images/review/3.jpg">
+                                                                            src="{{asset('front-end')}}/assets/images/review/3.jpg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="people-comment">
@@ -1006,7 +1006,7 @@
                                                                 <div>
                                                                     <div class="people-image people-text">
                                                                         <img alt="user" class="img-fluid "
-                                                                            src="../assets/images/review/4.jpg">
+                                                                            src="{{asset('front-end')}}/assets/images/review/4.jpg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="people-comment">
@@ -1060,7 +1060,7 @@
                                                                 <div>
                                                                     <div class="people-image people-text">
                                                                         <img alt="user" class="img-fluid "
-                                                                            src="../assets/images/review/5.jpg">
+                                                                            src="{{asset('front-end')}}/assets/images/review/5.jpg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="people-comment">
@@ -1142,7 +1142,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-2.php">
-                                        <img src="../assets/images/cake/product/11.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/11.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1229,7 +1229,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/2.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1315,7 +1315,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/3.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/3.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1402,7 +1402,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/4.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/4.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1489,7 +1489,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/5.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/5.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1576,7 +1576,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/6.png"
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/6.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -1665,7 +1665,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="../assets/images/cake/product/7.png" class="img-fluid" alt="">
+                                        <img src="{{asset('front-end')}}/assets/images/cake/product/7.png" class="img-fluid" alt="">
                                     </a>
 
                                     <ul class="product-option">
