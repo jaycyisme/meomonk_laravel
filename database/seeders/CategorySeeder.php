@@ -14,15 +14,45 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Category 1',
-            'icon_url' => 'biscuit.svg',
+            'name' => 'Cat',
+            'icon_url' => 'cat.svg',
+            'image_url' => 'cat.svg',
+        ]);
+
+        Category::create([
+            'name' => 'Dog',
+            'icon_url' => 'dog.svg',
+            'image_url' => 'dog.svg',
+        ]);
+
+        Category::create([
+            'name' => 'Cat Food',
+            'icon_url' => 'cat-food.svg',
+            'image_url' => 'cat-food.svg',
+        ]);
+
+        Category::create([
+            'name' => 'Dog Food',
+            'icon_url' => 'dog-food.svg',
+            'image_url' => 'dog-food.svg',
+        ]);
+
+        Category::create([
+            'name' => 'Toy',
+            'icon_url' => 'toy.svg',
             'image_url' => 'biscuit.svg',
         ]);
 
         Category::create([
-            'name' => 'Category 2',
-            'icon_url' => 'biscuit.svg',
-            'image_url' => 'biscuit.svg',
+            'name' => 'Pharmacy',
+            'icon_url' => 'pharmacy.svg',
+            'image_url' => 'pharmacy.svg',
+        ]);
+
+        Category::create([
+            'name' => 'Services',
+            'icon_url' => 'service.svg',
+            'image_url' => 'service.svg',
         ]);
     }
 }

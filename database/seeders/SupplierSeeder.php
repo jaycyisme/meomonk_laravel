@@ -12,8 +12,8 @@ class SupplierSeeder extends Seeder
      */
     public function run(): void
     {
-        Supplier::create(['name' => 'Supplier 1']);
-
-        Supplier::create(['name' => 'Supplier 2']);
+        Supplier::create(['name' => 'Adorable MSRT']);
+        Supplier::create(['name' => 'Kaleidoscope SKPF']);
+        Supplier::create(['name' => 'Animal Directional Global']);
     }
 }
