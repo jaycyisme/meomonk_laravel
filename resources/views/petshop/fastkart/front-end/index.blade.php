@@ -4,14 +4,14 @@
     <div class="mobile-menu d-md-none d-block mobile-cart">
         <ul>
             <li class="active">
-                <a href="index.php">
+                <a href="{{ route('index') }}">
                     <i class="iconly-Home icli"></i>
                     <span>Home</span>
                 </a>
             </li>
 
             <li class="mobile-category">
-                <a href="javascript:void(0)">
+                <a href="{{ route('shopCategory') }}">
                     <i class="iconly-Category icli js-link"></i>
                     <span>Category</span>
                 </a>
@@ -25,14 +25,14 @@
             </li>
 
             <li>
-                <a href="wishlist.php" class="notifi-wishlist">
+                <a href="{{ route('wishList') }}" class="notifi-wishlist">
                     <i class="iconly-Heart icli"></i>
                     <span>My Wish</span>
                 </a>
             </li>
 
             <li>
-                <a href="cart.php">
+                <a href="{{ route('cart') }}">
                     <i class="iconly-Bag-2 icli fly-cate"></i>
                     <span>Cart</span>
                 </a>
@@ -191,96 +191,17 @@
                         <div class="category-menu">
                             <h3>Category</h3>
                             <ul>
+                                @foreach ($categories as $category)
                                 <li>
                                     <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/vegetable.svg"
-                                            class="blur-up lazyload" alt="" />
+                                        <img src="{{ asset('front-end/assets/images/category/' . $category->icon_url) }}"
+                                            class="blur-up lazyload" alt="{{ $category->name }}" />
                                         <h5>
-                                            <a href="shop-left-sidebar.php">Vegetables & Fruit</a>
+                                            <a href="{{ route('index', ['category' => $category->id]) }}">{{ $category->name }}</a>
                                         </h5>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/cup.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Beverages</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/meats.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Meats & Seafood</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/breakfast.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Breakfast & Dairy</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/frozen.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Frozen Foods</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/biscuit.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Biscuits & Snacks</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/grocery.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Grocery & Staples</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/drink.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Wines & Alcohol Drinks</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/milk.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Milk & Dairies</a>
-                                        </h5>
-                                    </div>
-                                </li>
-                                <li class="pb-30">
-                                    <div class="category-list">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/pet.svg"
-                                            class="blur-up lazyload" alt="" />
-                                        <h5>
-                                            <a href="shop-left-sidebar.php">Pet Foods</a>
-                                        </h5>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
 
                             <ul class="value-list">

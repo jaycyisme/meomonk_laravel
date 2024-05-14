@@ -4,25 +4,26 @@ use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 
 //FRONT_END
 
-Route::get('/index', [PagesController::class, 'index'])->name('index');
+Route::get('/index', [HomeController::class, 'index'])->name('index');
 
 Route::get('/about-us', [PagesController::class, 'aboutUs']);
 
 Route::get('/blog-detail', [PagesController::class, 'blogDetail']);
 
-Route::get('/blog-grid', [PagesController::class, 'blogGrid']);
+Route::get('/blog-grid', [PagesController::class, 'blogGrid'])->name('blogGrid');
 
 Route::get('/blog-list', [PagesController::class, 'blogList']);
 
-Route::get('/cart', [PagesController::class, 'cart']);
+Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
 
-Route::get('/checkout', [PagesController::class, 'checkout']);
+Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
 
 Route::get('/contact-us', [PagesController::class, 'contactUs']);
 
@@ -48,15 +49,24 @@ Route::get('/product-pharmacy', [PagesController::class, 'productPharmacy']);
 
 Route::get('/search', [PagesController::class, 'search']);
 
-Route::get('/shop-banner', [PagesController::class, 'shopBanner']);
+Route::get('/shop-service', [PagesController::class, 'shopService'])->name('shopService');
 
 Route::get('/shop-category-slider', [PagesController::class, 'shopCategorySlider']);
 
-Route::get('/shop-left-sidebar', [PagesController::class, 'shopLeftSidebar']);
+Route::get('/shop-category', [PagesController::class, 'shopCategory'])->name('shopCategory');
 
 Route::get('/sign-up', [PagesController::class, 'signUp'])->name('signUp');
 
 Route::get('/user-dashboard', [PagesController::class, 'userDashboard']);
+
+Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList');
+
+
+
+//CATEGORY
+// Route::get('/display-category', [CategoryController::class, 'displayCategory'])->name('displayCategory');
+
+
 
 
 

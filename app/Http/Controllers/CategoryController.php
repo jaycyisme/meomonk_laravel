@@ -101,4 +101,10 @@ class CategoryController extends Controller
         return redirect()->route('category')->with('success', 'Category deleted successfully.');
     }
 
+    public function displayCategory() {
+        $categories = Category::where('is_active', 1)->get();
+
+        return view('petshop.fastkart.front-end.index', compact('categories'));
+    }
+
 }

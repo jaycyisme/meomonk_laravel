@@ -40,7 +40,7 @@ class ProductSeeder extends Seeder
 
         Product::create([
             'name' => '1',
-            'category_id' => 1,
+            'category_id' => 6,
             'animal_id' => 2,
             'price' => 100.50,
             'description' => 'Description for Product 1',
