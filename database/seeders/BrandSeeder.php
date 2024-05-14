@@ -12,17 +12,19 @@ class BrandSeeder extends Seeder
      */
     public function run(): void
     {
-        Brand::create(['name' => 'Hills Science Diet']);
-        Brand::create(['name' => 'Iams']);
-        Brand::create(['name' => 'Meow Mix']);
-        Brand::create(['name' => 'Rachael Ray Nutrish']);
-        Brand::create(['name' => 'Blue Buffalo']);
-        Brand::create(['name' => 'PURINA Fancy Feast']);
-        Brand::create(['name' => 'Wellness']);
-        Brand::create(['name' => 'Royal Canin']);
-        Brand::create(['name' => 'Instinct']);
-        Brand::create(['name' => 'Merrick']);
-        Brand::create(['name' => 'Blue Divine Delights']);
-        Brand::create(['name' => 'BoBo']);
+        Brand::create(['name' => 'Hills Science Diet']); #1
+        Brand::create(['name' => 'Iams']); #2
+        Brand::create(['name' => 'Meow Mix']); #3
+        Brand::create(['name' => 'Rachael Ray Nutrish']); #4
+        Brand::create(['name' => 'Blue Buffalo']); #5
+        Brand::create(['name' => 'PURINA Fancy Feast']); #6
+        Brand::create(['name' => 'Wellness']); #7
+        Brand::create(['name' => 'Royal Canin']); #8
+        Brand::create(['name' => 'Instinct']); #9
+        Brand::create(['name' => 'Merrick']); #10
+        Brand::create(['name' => 'Blue Divine Delights']); #11
+        Brand::create(['name' => 'BoBo']); #12
+        Brand::create(['name' => 'Keplin']); #13 Toy Brand
+        Brand::create(['name' => 'Medisure Health Care']); #14 Pharmacy
     }
 }

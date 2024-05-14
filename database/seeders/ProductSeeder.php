@@ -21,8 +21,48 @@ class ProductSeeder extends Seeder
             'image' => '1.png',
             'quantity' => 10,
             'product_status_id' => 1,
-            'brand_id' => 1,
+            'brand_id' => 5,
             'supplier_id' => 1,
         ]);
+
+        Product::create([
+            'name' => 'dog-blue-buffallo-basic-skin-stomatch',
+            'category_id' => 2,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Description for Product 1',
+            'image' => '1.png',
+            'quantity' => 10,
+            'product_status_id' => 1,
+            'brand_id' => 5,
+            'supplier_id' => 1,
+        ]);
+
+        Product::create([
+            'name' => '1',
+            'category_id' => 1,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Description for Product 1',
+            'image' => '1.png',
+            'quantity' => 10,
+            'product_status_id' => 1,
+            'brand_id' => 14,
+            'supplier_id' => 3,
+        ]);
+
+        Product::create([
+            'name' => 'dog-rope-toy',
+            'category_id' => 5,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Description for Product 1',
+            'image' => '1.png',
+            'quantity' => 10,
+            'product_status_id' => 1,
+            'brand_id' => 13,
+            'supplier_id' => 2,
+        ]);
+
     }
 }
