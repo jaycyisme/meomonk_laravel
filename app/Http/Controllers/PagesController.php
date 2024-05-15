@@ -15,13 +15,13 @@ class PagesController extends Controller
         return view('.admin.back-end.body-index');
     }
 
-    public function products() {
-        return view('.admin.back-end.products');
-    }
+    // public function products() {
+    //     return view('.admin.back-end.products');
+    // }
 
-    public function addNewProducts() {
-        return view('.admin.back-end.add-new-product');
-    }
+    // public function addNewProducts() {
+    //     return view('.admin.back-end.add-new-product');
+    // }
 
     public function category() {
         return view('.admin.back-end.category');
@@ -31,13 +31,13 @@ class PagesController extends Controller
         return view('.admin.back-end.add-new-category');
     }
 
-    public function attributes() {
-        return view('.admin.back-end.attributes');
-    }
+    // public function attributes() {
+    //     return view('.admin.back-end.attributes');
+    // }
 
-    public function addNewAttributes() {
-        return view('.admin.back-end.add-new-attributes');
-    }
+    // public function addNewAttributes() {
+    //     return view('.admin.back-end.add-new-attributes');
+    // }
 
     public function allUsers() {
         return view('.admin.back-end.all-users');
@@ -98,4 +98,7 @@ class PagesController extends Controller
     public function reportList() {
         return view('.admin.back-end.reports');
     }
+
+
+
 }
