@@ -44,11 +44,6 @@
 
                                         <td>
                                             <ul>
-                                                {{-- <li>
-                                                    <a href="order-detail.html">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li> --}}
 
                                                 <li>
                                                     <a href="{{ route('editCategory', ['id' => $category->id]) }}">
@@ -56,20 +51,7 @@
                                                     </a>
                                                 </li>
 
-                                                {{-- <li>
-                                                    <li>
-                                                        <form action="{{ route('softDeleteCategory', ['id' => $category->id]) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button style="background: none;
-                                                            border: none !important;
-                                                            color: red;
-                                                            font-size: 1.2rem;" type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa category này không?')">
-                                                                <i class="ri-delete-bin-line" ></i>
-                                                            </button>
-                                                        </form>
-                                                    </li>
-                                                </li> --}}
+
                                                 <li>
                                                     <a href="#" class="delete-category" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $category->id }}">
                                                         <i class="ri-delete-bin-line"></i>
@@ -90,7 +72,7 @@
     </div>
     <!-- All Category Table Ends-->
 <!-- Delete Modal Box Start -->
-<div class="modal fade theme-modal remove-user" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+<div class="modal fade theme-modal remove-category" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header d-block text-center">

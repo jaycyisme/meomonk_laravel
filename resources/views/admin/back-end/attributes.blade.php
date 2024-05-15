@@ -33,20 +33,20 @@
                                         <td>{{ $attribute->name }}</td>
                                         <td>{{ $attribute->value }}</td>
                                         <td >
-                                            <a href="{{ route('Attributesedit', ['id' => $attribute->id]) }}">
-                                                <i class="ri-pencil-line"></i>
-                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('Attributesedit', ['id' => $attribute->id]) }}">
+                                                        <i class="ri-pencil-line"></i>
+                                                    </a>
 
-                                            <form action="{{ route('Attributesdelete', ['id' => $attribute->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button style="background: none;
-                                                border: none !important;
-                                                color: red;
-                                                font-size: 1.2rem;" type="submit" onclick="return confirm('Are you sure you want to delete this attribute?')">
-                                                    <i class="ri-delete-bin-line" ></i>
-                                                </button>
-                                            </form>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#" class="delete-attribute" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $attribute->id }}">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
 
                                         </td>
 
@@ -61,9 +61,52 @@
         </div>
     </div>
     <!-- All User Table Ends-->
+
+
+</div>
+<div class="modal fade theme-modal remove-attribute" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-block text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="remove-box">
+                    <p>The permission for the use/group, preview is inherited from the object, object will create a
+                        new permission for this object</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                <form id="delete-form" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
 
+
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-attribute');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const attributeId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/attributes/${attributeId}`;
+        });
+    });
+});
+
+</script>
+{{-- <script> --}}
     document.addEventListener('DOMContentLoaded', function () {
         const productForm = document.getElementById('productForm');
 
