@@ -43,7 +43,6 @@ class AttributeController extends Controller
             if ($existingAttribute) {
             return redirect()->back()->with('error', 'Attribute already exists.');
             }
-
             // Create a new instance of the Attribute model
             $attribute = new Attribute();
             $attribute->name = $request->input('name');
@@ -56,6 +55,7 @@ class AttributeController extends Controller
             return redirect()->back()->with('error', 'Failed to create attribute. Please try again.');
         }
     }
+
 
     public function edit($id) {
         $attribute = Attribute::find($id);
@@ -70,6 +70,10 @@ class AttributeController extends Controller
             'name' => 'required|string|max:255',
             'value' => 'required|string|max:255',
         ]);
+        if (!$request->filled('name') || !$request->filled('value')) {
+
+            return redirect()->back()->with('error', 'Please enter complete data.');
+        }
 
         $attribute = Attribute::find($id);
 
@@ -77,13 +81,18 @@ class AttributeController extends Controller
         if (!$attribute) {
             return redirect()->back()->with('error', 'Attribute not found!');
         }
-
+        try {
         // Update the attribute's information
         $attribute->name = $request->input('name');
         $attribute->value = $request->input('value');
-        $attribute->save();
+
+        $saved = $attribute->save();
 
         return redirect()->back()->with('success', 'Attribute updated successfully!');
+    } catch (\Exception $e) {
+        // Return an error response or redirect depending on your application's logic
+        return redirect()->back()->with('error', 'Failed to create attribute. Please try again.');
+    }
     }
 
     public function delete($id){
@@ -92,10 +101,6 @@ class AttributeController extends Controller
 
         return redirect()->back()->with('success', 'Attribute deleted successfully!');
     }
-
-
-
-
     }
 
 
