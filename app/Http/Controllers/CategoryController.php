@@ -64,7 +64,6 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::find($id);
-
         $category->name = $request->input('name');
 
         // Xử lý ảnh

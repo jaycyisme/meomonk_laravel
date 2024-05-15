@@ -44,11 +44,6 @@
 
                                         <td>
                                             <ul>
-                                                {{-- <li>
-                                                    <a href="order-detail.html">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li> --}}
 
                                                 <li>
                                                     <a href="{{ route('editCategory', ['id' => $category->id]) }}">
@@ -56,19 +51,11 @@
                                                     </a>
                                                 </li>
 
+
                                                 <li>
-                                                    <li>
-                                                        <form action="{{ route('softDeleteCategory', ['id' => $category->id]) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button style="background: none;
-                                                            border: none !important;
-                                                            color: red;
-                                                            font-size: 1.2rem;" type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa category này không?')">
-                                                                <i class="ri-delete-bin-line" ></i>
-                                                            </button>
-                                                        </form>
-                                                    </li>
+                                                    <a href="#" class="delete-category" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $category->id }}">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </td>
@@ -84,7 +71,50 @@
         </div>
     </div>
     <!-- All Category Table Ends-->
+<!-- Delete Modal Box Start -->
+<div class="modal fade theme-modal remove-category" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-block text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="remove-box">
+                    <p>The permission for the use/group, preview is inherited from the object, object will create a
+                        new permission for this object</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                <form id="delete-form" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                </form>
+            </div>
 
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-category');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const categoryId = this.getAttribute('data-id');
+                const deleteForm = document.getElementById('delete-form');
+                deleteForm.action = `/category/${categoryId}`;
+            });
+        });
+    });
+</script>
+<!-- Delete Modal Box End -->
 <!-- Container-fluid end -->
 
 @endsection

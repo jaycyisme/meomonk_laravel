@@ -20,17 +20,13 @@
                                                 type="button">Account
                                         </button>
                                     </li>
-                                    <!--                                                <li class="nav-item" role="presentation">-->
-                                    <!--                                                    <button class="nav-link" id="pills-profile-tab"-->
-                                    <!--                                                        data-bs-toggle="pill" data-bs-target="#pills-profile"-->
-                                    <!--                                                        type="button">Pernission</button>-->
-                                    <!--                                                </li>-->
+
                                 </ul>
 
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                        <form class="theme-form theme-form-2 mega-form"
-                                              action="../controller/ControllerUser.php" method="POST">
+                                        <form class="theme-form theme-form-2 mega-form" action="{{ route('store') }}" method="POST">
+                                            @csrf
                                             <div class="card-header-1">
                                                 <h5>User Information</h5>
                                             </div>
@@ -39,69 +35,55 @@
                                                 <div class="mb-4 row align-items-center">
                                                     <label class="form-label-title col-lg-2 col-md-3 mb-0">Username</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text" name="Username">
+                                                        <input class="form-control" type="text" name="username" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
                                                     <label class="col-lg-2 col-md-3 col-form-label form-label-title">Email</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="email" name="Email">
+                                                        <input class="form-control" type="email" name="email" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
                                                     <label class="col-lg-2 col-md-3 col-form-label form-label-title">Name</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text" name="Name">
+                                                        <input class="form-control" type="text" name="name" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
-                                                    <label class="col-lg-2 col-md-3 col-form-label form-label-title">Phone
-                                                        Number</label>
+                                                    <label class="col-lg-2 col-md-3 col-form-label form-label-title">Phone Number</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text" name="PhoneNumber">
+                                                        <input class="form-control" type="text" name="phone_number" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
                                                     <label class="col-lg-2 col-md-3 col-form-label form-label-title">Password</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="password" name="Password">
+                                                        <input class="form-control" type="password" name="password" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-4 row align-items-center">
-                                                    <label class="col-lg-2 col-md-3 col-form-label form-label-title">Role
-                                                        ID</label>
+                                                    <label class="col-lg-2 col-md-3 col-form-label form-label-title">Role id</label>
                                                     <div class="col-md-9 col-lg-10">
-
-                                                        <?php
-
-                                                        // use Controller\RoleControllers;
-
-                                                        // include("../handle/Database/connection.php");
-                                                        // include("../handle/Models/Role.php");
-                                                        // include("../handle/Controller/RoleControllers.php");
-
-
-                                                        // $RoleController = new RoleControllers();
-                                                        // $RoleController -> viewDistinctRole();
-
-
-                                                        ?>
+                                                        <select class="form-control" name="role_id" required>
+                                                            @foreach ($role_status as $value)
+                                                                <option value="{{ $value->id }}">{{ $value->role_name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-
 
                                                 <div class="row align-items-center">
                                                     <div class="col-lg-2 col-md-3"></div> <!-- Column for spacing -->
                                                     <div class="col-md-9 col-lg-10">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                        <button type="submit" class="btn btn-primary">Add user</button>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </form>
 
@@ -276,10 +258,10 @@
     </div>
     <!-- New User End -->
 
-    <div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0"><a class="btn btn-solid"
+    {{-- <div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0"><a class="btn btn-solid"
                                                                                    href="add-new-product.html"
                                                                                    style="width: 200px;">Add User</a>
-    </div>
+    </div> --}}
 
 </div>
 <!-- Page Sidebar End -->

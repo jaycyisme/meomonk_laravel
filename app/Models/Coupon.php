@@ -12,4 +12,5 @@ class Coupon extends Model
     protected $table = 'coupon';
     protected $primaryKey = 'id';
     protected $fillable = ['title', 'code', 'discount', 'coupon_status_id'];
+
 }

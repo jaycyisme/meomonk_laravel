@@ -21,7 +21,6 @@
                             <table class="table all-package theme-table" id="table_id">
                                 <thead>
                                 <tr>
-                                    <th>Product Name</th>
                                     <th>Attribute Name</th>
                                     <th>Attribute Value</th>
                                     <th>Option</th>
@@ -29,16 +28,31 @@
                                 </thead>
 
                                 <tbody>
-                                <?php
+                                    @foreach($attributes as $attribute)
+                                    <tr>
+                                        <td>{{ $attribute->name }}</td>
+                                        <td>{{ $attribute->value }}</td>
+                                        <td >
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('Attributesedit', ['id' => $attribute->id]) }}">
+                                                        <i class="ri-pencil-line"></i>
+                                                    </a>
 
-                                // include("../handle/Database/connection.php");
-                                // //                                include("../handle/Models/ProductAttribute.php");
-                                // include("../handle/Controller/ProductAttributeController.php");
-                                // $attributeController = new AttributeController(); // Khởi tạo đối tượng AttributeController
+                                                </li>
 
-                                // $attributeController->viewAttributes(); // Gọi phương thức để hiển thị danh sách thuộc tính
-                                ?>
-                                </tbody>
+                                                <li>
+                                                    <a href="#" class="delete-attribute" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $attribute->id }}">
+                                                        <i class="ri-delete-bin-line"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
                             </table>
                         </div>
                     </div>
@@ -47,15 +61,14 @@
         </div>
     </div>
     <!-- All User Table Ends-->
-</div>
-<!-- Container-fluid end -->
 
-<!-- Delete Modal Box Start -->
-<div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+
+</div>
+<div class="modal fade theme-modal remove-attribute" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header d-block text-center">
-                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
+                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
@@ -67,39 +80,58 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-animation btn-sm fw-bold" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-animation btn-sm fw-bold" data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                <form id="delete-form" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
 
-<div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalLabel12">Done!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="remove-box text-center">
-                    <div class="wrapper">
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                        </svg>
-                    </div>
-                    <h4 class="text-content">It's Removed.</h4>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Delete Modal Box End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-attribute');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const attributeId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/attributes/${attributeId}`;
+        });
+    });
+});
+
+</script>
+{{-- <script> --}}
+    document.addEventListener('DOMContentLoaded', function () {
+        const productForm = document.getElementById('productForm');
+
+        productForm.addEventListener('click', function(event) {
+            if (event.target.classList.contains('addAttributeButton')) {
+                const button = event.target;
+                const attributeRow = button.closest('.attribute-row');
+                const clonedRow = attributeRow.cloneNode(true);
+
+                // Reset the select value in the cloned row
+                clonedRow.querySelector('select').selectedIndex = 0;
+
+                // Append the cloned row to the form
+                productForm.appendChild(clonedRow);
+            }
+        });
+    });
+
+    function showSelectedText() {
+        // Example function to show selected text when the "Add Product" button is clicked
+        const attributeSelect = document.querySelector('select[name^="attribute"]');
+        const selectedOption = attributeSelect.options[attributeSelect.selectedIndex];
+        const selectedText = selectedOption.textContent;
+        alert("Selected Attribute: " + selectedText);
+    }
+    </script>
+    >
 @endsection
