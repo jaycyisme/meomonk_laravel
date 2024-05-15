@@ -155,11 +155,31 @@ class ProductController extends Controller
 
     }
 
-    public function softDelete($id)
-    {
+    public function softDelete($id){
+    }
 
 
+    public function productDetail($id) {
+        $products = Product::where('category_id', $id)->get();
+        switch ($id) {
+            case 3:
+            case 4:
+                $viewName = '.petshop.fastkart.front-end.product-food';
+                break;
+            case 5:
+                $viewName = '.petshop.fastkart.front-end.product-toy';
+                break;
+            case 6:
+                $viewName = '.petshop.fastkart.front-end.product-pharmacy';
+                break;
+            case 7:
+                $viewName = '.petshop.fastkart.front-end.product-service';
+                break;
+            default:
+                $viewName = '.petshop.fastkart.front-end.product-food';
+        }
 
-
+        return view($viewName, compact('products'));
+    }
 }
-}
+

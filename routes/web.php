@@ -2,12 +2,13 @@
 
 
 use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
-use App\Http\Controllers\AuthenticationController;
 
 
 
@@ -84,6 +85,15 @@ Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList')
 
 //BACK_END
 
+Route::get('/admin-login', [AdminController::class, 'index'])->name('adminLogin');
+Route::get('/show-dashboard', [AdminController::class, 'showDashboard'])->name('showDashboard');
+Route::post('/login-function', [AdminController::class, 'login'])->name('adminLoginFunction');
+Route::get('/logout', [AdminController::class, 'logOut'])->name('logOut');
+
+
+// Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+Route::get('/products', [PagesController::class, 'products'])->name('products');
+Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/productt', [PagesController::class, 'product'])->name('product');
@@ -97,6 +107,10 @@ Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('ed
 Route::post('/add-new-category', [CategoryController::class, 'store'])->name('storeCategory'); // Xử lý thêm mới danh mục
 Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('updateCategory'); // Xử lý chỉnh sửa danh mục
 Route::delete('/category/{id}', [CategoryController::class, 'softDelete'])->name('softDeleteCategory'); // Xử lý xóa danh mục
+
+Route::get('/product-category/{id}', [CategoryController::class, 'listProductCategory'])->name('listProductCategory');
+Route::get('/product-category', [CategoryController::class, 'listProduct'])->name('listProduct');
+Route::get('/service-category', [CategoryController::class, 'listService'])->name('listService');
 
 
 
@@ -122,6 +136,7 @@ Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name(
 Route::delete('/product/{product}', [ProductController::class, 'softDelete'])->name('product.destroy');
 Route::post('/add-new-product', [ProductController::class, 'store'])->name('productstore');
 
+Route::get('/product-detail/{id}', [CategoryController::class, 'productDetail'])->name('productDetail');
 
 
 

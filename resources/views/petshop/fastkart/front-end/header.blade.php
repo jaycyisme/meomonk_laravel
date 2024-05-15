@@ -415,7 +415,7 @@
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
                                                 <a class="nav-link dropdown-toggle" href="{{ route('index') }}"
-                                                    data-bs-toggle="dropdown">Home</a>
+                                                >Home</a>
                                             </li>
 
                                             <li class="nav-item dropdown">
@@ -424,11 +424,11 @@
 
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="{{ route('shopCategory') }}">Shop
+                                                        <a class="dropdown-item" href="{{ route('listProduct') }}">Shop
                                                             Category</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="{{ route('shopCategory') }}">Shop
+                                                        <a class="dropdown-item" href="{{ route('listService') }}">Shop
                                                             Service</a>
                                                     </li>
                                                 </ul>

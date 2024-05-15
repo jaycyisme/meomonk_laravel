@@ -16,7 +16,7 @@ class ProductAttributeSeeder extends Seeder
             'attribute_id' => 1,
             'product_id' => 1,
             'percent' => 10,
-            'quantity' => 20,
+
         ]);
     }
 }

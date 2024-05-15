@@ -197,7 +197,8 @@
                                         <img src="{{ asset('front-end/assets/images/category/' . $category->icon_url) }}"
                                             class="blur-up lazyload" alt="{{ $category->name }}" />
                                         <h5>
-                                            <a href="{{ route('index', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                            <a href="{{ route('listProductCategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                            {{-- <a href="{{ URL::to('/product-category/'.$category->id) }}">{{ $category->name }}</a> --}}
                                         </h5>
                                     </div>
                                 </li>
@@ -456,8 +457,8 @@
                                         <div class="col-12 px-0">
                                             <div class="product-box">
                                                 <div class="product-image">
-                                                    <a href="product-left-thumbnail.php">
-                                                        <img src="{{ asset('front-end/assets/images/product/' . $product->image . '/1.png') }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
+                                                        <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
                                                     </a>
                                                     <ul class="product-option">
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -634,7 +635,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="product-left-thumbnail.php">
-                                                    <img src="{{ asset('front-end/assets/images/product/' . $food_product->image . '/1.png') }}"
+                                                    <img src="{{ asset('front-end/assets/images/product/' . $food_product->image) }}"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -803,7 +804,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="{{ asset('front-end/assets/images/product/' . $food_product->image . '/1.png') }}"
+                                            <img src="{{ asset('front-end/assets/images/product/' . $food_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -828,7 +829,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="{{ asset('front-end/assets/images/product/' . $toy_product->image . '/1.png') }}"
+                                            <img src="{{ asset('front-end/assets/images/product/' . $toy_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
@@ -853,7 +854,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.php" class="offer-image">
-                                            <img src="{{ asset('front-end/assets/images/product/' . $pharmacy_product->image . '/1.png') }}"
+                                            <img src="{{ asset('front-end/assets/images/product/' . $pharmacy_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
