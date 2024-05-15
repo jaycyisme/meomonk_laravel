@@ -890,7 +890,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.php">
-                                        <img src="{{asset('front-end')}}/assets/images/cake/product/2.png"
+                                        <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 

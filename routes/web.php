@@ -1,11 +1,19 @@
 <?php
 
+
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+
+
+
+
 use App\Http\Controllers\HomeController;
+
 use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
@@ -86,6 +94,11 @@ Route::get('/logout', [AdminController::class, 'logOut'])->name('logOut');
 // Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 Route::get('/products', [PagesController::class, 'products'])->name('products');
 Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
+Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/productt', [PagesController::class, 'product'])->name('product');
+// Route::get('/products', [PagesController::class, 'products'])->name('products');
+// Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 
 // Thêm các route cho Category
 Route::get('/category', [CategoryController::class, 'index'])->name('category'); // Hiển thị danh sách các danh mục
@@ -96,10 +109,38 @@ Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name
 Route::delete('/category/{id}', [CategoryController::class, 'softDelete'])->name('softDeleteCategory'); // Xử lý xóa danh mục
 
 Route::get('/product-category/{id}', [CategoryController::class, 'listProductCategory'])->name('listProductCategory');
+Route::get('/product-category', [CategoryController::class, 'listProduct'])->name('listProduct');
+Route::get('/service-category', [CategoryController::class, 'listService'])->name('listService');
+
+
 
 // Thêm các route cho Attribute
-Route::get('/attributes', [PagesController::class, 'attributes'])->name('attributes');
-Route::get('/add-new-attributes', [PagesController::class, 'addNewAttributes'])->name('addNewAttributes');
+Route::get('/attributes', [AttributeController::class, 'index'])->name('attributes');
+Route::get('/add-new-attributes', [AttributeController::class, 'addNewAttributes'])->name('addNewAttributes');
+Route::post('/add-new-attributes', [AttributeController::class, 'store'])->name('Attributesstore');
+Route::delete('/attributes/{id}', [AttributeController::class, 'delete'])->name('Attributesdelete');
+Route::get('/edit-attributes/{id}', [AttributeController::class, 'edit'])->name('Attributesedit'); // Hiển thị form chỉnh sửa danh mục
+Route::put('/update-attributes/{id}', [AttributeController::class, 'update'])->name('Attributesupdate');
+
+// Cập nhật danh mục
+// Route::get('/add-new-product', [AttributeController::class, 'index1'])->name('addproduct');
+
+
+
+// Thêm các route cho product
+// Route::get('/products', [PagesController::class, 'products'])->name('products');
+Route::get('/add-new-product', [ProductController::class, 'addNewProducts'])->name('addNewProducts');
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::delete('/product/{product}', [ProductController::class, 'softDelete'])->name('product.destroy');
+Route::post('/add-new-product', [ProductController::class, 'store'])->name('productstore');
+
+Route::get('/product-detail/{id}', [CategoryController::class, 'productDetail'])->name('productDetail');
+
+
+
+
 
 
 Route::get('/all-users', [PagesController::class, 'allUsers'])->name('allUsers');
@@ -135,7 +176,7 @@ Route::get('/coupon-list', [CouponController::class, 'index'])->name('couponList
 
 Route::get('/coupons/create', [CouponController::class, 'create'])->name('create');
 
-Route::post('/coupons', [CouponController::class, 'store'])->name('store');
+Route::post('/coupons', [CouponController::class, 'store'])->name('couponstore');
 
 Route::get('/coupons/{id}/edit', [CouponController::class, 'edit'])->name('edit');
 
@@ -184,3 +225,8 @@ Route::post('/add-customer', [AuthenticationController::class, 'signUp'])->name(
 Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name('verifyOtp');
 
 Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');
+
+
+
+
+

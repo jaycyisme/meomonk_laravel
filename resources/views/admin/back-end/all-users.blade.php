@@ -67,7 +67,6 @@
 <!-- Container-fluid end -->
 
 <!-- Delete Modal Box Start -->
-<!-- Delete Modal Box Start -->
 <div class="modal fade theme-modal remove-user" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -98,7 +97,7 @@
 <!-- Delete Modal Box End -->
 
 
-<div class="modal fade theme-modal remove-user" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
+<div class="modal fade theme-modal remove-coupon" id="exampleModalToggle2" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,8 +110,8 @@
                 <div class="remove-box text-center">
                     <div class="wrapper">
                         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
                     </div>
                     <h4 class="text-content">It's Removed.</h4>
@@ -135,6 +134,10 @@
                 deleteForm.action = `/all-users/${userId}`;
             });
         });
+        @if(session('success'))
+        const successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+        successModal.show();
+    @endif
     });
 </script>
 

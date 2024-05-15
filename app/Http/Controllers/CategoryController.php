@@ -75,7 +75,6 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::find($id);
-
         $category->name = $request->input('name');
 
         // Xử lý ảnh
@@ -134,13 +133,19 @@ class CategoryController extends Controller
 
     public function displayCategory() {
         $categories = Category::where('is_active', 1)->get();
-
         return view('petshop.fastkart.front-end.index', compact('categories'));
     }
 
+    public function listProduct() {
+        $products = Product::where('is_active', true)->get();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    }
 
     public function listProductCategory($id) {
-        $products = Product::where('category_id', $id)->with('category')->get();
+        $products = Product::where('category_id', $id)
+                       ->where('is_active', true)
+                       ->with('category')
+                       ->get();
         return view('.petshop.fastkart.front-end.shop-category', compact('products'));
     }
 
