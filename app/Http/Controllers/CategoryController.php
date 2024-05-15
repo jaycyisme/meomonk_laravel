@@ -38,6 +38,7 @@ class CategoryController extends Controller
     // Di chuyển và lưu hình ảnh
     $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
     $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
+    copy(public_path('back-end/assets/images/store-icons') . '/' . $iconName, public_path('front-end/assets/images/category') . '/' . $iconName);
 
     // Lưu dữ liệu vào database
     $category = Category::create([
@@ -68,16 +69,34 @@ class CategoryController extends Controller
 
         // Xử lý ảnh
         if ($request->hasFile('image_url')) {
-            $imageName = 'image_url' . time() . '.' . $request->file('image_url')->extension();
-            $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
-            $category->image_url = $imageName;
+            $oldImagePath = public_path('back-end/assets/images/store-images/' . $category->image_url);
+        if (file_exists($oldImagePath)) {
+            File::delete($oldImagePath);
+        }
+
+        $imageName = 'image_url' . time() . '.' . $request->file('image_url')->extension();
+        $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
+        $category->image_url = $imageName;
         }
 
         if ($request->hasFile('icon_url')) {
-            $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
-            $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
-            $category->icon_url = $iconName;
+            $oldIconPath = public_path('back-end/assets/images/store-icons/' . $category->icon_url);
+        if (file_exists($oldIconPath)) {
+            File::delete($oldIconPath);
         }
+
+        $oldIconFrontPath = public_path('front-end/assets/images/category/' . $category->icon_url);
+        if (file_exists($oldIconFrontPath)) {
+            File::delete($oldIconFrontPath);
+        }
+
+        $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
+        $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
+        $request->file('icon_url')->move(public_path('front-end/assets/images/category'), $iconName);
+        $category->icon_url = $iconName;
+        }
+
+
 
         $category->save();
 
@@ -90,6 +109,7 @@ class CategoryController extends Controller
         // Xác định đường dẫn của hình ảnh và biểu tượng
         $image_url = public_path('back-end/assets/images/store-images/' . $category->image_url);
         $icon_url = public_path('back-end/assets/images/store-icons/' . $category->icon_url);
+        $icon_url = public_path('front-end/assets/images/category/' . $category->icon_url);
 
         // Xóa hình ảnh và biểu tượng khỏi ổ đĩa
         File::delete($image_url);
@@ -99,6 +119,12 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('category')->with('success', 'Category deleted successfully.');
+    }
+
+    public function displayCategory() {
+        $categories = Category::where('is_active', 1)->get();
+
+        return view('petshop.fastkart.front-end.index', compact('categories'));
     }
 
 }
