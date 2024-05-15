@@ -752,18 +752,18 @@ class ProductSeeder extends Seeder
 
     # Plastic Bowl:
         #Plastic Bowl 1:
-        // Product::create([
-        //     'name' => 'Maneki Neko Cats Bowl',
-        //     'category_id' => 5,
-        //     'animal_id' => 1,
-        //     'price' => 100.50,
-        //     'description' => 'Maneki Neko Cats Bowl Face Dog Bowls Double Single Pet Feeder Round Kitten Food Dish Lucky Cat Salver Bamboo Fiber Puppy Plate',
-        //     'image' => '1.png',
-        //     'quantity' => 10,
-        //     'product_status_id' => 1,
-        //     'brand_id' => 12,
-        //     'supplier_id' => 2,
-        // ]);
+        Product::create([
+            'name' => 'Plastic Bowl',
+            'category_id' => 5,
+            'animal_id' => 1,
+            'price' => 100.50,
+            'description' => 'Maneki Neko Cats Bowl Face Dog Bowls Double Single Pet Feeder Round Kitten Food Dish Lucky Cat Salver Bamboo Fiber Puppy Plate',
+            'image' => 'plastic-bowl',
+            'quantity' => 10,
+            'product_status_id' => 1,
+            'brand_id' => 12,
+            'supplier_id' => 2,
+        ]);
 
         #Plastic Bowl 2:
         // Product::create([
@@ -795,17 +795,17 @@ class ProductSeeder extends Seeder
 
     # Rope Ball:
         #Rope Ball 1:
-        // Product::create([
-        //     'name' => 'rope-ball',
-        //     'category_id' => 5,
-        //     'animal_id' => 2,
-        //     'price' => 100.50,
-        //     'description' => 'BOBO rope ball dog and cat toy',
-        //     'image' => '1.png',
-        //     'quantity' => 10,
-        //     'product_status_id' => 1,
-        //     'brand_id' => 12,
-        //     'supplier_id' => 2,
-        // ]);
+        Product::create([
+            'name' => 'Rope Ball',
+            'category_id' => 5,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'BOBO rope ball dog and cat toy',
+            'image' => 'rope-ball',
+            'quantity' => 10,
+            'product_status_id' => 1,
+            'brand_id' => 12,
+            'supplier_id' => 2,
+        ]);
     }
 }
