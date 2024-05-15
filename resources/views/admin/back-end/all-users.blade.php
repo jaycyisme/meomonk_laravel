@@ -38,9 +38,9 @@
                                         <td>
                                             <ul>
                                                 <li>
-                                                    {{-- <a href="{{ route('edit', $users->id) }}">
+                                                    <a href="{{ route('editUser', $user->id) }}">
                                                         <i class="ri-pencil-line"></i>
-                                                    </a> --}}
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a href="#" class="delete-user" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $user->id }}">

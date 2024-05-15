@@ -44,9 +44,29 @@ public function store(Request $request)
     return redirect()->back()->with('success', 'User added successfully');
 }
 
-public function edit(){
+public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $role_status = Role::all();
+        return view('admin.back-end.edit-user', compact('user', 'role_status'));
+    }
 
-}
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->name =  $request->input('name');
+        $user->phone_number =  $request->input('phone_number');
+        $user->password = bcrypt( $request->input('password'));  // Mã hóa mật khẩu
+        $user->role_id = $request->input('role_id');
+
+        $user->save();
+        return redirect()->back()->with('success', 'User update successfully');
+
+    }
+
 
 public function destroy($id)
     {

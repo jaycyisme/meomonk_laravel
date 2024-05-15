@@ -147,7 +147,9 @@ Route::post('/all-users', [UserController::class, 'store'])->name('store');
 
 Route::get('/all-users/addNewUser', [UserController::class, 'create'])->name('addNewUser');
 
+Route::get('/all-users/{id}/edit', [UserController::class, 'edit'])->name('editUser');
 
+Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUser');
 
 
 
