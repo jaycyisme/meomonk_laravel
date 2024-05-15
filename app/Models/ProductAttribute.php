@@ -10,5 +10,5 @@ class ProductAttribute extends Model
     use HasFactory;
     protected $table = 'product_attribute';
     protected $primaryKey = 'id';
-    protected $fillable = ['attribute_id', 'product_id', 'percent', 'quantity'];
+    protected $fillable = ['attribute_id', 'product_id', 'percent'];
 }
