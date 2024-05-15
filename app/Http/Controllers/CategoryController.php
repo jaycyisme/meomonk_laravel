@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Product;
 use App\Models\Category;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('showDashboard');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
     public function index()
     {
+        $this->AuthLogin();
         // Lấy ra những category có is_active bằng 1
-    $categories = Category::where('is_active', 1)->get();
+        $categories = Category::where('is_active', 1)->get();
 
     return view('admin.back-end.category', compact('categories'));
     }
@@ -125,6 +136,12 @@ class CategoryController extends Controller
         $categories = Category::where('is_active', 1)->get();
 
         return view('petshop.fastkart.front-end.index', compact('categories'));
+    }
+
+
+    public function listProductCategory($id) {
+        $products = Product::where('category_id', $id)->with('category')->get();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
     }
 
 }

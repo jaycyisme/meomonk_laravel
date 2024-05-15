@@ -197,7 +197,8 @@
                                         <img src="{{ asset('front-end/assets/images/category/' . $category->icon_url) }}"
                                             class="blur-up lazyload" alt="{{ $category->name }}" />
                                         <h5>
-                                            <a href="{{ route('index', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                            <a href="{{ route('listProductCategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                            {{-- <a href="{{ URL::to('/product-category/'.$category->id) }}">{{ $category->name }}</a> --}}
                                         </h5>
                                     </div>
                                 </li>

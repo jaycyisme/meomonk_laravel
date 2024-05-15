@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
@@ -76,8 +77,13 @@ Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList')
 
 //BACK_END
 
-Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+Route::get('/admin-login', [AdminController::class, 'index'])->name('adminLogin');
+Route::get('/show-dashboard', [AdminController::class, 'showDashboard'])->name('showDashboard');
+Route::post('/login-function', [AdminController::class, 'login'])->name('adminLoginFunction');
+Route::get('/logout', [AdminController::class, 'logOut'])->name('logOut');
 
+
+// Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 Route::get('/products', [PagesController::class, 'products'])->name('products');
 Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 
@@ -88,6 +94,8 @@ Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('ed
 Route::post('/add-new-category', [CategoryController::class, 'store'])->name('storeCategory'); // Xử lý thêm mới danh mục
 Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('updateCategory'); // Xử lý chỉnh sửa danh mục
 Route::delete('/category/{id}', [CategoryController::class, 'softDelete'])->name('softDeleteCategory'); // Xử lý xóa danh mục
+
+Route::get('/product-category/{id}', [CategoryController::class, 'listProductCategory'])->name('listProductCategory');
 
 // Thêm các route cho Attribute
 Route::get('/attributes', [PagesController::class, 'attributes'])->name('attributes');
