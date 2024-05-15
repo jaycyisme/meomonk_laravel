@@ -147,6 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteForm.action = `/coupons/${couponId}`;
         });
     });
+    @if(session('success'))
+        const successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+        successModal.show();
+    @endif
 });
 </script>
 

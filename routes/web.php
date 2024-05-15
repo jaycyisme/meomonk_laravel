@@ -161,7 +161,7 @@ Route::get('/coupon-list', [CouponController::class, 'index'])->name('couponList
 
 Route::get('/coupons/create', [CouponController::class, 'create'])->name('create');
 
-Route::post('/coupons', [CouponController::class, 'store'])->name('store');
+Route::post('/coupons', [CouponController::class, 'store'])->name('couponstore');
 
 Route::get('/coupons/{id}/edit', [CouponController::class, 'edit'])->name('edit');
 
@@ -210,3 +210,8 @@ Route::post('/add-customer', [AuthenticationController::class, 'signUp'])->name(
 Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name('verifyOtp');
 
 Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');
+
+
+
+
+

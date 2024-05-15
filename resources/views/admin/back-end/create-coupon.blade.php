@@ -20,20 +20,12 @@
                                                 data-bs-toggle="pill" data-bs-target="#pills-home"
                                                 type="button">General</button>
                                     </li>
-                                    <!--                                                <li class="nav-item" role="presentation">-->
-                                    <!--                                                    <button class="nav-link" id="pills-profile-tab"-->
-                                    <!--                                                        data-bs-toggle="pill" data-bs-target="#pills-profile"-->
-                                    <!--                                                        type="button">Restriction</button>-->
-                                    <!--                                                </li>-->
-                                    {{-- <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-usage-tab" data-bs-toggle="pill"
-                                                data-bs-target="#pills-usage" type="button">Usage</button>
-                                    </li> --}}
+
                                 </ul>
 
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                        <form class="theme-form theme-form-2 mega-form" action="{{ route('store') }}" method="POST">
+                                        <form class="theme-form theme-form-2 mega-form" action="{{ route('couponstore') }}" method="POST">
                                             @csrf
                                             <div class="card-header-1">
                                                 <h5>General</h5>
