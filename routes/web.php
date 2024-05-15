@@ -8,6 +8,10 @@ use App\Http\Controllers\HomeController;
 use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\UserController;
+
+
 
 //FRONT_END
 
@@ -85,9 +89,10 @@ Route::post('/add-new-category', [CategoryController::class, 'store'])->name('st
 Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('updateCategory'); // Xử lý chỉnh sửa danh mục
 Route::delete('/category/{id}', [CategoryController::class, 'softDelete'])->name('softDeleteCategory'); // Xử lý xóa danh mục
 
-
+// Thêm các route cho Attribute
 Route::get('/attributes', [PagesController::class, 'attributes'])->name('attributes');
 Route::get('/add-new-attributes', [PagesController::class, 'addNewAttributes'])->name('addNewAttributes');
+
 
 Route::get('/all-users', [PagesController::class, 'allUsers'])->name('allUsers');
 Route::get('/add-new-user', [PagesController::class, 'addNewUser'])->name('addNewUser');
@@ -103,7 +108,7 @@ Route::get('/order-tracking', [PagesController::class, 'orderTracking'])->name('
 
 Route::get('/currency-rates', [PagesController::class, 'currencyRates'])->name('currencyRates');
 
-Route::get('/coupon-list', [PagesController::class, 'couponList'])->name('couponList');
+// Route::get('/coupon-list', [PagesController::class, 'couponList'])->name('couponList');
 Route::get('/create-coupon', [PagesController::class, 'addNewCoupon'])->name('addNewCoupon');
 
 Route::get('/product-review', [PagesController::class, 'productReview'])->name('productReview');
@@ -113,6 +118,41 @@ Route::get('/support-ticket', [PagesController::class, 'supportTicket'])->name('
 Route::get('/profile-setting', [PagesController::class, 'profileSetting'])->name('profileSetting');
 
 Route::get('/reports', [PagesController::class, 'reportList'])->name('reportList');
+
+
+
+//Coupon
+// Route::get('/coupon', [PagesController::class, 'index'])->name('couponList');
+Route::get('/coupon-list', [CouponController::class, 'index'])->name('couponList');
+
+Route::get('/coupons/create', [CouponController::class, 'create'])->name('create');
+
+Route::post('/coupons', [CouponController::class, 'store'])->name('store');
+
+Route::get('/coupons/{id}/edit', [CouponController::class, 'edit'])->name('edit');
+
+Route::put('/coupons/{id}', [CouponController::class, 'update'])->name('update');
+
+Route::delete('/coupons/{id}', [CouponController::class, 'destroy'])->name('coupon.destroy');
+
+
+
+// User
+
+Route::get('/all-users', [UserController::class, 'index'])->name('allUsers');
+
+Route::delete('/all-users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::post('/all-users', [UserController::class, 'store'])->name('store');
+
+Route::get('/all-users/addNewUser', [UserController::class, 'create'])->name('addNewUser');
+
+Route::get('/all-users/{id}/edit', [UserController::class, 'edit'])->name('editUser');
+
+Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUser');
+
+
+
 
 // Auth::routes();
 // Route::resource('category', CategoryController::class);
