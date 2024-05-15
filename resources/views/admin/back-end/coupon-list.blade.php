@@ -1,7 +1,6 @@
 @extends('admin.back-end.app')
 @section('content')
 
-
 <!-- Coupon list table starts-->
 <div class="page-body">
     <div class="container-fluid">
@@ -14,7 +13,7 @@
                             <div class="right-options">
                                 <ul>
                                     <li>
-                                        <a class="btn btn-solid" href="{{ route('addNewCoupon') }}">Add Coupon</a>
+                                        <a class="btn btn-solid" href="{{ route('create') }}">Add Coupon</a>
                                     </li>
                                 </ul>
                             </div>
@@ -26,10 +25,9 @@
                                     <thead>
                                     <tr>
                                         <th>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated checkall"
-                                                                       type="checkbox" value="">
-                                                            </span>
+                                            <span class="form-check user-checkbox m-0 p-0">
+                                                <input class="checkbox_animated checkall" type="checkbox" value="">
+                                            </span>
                                         </th>
                                         <th>Title</th>
                                         <th>Code</th>
@@ -38,255 +36,38 @@
                                         <th>Option</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>10% Off</td>
-                                        <td>5488165</td>
-                                        <td class="theme-color">10%</td>
-                                        <td class="menu-status">
-                                            <span class="danger">Restitute</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>25% Off</td>
-                                        <td>2143235</td>
-                                        <td class="theme-color">17%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>12% Off</td>
-                                        <td>3243468</td>
-                                        <td class="theme-color">20%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>45% Off</td>
-                                        <td>7846289</td>
-                                        <td class="theme-color">50%</td>
-                                        <td class="menu-status">
-                                            <span class="danger">Restitute</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>45% Off</td>
-                                        <td>3614376</td>
-                                        <td class="theme-color">60%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>80% Off</td>
-                                        <td>8328192</td>
-                                        <td class="theme-color">45%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>60% Off</td>
-                                        <td>7218376</td>
-                                        <td class="theme-color">30%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                                            <span class="form-check user-checkbox m-0 p-0">
-                                                                <input class="checkbox_animated check-it"
-                                                                       type="checkbox" value="">
-                                                            </span>
-                                        </td>
-                                        <td>40% Off</td>
-                                        <td>1872349</td>
-                                        <td class="theme-color">42%</td>
-                                        <td class="menu-status">
-                                            <span class="success">Success</span>
-                                        </td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                        @foreach($coupons as $coupon)
+                                            <tr>
+                                                <td>
+                                                    <span class="form-check user-checkbox m-0 p-0">
+                                                        <input class="checkbox_animated check-it" type="checkbox" value="">
+                                                    </span>
+                                                </td>
+                                                <td>{{ $coupon->title }}</td>
+                                                <td>{{ $coupon->code }}</td>
+                                                <td class="theme-color">{{ $coupon->discount }}</td>
+                                                <td class="menu-status">
+                                                    <span class="{{ $coupon->status === 'Success' ? 'success' : 'danger' }}">
+                                                        {{ $coupon->status }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{{ route('edit', $coupon->id) }}">
+                                                                <i class="ri-pencil-line"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="delete-coupon" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $coupon->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -300,13 +81,12 @@
     <!-- Container-fluid Ends-->
 </div>
 
-
 <!-- Delete Modal Box Start -->
 <div class="modal fade theme-modal remove-coupon" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header d-block text-center">
-                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure ?</h5>
+                <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
@@ -319,8 +99,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
+                <form id="delete-form" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                </form>
             </div>
         </div>
     </div>
@@ -353,5 +136,18 @@
     </div>
 </div>
 <!-- Delete Modal Box End -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-coupon');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const couponId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/coupons/${couponId}`;
+        });
+    });
+});
+</script>
 
 @endsection

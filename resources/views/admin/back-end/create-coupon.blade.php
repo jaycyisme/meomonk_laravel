@@ -25,15 +25,16 @@
                                     <!--                                                        data-bs-toggle="pill" data-bs-target="#pills-profile"-->
                                     <!--                                                        type="button">Restriction</button>-->
                                     <!--                                                </li>-->
-                                    <li class="nav-item" role="presentation">
+                                    {{-- <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="pills-usage-tab" data-bs-toggle="pill"
                                                 data-bs-target="#pills-usage" type="button">Usage</button>
-                                    </li>
+                                    </li> --}}
                                 </ul>
 
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                        <form class="theme-form theme-form-2 mega-form">
+                                        <form class="theme-form theme-form-2 mega-form" action="{{ route('store') }}" method="POST">
+                                            @csrf
                                             <div class="card-header-1">
                                                 <h5>General</h5>
                                             </div>
@@ -44,7 +45,7 @@
                                                         class="form-label-title col-lg-2 col-md-3 mb-0">Coupon
                                                         Title</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="text">
+                                                        <input class="form-control" type="text" name="title">
                                                     </div>
                                                 </div>
 
@@ -53,80 +54,35 @@
                                                         class="col-lg-2 col-md-3 col-form-label form-label-title">Coupon
                                                         Code</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="number">
+                                                        <input class="form-control" type="number" name ="code">
                                                     </div>
                                                 </div>
-
                                                 <div class="mb-4 row align-items-center">
                                                     <label
-                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Start
-                                                        Date</label>
+                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Coupon
+                                                        Discount</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="date">
+                                                        <input class="form-control" type="number" name ="discount">
                                                     </div>
                                                 </div>
 
+
                                                 <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">End
-                                                        Date</label>
+                                                    <label class="col-lg-2 col-md-3 col-form-label form-label-title">Status</label>
                                                     <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="date">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="form-label-title col-lg-2 col-md-3 mb-0">Free
-                                                        Shipping</label>
-                                                    <div class="col-md-9">
-                                                        <div class="form-check user-checkbox ps-0">
-                                                            <input class="checkbox_animated check-it"
-                                                                   type="checkbox" value=""
-                                                                   id="flexCheckDefault">
-                                                            <label
-                                                                class="form-label-title col-md-2 mb-0">Allow
-                                                                Free Shipping</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-lg-2 col-md-3 col-form-label form-label-title">Quantity</label>
-                                                    <div class="col-md-9 col-lg-10">
-                                                        <input class="form-control" type="number">
-                                                    </div>
-                                                </div>
-
-                                                <div class="mb-4 row align-items-center">
-                                                    <label
-                                                        class="col-sm-2 col-form-label form-label-title">Discount
-                                                        Type</label>
-                                                    <div class="col-sm-10">
-                                                        <select class="js-example-basic-single"
-                                                                name="state">
-                                                            <option disabled>--Select--</option>
-                                                            <option>Percent</option>
-                                                            <option>Fixed</option>
+                                                        <select class="form-control" name="coupon_status_id">
+                                                            @foreach ($coupon_status as $value)
+                                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
 
-                                                <div class="row align-items-center">
-                                                    <label
-                                                        class="form-label-title col-lg-2 col-md-3 mb-0">Status</label>
-                                                    <div class="col-md-9">
-                                                        <div class="form-check user-checkbox ps-0">
-                                                            <input class="checkbox_animated check-it"
-                                                                   type="checkbox" value=""
-                                                                   id="flexCheckDefault1">
-                                                            <label class="form-label-title col-md-2 mb-0">
-                                                                Enable the Coupon</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+
                                             </div>
+
+                                            <button type="submit" class="btn btn-primary" style ="margin:0 215px 50px 0">Add Coupon</button>
                                         </form>
                                     </div>
 
@@ -219,5 +175,5 @@
 </div>
 <!-- Create Coupon Table End -->
 
-<div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0"><a class="btn btn-solid" href="add-new-product.html" style="width: 200px;">Add Coupon</a></div>
+
 @endsection
