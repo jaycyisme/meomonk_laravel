@@ -485,7 +485,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-detail">
-                                                    <a href="product-left-thumbnail.php">
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
                                                         <h6 class="name">
                                                             {{ $product->name }}
                                                         </h6>

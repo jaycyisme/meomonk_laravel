@@ -102,7 +102,9 @@ class ProductController extends Controller
 
 
     public function productDetail($id) {
-        $products = Product::where('category_id', $id)->get();
+        $products = Product::where('id', $id)
+        ->with(['category', 'animal', 'brand', 'productStatus', 'supplier'])
+        ->get();
         switch ($id) {
             case 3:
             case 4:
@@ -118,7 +120,7 @@ class ProductController extends Controller
                 $viewName = '.petshop.fastkart.front-end.product-service';
                 break;
             default:
-                $viewName = '.petshop.fastkart.front-end.product-food';
+                $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
         return view($viewName, compact('products'));

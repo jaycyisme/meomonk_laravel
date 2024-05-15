@@ -136,7 +136,7 @@ Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name(
 Route::delete('/product/{product}', [ProductController::class, 'softDelete'])->name('product.destroy');
 Route::post('/add-new-product', [ProductController::class, 'store'])->name('productstore');
 
-Route::get('/product-detail/{id}', [CategoryController::class, 'productDetail'])->name('productDetail');
+Route::get('/product-detail/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
 
 
 
