@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Attribute;
+
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
     public function index(){
+
         $attributes = Attribute::all();
         return view('admin.back-end.attributes', compact('attributes'));
         // return view('admin.back-end.add-new-product', compact('attributes'));
@@ -38,7 +41,6 @@ class AttributeController extends Controller
             ->first();
 
             if ($existingAttribute) {
-            // If the attribute already exists, return error
             return redirect()->back()->with('error', 'Attribute already exists.');
             }
 
@@ -91,9 +93,9 @@ class AttributeController extends Controller
         return redirect()->back()->with('success', 'Attribute deleted successfully!');
     }
 
-    public function findByName($name) {
-        // Find attributes with a matching name
-        $attributes = Attribute::where('name', 'like', '%' . $name . '%')->get();
-        return view('admin.back-end.add-new-product', compact('attributes'));
+
+
+
     }
-}
+
+

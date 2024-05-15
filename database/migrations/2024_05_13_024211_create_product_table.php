@@ -19,6 +19,10 @@ return new class extends Migration
             $table->double('price');
             $table->string('description', 255);
             $table->string('image', 100);
+            $table->string('thumbnail1', 100)->nullable();
+            $table->string('thumbnail2', 100)->nullable();
+            $table->string('thumbnail3', 100)->nullable();
+            $table->string('thumbnail4', 100)->nullable();
             $table->boolean('is_active')->default(true);
             $table->integer('quantity');
             $table->unsignedBigInteger('product_status_id');

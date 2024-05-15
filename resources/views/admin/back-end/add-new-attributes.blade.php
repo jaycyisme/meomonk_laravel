@@ -16,12 +16,17 @@
                                     <h5>Add Product Attribute</h5>
                                 </div>
 
+
                                 <form class="theme-form theme-form-2 mega-form" action="{{ route('Attributesstore') }}" method="POST">
                                     @csrf
+
+
+
                                     <div class="mb-4 row align-items-center">
                                         <label class="form-label-title col-sm-3 mb-0">Attribute Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" name="name" class="form-control" placeholder="Enter attribute">
+
                                         </div>
                                     </div>
 
@@ -36,12 +41,15 @@
                                         </div>
                                     </div>
 
+
                                     <!-- Nút submit để gửi form -->
                                     <div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0">
                                         <button type="submit" class="btn btn-solid" style="width: 200px;">Add Attribute</button>
 
 
                                     </div>
+
+
                                 </form>
 
                             </div>

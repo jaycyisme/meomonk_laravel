@@ -379,7 +379,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="{{ route('addNewCoupon') }}">Create Coupon</a>
+                                            <a href="{{ route('create') }}">Create Coupon</a>
                                         </li>
                                     </ul>
                                 </li>

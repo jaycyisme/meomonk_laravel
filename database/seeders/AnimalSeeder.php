@@ -12,8 +12,9 @@ class AnimalSeeder extends Seeder
      */
     public function run(): void
     {
-        Animal::create(['name' => 'Animal 1']);
-
-        Animal::create(['name' => 'Animal 2']);
+        Animal::create(['name' => 'Dog']);
+        Animal::create(['name' => 'Cat']);
+        Animal::create(['name' => 'Fish']);
+        Animal::create(['name' => 'Bird']);
     }
 }
