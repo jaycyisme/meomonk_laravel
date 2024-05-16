@@ -32,8 +32,7 @@
                                         <label class="col-sm-3 col-form-label form-label-title">Animal</label>
                                         <div class="col-sm-9">
                                             <select class="js-example-basic-single w-100" name="animal_id">>
-
-                                                    @foreach($Animals as $Animal)
+                                                @foreach($Animals as $Animal)
                                                         <option value="{{ $Animal->id }}">{{ $Animal->name }}</option>
                                                     @endforeach
 
@@ -132,47 +131,63 @@
                                     <h5>Product Images</h5>
                                 </div>
 
-
-
-                                            <div class="theme-form theme-form-2 mega-form">
-                                                <div class="mb-4 row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Image</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file" id="formFile" name="image_url" accept="image/*">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Thumbnail 1
-                                                        Image</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file"
-                                                            id="formFileMultiple1" accept="image/*" name="Thumbnail1">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Thumbnail 2
-                                                        Image</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file"
-                                                            id="formFileMultiple1" accept="image/*" name="Thumbnail2">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row align-items-center">
-                                                    <label class="col-sm-3 col-form-label form-label-title">Thumbnail 3
-                                                        Image</label>
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control form-choose" type="file"
-                                                            id="formFileMultiple1" accept="image/*" name="Thumbnail3">
-                                                    </div>
-                                                </div>
-
-
-
+                                <div class="theme-form theme-form-2 mega-form">
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Image</label>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input formFile" name="image_url" accept="image/*">
+                                                <label class="custom-file-label" for="formFile">Choose file</label>
                                             </div>
+                                            <img id="currentImage" alt="Current Image" class="mt-2 img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="theme-form theme-form-2 mega-form">
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Thumbnail 1</label>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input formFile" name="Thumbnail1" accept="image/*">
+                                                <label class="custom-file-label" for="thumbnail1File">Choose file</label>
+                                            </div>
+                                            <img id="currentThumbnail1"  alt="Current Thumbnail 1" class="mt-2 img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="theme-form theme-form-2 mega-form">
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Thumbnail 2</label>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input formFile" name="Thumbnail2" accept="image/*">
+                                                <label class="custom-file-label" for="thumbnail2File">Choose file</label>
+                                            </div>
+                                            <img id="currentThumbnail2" alt="Current Thumbnail 2" class="mt-2 img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="theme-form theme-form-2 mega-form">
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Thumbnail 3</label>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input formFile" name="Thumbnail3" accept="image/*">
+                                                <label class="custom-file-label" for="thumbnail3File">Choose file</label>
+                                            </div>
+                                            <img id="currentThumbnail3" alt="Current Thumbnail 3" class="mt-2 img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
                                 </div>
 
                                 </div>
@@ -363,6 +378,9 @@
             });
         }
     }
+
+
+
 </script>
 
 
@@ -384,5 +402,43 @@
 
 </script>
 
+<script>
+    document.querySelector('[name="image_url"]').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // Cập nhật ảnh chính với ảnh mới được chọn
+            document.getElementById('currentImage').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Xử lý cho Thumbnail 1
+    document.querySelector('[name="Thumbnail1"]').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('currentThumbnail1').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Xử lý cho Thumbnail 2
+    document.querySelector('[name="Thumbnail2"]').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('currentThumbnail2').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Xử lý cho Thumbnail 3
+    document.querySelector('[name="Thumbnail3"]').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('currentThumbnail3').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    </script>
 @endsection
 
