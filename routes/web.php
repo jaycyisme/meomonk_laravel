@@ -10,7 +10,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
-
+use App\Http\Controllers\BillController;
 
 
 use App\Http\Controllers\HomeController;
@@ -20,8 +20,7 @@ use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
-
-
+use App\Models\Bill;
 
 //FRONT_END
 
@@ -103,7 +102,6 @@ Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard
 // Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 
 
-Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
 // Route::get('/brand-category', [BrandController::class, 'displayBrand'])->name('listBrand');
 
 // Thêm các route cho Category
@@ -143,7 +141,11 @@ Route::post('/add-product-update/{id}', [ProductController::class, 'update'])->n
 Route::get('/product-detail/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
 Route::get('/product-category/{id}', [ProductController::class, 'listProductCategory'])->name('listProductCategory');
 Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand'])->name('listProductBrand');
-Route::get('/service-category', [CategoryController::class, 'listService'])->name('listService');
+Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
+Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
+
+
+
 
 // Route::get('/productt', [PagesController::class, 'product'])->name('product');
 
@@ -207,6 +209,22 @@ Route::get('/all-users/addNewUser', [UserController::class, 'create'])->name('ad
 Route::get('/all-users/{id}/edit', [UserController::class, 'edit'])->name('editUser');
 
 Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUser');
+
+
+
+
+//Bill
+
+Route::get('/order-list', [BillController::class, 'index'])->name('orderList');
+
+Route::delete('/order-list/{id}', [BillController::class, 'destroy'])->name('orders.destroy');
+
+Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.edit');
+
+Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
+
+
+
 
 
 

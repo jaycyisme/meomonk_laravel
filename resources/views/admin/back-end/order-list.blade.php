@@ -1,10 +1,7 @@
 @extends('admin.back-end.app')
+
 @section('content')
-
-
-<!-- Order section Start -->
 <div class="page-body">
-    <!-- Table Start -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -16,6 +13,10 @@
                         </div>
                         <div>
                             <div class="table-responsive">
+                                <form id="delete-form" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                                 <table class="table all-package order-table theme-table" id="table_id">
                                     <thead>
                                     <tr>
@@ -27,22 +28,14 @@
                                         <th>Option</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
+                                    @foreach($orders as $order)
                                     <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 406-4883635</td>
-
-                                        <td>Jul 20, 2022</td>
-
-                                        <td>Paypal</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
+                                        <td>{{ $order->trading_code }}</td>
+                                        <td>{{ $order->create_time }}</td>
+                                        <td>{{ $order->paymentMethod->name }}</td>
+                                        <td>{{ $order->billStatus->name }}</td>
+                                        <td>{{ $order->total_money }}</td>
                                         <td>
                                             <ul>
                                                 <li>
@@ -50,468 +43,25 @@
                                                         <i class="ri-eye-line"></i>
                                                     </a>
                                                 </li>
-
                                                 <li>
-                                                    <a href="javascript:void(0)">
+                                                    <a href="{{ route('orders.edit', $order->id) }}">
                                                         <i class="ri-pencil-line"></i>
                                                     </a>
                                                 </li>
-
                                                 <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
+                                                    <a href="javascript:void(0)" class="delete-order" data-id="{{ $order->id }}">
                                                         <i class="ri-delete-bin-line"></i>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
+                                                    <a class="btn btn-sm btn-solid text-white" href="{{ route('orderTracking') }}">
                                                         Tracking
                                                     </a>
                                                 </li>
                                             </ul>
                                         </td>
                                     </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 573-685572</td>
-
-                                        <td>Jul 25, 2022</td>
-
-                                        <td>Paypal</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 759-4568734</td>
-
-                                        <td>Jul 29, 2022</td>
-
-                                        <td>Stripe</td>
-
-                                        <td class="order-pending">
-                                            <span>Pending</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 546-7664537</td>
-
-                                        <td>Jul 30, 2022</td>
-
-                                        <td>Paypal</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 479-7533144</td>
-
-                                        <td>Aug 01, 2022</td>
-
-                                        <td>Stripe</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 456-1245789</td>
-
-                                        <td>Aug 10, 2022</td>
-
-                                        <td>Stripe</td>
-
-                                        <td class="order-cancle">
-                                            <span>Cancel</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 057-3657895</td>
-
-                                        <td>Aug 18, 2022</td>
-
-                                        <td>Paypal</td>
-
-                                        <td class="order-cancle">
-                                            <span>Cancel</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 123-1234567</td>
-
-                                        <td>Aug 29, 2022</td>
-
-                                        <td>Paypla</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 987-9876543</td>
-
-                                        <td>Sep 09, 2022</td>
-
-                                        <td>Paypal</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 147-3692584</td>
-
-                                        <td>Sep 17, 2022</td>
-
-                                        <td>Stripe</td>
-
-                                        <td class="order-success">
-                                            <span>Success</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-
-                                    <tr data-bs-toggle="offcanvas" href="#order-details">
-
-                                        <td> 586-5865224</td>
-
-                                        <td>Sep 20, 2022</td>
-
-                                        <td>Stripe</td>
-
-                                        <td class="order-pending">
-                                            <span>Pending</span>
-                                        </td>
-
-                                        <td>$15</td>
-
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ route('orderDetail') }}">
-                                                        <i class="ri-eye-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)">
-                                                        <i class="ri-pencil-line"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                       data-bs-target="#exampleModalToggle">
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                       href="{{ route('orderTracking') }}">
-                                                        Tracking
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -521,8 +71,6 @@
             </div>
         </div>
     </div>
-    <!-- Table End -->
-
 </div>
 <!-- Order section End -->
 
@@ -538,14 +86,12 @@
             </div>
             <div class="modal-body">
                 <div class="remove-box">
-                    <p>The permission for the use/group, preview is inherited from the object, object will create a
-                        new permission for this object</p>
+                    <p>The permission for the use/group, preview is inherited from the object, object will create a new permission for this object</p>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2"
-                        data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Yes</button>
             </div>
         </div>
     </div>
@@ -564,8 +110,8 @@
                 <div class="remove-box text-center">
                     <div class="wrapper">
                         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                         </svg>
                     </div>
                     <h4 class="text-content">It's Removed.</h4>
@@ -578,4 +124,27 @@
     </div>
 </div>
 <!-- Delete Modal Box End -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-order');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const billId = this.getAttribute('data-id');
+                const deleteForm = document.getElementById('delete-form');
+                deleteForm.action = `/order-list/${billId}`;
+                $('#exampleModalToggle').modal('show');
+            });
+        });
+        $('#exampleModalToggle .btn-md[data-bs-target="#exampleModalToggle2"]').click(function() {
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.submit();
+        });
+
+        @if(session('success'))
+            const successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+            successModal.show();
+        @endif
+    });
+</script>
 @endsection

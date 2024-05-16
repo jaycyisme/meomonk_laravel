@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animal;
-use App\Models\Attribute;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\Animal;
 use App\Models\Product;
-use App\Models\ProductAttribute;
-use App\Models\ProductStatus;
+use App\Models\Category;
 use App\Models\Supplier;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
+use App\Models\ProductStatus;
+use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 use Illuminate\Support\Facades\File;
 
@@ -302,35 +303,81 @@ class ProductController extends Controller
 
 
 
-    public function listProduct() {
-        $products = Product::where('is_active', true)->paginate(12);
-        $pageNumber = request()->input('page', 1);
-        return view('.petshop.fastkart.front-end.shop-category', compact('products','pageNumber'));
+public function listProduct(Request $request) {
+    $categoryFilter = $request->input('category');
 
+    $productsQuery = Product::where('is_active', true);
+
+    if ($categoryFilter) {
+        $productsQuery->where('category_id', $categoryFilter);
     }
 
-    public function listProductCategory($id) {
-        $products = Product::where('category_id', $id)
-                        ->where('is_active', true)
-                        ->with('category')
-                        ->paginate(12);
+    // Sử dụng paginate trực tiếp trên query builder
+    $products = $productsQuery->paginate(12);
+
+    $categories = Category::where('is_active', true)
+                          ->withCount('products')
+                          ->get();
+    $brands = Brand::all();
+
+    $pageNumber = $request->input('page', 1);
+
+    return view('petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'categoryFilter', 'brands', 'pageNumber'));
+}
 
 
-        $pageNumber = request()->input('page', 1); // Nếu không có tham số 'page', mặc định sẽ là trang 1
 
-        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'pageNumber'));
+
+    public function listProductCategory($id, Request $request) {
+        $categoryFilter = $request->input('category');
+
+        $productsQuery = Product::where('is_active', true);
+
+        if ($categoryFilter) {
+            $productsQuery->where('category_id', $categoryFilter);
+        }
+
+        $products = $productsQuery->where('category_id', $id)
+                                    ->where('is_active', true)
+                                    ->with('category')
+                                    ->paginate(12);
+        $categories = Category::where('is_active', true)
+                                ->withCount('products')
+                                ->get();
+        $brands = Brand::all();
+        $pageNumber = $request->input('page', 1);
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter','pageNumber'));
     }
 
+    public function listProductBrand($id, Request $request) {
+        $categoryFilter = $request->input('category');
 
+        $productsQuery = Product::where('is_active', true);
 
-    public function listProductBrand($id) {
-        $products = Product::where('brand_id', $id)
-                       ->where('is_active', true)
-                       ->with('brand')
-                       ->paginate(12);
+        if ($categoryFilter) {
+            $productsQuery->where('category_id', $categoryFilter);
+        }
 
-                       $pageNumber = request()->input('page', 1);
-        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'pageNumber'));
+        $products = $productsQuery->where('brand_id', $id)
+                                    ->where('is_active', true)
+                                    ->with('brand')
+                                    ->paginate(12);
+        $categories = Category::where('is_active', true)
+                       ->withCount('products')
+                       ->get();
+        $brands = Brand::all();
+
+        $pageNumber = $request->input('page', 1);
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter', 'pageNumber'));
+    }
+
+    public function listService() {
+        $products = Product::where('category_id', 7)->get();
+        $categories = Product::where('is_active', true)
+                       ->get();
+        $brands = Brand::all();
+        return view('.petshop.fastkart.front-end.shop-service', compact('products', 'categories', 'brands'));
+
     }
 
 

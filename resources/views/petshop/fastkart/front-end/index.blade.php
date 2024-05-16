@@ -495,7 +495,7 @@
                     </div>
 
                     <div class="title">
-                        <h2>Bowse by Brand</h2>
+                        <h2>Browse by Brand</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
                                 <use xlink:href="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></use>
@@ -560,7 +560,7 @@
                     </div>
 
                     <div class="title d-block">
-                        <h2>Food Cupboard</h2>
+                        <h2>Services Box</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
                                 <use xlink:href="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></use>
@@ -571,14 +571,14 @@
 
                     <div class="product-border overflow-hidden wow fadeInUp">
                         <div class="product-box-slider no-arrow">
-                            @foreach ($food_products as $food_product)
+                            @foreach ($service_products as $service_product)
                             <div>
                                 <div class="row m-0">
                                     <div class="col-12 px-0">
                                         <div class="product-box">
                                             <div class="product-image">
-                                                <a href="{{ route('productDetail', ['id' => $food_product->id]) }}">
-                                                    <img src="{{ asset('front-end/assets/images/product/' . $food_product->image) }}"
+                                                <a href="{{ route('productDetail', ['id' => $service_product->id]) }}">
+                                                    <img src="{{ asset('front-end/assets/images/product/' . $service_product->image) }}"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
@@ -605,12 +605,12 @@
                                                 </ul>
                                             </div>
                                             <div class="product-detail">
-                                                <a href="{{ route('productDetail', ['id' => $food_product->id]) }}">
-                                                    <h6 class="name h-100">{{ $food_product->name }}                                                    </h6>
+                                                <a href="{{ route('productDetail', ['id' => $service_product->id]) }}">
+                                                    <h6 class="name h-100">{{ $service_product->name }}                                                    </h6>
                                                 </a>
 
                                                 <h5 class="sold text-content">
-                                                    <span class="theme-color price">{{ $food_product->price }}</span>
+                                                    <span class="theme-color price">{{ $service_product->price }}</span>
                                                     {{-- <del>28.56</del> --}}
                                                 </h5>
 
