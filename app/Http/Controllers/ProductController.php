@@ -27,7 +27,7 @@ class ProductController extends Controller
     }
 
     public function addNewProducts(){
-        $products = Product::all();
+        $products = Product::where('is_active', 1)->get();
         $attributes = Attribute::select('name')->distinct()->get();
         $Animals = Animal::all();
         $Categorys = Category::all();
@@ -46,7 +46,6 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Please enter complete data.');
         }
         $existingProduct = Product::where('name', $request->input('name'))->first();
-
 
         // dd(request()->all());
         $request->validate([
@@ -67,10 +66,7 @@ class ProductController extends Controller
             'percent.*' => 'numeric|min:0'
         ]);
 
-
         try {
-
-
             $directory = public_path('front-end/assets/images/product/' );
 
             if (!file_exists($directory)) {
@@ -82,39 +78,46 @@ class ProductController extends Controller
                 $request->file('image_url')->move($directory, $imageName);
             }
 
-            if ($request->hasFile('Thumbnail1')) {
+            $product =new Product();
+            $product->name = $request->input('name');
+            $product->category_id = $request->input('category_id');
+            $product->animal_id = $request->input('animal_id');
+            $product->price = $request->input('price');
+            $product->description = $request->input('description');
+            $product->quantity = $request->input('quantity');
+            $product->product_status_id = $request->input('product_status_id');
+            $product->brand_id = $request->input('brand_id');
+            $product->supplier_id = $request->input('supplier_id');
+            $product->supplier_id = $request->input('supplier_id');
+            $product->image=$imageName;
+
+            if (($request->hasFile('Thumbnail1') ) ) {
                 $thumbnailName1 = 'Thumbnail1.' . time() . '.' . $request->file('Thumbnail1')->extension();
                 $request->file('Thumbnail1')->move($directory, $thumbnailName1);
+
+                $product->thumbnail1= $thumbnailName1;
             }
 
-            if ($request->hasFile('Thumbnail2')) {
+            if (($request->hasFile('Thumbnail2') )) {
                 $thumbnailName2 = 'Thumbnail2.' . time() . '.' . $request->file('Thumbnail2')->extension();
                 $request->file('Thumbnail2')->move($directory, $thumbnailName2);
+                $product->thumbnail2= $thumbnailName2;
             }
 
             if ($request->hasFile('Thumbnail3')) {
                 $thumbnailName3 = 'Thumbnail3.' . time() . '.' . $request->file('Thumbnail3')->extension();
                 $request->file('Thumbnail3')->move($directory, $thumbnailName3);
+
+                $product->thumbnail3= $thumbnailName3;
             }
 
+            if ($request->hasFile('Thumbnail4')) {
+                $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail3')->extension();
+                $request->file('Thumbnail4')->move($directory, $thumbnailName3);
 
-            // Lưu dữ liệu vào database
-            $product = Product::create([
-                'name' => $request->input('name'),
-                'category_id' => $request->input('category_id'),
-                'animal_id' => $request->input('animal_id'),
-                'price' => $request->input('price'),
-                'description' => $request->input('description'),
-                'image' => $imageName ,
-                'quantity' => $request->input('quantity'),
-                'product_status_id' => $request->input('product_status_id'),
-                'brand_id' => $request->input('brand_id'),
-                'supplier_id' => $request->input('supplier_id'),
-                'thumbnail1' => $imageName,
-                'thumbnail2' => $thumbnailName1,
-                'thumbnail3' => $thumbnailName2,
-                'thumbnail4' => $thumbnailName3
-            ]);
+                $product->thumbnail4= $thumbnailName4;
+            }
+
 
             $product->save();
 
@@ -245,7 +248,16 @@ class ProductController extends Controller
             }
             $product->thumbnail3 = $thumbnailName3;
         }
+        if ($request->hasFile('Thumbnail4')) {
+            $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail3')->extension();
+            $request->file('Thumbnail4')->move($directory, $thumbnailName3);
+            $oldImagePath = $directory . $product->thumbnail4;
 
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+            $product->thumbnail4= $thumbnailName4;
+        }
         $product->name = $request->input('name');
         $product->category_id = $request->input('category_id');
         $product->animal_id = $request->input('animal_id');
@@ -273,7 +285,6 @@ class ProductController extends Controller
                 $attributeId = $attributeIds[$i];
                 $percent = $percents[$i];
 
-
                 $productAttribute = new ProductAttribute();
                 $productAttribute->attribute_id = $attributeId;
                 $productAttribute->product_id = $newProductId;
@@ -292,26 +303,37 @@ class ProductController extends Controller
 
 
     public function listProduct() {
-        $products = Product::where('is_active', true)->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
-    }
+        $products = Product::where('is_active', true)->paginate(12);
+        $pageNumber = request()->input('page', 1);
+        return view('.petshop.fastkart.front-end.shop-category', compact('products','pageNumber'));
 
+    }
 
     public function listProductCategory($id) {
         $products = Product::where('category_id', $id)
-                       ->where('is_active', true)
-                       ->with('category')
-                       ->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+                        ->where('is_active', true)
+                        ->with('category')
+                        ->paginate(12);
+
+
+        $pageNumber = request()->input('page', 1); // Nếu không có tham số 'page', mặc định sẽ là trang 1
+
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'pageNumber'));
     }
+
+
 
     public function listProductBrand($id) {
         $products = Product::where('brand_id', $id)
                        ->where('is_active', true)
                        ->with('brand')
-                       ->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+                       ->paginate(12);
+
+                       $pageNumber = request()->input('page', 1);
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'pageNumber'));
     }
+
+
 
     public function productDetail($id) {
         $product = Product::where('id', $id)

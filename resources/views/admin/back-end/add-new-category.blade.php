@@ -54,4 +54,20 @@
     {{-- <div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0"><a class="btn btn-solid" href="add-new-product.html" style="width: 200px;">Add Category</a></div> --}}
 </div>
 <!-- Container-fluid End -->
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if ("{{ session('success') }}") {
+            // Display the success message as an alert
+            alert('{{ session('success') }}');
+        }
+
+        if ("{{ session('error') }}") {
+            // Display the success message as an alert
+            alert('{{ session('error') }}');
+        }
+    });
+</script>
+
 @endsection
