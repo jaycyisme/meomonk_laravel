@@ -12,21 +12,21 @@ class BrandSeeder extends Seeder
      */
     public function run(): void
     {
-        Brand::create(['name' => 'Hills Science Diet', 'image' => 'image.png',]); #1 Food Brand
-        Brand::create(['name' => 'Iams', 'image' => 'image.png',]); #2 Food Brand
-        Brand::create(['name' => 'Meow Mix', 'image' => 'image.png',]); #3 Food Brand
-        Brand::create(['name' => 'Rachael Ray Nutrish', 'image' => 'image.png',]); #4 Food Brand
-        Brand::create(['name' => 'Blue Buffalo', 'image' => 'image.png',]); #5 Food Brand
-        Brand::create(['name' => 'PURINA Fancy Feast', 'image' => 'image.png',]); #6 Food
-        Brand::create(['name' => 'Wellness', 'image' => 'image.png',]); #7 Food Brand
-        Brand::create(['name' => 'Royal Canin', 'image' => 'image.png',]); #8 Food Brand
-        Brand::create(['name' => 'Instinct', 'image' => 'image.png',]); #9 Food Brand
-        Brand::create(['name' => 'Merrick', 'image' => 'image.png',]); #10 Food Brand
-        Brand::create(['name' => 'Blue Divine Delights',]); #11 Food Brand
-        Brand::create(['name' => 'BoBo', 'image' => 'image.png',]); #12 Toy Brand
-        Brand::create(['name' => 'Keplin', 'image' => 'image.png',]); #13 Toy Brand
-        Brand::create(['name' => 'Medisure Health Care', 'image' => 'image.png',]); #14 Pharmacy
-        Brand::create(['name' => 'Hills Science', 'image' => 'image.png',]); #15 Food Brand
-        Brand::create(['name' => 'Doggy Man', 'image' => 'image.png',]); #16 Toy Brand
+        Brand::create(['name' => 'Hills Science Diet', 'image' => 'hill-science.jpg',]); #1 Food Brand
+        Brand::create(['name' => 'Iams', 'image' => 'iams.jpg',]); #2 Food Brand
+        Brand::create(['name' => 'Meow Mix', 'image' => 'Meomix.jpg',]); #3 Food Brand
+        Brand::create(['name' => 'Rachael Ray Nutrish', 'image' => 'racheal-ray.jpg',]); #4 Food Brand
+        Brand::create(['name' => 'Blue Buffalo', 'image' => 'blue-bufalo.jpg',]); #5 Food Brand
+        Brand::create(['name' => 'PURINA Fancy Feast', 'image' => 'purina-one.jpg',]); #6 Food
+        Brand::create(['name' => 'Wellness', 'image' => 'wellness.jpg',]); #7 Food Brand
+        Brand::create(['name' => 'Royal Canin', 'image' => 'royal-canin.jpg',]); #8 Food Brand
+        Brand::create(['name' => 'Instinct', 'image' => 'instinct.jpg',]); #9 Food Brand
+        Brand::create(['name' => 'Merrick', 'image' => 'merric.jpg',]); #10 Food Brand
+        Brand::create(['name' => 'Miu', 'image' => 'image.jpg',]); #11 Food Brand
+        Brand::create(['name' => 'BoBo', 'image' => 'image.jpg',]); #12 Toy Brand
+        Brand::create(['name' => 'Keplin', 'image' => 'image.jpg',]); #13 Toy Brand
+        Brand::create(['name' => 'Medisure Health Care', 'image' => 'image.jpg',]); #14 Pharmacy
+        Brand::create(['name' => 'Hills Science', 'image' => 'image.jpg',]); #15 Food Brand
+        Brand::create(['name' => 'Doggy Man', 'image' => 'image.jpg',]); #16 Toy Brand
     }
 }

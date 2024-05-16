@@ -11,4 +11,12 @@ class Attribute extends Model
     protected $table = 'attribute';
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'value'];
+
+    public function products()
+{
+    return $this->belongsToMany(Product::class, 'product_attribute', 'attribute_id', 'product_id');
 }
+}
+
+
+

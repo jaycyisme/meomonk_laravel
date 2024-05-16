@@ -21,5 +21,27 @@ class AttributeSeeder extends Seeder
             'name' => 'Weight',
             'value' => '1KG',
         ]);
+
+        Attribute::create([
+            'name' => 'Weight',
+            'value' => '2KG',
+        ]);
+
+        Attribute::create([
+            'name' => 'Weight',
+            'value' => '5KG',
+        ]);
+
+
+
+        Attribute::create([
+            'name' => 'Color',
+            'value' => 'Pink',
+        ]);
+
+        Attribute::create([
+            'name' => 'Color',
+            'value' => 'Yellow',
+        ]);
     }
 }

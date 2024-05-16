@@ -276,86 +276,29 @@
 
                         <div class="section-t-space">
                             <div class="category-menu">
-                                <h3>Trending Products</h3>
+                                <h3>New Product</h3>
 
                                 <ul class="product-list border-0 p-0 d-block">
+                                    @foreach ($products->slice(3, 4) as $product)
                                     <li>
                                         <div class="offer-product">
-                                            <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/23.png"
+                                            <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="offer-image">
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
                                             <div class="offer-detail">
                                                 <div>
-                                                    <a href="product-left-thumbnail.php" class="text-title">
-                                                        <h6 class="name">Meatigo Premium Goat Curry</h6>
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="text-title">
+                                                        <h6 class="name">{{ $product->name }}</h6>
                                                     </a>
-                                                    <span>450 G</span>
-                                                    <h6 class="price theme-color">$ 70.00</h6>
+                                                    <span>1KG</span>
+                                                    <h6 class="price theme-color">$ {{ $product->price }}</h6>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
-
-                                    <li>
-                                        <div class="offer-product">
-                                            <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/24.png"
-                                                    class="blur-up lazyload" alt="" />
-                                            </a>
-
-                                            <div class="offer-detail">
-                                                <div>
-                                                    <a href="product-left-thumbnail.php" class="text-title">
-                                                        <h6 class="name">
-                                                            Dates Medjoul Premium Imported
-                                                        </h6>
-                                                    </a>
-                                                    <span>450 G</span>
-                                                    <h6 class="price theme-color">$ 40.00</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="offer-product">
-                                            <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/25.png"
-                                                    class="blur-up lazyload" alt="" />
-                                            </a>
-
-                                            <div class="offer-detail">
-                                                <div>
-                                                    <a href="product-left-thumbnail.php" class="text-title">
-                                                        <h6 class="name">Good Life Walnut Kernels</h6>
-                                                    </a>
-                                                    <span>200 G</span>
-                                                    <h6 class="price theme-color">$ 52.00</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="mb-0">
-                                        <div class="offer-product">
-                                            <a href="product-left-thumbnail.php" class="offer-image">
-                                                <img src="{{asset('front-end')}}/assets/images/vegetable/product/26.png"
-                                                    class="blur-up lazyload" alt="" />
-                                            </a>
-
-                                            <div class="offer-detail">
-                                                <div>
-                                                    <a href="product-left-thumbnail.php" class="text-title">
-                                                        <h6 class="name">Apple Red Premium Imported</h6>
-                                                    </a>
-                                                    <span>1 KG</span>
-                                                    <h6 class="price theme-color">$ 80.00</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -485,7 +428,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-detail">
-                                                    <a href="product-left-thumbnail.php">
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
                                                         <h6 class="name">
                                                             {{ $product->name }}
                                                         </h6>
@@ -552,7 +495,7 @@
                     </div>
 
                     <div class="title">
-                        <h2>Bowse by Categories</h2>
+                        <h2>Bowse by Brand</h2>
                         <span class="title-leaf">
                             <svg class="icon-width">
                                 <use xlink:href="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></use>
@@ -562,13 +505,13 @@
                     </div>
 
                     <div class="category-slider-2 product-wrapper no-arrow">
-                        @foreach ($categories as $category)
+                        @foreach ($brands as $brand)
                         <div>
-                            <a href="shop-left-sidebar.php" class="category-box category-dark">
+                            <a href="{{ route('listProductBrand', ['id' => $brand->id]) }}" class="category-box category-dark">
                                 <div>
-                                    <img src="{{ asset('front-end/assets/images/category/' . $category->icon_url) }}"
-                                        class="blur-up lazyload" alt="" />
-                                    <h5>{{ $category->name }}</h5>
+                                    <img src="{{ asset('front-end/assets/images/brand/' . $brand->image) }}"
+                                        class=" lazyload" alt="" style="filter: none"/>
+                                    <h5>{{ $brand->name }}</h5>
                                 </div>
                             </a>
                         </div>
@@ -634,7 +577,7 @@
                                     <div class="col-12 px-0">
                                         <div class="product-box">
                                             <div class="product-image">
-                                                <a href="product-left-thumbnail.php">
+                                                <a href="{{ route('productDetail', ['id' => $food_product->id]) }}">
                                                     <img src="{{ asset('front-end/assets/images/product/' . $food_product->image) }}"
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
@@ -662,7 +605,7 @@
                                                 </ul>
                                             </div>
                                             <div class="product-detail">
-                                                <a href="product-left-thumbnail.php">
+                                                <a href="{{ route('productDetail', ['id' => $food_product->id]) }}">
                                                     <h6 class="name h-100">{{ $food_product->name }}                                                    </h6>
                                                 </a>
 
@@ -803,14 +746,14 @@
                                 @foreach ($food_products->slice(0, 4) as $food_product)
                                 <li>
                                     <div class="offer-product">
-                                        <a href="product-left-thumbnail.php" class="offer-image">
+                                        <a href="{{ route('productDetail', ['id' => $food_product->id]) }}" class="offer-image">
                                             <img src="{{ asset('front-end/assets/images/product/' . $food_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
                                         <div class="offer-detail">
                                             <div>
-                                                <a href="product-left-thumbnail.php" class="text-title">
+                                                <a href="{{ route('productDetail', ['id' => $food_product->id]) }}" class="text-title">
                                                     <h6 class="name">{{ $food_product->name }}</h6>
                                                 </a>
                                                 <span>500 G</span>
@@ -828,14 +771,14 @@
                                 @foreach ($toy_products->slice(0, 4) as $toy_product)
                                 <li>
                                     <div class="offer-product">
-                                        <a href="product-left-thumbnail.php" class="offer-image">
+                                        <a href="{{ route('productDetail', ['id' => $toy_product->id]) }}" class="offer-image">
                                             <img src="{{ asset('front-end/assets/images/product/' . $toy_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
                                         <div class="offer-detail">
                                             <div>
-                                                <a href="product-left-thumbnail.php" class="text-title">
+                                                <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="text-title">
                                                     <h6 class="name">{{ $toy_product->name }}</h6>
                                                 </a>
                                                 <span>500 G</span>
@@ -853,14 +796,14 @@
                                 @foreach ($pharmacy_products->slice(0, 4) as $pharmacy_product)
                                 <li>
                                     <div class="offer-product">
-                                        <a href="product-left-thumbnail.php" class="offer-image">
+                                        <a href="{{ route('productDetail', ['id' => $pharmacy_product->id]) }}" class="offer-image">
                                             <img src="{{ asset('front-end/assets/images/product/' . $pharmacy_product->image) }}"
                                                 class="blur-up lazyload" alt="" />
                                         </a>
 
                                         <div class="offer-detail">
                                             <div>
-                                                <a href="product-left-thumbnail.php" class="text-title">
+                                                <a href="{{ route('productDetail', ['id' => $pharmacy_product->id]) }}" class="text-title">
                                                     <h6 class="name">
                                                         {{ $pharmacy_product->name }}
                                                     </h6>
