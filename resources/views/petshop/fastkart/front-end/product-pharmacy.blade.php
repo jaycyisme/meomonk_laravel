@@ -1,5 +1,6 @@
 @extends('petshop.fastkart.front-end.app')
 @section('content')
+{{-- @foreach ($products as $product) --}}
 <!-- mobile fix menu start -->
 <div class="mobile-menu d-md-none d-block mobile-cart">
     <ul>
@@ -47,7 +48,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb-contain">
-                    <h2>Creamy Chocolate Cake</h2>
+                    <h2>{{ $product->name }}</h2>
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
@@ -56,7 +57,7 @@
                                 </a>
                             </li>
 
-                            <li class="breadcrumb-item active">Creamy Chocolate Cake</li>
+                            <li class="breadcrumb-item active">{{ $product->name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -79,49 +80,41 @@
                                     <div class="product-main no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" id="img-1"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" id="img-1"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="
                                                     img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}" class="
                                                     img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/25.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}" class="
                                                     img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/26.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}" class="
                                                     img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
-                                                    img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
-                                                    img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}" class="
+                                                    img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -131,45 +124,39 @@
                                     <div class="left-slider-image left-slider no-arrow slick-top">
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
-                                        <div>
-                                            <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -179,9 +166,11 @@
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
                             <h6 class="offer-top">30% Off</h6>
-                            <h2 class="name">Full Sleeve T Shirts for Men</h2>
+                            <h2 class="name">{{ $product->name }}</h2>
                             <div class="price-rating">
-                                <h3 class="theme-color price">$49.50 <del class="text-content">$58.46</del> <span
+                                <h3 class="theme-color price">{{ $product->price }}
+                                    {{-- <del class="text-content">$58.46</del>  --}}
+                                    <span
                                         class="offer theme-color">(8% off)</span></h3>
                                 <div class="product-rating custom-rate">
                                     <ul class="rating">
@@ -206,9 +195,7 @@
                             </div>
 
                             <div class="product-contain">
-                                <p class="w-100">I find great comfort in awkwardness. I have never been cool, but I
-                                    have felt cool. I have been in the cool spot, but I was not really cool; I was
-                                    just trying to be hip or cool.</p>
+                                <p class="w-100">{{ $product->description }}.</p>
                             </div>
 
                             {{-- <div class="product-package">
@@ -324,17 +311,15 @@
                                 </div>
 
                                 <div class="pickup-detail">
-                                    <h4 class="text-content w-100">I would like the people that buy my clothes to
-                                        understand that for me it's one small piece of art. I love the 2000s because
-                                        everyone started to love haute couture. The only way to do something in
-                                        depth is to work hard.</h4>
+                                    <h4 class="text-content w-100">{{ $product->description }}.</h4>
                                 </div>
 
                                 <div class="product-info">
                                     <ul class="product-info-list product-info-list-2">
-                                        <li>Type : <a href="javascript:void(0)">Long Sleeve</a></li>
-                                        <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                        <li>Stock : <a href="javascript:void(0)">5 Items Left</a></li>
+                                        <li>Type : <a href="javascript:void(0)">{{ $product->category->name }}</a></li>
+                                        <li>MFG : <a href="javascript:void(0)">{{ $product->created_at }}</a></li>
+                                        <li>Stock : <a href="javascript:void(0)">{{ $product->productStatus->name }}</a></li>
+                                        <li>Tags : <a href="javascript:void(0)">{{ $product->brand->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -610,32 +595,7 @@
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="product-description">
                                 <div class="nav-desh">
-                                    <p>Jelly beans carrot cake icing biscuit oat cake gummi bears tart.
-                                        Lemon drops carrot cake pudding sweet gummi bears. Chocolate cake
-                                        tart cupcake donut topping liquorice sugar plum chocolate bar. Jelly
-                                        beans tiramisu caramels jujubes biscuit liquorice chocolate. Pudding
-                                        toffee jujubes oat cake sweet roll. Lemon drops dessert croissant
-                                        danish cake cupcake. Sweet roll candy chocolate toffee jelly sweet
-                                        roll halvah brownie topping. Marshmallow powder candy sesame snaps
-                                        jelly beans candy canes marshmallow gingerbread pie.</p>
-                                </div>
-
-                                <div class="nav-desh">
-                                    <div class="desh-title">
-                                        <h5>Organic:</h5>
-                                    </div>
-                                    <p>vitae et leo duis ut diam quam nulla porttitor massa id neque aliquam
-                                        vestibulum morbi blandit cursus risus at ultrices mi tempus
-                                        imperdiet nulla malesuada pellentesque elit eget gravida cum sociis
-                                        natoque penatibus et magnis dis parturient montes nascetur ridiculus
-                                        mus mauris vitae ultricies leo integer malesuada nunc vel risus
-                                        commodo viverra maecenas accumsan lacus vel facilisis volutpat est
-                                        velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit
-                                        amet nisl suscipit adipiscing bibendum est ultricies integer quis
-                                        auctor elit sed vulputate mi sit amet mauris commodo quis imperdiet
-                                        massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada
-                                        proin libero nunc consequat interdum varius sit amet mattis
-                                        vulputate enim nulla aliquet porttitor lacus luctus accumsan.</p>
+                                    <p>{{ $product->description }}.</p>
                                 </div>
 
                                 <div class="banner-contain nav-desh">
@@ -649,28 +609,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="nav-desh">
-                                    <div class="desh-title">
-                                        <h5>From The Manufacturer:</h5>
-                                    </div>
-                                    <p>Jelly beans shortbread chupa chups carrot cake jelly-o halvah apple pie
-                                        pudding gingerbread. Apple pie halvah cake tiramisu shortbread cotton candy
-                                        croissant chocolate cake. Tart cupcake caramels gummi bears macaroon
-                                        gingerbread fruitcake marzipan wafer. Marzipan dessert cupcake ice cream
-                                        tootsie roll. Brownie chocolate cake pudding cake powder candy ice cream ice
-                                        cream cake. Jujubes soufflé chupa chups cake candy halvah donut. Tart tart
-                                        icing lemon drops fruitcake apple pie.</p>
-
-                                    <p>Dessert liquorice tart soufflé chocolate bar apple pie pastry danish soufflé.
-                                        Gummi bears halvah gingerbread jelly icing. Chocolate cake chocolate bar
-                                        pudding chupa chups bear claw pie dragée donut halvah. Gummi bears cookie
-                                        ice cream jelly-o jujubes sweet croissant. Marzipan cotton candy gummi bears
-                                        lemon drops lollipop lollipop chocolate. Ice cream cookie dragée cake sweet
-                                        roll sweet roll.Lemon drops cookie muffin carrot cake chocolate marzipan
-                                        gingerbread topping chocolate bar. Soufflé tiramisu pastry sweet dessert.
-                                    </p>
-                                </div>
                             </div>
                         </div>
 
@@ -680,35 +618,31 @@
                                     <tbody>
                                         <tr>
                                             <td>Specialty</td>
-                                            <td>Vegetarian</td>
+                                            <td>{{ $product->category->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Ingredient Type</td>
-                                            <td>Vegetarian</td>
+                                            <td>{{ $product->category->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Brand</td>
-                                            <td>Lavian Exotique</td>
+                                            <td>{{ $product->brand->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Form</td>
-                                            <td>Bar Brownie</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Package Information</td>
-                                            <td>Box</td>
+                                            <td>{{ $product->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Manufacturer</td>
-                                            <td>Prayagh Nutri Product Pvt Ltd</td>
+                                            <td>{{ $product->supplier->name }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Item part number</td>
-                                            <td>LE 014 - 20pcs Crème Bakes (Pack of 2)</td>
+                                            <td>Sell Time</td>
+                                            <td>{{ $product->created_at }}</td>
                                         </tr>
                                         <tr>
                                             <td>Net Quantity</td>
-                                            <td>40.00 count</td>
+                                            <td>{{ $product->productStatus->name }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1100,7 +1034,7 @@
     </div>
 </section>
 <!-- Nav Tab Section End -->
-
+{{-- @endforeach --}}
 <!-- Related Product Section Start -->
 <section class="product-list-section section-b-space">
     <div class="container-fluid-lg">

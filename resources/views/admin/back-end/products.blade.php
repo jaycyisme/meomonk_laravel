@@ -47,7 +47,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="table-image">
-                                                        <img src="{{ asset('back-end/assets/images/store-images/'. $product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                                                        <img src="{{ asset('front-end/assets/images/product/'. $product->image) }}" class="img-fluid" alt="{{ $product->name }}">
 
                                                     </div>
                                                 </td>

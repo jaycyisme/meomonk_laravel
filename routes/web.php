@@ -2,13 +2,19 @@
 
 
 use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
+<<<<<<< HEAD
 
 use App\Http\Controllers\AuthenticationController;
+=======
+>>>>>>> 6f720fe3bd2c87d167139523999b35f97f835eac
 
 use App\Http\Controllers\BillController;
 
@@ -60,6 +66,8 @@ Route::get('/product-service', [PagesController::class, 'productService']);
 
 Route::get('/product-pharmacy', [PagesController::class, 'productPharmacy']);
 
+Route::get('/product-color', [PagesController::class, 'productColor']);
+
 Route::get('/search', [PagesController::class, 'search']);
 
 Route::get('/shop-service', [PagesController::class, 'shopService'])->name('shopService');
@@ -85,11 +93,22 @@ Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList')
 
 //BACK_END
 
+Route::get('/admin-login', [AdminController::class, 'index'])->name('adminLogin');
+Route::get('/show-dashboard', [AdminController::class, 'showDashboard'])->name('showDashboard');
+Route::post('/login-function', [AdminController::class, 'login'])->name('adminLoginFunction');
+Route::get('/logout', [AdminController::class, 'logOut'])->name('logOut');
+
+
+// Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+Route::get('/products', [PagesController::class, 'products'])->name('products');
+Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/productt', [PagesController::class, 'product'])->name('product');
 // Route::get('/products', [PagesController::class, 'products'])->name('products');
 // Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
+
+
+// Route::get('/brand-category', [BrandController::class, 'displayBrand'])->name('listBrand');
 
 // Thêm các route cho Category
 Route::get('/category', [CategoryController::class, 'index'])->name('category'); // Hiển thị danh sách các danh mục
@@ -98,6 +117,7 @@ Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('ed
 Route::post('/add-new-category', [CategoryController::class, 'store'])->name('storeCategory'); // Xử lý thêm mới danh mục
 Route::put('/update-category/{id}', [CategoryController::class, 'update'])->name('updateCategory'); // Xử lý chỉnh sửa danh mục
 Route::delete('/category/{id}', [CategoryController::class, 'softDelete'])->name('softDeleteCategory'); // Xử lý xóa danh mục
+
 
 
 
@@ -122,8 +142,18 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::delete('/product/{product}', [ProductController::class, 'softDelete'])->name('product.destroy');
 Route::post('/add-new-product', [ProductController::class, 'store'])->name('productstore');
+Route::post('/add-product-update/{id}', [ProductController::class, 'update'])->name('productUpdate');
+
+Route::get('/product-detail/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
+Route::get('/product-category/{id}', [ProductController::class, 'listProductCategory'])->name('listProductCategory');
+Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand'])->name('listProductBrand');
+Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
+Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
 
 
+
+
+// Route::get('/productt', [PagesController::class, 'product'])->name('product');
 
 
 

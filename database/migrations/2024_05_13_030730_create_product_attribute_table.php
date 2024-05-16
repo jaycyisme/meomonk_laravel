@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('attribute_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('percent');
-            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('attribute_id')->references('id')->on('attribute')->onDelete('cascade');

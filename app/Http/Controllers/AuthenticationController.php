@@ -93,7 +93,7 @@ class AuthenticationController extends Controller
                 if ($user->role_id == 2) {
                     return redirect()->route('index');
                 } elseif ($user->role_id == 1) {
-                    return redirect()->route('dashboard');
+                    return back()->with('error', 'Error.');
                 }
             } else {
                 return back()->with('error', 'Your account is not active. Please verify your email.');

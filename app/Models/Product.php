@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $table = 'product';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'category_id', 'animal_id', 'price', 'description', 'image', 'quantity', 'product_status_id', 'brand_id', 'supplier_id'];
+    protected $fillable = ['name', 'category_id', 'animal_id', 'price', 'description', 'image','thumbnail1','thumbnail2','thumbnail3','thumbnail4', 'quantity', 'product_status_id', 'brand_id', 'supplier_id'];
 
     public function category()
     {
@@ -39,6 +39,11 @@ class Product extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class, 'product_attribute', 'product_id', 'attribute_id');
     }
 
 }

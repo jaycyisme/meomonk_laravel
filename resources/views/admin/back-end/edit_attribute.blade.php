@@ -16,7 +16,7 @@
                                     <h5>Add Product Attribute</h5>
                                 </div>
 
-                                <form class="theme-form theme-form-2 mega-form" action="{{ route('update', $attribute->id) }}" method="POST">
+                                <form class="theme-form theme-form-2 mega-form" action="{{ route('Attributesupdate', $attribute->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-4 row align-items-center">
@@ -53,5 +53,22 @@
     <!-- New Product Add End -->
 
 </div>
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if there's a success message available in session
+        if ("{{ session('success') }}") {
+            // Display the success message as an alert
+            alert("{{ session('success') }}");
+        }
+        if ("{{ session('error') }}") {
+            // Display the success message as an alert
+            alert('{{ session('error') }}');
+        }
+    }
+    );
+
+</script>
+
 <!-- Container-fluid End -->
 @endsection

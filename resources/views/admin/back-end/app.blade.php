@@ -197,8 +197,11 @@
                                 <li>
                                     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                         href="javascript:void(0)">
-                                        <i data-feather="log-out"></i>
-                                        <span>Log out</span>
+                                        <div class="" style="display: flex">
+                                            <i data-feather="log-out" style="margin-right: 10px"></i>
+                                        {{-- <span>Log out</span> --}}
+                                            <a href="{{ route('logOut') }}">Log out</a>
+                                        </div>
                                     </a>
                                 </li>
                             </ul>
@@ -243,7 +246,7 @@
                                 <li class="back-btn"></li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('dashboard') }}">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('showDashboard') }}">
                                         <i class="ri-home-line"></i>
                                         <span>Dashboard</span>
                                     </a>
@@ -453,7 +456,7 @@
     <!-- page-wrapper End-->
 
     <!-- Modal Start -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    {{-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
@@ -468,7 +471,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Modal End -->
 
     <!-- latest js -->

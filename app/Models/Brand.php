@@ -10,5 +10,5 @@ class Brand extends Model
     use HasFactory;
     protected $table = 'brand';
     protected $primaryKey = 'id';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 }
