@@ -977,5 +977,72 @@ class ProductSeeder extends Seeder
             'brand_id' => 12,
             'supplier_id' => 2,
         ]);
+
+
+        // SERVICES
+        Product::create([
+            'name' => 'Grooming',
+            'category_id' => 7,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Your service starts with our 7-Point Pet Care Check,* a quick screening to make sure nothing looks or feels abnormal on your pet.',
+            'image' => 'Grooming1.png',
+            'thumbnail1' => 'Grooming2.png',
+            'thumbnail2' => null,
+            'thumbnail3' => null,
+            'thumbnail4' => null,
+            'quantity' => 1,
+            'product_status_id' => 1,
+            'brand_id' => 1,
+            'supplier_id' => 1,
+        ]);
+        Product::create([
+            'name' => 'Rover Services',
+            'category_id' => 7,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Your pets stay overnight in your sitter’s home. Your sitter and your pets stay overnight in your home. Your dog gets a walk around the neighborhood.',
+            'image' => 'rover1.jpg',
+            'thumbnail1' => 'rover2.jpg',
+            'thumbnail2' => 'rover3.jpg',
+            'thumbnail3' => null,
+            'thumbnail4' => null,
+            'quantity' => 1,
+            'product_status_id' => 1,
+            'brand_id' => 1,
+            'supplier_id' => 1,
+        ]);
+        Product::create([
+            'name' => 'Pet Training',
+            'category_id' => 7,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'Learn alongside up to four other dogs and pet parents with hour-long classes designed for all ages and breeds for as low as $24.83 per class.',
+            'image' => 'train1.jpg',
+            'thumbnail1' => 'train2.jpg',
+            'thumbnail2' => 'train3.jpg',
+            'thumbnail3' => 'train4.jpg',
+            'thumbnail4' => 'train5.jpg',
+            'quantity' => 1,
+            'product_status_id' => 1,
+            'brand_id' => 1,
+            'supplier_id' => 1,
+        ]);
+        Product::create([
+            'name' => 'Veterinary',
+            'category_id' => 7,
+            'animal_id' => 2,
+            'price' => 100.50,
+            'description' => 'At Vetco Total Care animal hospital, we offer same-day appointments if your pet needs immediate care.',
+            'image' => 'vet1.png',
+            'thumbnail1' => 'vet2.png',
+            'thumbnail2' => 'vet3.png',
+            'thumbnail3' => 'vet4.png',
+            'thumbnail4' => null,
+            'quantity' => 1,
+            'product_status_id' => 1,
+            'brand_id' => 1,
+            'supplier_id' => 1,
+        ]);
     }
 }

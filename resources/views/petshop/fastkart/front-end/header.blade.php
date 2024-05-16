@@ -443,48 +443,28 @@
                                                         <div class="col-xl-3">
                                                             <div class="dropdown-column m-0">
                                                                 <h5 class="dropdown-header">
-                                                                    Product Pages </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-left-thumbnail.php">Product
-                                                                    Thumbnail</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-4-image.php">Product Images</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-slider.php">Product Slider</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-sticky.php">Product Sticky</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-accordion.php">Product Accordion</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-circle.php">Product Tab</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-digital.php">Product Digital</a>
+                                                                    Category </h5>
+                                                                    @foreach ($categories as $category)
+                                                                    <a class="dropdown-item" href="{{ route('listProductCategory', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                                                    @endforeach
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-3">
                                                             <div class="dropdown-column m-0">
                                                                 <h5 class="dropdown-header">
-                                                                    Product Variants Style </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-rectangle.php">Variant Rectangle</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-circle.php">Variant Circle <label
-                                                                        class="menu-label">New</label></a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-color-image.php">Variant Image
-                                                                    Swatch</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-color.php">Variant Color</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-radio.php">Variant Radio Button</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-dropdown.php">Variant Dropdown</a>
+                                                                    Brand </h5>
+                                                                    @foreach ($brands as $key => $brand)
+                                                                        <a class="dropdown-item" href="{{ route('listProductBrand', ['id' => $brand->id]) }}">
+                                                                            {{ $brand->name }}
+                                                                            <label class="menu-label">New</label>
+                                                                        </a>
+                                                                    @endforeach
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-3 d-xl-block d-none">
                                                             <div class="dropdown-column m-0">
                                                                 <div class="menu-img-banner">
-                                                                    <a class="text-title" href="product-circle.php">
+                                                                    <a class="text-title" href="#">
                                                                         <img src="{{asset('front-end')}}/assets/images/mega-menu.png"
                                                                             alt="banner">
                                                                     </a>

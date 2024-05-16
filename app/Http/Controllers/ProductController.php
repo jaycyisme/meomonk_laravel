@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animal;
-use App\Models\Attribute;
 use App\Models\Brand;
-use App\Models\Category;
+use App\Models\Animal;
 use App\Models\Product;
-use App\Models\ProductAttribute;
-use App\Models\ProductStatus;
+use App\Models\Category;
 use App\Models\Supplier;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
+use App\Models\ProductStatus;
+use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class ProductController extends Controller
@@ -160,26 +161,72 @@ class ProductController extends Controller
 
 
 
-    public function listProduct() {
-        $products = Product::where('is_active', true)->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    public function listProduct(Request $request) {
+        $categoryFilter = $request->input('category');
+
+        $productsQuery = Product::where('is_active', true);
+
+        if ($categoryFilter) {
+            $productsQuery->where('category_id', $categoryFilter);
+        }
+
+        $products = $productsQuery->get();
+        $categories = Category::where('is_active', true)
+                              ->withCount('products')
+                              ->get();
+        $brands = Brand::all();
+
+
+        return view('petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'categoryFilter', 'brands'));
     }
 
 
-    public function listProductCategory($id) {
-        $products = Product::where('category_id', $id)
-                       ->where('is_active', true)
-                       ->with('category')
-                       ->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    public function listProductCategory($id, Request $request) {
+        $categoryFilter = $request->input('category');
+
+        $productsQuery = Product::where('is_active', true);
+
+        if ($categoryFilter) {
+            $productsQuery->where('category_id', $categoryFilter);
+        }
+
+        $products = $productsQuery->where('category_id', $id)
+                                    ->where('is_active', true)
+                                    ->with('category')
+                                    ->get();
+        $categories = Category::where('is_active', true)
+                                ->withCount('products')
+                                ->get();
+        $brands = Brand::all();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter'));
     }
 
-    public function listProductBrand($id) {
-        $products = Product::where('brand_id', $id)
-                       ->where('is_active', true)
-                       ->with('brand')
+    public function listProductBrand($id, Request $request) {
+        $categoryFilter = $request->input('category');
+
+        $productsQuery = Product::where('is_active', true);
+
+        if ($categoryFilter) {
+            $productsQuery->where('category_id', $categoryFilter);
+        }
+
+        $products = $productsQuery->where('brand_id', $id)
+                                    ->where('is_active', true)
+                                    ->with('brand')
+                                    ->get();
+        $categories = Category::where('is_active', true)
+                       ->withCount('products')
                        ->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+        $brands = Brand::all();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter'));
+    }
+
+    public function listService() {
+        $products = Product::where('category_id', 7)->get();
+        $categories = Product::where('is_active', true)
+                       ->get();
+        $brands = Brand::all();
+        return view('.petshop.fastkart.front-end.shop-service', compact('products', 'categories', 'brands'));
     }
 
     public function productDetail($id) {

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,9 @@ class HomeController extends Controller
                         ->get();
         $pharmacy_products = Product::where('category_id', 6)
                         ->get();
-        return view('.petshop.fastkart.front-end.index', compact('categories', 'products', 'food_products', 'toy_products', 'pharmacy_products', 'brands'));
+        $service_products = Product::where('category_id', 7)
+                        ->get();
+
+        return view('.petshop.fastkart.front-end.index', compact('categories', 'products', 'food_products', 'brands', 'food_products', 'toy_products', 'pharmacy_products', 'service_products'));
     }
 }

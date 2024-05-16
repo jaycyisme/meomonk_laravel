@@ -103,7 +103,6 @@ Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard
 // Route::get('/add-new-product', [PagesController::class, 'addNewProducts'])->name('addNewProducts');
 
 
-Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
 // Route::get('/brand-category', [BrandController::class, 'displayBrand'])->name('listBrand');
 
 // Thêm các route cho Category
@@ -142,7 +141,11 @@ Route::post('/add-new-product', [ProductController::class, 'store'])->name('prod
 Route::get('/product-detail/{id}', [ProductController::class, 'productDetail'])->name('productDetail');
 Route::get('/product-category/{id}', [ProductController::class, 'listProductCategory'])->name('listProductCategory');
 Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand'])->name('listProductBrand');
-Route::get('/service-category', [CategoryController::class, 'listService'])->name('listService');
+Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
+Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
+
+
+
 
 // Route::get('/productt', [PagesController::class, 'product'])->name('product');
 
