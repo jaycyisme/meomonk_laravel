@@ -185,11 +185,21 @@
                                 </div>
 
 
-
+                                <div class="theme-form theme-form-2 mega-form">
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Thumbnail 4</label>
+                                        <div class="col-sm-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input formFile" name="Thumbnail4" accept="image/*">
+                                                <label class="custom-file-label" for="thumbnail3File">Choose file</label>
+                                            </div>
+                                            <img id="currentThumbnail4" alt="Current Thumbnail 4" class="mt-2 img-thumbnail" style="max-width: 200px;">
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 </div>
-
                                 </div>
 
                         <div class="card">
@@ -435,6 +445,15 @@
         var reader = new FileReader();
         reader.onload = function(e) {
             document.getElementById('currentThumbnail3').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Xử lý cho Thumbnail 3
+    document.querySelector('[name="Thumbnail4"]').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('currentThumbnail4').src = e.target.result;
         };
         reader.readAsDataURL(event.target.files[0]);
     });

@@ -59,7 +59,7 @@ class CategoryController extends Controller
     ]);
     $category->save();
 
-    return redirect()->route('storeCategory');
+    return redirect()->route('storeCategory')->with('success', 'Category updated successfully.');
     }
 
     public function edit($id) {
@@ -102,7 +102,7 @@ class CategoryController extends Controller
 
         $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
         $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
-        $request->file('icon_url')->move(public_path('front-end/assets/images/category'), $iconName);
+        // $request->file('icon_url')->move(public_path('front-end/assets/images/category'), $iconName);
         $category->icon_url = $iconName;
         }
 
@@ -128,7 +128,7 @@ class CategoryController extends Controller
         $category->is_active = 0;
         $category->save();
 
-        return redirect()->route('category')->with('success', 'Category deleted successfully.');
+        return redirect()->back()->with('success', 'Category deleted successfully.');
     }
 
     public function displayCategory() {
