@@ -10,12 +10,6 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
-<<<<<<< HEAD
-
-use App\Http\Controllers\AuthenticationController;
-=======
->>>>>>> 6f720fe3bd2c87d167139523999b35f97f835eac
-
 use App\Http\Controllers\BillController;
 
 

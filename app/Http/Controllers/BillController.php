@@ -41,20 +41,18 @@ public function edit($id){
 
 }
 
-public function update(){
+public function update(Request $request, $id){
 
 
-    $order = User::findOrFail($id);
+    $order = Bill::findOrFail($id);
 
-    $order->username = $request->input('username');
-    $order->email = $request->input('email');
-    $order->name =  $request->input('name');
-    $order->phone_number =  $request->input('phone_number');
-    $order->password = bcrypt( $request->input('password'));  // Mã hóa mật khẩu
-    $order->role_id = $request->input('role_id');
+    $order->payment_method_id = $request->input('payment_method');
+    $order->bill_status_id = $request->input('delivery_status');
+    $order->total_money = $request->input('amount');
+
 
     $order->save();
-    return redirect()->back()->with('success', 'User update successfully');
+    return redirect()->back()->with('success', 'Order update successfully');
 
 
 }

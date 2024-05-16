@@ -60,7 +60,7 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-lg-2 col-md-3 mb-0" for="amount">Amount:</label>
                                             <div class="col-md-9 col-lg-10">
-                                                <input type="number" name="amount" id="amount" class="form-control" value="{{ $order->total_money }}" >
+                                                <input type="number" name="amount" id="amount" class="form-control" value="{{ $order->total_money }}">
                                             </div>
                                         </div>
 
