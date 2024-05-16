@@ -143,7 +143,7 @@ Route::get('/product-category/{id}', [ProductController::class, 'listProductCate
 Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand'])->name('listProductBrand');
 Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
 Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
-
+Route::delete('/products/{id}', [productController::class, 'softDelete'])->name('softDeleteProduct');
 
 
 
