@@ -159,11 +159,37 @@ class ProductController extends Controller
     }
 
 
+
+    public function listProduct() {
+        $products = Product::where('is_active', true)->get();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    }
+
+
+    public function listProductCategory($id) {
+        $products = Product::where('category_id', $id)
+                       ->where('is_active', true)
+                       ->with('category')
+                       ->get();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    }
+
+    public function listProductBrand($id) {
+        $products = Product::where('brand_id', $id)
+                       ->where('is_active', true)
+                       ->with('brand')
+                       ->get();
+        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
+    }
+
     public function productDetail($id) {
-        $products = Product::where('id', $id)
+        $product = Product::where('id', $id)
         ->with(['category', 'animal', 'brand', 'productStatus', 'supplier'])
-        ->get();
-        switch ($id) {
+        ->first();
+
+
+        $category_id = $product->category->id;
+        switch ($category_id) {
             case 3:
             case 4:
                 $viewName = '.petshop.fastkart.front-end.product-food';
@@ -181,7 +207,7 @@ class ProductController extends Controller
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('products'));
+        return view($viewName, compact('product'));
     }
 }
 

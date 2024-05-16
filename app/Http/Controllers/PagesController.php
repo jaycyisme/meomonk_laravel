@@ -80,6 +80,10 @@ class PagesController extends Controller
         return view('.petshop.fastkart.front-end.product-service');
     }
 
+    public function productColor() {
+        return view('.petshop.fastkart.front-end.product-color');
+    }
+
     public function search() {
         return view('.petshop.fastkart.front-end.search');
     }

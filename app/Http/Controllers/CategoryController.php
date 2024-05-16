@@ -136,17 +136,6 @@ class CategoryController extends Controller
         return view('petshop.fastkart.front-end.index', compact('categories'));
     }
 
-    public function listProduct() {
-        $products = Product::where('is_active', true)->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
-    }
 
-    public function listProductCategory($id) {
-        $products = Product::where('category_id', $id)
-                       ->where('is_active', true)
-                       ->with('category')
-                       ->get();
-        return view('.petshop.fastkart.front-end.shop-category', compact('products'));
-    }
 
 }

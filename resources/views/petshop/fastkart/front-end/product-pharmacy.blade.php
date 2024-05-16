@@ -1,6 +1,6 @@
 @extends('petshop.fastkart.front-end.app')
 @section('content')
-@foreach ($products as $product)
+{{-- @foreach ($products as $product) --}}
 <!-- mobile fix menu start -->
 <div class="mobile-menu d-md-none d-block mobile-cart">
     <ul>
@@ -1034,7 +1034,7 @@
     </div>
 </section>
 <!-- Nav Tab Section End -->
-@endforeach
+{{-- @endforeach --}}
 <!-- Related Product Section Start -->
 <section class="product-list-section section-b-space">
     <div class="container-fluid-lg">

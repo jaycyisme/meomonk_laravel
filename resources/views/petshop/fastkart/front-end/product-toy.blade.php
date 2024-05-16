@@ -41,13 +41,14 @@
 </div>
 <!-- mobile fix menu end -->
 
+{{-- @foreach ($products as $product) --}}
 <!-- Breadcrumb Section Start -->
 <section class="breadcrumb-section pt-0">
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb-contain">
-                    <h2>Creamy Chocolate Cake</h2>
+                    <h2>{{ $product->name }}</h2>
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
@@ -56,7 +57,7 @@
                                 </a>
                             </li>
 
-                            <li class="breadcrumb-item active">Creamy Chocolate Cake</li>
+                            <li class="breadcrumb-item active">{{ $product->name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -79,49 +80,41 @@
                                     <div class="product-main no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" id="img-1"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" id="img-1"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="
                                                     img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}" class="
                                                     img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/25.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}" class="
                                                     img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/26.jpg" class="
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}" class="
                                                     img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/23.jpg" class="
-                                                    img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div class="slider-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
-                                                    data-zoom-image="{{asset('front-end')}}/assets/images/fashion/product/24.jpg" class="
-                                                    img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}"
+                                                    data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}" class="
+                                                    img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -131,42 +124,35 @@
                                     <div class="left-slider-image left-slider no-arrow slick-top">
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail1) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/25.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail2) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/26.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail3) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/23.jpg"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div class="sidebar-image">
-                                                <img src="{{asset('front-end')}}/assets/images/fashion/product/24.jpg"
+                                                <img src="{{ asset('front-end/assets/images/product/' . $product->thumbnail4) }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -179,9 +165,11 @@
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
                             <h6 class="offer-top">30% Off</h6>
-                            <h2 class="name">Full Sleeve T Shirts for Men</h2>
+                            <h2 class="name">{{ $product->name }}</h2>
                             <div class="price-rating">
-                                <h3 class="theme-color price">$49.50 <del class="text-content">$58.46</del> <span
+                                <h3 class="theme-color price">$49.50
+                                    {{-- <del class="text-content">$58.46</del> --}}
+                                    <span
                                         class="offer theme-color">(8% off)</span></h3>
                                 <div class="product-rating custom-rate">
                                     <ul class="rating">
@@ -206,41 +194,39 @@
                             </div>
 
                             <div class="product-contain">
-                                <p class="w-100">I find great comfort in awkwardness. I have never been cool, but I
-                                    have felt cool. I have been in the cool spot, but I was not really cool; I was
-                                    just trying to be hip or cool.</p>
+                                <p class="w-100">{{ $product->description }}.</p>
                             </div>
 
                             <div class="product-package">
                                 <div class="product-title">
                                     <h4>Color </h4>
                                 </div>
+{{--
+                                <ul class="color circle select-package">
+                                    @foreach ($product->attributes as $attribute)
+                                        <li class="form-check">
+                                            <input class="form-check-input" checked type="radio" name="color" id="small">
+                                            <label class="form-check-label" for="small">
+                                                <span style="background-color: {{ strtolower($attribute->value) }};"></span>
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul> --}}
 
                                 <ul class="color circle select-package">
+                                    @foreach ($product->attributes as $index => $attribute)
                                     <li class="form-check">
-                                        <input class="form-check-input" checked type="radio" name="color"
-                                            id="small">
-                                        <label class="form-check-label" for="small">
-                                            <span style="background-color: rgb(155, 128, 158);"></span>
+                                        <input class="form-check-input" checked type="radio" name="color" id="color-{{ $index }}" value="{{ strtolower($attribute->value) }}">
+                                        <label class="form-check-label" for="color-{{ $index }}">
+                                            <span style="background-color: {{ strtolower($attribute->value) }};"></span>
                                         </label>
                                     </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="color" id="medium">
-                                        <label class="form-check-label" for="medium">
-                                            <span style="background-color: rgb(37, 152, 137);"></span>
-                                        </label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="color" id="large">
-                                        <label class="form-check-label" for="large">
-                                            <span style="background-color: rgb(214, 214, 214);"></span>
-                                        </label>
-                                    </li>
+                                    @endforeach
                                 </ul>
 
-                                <div class="product-title">
+                                {{-- <div class="product-title">
                                     <h4>Size </h4>
-                                </div>
+                                </div> --}}
 
                                 {{-- <ul class="circle select-package">
                                     <li class="form-check">
@@ -350,17 +336,15 @@
                                 </div>
 
                                 <div class="pickup-detail">
-                                    <h4 class="text-content w-100">I would like the people that buy my clothes to
-                                        understand that for me it's one small piece of art. I love the 2000s because
-                                        everyone started to love haute couture. The only way to do something in
-                                        depth is to work hard.</h4>
+                                    <h4 class="text-content w-100">{{ $product->description }}.</h4>
                                 </div>
 
                                 <div class="product-info">
                                     <ul class="product-info-list product-info-list-2">
-                                        <li>Type : <a href="javascript:void(0)">Long Sleeve</a></li>
-                                        <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                        <li>Stock : <a href="javascript:void(0)">5 Items Left</a></li>
+                                        <li>Type : <a href="javascript:void(0)">{{ $product->category->name }}</a></li>
+                                        <li>MFG : <a href="javascript:void(0)">{{ $product->created_at }}</a></li>
+                                        <li>Stock : <a href="javascript:void(0)">{{ $product->productStatus->name }}</a></li>
+                                        <li>Tags : <a href="javascript:void(0)">{{ $product->brand->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -603,7 +587,7 @@
     </div>
 </section>
 <!-- Related Product Section End -->
-
+{{-- @endforeach --}}
 <!-- Nav Tab Section Start -->
 <section>
     <div class="container-fluid-lg">
@@ -621,36 +605,7 @@
                                 <div class="accordion-body">
                                     <div class="product-description">
                                         <div class="nav-desh">
-                                            <p>Indulge in the vibrant and tangy goodness of our premium fresh
-                                                oranges.
-                                                Sourced from the finest orchards, our oranges are a testament to
-                                                quality and
-                                                flavor. Each orange is meticulously handpicked to ensure that you
-                                                receive a
-                                                fruit that's at the peak of its juiciness and taste.</p>
-
-                                            <p>Our oranges boast a tantalizing balance of sweet and tangy flavors,
-                                                making
-                                                them a delightful treat for your taste buds. Bursting with natural
-                                                vitamins,
-                                                especially vitamin C, these juicy treasures are a great way to boost
-                                                your
-                                                immune system and maintain overall health.</p>
-
-                                            <p>Whether enjoyed as a quick and refreshing snack or incorporated into
-                                                your
-                                                favorite recipes, our fresh oranges add a burst of color and flavor
-                                                to your
-                                                meals. Their succulent texture and invigorating aroma make them a
-                                                versatile
-                                                ingredient in both savory and sweet culinary creations.</p>
-
-                                            <p>By choosing our premium fresh oranges, you're not only indulging in a
-                                                delectable fruit but also supporting sustainable and responsible
-                                                agriculture
-                                                practices. Join us in savoring the pure essence of nature's bounty
-                                                with
-                                                every bite of our succulent, premium fresh oranges.</p>
+                                            <p>{{ $product->description }}.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -669,35 +624,31 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Specialty</td>
-                                                    <td>Vegetarian</td>
+                                                    <td>{{ $product->category->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Ingredient Type</td>
-                                                    <td>Vegetarian</td>
+                                                    <td>{{ $product->category->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Brand</td>
-                                                    <td>Lavian Exotique</td>
+                                                    <td>{{ $product->brand->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Form</td>
-                                                    <td>Bar Brownie</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Package Information</td>
-                                                    <td>Box</td>
+                                                    <td>{{ $product->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Manufacturer</td>
-                                                    <td>Prayagh Nutri Product Pvt Ltd</td>
+                                                    <td>{{ $product->supplier->name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Item part number</td>
-                                                    <td>LE 014 - 20pcs Crème Bakes (Pack of 2)</td>
+                                                    <td>Sell Time</td>
+                                                    <td>{{ $product->created_at }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Net Quantity</td>
-                                                    <td>40.00 count</td>
+                                                    <td>{{ $product->productStatus->name }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
