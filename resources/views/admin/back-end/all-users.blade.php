@@ -21,7 +21,7 @@
                             <table class="table all-package theme-table" id="table_id">
                                 <thead>
                                 <tr>
-                                    <th name =>User</th>
+                                    <th>User</th>
                                     <th>Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
@@ -31,7 +31,7 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td style = "text-align: center">{{ $user->username  }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->phone_number }}</td>
                                         <td>{{ $user->email }}</td>
