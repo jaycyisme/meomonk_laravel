@@ -5,6 +5,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
@@ -36,11 +37,11 @@ Route::get('/blog-grid', [PagesController::class, 'blogGrid'])->name('blogGrid')
 
 Route::get('/blog-list', [PagesController::class, 'blogList']);
 
-Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
+// Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
 
 Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
 
-Route::get('/contact-us', [PagesController::class, 'contactUs']);
+Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact-us');
 
 Route::get('/faq', [PagesController::class, 'faq']);
 
@@ -259,3 +260,10 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 
 
 
+// CART
+// Route::post('/save-cart', [CartController::class, 'saveCart'])->name('saveCart');
+// Route::post('/add-cart-ajax', [CartController::class, 'add_cart_ajax'])->name('addCartAjax');
+// Route::get('/show-cart', [CartController::class, 'cart'])->name('showCart');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/add-cart', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');

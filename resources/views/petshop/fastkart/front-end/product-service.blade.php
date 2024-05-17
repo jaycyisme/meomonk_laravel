@@ -249,7 +249,7 @@
                                     </div>
                                 </div> --}}
 
-                                <button onclick="location.href = 'cart.php';"
+                                <button onclick="location.href = '{{ route('contact-us') }}';"
                                     class="btn btn-md bg-dark cart-button text-white w-100">Booking</button>
                             </div>
 

@@ -123,8 +123,15 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
+                            <form action="{{ route('cart.add') }}" method="POST">
+                                @csrf
+
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="attribute" id="selectedAttributeValue" value="">
+
                             <div class="product-count">
                                 <ul>
                                     <li class="">
@@ -138,6 +145,10 @@
                                 </ul>
                             </div>
                             <h2 class="name">{{ $product->name }}</h2>
+
+
+
+
                             <div class="price-rating">
                                 <h3 class="theme-color price">${{ $product->price }}
                                     {{-- <del class="text-content">$58.46</del>  --}}
@@ -174,13 +185,11 @@
                                 <div class="product-title">
                                     <h4>Weight</h4>
                                 </div>
-                                <ul class="select-package">
+                                <select class="form-select" id="selectedAttribute">
                                     @foreach ($product->attributes as $attribute)
-                                        <li>
-                                            <a href="javascript:void(0)" class="active">{{ $attribute->value }}</a>
-                                        </li>
+                                        <option value="{{ $attribute->value }}">{{ $attribute->value }}</option>
                                     @endforeach
-                                </ul>
+                                </select>
                             </div>
 
                             <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
@@ -234,7 +243,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                         <input class="form-control input-number qty-input" type="text"
-                                            name="quantity" value="0">
+                                            name="quantity" value="1">
                                         <button type="button" class="qty-right-plus bg-gray"
                                             data-type="plus" data-field="">
                                             <i class="fa fa-plus"></i>
@@ -242,8 +251,7 @@
                                     </div>
                                 </div>
 
-                                <button onclick="location.href = 'cart.php';"
-                                    class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                <button type="submit" class="btn btn-md bg-dark cart-button text-white w-100 add-to-cart" name="art-to-cart">Add To Cart</button>
                             </div>
 
                             <div class="buy-box">
@@ -314,8 +322,10 @@
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
+
                 </div>
             </div>
 
