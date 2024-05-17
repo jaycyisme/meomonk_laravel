@@ -41,7 +41,7 @@ class Product extends Model
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }
 
-    public function attributes()
+    public function product_attributes()
     {
         return $this->belongsToMany(Attribute::class, 'product_attribute', 'product_id', 'attribute_id');
     }

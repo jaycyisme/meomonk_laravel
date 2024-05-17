@@ -85,10 +85,10 @@
                                             <div class="product-detail">
                                                 <ul>
                                                     <li class="name">
-                                                        <a href="{{ route('productDetail', ['id' => $value['productId']]) }}">{{ $value['name'] }}</a>
+                                                        <a href="{{ route('productDetail', ['id' => $value['productId']]) }}" class="truncate">{{ $value['name'] }}>{{ $value['name'] }}</a>
                                                     </li>
                                                     {{-- Hiển thị thông tin thuộc tính của sản phẩm --}}
-                                                    <li class="text-content">Attribute: {{ $value['attribute'] }}</li>
+                                                    <li class="text-content">Attribute: {{ $value['attributeName'] }}</li>
                                                     <li>
                                                         <h5 class="text-content d-inline-block">Price :</h5>
                                                         <span>{{ $value['price'] }}</span>
@@ -151,9 +151,12 @@
                         <div class="coupon-cart">
                             <h6 class="text-content mb-2">Coupon Apply</h6>
                             <div class="mb-3 coupon-box input-group">
-                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                <form action="{{ route('cart.applyCoupon') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="coupon_code" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Enter Coupon Code Here...">
-                                <button class="btn-apply">Apply</button>
+                                    <button class="btn-apply" type="submit" style="padding: 10px; margin-top: 10px; border-radius:10px;">Apply</button>
+                                </form>
                             </div>
                         </div>
                         <ul>
@@ -184,12 +187,12 @@
                     <div class="button-group cart-button">
                         <ul>
                             <li>
-                                <button onclick="location.href = 'checkout.php';"
+                                <button onclick="location.href = '{{ route('loginCheckout') }}';"
                                     class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
                             </li>
 
                             <li>
-                                <button onclick="location.href = 'index.php';"
+                                <button onclick="location.href = '{{ route('index') }}';"
                                     class="btn btn-light shopping-button text-dark">
                                     <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
                             </li>

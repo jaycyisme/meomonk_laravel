@@ -11,9 +11,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-
+session_start();
 class AuthenticationController extends Controller
 {
+
+
+
+    public function AuthLogin() {
+        $user_id = Session::get('user_id');
+        if($user_id) {
+            return redirect()->route('index');
+        }else {
+            return redirect()->route('login')->send();
+        }
+    }
+
     public function generateRandomCode($length = 6)
     {
         return Str::random($length);
@@ -86,21 +98,34 @@ class AuthenticationController extends Controller
 
         $user = User::where('username', $credentials['username'])->first();
 
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            if ($user->is_active) {
-                Auth::login($user);
+        if($user) {
+            Session::put('user_name', $user->name);
+            Session::put('user_id', $user->id);
+            if ($user && Hash::check($credentials['password'], $user->password)) {
+                if ($user->is_active) {
+                    Auth::login($user);
 
-                if ($user->role_id == 2) {
-                    return redirect()->route('index');
-                } elseif ($user->role_id == 1) {
-                    return back()->with('error', 'Error.');
+                    if ($user->role_id == 2) {
+                        return redirect()->route('index');
+                    } elseif ($user->role_id == 1) {
+                        return back()->with('error', 'Error.');
+                    }
+                } else {
+                    return back()->with('error', 'Your account is not active. Please verify your email.');
                 }
             } else {
-                return back()->with('error', 'Your account is not active. Please verify your email.');
+                return back()->with('error', 'Invalid username or password. Please try again.');
             }
-        } else {
-            return back()->with('error', 'Invalid username or password. Please try again.');
+        }else{
+            Session::put('message', 'Invalid username or password. Please try again.');
+            return redirect()->route('login');
         }
+    }
+
+    public function logOut() {
+        Session::put('user_name', null);
+        Session::put('user_id', null);
+        return redirect()->route('login');
     }
 
 }

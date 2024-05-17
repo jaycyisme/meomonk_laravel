@@ -278,7 +278,7 @@
                 </div>
             </div>
             <div style="display: flex;justify-content: flex-end; margin:0 215px 50px 0">
-                <button type="submit" class="btn btn-solid" onclick="submitForm()" style="width: 200px; ">Add Product</button>
+                <button type="submit" class="btn btn-solid" onclick="submitForm()" style="width: 200px; ">edit Product</button>
             </div>
         </form>
 

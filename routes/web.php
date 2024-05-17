@@ -12,14 +12,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\BillController;
-
-
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 
 use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\dashboard;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Models\Bill;
 
@@ -148,7 +149,8 @@ Route::delete('/products/{id}', [productController::class, 'softDelete'])->name(
 
 
 
-// Route::get('/productt', [PagesController::class, 'product'])->name('product');
+// dashboard
+Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('showDashboard');
 
 
 
@@ -260,6 +262,8 @@ Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name
 
 Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');
 
+Route::get('/user-logout', [AuthenticationController::class, 'logOut'])->name('userLogOut');
+
 
 
 
@@ -271,3 +275,7 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/add-cart', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
+
+
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');

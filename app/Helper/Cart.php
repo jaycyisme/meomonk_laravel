@@ -1,6 +1,8 @@
 <?php
 namespace App\Helper;
 
+use Illuminate\Http\Request;
+
 class Cart {
     private $items = [];
     private $total_quantity = 0;
@@ -14,7 +16,8 @@ class Cart {
         return $this->items;
     }
 
-    public function add($product, $quantity = 1, $attribute = '1KG') {
+    public function add($product, $quantity = 1 , $attribute, $percent, $attributeName ) {
+
         $item = [
             'productId' => $product->id,
             'name' => $product->name,
@@ -23,7 +26,10 @@ class Cart {
             'image' => $product->image,
             'quantity' => $quantity,
             'attribute' => $attribute,
+            'percent' => $percent,
+            'attributeName' => $attributeName
         ];
+
         $this->items[$product->id] = $item;
         session(['cart' => $this->items]);
     }
