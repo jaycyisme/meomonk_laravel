@@ -31,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::where('is_active', true)
                               ->withCount('products')
                               ->get();
+
+
+
+
         $categories_products = Category::where('is_active', true)->get();
         foreach ($categories_products as $category_product) {
             $category_product->products = Product::where('category_id', $category_product->id)->get();

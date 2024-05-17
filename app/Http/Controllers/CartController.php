@@ -19,7 +19,9 @@ class CartController extends Controller
 {
 
     public function index(Cart $cart) {
+
         $cartItems = $cart->list();
+
         $subTotal = $this->calculateSubtotal($cartItems);
         $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
         $totalUSD = $subTotal - $couponDiscount;
@@ -37,7 +39,7 @@ class CartController extends Controller
                     if ($productAttribute) {
                         $originalPrice = $item['price'];
                         // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
-                        $item['price'] = $product->price * (1 + $productAttribute->percent / 100);
+                        $item['price'] = $product->price * (1 + $item['percent'] / 100);
                         echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
                     }
                 }
@@ -75,13 +77,25 @@ class CartController extends Controller
     }
 
     public function add(Request $request, Cart $cart) {
+
         $product = Product::find($request->id);
+
+        $attribute = Attribute::find($request->attribute);
+
+        $productAttribute = ProductAttribute::where('product_id', $request->id)
+        ->where('attribute_id', $request->attribute)
+        ->first();
+
+        $percent = $productAttribute->percent;
+        $attributeName = $attribute->value;
+        // dd($request->attribute);
+
         $quantity = $request->quantity;
         $attribute = $request->attribute;
-        $cart->add($product, $quantity, $attribute);
+        $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
 
         return redirect()->route('cart.index');
-        dd($attribute);
+
     }
 
     public function remove($id, Cart $cart) {
