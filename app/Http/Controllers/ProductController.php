@@ -399,6 +399,12 @@ public function listProduct(Request $request) {
         ->first();
 
 
+
+
+
+        $productAttribute = ProductAttribute::where('product_id', $id)->get();
+
+
         $category_id = $product->category->id;
         switch ($category_id) {
             case 3:
@@ -418,7 +424,7 @@ public function listProduct(Request $request) {
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('product'));
+        return view($viewName, compact('product', 'productAttribute'));
     }
 }
 

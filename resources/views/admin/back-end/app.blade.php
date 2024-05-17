@@ -511,8 +511,9 @@
     <script src="{{ asset('back-end/assets/js/chart/apex-chart/moment.min.js') }}"></script>
     <script src="{{ asset('back-end/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
     <script src="{{ asset('back-end/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('back-end/assets/js/chart/apex-chart/chart-custom1.js') }}"></script>
-    <script src="{{ asset('back-end/assets/js/chart/apex-chart/chart-custom.js') }}"></script>
+    {{-- <script src="{{ asset('back-end/assets/js/chart/apex-chart/chart-custom.js') }}"></script> --}}
+
+    {{-- <script src="{{ asset('back-end/assets/js/chart/apex-chart/chart-custom1.js') }}"></script> --}}
     <!--    Sửa chart ở Dashboard và Reports ở đây-->
 
     <!-- slick slider js -->
