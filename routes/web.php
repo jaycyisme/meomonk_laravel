@@ -20,6 +20,8 @@ use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\dashboard;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Models\Bill;
 
@@ -148,7 +150,8 @@ Route::delete('/products/{id}', [productController::class, 'softDelete'])->name(
 
 
 
-// Route::get('/productt', [PagesController::class, 'product'])->name('product');
+// dashboard
+Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('showDashboard');
 
 
 

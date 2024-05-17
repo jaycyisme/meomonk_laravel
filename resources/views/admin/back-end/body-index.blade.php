@@ -49,7 +49,7 @@
                                     <div class="media static-top-widget">
                                         <div class="media-body p-0">
                                             <span class="m-0">Total Products</span>
-                                            <h4 class="mb-0 counter">893
+                                            <h4 class="mb-0 counter">{{ $totalQuantity }}
                                                 <a href="add-new-product.html" class="badge badge-light-secondary grow">
                                                     ADD NEW</a>
                                             </h4>

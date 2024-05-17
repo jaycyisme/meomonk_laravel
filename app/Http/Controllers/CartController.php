@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
     public function index(Cart $cart) {
+
         $cartItems = $cart->list();
+
         $subTotal = $this->calculateSubtotal($cartItems);
 
         $couponDiscount = 0;
@@ -37,11 +39,19 @@ class CartController extends Controller
                                                         ->where('attribute_id', $attribute->id)
                                                         ->first();
                     if ($productAttribute) {
-                        $item['price'] = $product->price * (1 + $productAttribute->percent / 100);
+                        $originalPrice = $item['price'];
+                        // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
+                        $item['price'] = $product->price * (1 + $item['percent'] / 100);
+                        echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
                     }
                 }
             }
         }
+
+
+
+
+
 
         return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
     }
@@ -56,12 +66,25 @@ class CartController extends Controller
     }
 
     public function add(Request $request, Cart $cart) {
+
         $product = Product::find($request->id);
+
+        $attribute = Attribute::find($request->attribute);
+
+        $productAttribute = ProductAttribute::where('product_id', $request->id)
+        ->where('attribute_id', $request->attribute)
+        ->first();
+
+        $percent = $productAttribute->percent;
+        $attributeName = $attribute->value;
+        // dd($request->attribute);
+
         $quantity = $request->quantity;
-        $product_attributes = $request->product_attribute;
-        $cart->add($product, $quantity, $product_attributes);
+        $attribute = $request->attribute;
+        $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
 
         return redirect()->route('cart.index');
+
     }
 
     public function remove($id, Cart $cart) {

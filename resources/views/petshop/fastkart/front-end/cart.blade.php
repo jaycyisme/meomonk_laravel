@@ -88,7 +88,7 @@
                                                         <a href="{{ route('productDetail', ['id' => $value['productId']]) }}">{{ $value['name'] }}</a>
                                                     </li>
                                                     {{-- Hiển thị thông tin thuộc tính của sản phẩm --}}
-                                                    <li class="text-content">Attribute: {{ $value['attribute'] }}</li>
+                                                    <li class="text-content">Attribute: {{ $value['attributeName'] }}</li>
                                                     <li>
                                                         <h5 class="text-content d-inline-block">Price :</h5>
                                                         <span>{{ $value['price'] }}</span>
