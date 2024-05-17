@@ -19,6 +19,8 @@ use App\Models\Category;
 use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\dashboard;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Models\Bill;
 
@@ -144,10 +146,8 @@ Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand']
 Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
 Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
 
-
-
-
-// Route::get('/productt', [PagesController::class, 'product'])->name('product');
+// dashboard
+Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('showDashboard');
 
 
 
