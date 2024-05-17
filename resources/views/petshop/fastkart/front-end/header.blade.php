@@ -238,7 +238,7 @@
                                                 </li>
 
                                                 <li class="product-box-contain">
-                                                    <a href="forgot.php">Forgot Password</a>
+                                                    <a href="{{ route('userLogOut') }}">Log Out</a>
                                                 </li>
                                             </ul>
                                         </div>
