@@ -35,11 +35,11 @@
                                         <td>{{ $order->create_time }}</td>
                                         <td>{{ $order->paymentMethod->name }}</td>
                                         <td>{{ $order->billStatus->name }}</td>
-                                        <td>{{ $order->total_money }}</td>
+                                        <td>{{ $order->total_price  }}</td>
                                         <td>
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('orderDetail') }}">
+                                                    <a href="{{ route('orderDetail', $order->id) }}">
                                                         <i class="ri-eye-line"></i>
                                                     </a>
                                                 </li>

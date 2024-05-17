@@ -12,8 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
 use App\Http\Controllers\BillController;
-
-
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 
 use App\Models\Category;
@@ -217,6 +216,8 @@ Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUs
 
 
 
+
+
 //Bill
 
 Route::get('/order-list', [BillController::class, 'index'])->name('orderList');
@@ -226,6 +227,11 @@ Route::delete('/order-list/{id}', [BillController::class, 'destroy'])->name('ord
 Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.edit');
 
 Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
+
+Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail');
+
+Route::post('/orders/{id}/edit-item', [BillController::class, 'editItems'])->name('orders.editItems');
+
 
 
 
@@ -256,6 +262,8 @@ Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name
 
 Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');
 
+Route::get('/user-logout', [AuthenticationController::class, 'logOut'])->name('userLogOut');
+
 
 
 
@@ -268,3 +276,6 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/add-cart', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
+
+
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');

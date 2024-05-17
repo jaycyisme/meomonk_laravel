@@ -394,7 +394,13 @@
                     <div class="section-b-space">
                         <div class="product-border border-row overflow-hidden">
                             <div class="product-box-slider no-arrow">
+
                                 @foreach ($products as $product)
+                                <form action="{{ route('cart.add') }}" method="POST">
+                                    @csrf
+
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                {{-- <input type="hidden" name="attribute" id="selectedAttributeValue" value=""> --}}
                                 <div>
                                     <div class="row m-0">
                                         <div class="col-12 px-0">
@@ -434,12 +440,13 @@
                                                         </h6>
                                                     </a>
 
-                                                    <h5 class="sold text-content">
-                                                        <span class="theme-color price">{{ $product->price }}</span>
+                                                    <h5 class="sold text-content" style="text-align:center;">
+                                                        <span class="theme-color price">${{ $product->price }}</span>
                                                         {{-- <del>28.56</del> --}}
                                                     </h5>
 
-                                                    <div class="product-rating mt-sm-2 mt-1">
+                                                    <div class="product-rating mt-sm-2 mt-1" style="display: flex;
+                                                    justify-content: center;">
                                                         <ul class="rating">
                                                             <li>
                                                                 <i data-feather="star" class="fill"></i>
@@ -462,8 +469,8 @@
                                                     </div>
 
                                                     <div class="add-to-cart-box">
-                                                        <button class="btn btn-add-cart addcart-button">
-                                                            Add
+                                                        <button type="submit" class="btn btn-add-cart addcart-button">
+                                                            Add To Cart
                                                             <span class="add-icon">
                                                                 <i class="fa-solid fa-plus"></i>
                                                             </span>
@@ -488,8 +495,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                                 @endforeach
-
                             </div>
                         </div>
                     </div>
@@ -606,15 +613,15 @@
                                             </div>
                                             <div class="product-detail">
                                                 <a href="{{ route('productDetail', ['id' => $service_product->id]) }}">
-                                                    <h6 class="name h-100">{{ $service_product->name }}                                                    </h6>
+                                                    <h6 class="name h-100" style="text-align: center;">{{ $service_product->name }}                                                    </h6>
                                                 </a>
 
-                                                <h5 class="sold text-content">
+                                                <h5 class="sold text-content" style="text-align: center;">
                                                     <span class="theme-color price">{{ $service_product->price }}</span>
                                                     {{-- <del>28.56</del> --}}
                                                 </h5>
 
-                                                <div class="product-rating mt-sm-2 mt-1">
+                                                <div class="product-rating mt-sm-2 mt-1" style="display: flex; justify-content:center;">
                                                     <ul class="rating">
                                                         <li>
                                                             <i data-feather="star" class="fill"></i>
@@ -637,8 +644,8 @@
                                                 </div>
 
                                                 <div class="add-to-cart-box">
-                                                    <button class="btn btn-add-cart addcart-button">
-                                                        Add
+                                                    <button class="btn btn-add-cart addcart-button" onclick="location.href = '{{ route('contact-us') }}';">
+                                                        Book
                                                         <span class="add-icon">
                                                             <i class="fa-solid fa-plus"></i>
                                                         </span>

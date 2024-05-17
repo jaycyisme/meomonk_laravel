@@ -398,6 +398,7 @@ public function listProduct(Request $request) {
         ->with(['category', 'animal', 'brand', 'productStatus', 'supplier'])
         ->first();
 
+        $productAttribute = ProductAttribute::where('product_id', $id)->get();
 
 
 

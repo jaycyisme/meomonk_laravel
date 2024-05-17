@@ -17,10 +17,22 @@ class Bill extends Model
     {
         return $this->belongsTo(BillStatus::class, 'bill_status_id');
     }
+
     public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function billProducts()
+    {
+        return $this->hasMany(BillProduct::class, 'bill_id');
+    }
+
 
 
 

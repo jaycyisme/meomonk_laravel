@@ -43,5 +43,11 @@ class AttributeSeeder extends Seeder
             'name' => 'Color',
             'value' => 'Yellow',
         ]);
+
+        Attribute::create([
+            'name' => 'None',
+            'value' => 'None',
+        ]);
+
     }
 }

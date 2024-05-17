@@ -283,6 +283,84 @@ class ProductAttributeSeeder extends Seeder
         ]);
 
 
+        // Pharmacy
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 33,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 34,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 35,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 36,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 37,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 38,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 39,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 40,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 41,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 42,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 43,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 44,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 7,
+            'product_id' => 45,
+            'percent' => 0,
+        ]);
 
 
 
