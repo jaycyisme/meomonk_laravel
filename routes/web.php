@@ -11,7 +11,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
-
+use App\Http\Controllers\BillController;
 
 
 use App\Http\Controllers\HomeController;
@@ -21,8 +21,7 @@ use Controller\UserControllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
-
-
+use App\Models\Bill;
 
 //FRONT_END
 
@@ -145,7 +144,7 @@ Route::get('/product-category/{id}', [ProductController::class, 'listProductCate
 Route::get('/product-brand/{id}', [ProductController::class, 'listProductBrand'])->name('listProductBrand');
 Route::get('/product-category/7', [ProductController::class, 'listService'])->name('listService');
 Route::get('/product-category', [ProductController::class, 'listProduct'])->name('listProduct');
-
+Route::delete('/products/{id}', [productController::class, 'softDelete'])->name('softDeleteProduct');
 
 
 
@@ -211,6 +210,22 @@ Route::get('/all-users/addNewUser', [UserController::class, 'create'])->name('ad
 Route::get('/all-users/{id}/edit', [UserController::class, 'edit'])->name('editUser');
 
 Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUser');
+
+
+
+
+//Bill
+
+Route::get('/order-list', [BillController::class, 'index'])->name('orderList');
+
+Route::delete('/order-list/{id}', [BillController::class, 'destroy'])->name('orders.destroy');
+
+Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.edit');
+
+Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
+
+
+
 
 
 

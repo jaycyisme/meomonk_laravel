@@ -11,4 +11,17 @@ class Bill extends Model
     protected $table = 'bill';
     protected $primaryKey = 'id';
     protected $fillable = ['total_money', 'trading_code', 'create_time', 'user_id', 'name', 'update_time', 'promotion_id', 'bill_status_id', 'payment_method_id'];
+
+
+    public function billStatus()
+    {
+        return $this->belongsTo(BillStatus::class, 'bill_status_id');
+    }
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
+    }
+
+
+
 }

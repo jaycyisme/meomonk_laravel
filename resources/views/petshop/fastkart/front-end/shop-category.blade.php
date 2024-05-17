@@ -825,7 +825,7 @@
                                     </div>
                                     <h6 class="unit">250 ml</h6>
                                     <h5 class="price"><span class="theme-color">${{ $product->price }}</span>
-                                        {{-- <del>$15.15</del> --}}
+
                                     </h5>
                                     <div class="add-to-cart-box bg-white">
                                         <button class="btn btn-add-cart addcart-button">Add
@@ -855,29 +855,9 @@
                     @endforeach
                 </div>
 
-                <nav class="custom-pagination">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                                <i class="fa-solid fa-angles-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="javascript:void(0)">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">
-                                <i class="fa-solid fa-angles-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="pagination-wrapper">
+                    {{ $products->links() }}
+                </div>
             </div>
         </div>
     </div>
