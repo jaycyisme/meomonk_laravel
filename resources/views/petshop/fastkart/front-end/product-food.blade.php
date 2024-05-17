@@ -126,6 +126,7 @@
 
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
+
                             <form action="{{ route('cart.add') }}" method="POST">
                                 @csrf
 
@@ -186,8 +187,8 @@
                                     <h4>Weight</h4>
                                 </div>
                                 <select class="form-select" id="selectedAttribute">
-                                    @foreach ($product->attributes as $attribute)
-                                        <option value="{{ $attribute->value }}">{{ $attribute->value }}</option>
+                                    @foreach ($product_attributes as $product_attribute)
+                                        <option value="{{ $product_attribute->attribute->value }}">{{ $product_attribute->attribute->value }}</option>
                                     @endforeach
                                 </select>
                             </div>

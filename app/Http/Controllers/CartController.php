@@ -12,16 +12,19 @@ use Illuminate\Http\Request;
 use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-session_start();
-
 
 class CartController extends Controller
 {
-
     public function index(Cart $cart) {
         $cartItems = $cart->list();
         $subTotal = $this->calculateSubtotal($cartItems);
-        $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
+
+        $couponDiscount = 0;
+        if (session()->has('coupon')) {
+            $coupon = session('coupon');
+            $couponDiscount = $coupon->discount;
+        }
+
         $totalUSD = $subTotal - $couponDiscount;
 
         // Update prices based on attributes
@@ -30,15 +33,11 @@ class CartController extends Controller
             if ($product) {
                 $attribute = Attribute::find($item['attribute']);
                 if ($attribute) {
-                    // Tìm product attribute tương ứng
                     $productAttribute = ProductAttribute::where('product_id', $item['productId'])
                                                         ->where('attribute_id', $attribute->id)
                                                         ->first();
                     if ($productAttribute) {
-                        // $originalPrice = $item['price'];
-                        // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
-                        // $item['price'] = $product->price * (1 + $productAttribute->percent / 100);
-                        // echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
+                        $item['price'] = $product->price * (1 + $productAttribute->percent / 100);
                     }
                 }
             }
@@ -46,7 +45,6 @@ class CartController extends Controller
 
         return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
     }
-
 
     private function calculateSubtotal($cartItems)
     {
@@ -57,40 +55,41 @@ class CartController extends Controller
         return $subTotal;
     }
 
-    private function calculateCouponDiscount($subTotal, $couponCode)
-    {
-        $couponDiscount = 0;
-        if ($couponCode) {
-            $coupon = Coupon::where('code', $couponCode)->first();
-            if ($coupon) {
-                $couponDiscount = $coupon->discount;
-            }
-        }
-        return $couponDiscount;
-    }
-
     public function add(Request $request, Cart $cart) {
         $product = Product::find($request->id);
         $quantity = $request->quantity;
-        $attribute = $request->attribute;
-        $cart->add($product, $quantity, $attribute);
+        $product_attributes = $request->product_attribute;
+        $cart->add($product, $quantity, $product_attributes);
 
         return redirect()->route('cart.index');
-        dd($attribute);
     }
 
     public function remove($id, Cart $cart) {
-        // Lấy danh sách sản phẩm từ giỏ hàng
         $items = $cart->list();
 
-        // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
         if(isset($items[$id])) {
-            // Xóa sản phẩm khỏi giỏ hàng
             unset($items[$id]);
-            // Cập nhật lại session giỏ hàng
             session(['cart' => $items]);
         }
 
         return redirect()->route('cart.index');
+    }
+
+    public function applyCoupon(Request $request, Cart $cart) {
+        $couponCode = $request->input('coupon_code');
+        $coupon = Coupon::where('code', $couponCode)->first();
+
+        if ($coupon && $coupon->coupon_status_id == 1) {
+            $cartItems = $cart->list();
+            $subTotal = $this->calculateSubtotal($cartItems);
+            $couponDiscount = $coupon->discount;
+            $totalUSD = $subTotal - $couponDiscount;
+
+            session(['cart_total' => $totalUSD, 'coupon' => $coupon]);
+
+            return redirect()->back()->with('success_message', 'Coupon applied successfully.');
+        } else {
+            return redirect()->back()->with('error_message', 'Invalid coupon code.');
+        }
     }
 }

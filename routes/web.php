@@ -264,3 +264,4 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/add-cart', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');

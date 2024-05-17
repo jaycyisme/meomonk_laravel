@@ -14,7 +14,7 @@ class Cart {
         return $this->items;
     }
 
-    public function add($product, $quantity = 1, $attribute = '1KG') {
+    public function add($product, $quantity = 1, $product_attributes) {
         $item = [
             'productId' => $product->id,
             'name' => $product->name,
@@ -22,7 +22,7 @@ class Cart {
             'price' => $product->price,
             'image' => $product->image,
             'quantity' => $quantity,
-            'attribute' => $attribute,
+            'attribute' => $product_attributes,
         ];
         $this->items[$product->id] = $item;
         session(['cart' => $this->items]);

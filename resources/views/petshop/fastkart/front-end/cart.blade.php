@@ -151,9 +151,12 @@
                         <div class="coupon-cart">
                             <h6 class="text-content mb-2">Coupon Apply</h6>
                             <div class="mb-3 coupon-box input-group">
-                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                <form action="{{ route('cart.applyCoupon') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="coupon_code" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Enter Coupon Code Here...">
-                                <button class="btn-apply">Apply</button>
+                                    <button class="btn-apply" type="submit" style="padding: 10px; margin-top: 10px; border-radius:10px;">Apply</button>
+                                </form>
                             </div>
                         </div>
                         <ul>
