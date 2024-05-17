@@ -20,14 +20,14 @@ class CartController extends Controller
         $cartItems = $cart->list();
 
         $subTotal = $this->calculateSubtotal($cartItems);
-
+        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
         $couponDiscount = 0;
         if (session()->has('coupon')) {
             $coupon = session('coupon');
             $couponDiscount = $coupon->discount;
         }
-
         $totalUSD = $subTotal - $couponDiscount;
+
 
         // Update prices based on attributes
         foreach ($cartItems as &$item) {
@@ -35,6 +35,7 @@ class CartController extends Controller
             if ($product) {
                 $attribute = Attribute::find($item['attribute']);
                 if ($attribute) {
+                    // Tìm product attribute tương ứng
                     $productAttribute = ProductAttribute::where('product_id', $item['productId'])
                                                         ->where('attribute_id', $attribute->id)
                                                         ->first();
@@ -42,7 +43,7 @@ class CartController extends Controller
                         $originalPrice = $item['price'];
                         // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
                         $item['price'] = $product->price * (1 + $item['percent'] / 100);
-                        echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
+                        // echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
                     }
                 }
             }
@@ -56,6 +57,7 @@ class CartController extends Controller
         return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
     }
 
+
     private function calculateSubtotal($cartItems)
     {
         $subTotal = 0;
@@ -64,6 +66,7 @@ class CartController extends Controller
         }
         return $subTotal;
     }
+
 
     public function add(Request $request, Cart $cart) {
 
@@ -75,11 +78,33 @@ class CartController extends Controller
         ->where('attribute_id', $request->attribute)
         ->first();
 
+        if ($request->has('attribute')) {
+            $attribute = Attribute::find($request->attribute);
+            $productAttribute = ProductAttribute::where('product_id', $request->id)
+                                                ->where('attribute_id', $request->attribute)
+                                                ->first();
+        } else {
+            // Lấy attribute đầu tiên của ProductAttribute
+            $productAttribute = ProductAttribute::where('product_id', $request->id)->first();
+            if ($productAttribute) {
+                $attribute = Attribute::find($productAttribute->attribute_id);
+            } else {
+                // Handle the case where there is no product attribute
+                // You might want to add some error handling or default behavior here
+                return redirect()->back()->with('error_message', 'No attribute available for this product.');
+            }
+        }
+
+        // Nếu không tìm thấy product hoặc product attribute, redirect về trang trước
+        if (!$product || !$productAttribute) {
+            return redirect()->back()->with('error_message', 'Product or attribute not found.');
+        }
+
         $percent = $productAttribute->percent;
         $attributeName = $attribute->value;
         // dd($request->attribute);
 
-        $quantity = $request->quantity;
+        $quantity = $request->has('quantity') ? $request->quantity : 1;
         $attribute = $request->attribute;
         $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
 
@@ -88,10 +113,14 @@ class CartController extends Controller
     }
 
     public function remove($id, Cart $cart) {
+        // Lấy danh sách sản phẩm từ giỏ hàng
         $items = $cart->list();
 
+        // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
         if(isset($items[$id])) {
+            // Xóa sản phẩm khỏi giỏ hàng
             unset($items[$id]);
+            // Cập nhật lại session giỏ hàng
             session(['cart' => $items]);
         }
 

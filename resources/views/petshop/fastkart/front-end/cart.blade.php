@@ -85,7 +85,7 @@
                                             <div class="product-detail">
                                                 <ul>
                                                     <li class="name">
-                                                        <a href="{{ route('productDetail', ['id' => $value['productId']]) }}">{{ $value['name'] }}</a>
+                                                        <a href="{{ route('productDetail', ['id' => $value['productId']]) }}" class="truncate">{{ $value['name'] }}>{{ $value['name'] }}</a>
                                                     </li>
                                                     {{-- Hiển thị thông tin thuộc tính của sản phẩm --}}
                                                     <li class="text-content">Attribute: {{ $value['attributeName'] }}</li>

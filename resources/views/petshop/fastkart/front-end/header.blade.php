@@ -180,49 +180,31 @@
 
                                             <div class="onhover-div">
                                                 <ul class="cart-list">
+                                                    @foreach ($cartItems as $key => $value)
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
                                                             <a href="product-left-thumbnail.php" class="drop-image">
-                                                                <img src="{{ asset('front-end/assets/images/vegetable/product/1.png') }}"
+                                                                <img src="{{ asset('front-end/assets/images/product/') }}/{{ $value['image'] }}"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
                                                             <div class="drop-contain">
-                                                                <a href="product-left-thumbnail.php">
-                                                                    <h5>Fantasy Crunchy Choco Chip Cookies</h5>
+                                                                <a href="{{ route('productDetail', ['id' => $value['productId']]) }}">
+                                                                    <h5>{{ $value['name'] }}</h5>
                                                                 </a>
-                                                                <h6><span>1 x</span> $80.58</h6>
+                                                                <h6><span>{{ $value['quantity'] }} x</span> ${{ $value['price'] }}</h6>
                                                                 <button class="close-button close_button">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </li>
-
-                                                    <li class="product-box-contain">
-                                                        <div class="drop-cart">
-                                                            <a href="product-left-thumbnail.php" class="drop-image">
-                                                                <img src="{{ asset('front-end/assets/images/vegetable/product/2.png') }}"
-                                                                    class="blur-up lazyload" alt="">
-                                                            </a>
-
-                                                            <div class="drop-contain">
-                                                                <a href="product-left-thumbnail.php">
-                                                                    <h5>Peanut Butter Bite Premium Butter Cookies 600 g
-                                                                    </h5>
-                                                                </a>
-                                                                <h6><span>1 x</span> $25.68</h6>
-                                                                <button class="close-button close_button">
-                                                                    <i class="fa-solid fa-xmark"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
 
                                                 <div class="price-box">
                                                     <h5>Total :</h5>
-                                                    <h4 class="theme-color fw-bold">$106.58</h4>
+                                                    <h4 class="theme-color fw-bold">${{ $totalUSD }}</h4>
                                                 </div>
 
                                                 <div class="button-group">
@@ -388,82 +370,6 @@
                                                 </div>
                                             </li>
 
-                                            {{-- <li class="nav-item dropdown dropdown-mega">
-                                                <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
-                                                    href="javascript:void(0)" data-bs-toggle="dropdown">Mega Menu</a>
-
-                                                <div class="dropdown-menu dropdown-menu-2">
-                                                    <div class="row">
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">Daily Vegetables</h5>
-                                                            <a class="dropdown-item" href="shop-left-sidebar.php">Beans
-                                                                & Brinjals</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Broccoli & Cauliflower</a>
-
-                                                            <a href="shop-left-sidebar.php"
-                                                                class="dropdown-item">Chilies, Garlic</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Vegetables & Salads</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Gourd, Cucumber</a>
-
-                                                            <a class="dropdown-item" href="shop-left-sidebar.php">Herbs
-                                                                & Sprouts</a>
-
-                                                            <a href="demo-personal-portfolio.php"
-                                                                class="dropdown-item">Lettuce & Leafy</a>
-                                                        </div>
-
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">Baby Tender</h5>
-                                                            <a class="dropdown-item" href="shop-left-sidebar.php">Beans
-                                                                & Brinjals</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Broccoli & Cauliflower</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Chilies, Garlic</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Vegetables & Salads</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Gourd, Cucumber</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Potatoes & Tomatoes</a>
-
-                                                            <a href="shop-left-sidebar.php" class="dropdown-item">Peas
-                                                                & Corn</a>
-                                                        </div>
-
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">Exotic Vegetables</h5>
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Asparagus & Artichokes</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Avocados & Peppers</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Broccoli & Zucchini</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Celery, Fennel & Leeks</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.php">Chilies & Lime</a>
-                                                        </div>
-
-                                                        <div class="dropdown-column dropdown-column-img col-3"></div>
-                                                    </div>
-                                                </div>
-                                            </li> --}}
 
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)"

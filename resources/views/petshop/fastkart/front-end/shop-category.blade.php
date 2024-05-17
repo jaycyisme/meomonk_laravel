@@ -765,94 +765,107 @@
                 <div
                     class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
                     @foreach ($products as $product)
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
-                                        <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
+                                <form action="{{ route('cart.add') }}" method="POST">
+                                    @csrf
 
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                {{-- <input type="hidden" name="attribute" id="selectedAttributeValue" value=""> --}}
+                                <div>
+                                    <div class="row m-0">
+                                        <div class="col-12 px-0">
+                                            <div class="product-box">
+                                                <div class="product-image">
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
+                                                        <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
+                                                    </a>
+                                                    <ul class="product-option">
+                                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="View">
+                                                            <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                                data-bs-target="#view">
+                                                                <i data-feather="eye"></i>
+                                                            </a>
+                                                        </li>
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.php">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
+                                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Compare">
+                                                            <a href="compare.php">
+                                                                <i data-feather="refresh-cw"></i>
+                                                            </a>
+                                                        </li>
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.php" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">{{ $product->category->name }}</span>
-                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
-                                        <h5 class="name">{{ $product->name }}</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">{{ $product->description }}.</p>
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>(4.0)</span>
-                                    </div>
-                                    <h6 class="unit">250 ml</h6>
-                                    <h5 class="price"><span class="theme-color">${{ $product->price }}</span>
+                                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Wishlist">
+                                                            <a href="wishlist.php" class="notifi-wishlist">
+                                                                <i data-feather="heart"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-detail">
+                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}">
+                                                        <h6 class="name">
+                                                            {{ $product->name }}
+                                                        </h6>
+                                                    </a>
 
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-gray">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray"
-                                                    data-type="minus" data-field="">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray"
-                                                    data-type="plus" data-field="">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                                    <h5 class="sold text-content" style="text-align:center;">
+                                                        <span class="theme-color price">${{ $product->price }}</span>
+                                                        {{-- <del>28.56</del> --}}
+                                                    </h5>
+
+                                                    <div class="product-rating mt-sm-2 mt-1" style="display: flex;
+                                                    justify-content: center;">
+                                                        <ul class="rating">
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star"></i>
+                                                            </li>
+                                                        </ul>
+
+                                                        <h6 class="theme-color">In Stock</h6>
+                                                    </div>
+
+                                                    <div class="add-to-cart-box">
+                                                        <button type="submit" class="btn btn-add-cart addcart-button">
+                                                            Add To Cart
+                                                            <span class="add-icon">
+                                                                <i class="fa-solid fa-plus"></i>
+                                                            </span>
+                                                        </button>
+                                                        {{-- <div class="cart_qty qty-box">
+                                                            <div class="input-group">
+                                                                <button type="button" class="qty-left-minus"
+                                                                    data-type="minus" data-field="">
+                                                                    <i class="fa fa-minus"></i>
+                                                                </button>
+                                                                <input class="form-control input-number qty-input"
+                                                                    type="text" name="quantity" value="0" />
+                                                                <button type="button" class="qty-right-plus"
+                                                                    data-type="plus" data-field="">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div> --}}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                                </form>
+                                @endforeach
                 </div>
 
                 <div class="pagination-wrapper">

@@ -37,6 +37,15 @@
 
     <link rel="stylesheet" href="{{ asset('front-end/assets/css/sweat-allert.css') }}">
 
+    <style>
+        .truncate {
+        display: block !important;
+        width: 200px !important; /* Độ rộng tối đa của tên sản phẩm */
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important; /* Hiển thị dấu ba chấm khi văn bản bị cắt */
+}
+    </style>
 </head>
 <body class="bg-effect">
     <!-- Loader Start -->

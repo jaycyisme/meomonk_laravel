@@ -164,11 +164,32 @@
 
                     <div class="col-xl-6 wow fadeInUp">
                         <div class="right-box-contain">
-                            <h6 class="offer-top">30% Off</h6>
+                            <form action="{{ route('cart.add') }}" method="POST">
+                                @csrf
+
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="attribute" id="selectedAttributeValue" value="">
+
+                            <div class="product-count">
+                                <ul>
+                                    <li class="">
+                                        <i data-feather="zap"></i>
+                                        <h6 class="lang">38 Customers Ordered</h6>
+                                    </li>
+                                    <li class="">
+                                        <i data-feather="eye"></i>
+                                        <h6 class="lang">15 Active View in this item</h6>
+                                    </li>
+                                </ul>
+                            </div>
                             <h2 class="name">{{ $product->name }}</h2>
+
+
+
+
                             <div class="price-rating">
-                                <h3 class="theme-color price">$49.50
-                                    {{-- <del class="text-content">$58.46</del> --}}
+                                <h3 class="theme-color price">${{ $product->price }}
+                                    {{-- <del class="text-content">$58.46</del>  --}}
                                     <span
                                         class="offer theme-color">(8% off)</span></h3>
                                 <div class="product-rating custom-rate">
@@ -194,66 +215,19 @@
                             </div>
 
                             <div class="product-contain">
-                                <p class="w-100">{{ $product->description }}.</p>
+                                <p>{{ $product->description }}
+                                </p>
                             </div>
 
                             <div class="product-package">
                                 <div class="product-title">
-                                    <h4>Color </h4>
+                                    <h4>Weight</h4>
                                 </div>
-{{--
-                                <ul class="color circle select-package">
-                                    @foreach ($product->attributes as $attribute)
-                                        <li class="form-check">
-                                            <input class="form-check-input" checked type="radio" name="color" id="small">
-                                            <label class="form-check-label" for="small">
-                                                <span style="background-color: {{ strtolower($attribute->value) }};"></span>
-                                            </label>
-                                        </li>
+                                <select class="form-select" id="selectedAttribute" name="attribute">
+                                    @foreach ($productAttribute as $value)
+                                        <option value="{{ $value->attribute->id}}">{{ $value->attribute->value}}</option>
                                     @endforeach
-                                </ul> --}}
-
-                                <ul class="color circle select-package">
-                                    @foreach ($product->attributes as $index => $attribute)
-                                    <li class="form-check">
-                                        <input class="form-check-input" checked type="radio" name="color" id="color-{{ $index }}" value="{{ strtolower($attribute->value) }}">
-                                        <label class="form-check-label" for="color-{{ $index }}">
-                                            <span style="background-color: {{ strtolower($attribute->value) }};"></span>
-                                        </label>
-                                    </li>
-                                    @endforeach
-                                </ul>
-
-                                {{-- <div class="product-title">
-                                    <h4>Size </h4>
-                                </div> --}}
-
-                                {{-- <ul class="circle select-package">
-                                    <li class="form-check">
-                                        <input class="form-check-input" checked type="radio" name="size" id="small">
-                                        <label class="form-check-label" for="small">
-                                            <span>S</span>
-                                        </label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="medium">
-                                        <label class="form-check-label" for="medium">
-                                            <span>M</span>
-                                        </label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="large">
-                                        <label class="form-check-label" for="large">
-                                            <span>L</span>
-                                        </label>
-                                    </li>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="radio" name="size" id="xl">
-                                        <label class="form-check-label" for="xl">
-                                            <span>XL</span>
-                                        </label>
-                                    </li>
-                                </ul> --}}
+                                </select>
                             </div>
 
                             <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
@@ -301,21 +275,21 @@
 
                             <div class="note-box product-package">
                                 <div class="cart_qty qty-box product-qty">
-                                    <div class="input-group">
-                                        <button type="button" class="qty-left-minus" data-type="minus"
-                                            data-field="">
+                                    <div class="input-group bg-white">
+                                        <button type="button" class="qty-left-minus bg-gray"
+                                            data-type="minus" data-field="">
                                             <i class="fa fa-minus"></i>
                                         </button>
                                         <input class="form-control input-number qty-input" type="text"
                                             name="quantity" value="1">
-                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
+                                        <button type="button" class="qty-right-plus bg-gray"
+                                            data-type="plus" data-field="">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
 
-                                <button onclick="location.href = 'cart.php';"
-                                    class="btn btn-md bg-dark cart-button text-white w-100">Add To Cart</button>
+                                <button type="submit" class="btn btn-md bg-dark cart-button text-white w-100 add-to-cart" name="art-to-cart">Add To Cart</button>
                             </div>
 
                             <div class="buy-box">
@@ -336,7 +310,7 @@
                                 </div>
 
                                 <div class="pickup-detail">
-                                    <h4 class="text-content w-100">{{ $product->description }}.</h4>
+                                    <h4 class="text-content">{{ $product->description }}.</h4>
                                 </div>
 
                                 <div class="product-info">
@@ -386,6 +360,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
