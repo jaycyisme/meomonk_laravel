@@ -299,6 +299,17 @@ class ProductController extends Controller
     }
 
     public function softDelete($id){
+
+        $product = Product::find($id);
+
+        if ($product) {
+            $product->is_active = 0;
+            $product->save();
+            return redirect()->route('products')->with('success', 'Product deleted successfully.');
+        }
+
+        return redirect()->route('products')->with('error', 'Product not found.');
+
     }
 
 
