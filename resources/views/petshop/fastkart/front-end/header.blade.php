@@ -173,11 +173,9 @@
                                     </li>
                                     <li class="right-side">
                                         <div class="onhover-dropdown header-badge">
-                                            <button type="button" class="btn p-0 position-relative header-wishlist">
+                                            <button onclick="location.href = '{{ route('cart.index') }}';" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
-                                                    <span class="visually-hidden">unread messages</span>
-                                                </span>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge">2 <span class="visually-hidden">unread messages</span> </span>
                                             </button>
 
                                             <div class="onhover-div">
@@ -228,7 +226,7 @@
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="{{ route('cart') }}" class="btn btn-sm cart-button">View Cart</a>
+                                                    <a href="{{ route('cart.index') }}" class="btn btn-sm cart-button">View Cart</a>
                                                     <a href="{{ route('checkout') }}" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
                                                 </div>
@@ -290,115 +288,30 @@
                                 </div>
 
                                 <ul class="category-list">
+                                    @foreach($categories_products as $category_product)
                                     <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/vegetable.svg" alt="">
-                                            <h6>Vegetables & Fruit</h6>
+                                        <a href="{{ route('listProductCategory', ['id' => $category_product->id]) }}" class="category-name">
+                                            <img src="{{ asset('front-end/assets/images/category/' . $category_product->icon_url) }}" alt="">
+                                            <h6>{{ $category_product->name }}</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
 
                                         <div class="onhover-category-box">
                                             <div class="list-1">
                                                 <div class="category-title-box">
-                                                    <h5>Organic Vegetables</h5>
+                                                    <h5>{{ $category_product->name }}</h5>
                                                 </div>
                                                 <ul>
+                                                    @foreach($category_product->products as $product)
                                                     <li>
-                                                        <a href="javascript:void(0)">Potato & Tomato</a>
+                                                        <a href="{{ route('productDetail', ['id' => $product->id]) }}">{{ $product->name }}</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Cucumber & Capsicum</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Leafy Vegetables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Root Vegetables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Beans & Okra</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Cabbage & Cauliflower</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Gourd & Drumstick</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Specialty</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="category-title-box">
-                                                    <h5>Organic Vegetables</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Potato & Tomato</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Cucumber & Capsicum</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Leafy Vegetables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Root Vegetables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Beans & Okra</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Cabbage & Cauliflower</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Gourd & Drumstick</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Specialty</a>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
                                     </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="https://themes.pixelstrap.com/fastkart/assets/svg/1/cup.svg" alt="">
-                                            <h6>Beverages</h6>
-                                            <i class="fa-solid fa-angle-right"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box w-100">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>Energy & Soft Drinks</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Soda & Cocktail Mix</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Soda & Cocktail Mix</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Sports & Energy Drinks</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Non Alcoholic Drinks</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Packaged Water</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Spring Water</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">Flavoured Water</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

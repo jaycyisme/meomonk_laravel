@@ -35,6 +35,8 @@
     <!-- Template css -->
     <link id="color-link" rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('front-end/assets/css/sweat-allert.css') }}">
+
 </head>
 <body class="bg-effect">
     <!-- Loader Start -->
@@ -475,5 +477,19 @@
 
     <!-- theme setting js -->
     <script src="{{ asset('front-end/assets/js/theme-setting.js') }}"></script>
+
+    {{-- SWEAT ALLERT --}}
+    <script src="{{ asset('front-end/assets/js/sweetalert.min.js') }}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const attributeSelect = document.getElementById('selectedAttribute');
+            const attributeValueInput = document.getElementById('selectedAttributeValue');
+
+            attributeSelect.addEventListener('change', function() {
+                attributeValueInput.value = this.value;
+            });
+        });
+    </script>
 </body>
 </html>

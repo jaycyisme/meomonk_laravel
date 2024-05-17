@@ -32,7 +32,7 @@
             </li>
 
             <li>
-                <a href="{{ route('cart') }}">
+                <a href="{{ route('cart.index') }}">
                     <i class="iconly-Bag-2 icli fly-cate"></i>
                     <span>Cart</span>
                 </a>
