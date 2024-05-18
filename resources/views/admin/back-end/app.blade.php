@@ -315,7 +315,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="sidebar-list">
+                                {{-- <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-user-3-line"></i>
                                         <span>Roles</span>
@@ -328,7 +328,7 @@
                                             <a href="{{ route('addNewRole') }}">Create Role</a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('media') }}">
