@@ -19,14 +19,7 @@ class CartController extends Controller
 
         $cartItems = $cart->list();
 
-        $subTotal = $this->calculateSubtotal($cartItems);
-        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
-        $couponDiscount = 0;
-        if (session()->has('coupon')) {
-            $coupon = session('coupon');
-            $couponDiscount = $coupon->discount;
-        }
-        $totalUSD = $subTotal - $couponDiscount;
+
 
         $prices = []; // Khởi tạo mảng $prices trống
 
@@ -54,14 +47,21 @@ class CartController extends Controller
         }
 
 
-        $price = [];
 
 
+        $subTotals = $this->calculateSubtotal($cartItems);
+        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
+        $couponDiscount = 0;
+        if (session()->has('coupon')) {
+            $coupon = session('coupon');
+            $couponDiscount = $coupon->discount;
+        }
+        $totalUSDs = $subTotals - $couponDiscount;
+
+// dd($totalUSD);
 
 
-
-
-        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD','prices'));
+        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotals', 'couponDiscount', 'totalUSDs','prices'));
     }
 
 
@@ -70,7 +70,9 @@ class CartController extends Controller
         $subTotal = 0;
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
+
         }
+// dd($subTotal);
         return $subTotal;
     }
 
