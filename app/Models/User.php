@@ -56,8 +56,8 @@ class User extends Authenticatable
     }
 
 
-    // public function rankCustomer()
-    // {
-    //     return $this->belongsTo(RankCustomer::class, 'rank_customer_id');
-    // }
+    public function rankCustomer()
+    {
+        return $this->belongsTo(RankCustomer::class, 'rank_customer_id');
+    }
 }

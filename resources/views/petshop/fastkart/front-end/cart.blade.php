@@ -187,12 +187,12 @@
                     <div class="button-group cart-button">
                         <ul>
                             <li>
-                                <button onclick="location.href = 'checkout.php';"
+                                <button onclick="location.href = '{{ route('loginCheckout') }}';"
                                     class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
                             </li>
 
                             <li>
-                                <button onclick="location.href = 'index.php';"
+                                <button onclick="location.href = '{{ route('index') }}';"
                                     class="btn btn-light shopping-button text-dark">
                                     <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping</button>
                             </li>

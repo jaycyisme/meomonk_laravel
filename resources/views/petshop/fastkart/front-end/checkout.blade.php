@@ -576,30 +576,73 @@
                         </div>
 
                         <ul class="summery-contain">
-                            @foreach ($cartItems as $item)
                             <li>
-                                <img src="{{ $item['image'] }}"
+                                <img src="../assets/images/vegetable/product/1.png"
                                     class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>{{ $item['name'] }} <span>X {{ $item['quantity'] }}</span></h4>
-                                <h4 class="price">${{ number_format($item['price'], 2) }}</h4>
+                                <h4>Bell pepper <span>X 1</span></h4>
+                                <h4 class="price">$32.34</h4>
                             </li>
-                            @endforeach
+
+                            <li>
+                                <img src="../assets/images/vegetable/product/2.png"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>Eggplant <span>X 3</span></h4>
+                                <h4 class="price">$12.23</h4>
+                            </li>
+
+                            <li>
+                                <img src="../assets/images/vegetable/product/3.png"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>Onion <span>X 2</span></h4>
+                                <h4 class="price">$18.27</h4>
+                            </li>
+
+                            <li>
+                                <img src="../assets/images/vegetable/product/4.png"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>Potato <span>X 1</span></h4>
+                                <h4 class="price">$26.90</h4>
+                            </li>
+
+                            <li>
+                                <img src="../assets/images/vegetable/product/5.png"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>Baby Chili <span>X 1</span></h4>
+                                <h4 class="price">$19.28</h4>
+                            </li>
+
+                            <li>
+                                <img src="../assets/images/vegetable/product/6.png"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>Broccoli <span>X 2</span></h4>
+                                <h4 class="price">$29.69</h4>
+                            </li>
                         </ul>
 
                         <ul class="summery-total">
                             <li>
                                 <h4>Subtotal</h4>
-                                <h4 class="price">${{ number_format($subTotal, 2) }}</h4>
+                                <h4 class="price">$111.81</h4>
+                            </li>
+
+                            <li>
+                                <h4>Shipping</h4>
+                                <h4 class="price">$8.90</h4>
+                            </li>
+
+                            <li>
+                                <h4>Tax</h4>
+                                <h4 class="price">$29.498</h4>
                             </li>
 
                             <li>
                                 <h4>Coupon/Code</h4>
-                                <h4 class="price">$-{{ number_format($couponDiscount, 2) }}</h4>
+                                <h4 class="price">$-23.10</h4>
                             </li>
 
                             <li class="list-total">
                                 <h4>Total (USD)</h4>
-                                <h4 class="price">${{ number_format($totalUSD, 2) }}</h4>
+                                <h4 class="price">$19.28</h4>
                             </li>
                         </ul>
                     </div>
@@ -624,10 +667,7 @@
                         </ul>
                     </div>
 
-                    <form action="{{ route('payment') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Place Order</button>
-                    </form>
+                    <button class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Place Order</button>
                 </div>
             </div>
         </div>
