@@ -271,4 +271,5 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.r
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
 
 
-Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
