@@ -1,7 +1,21 @@
 @extends('admin.back-end.app')
 @section('content')
 <!-- index body start -->
-            <div class="page-body">
+
+
+            <div class="page-body"  >
+                <div class="sortyear" style="display: flex; align-items: center;  width: 200px; margin-left: 30px;" >
+                    <strong style="font-weight: 900;">Sort:</strong>
+                    <select class="form-control" id="yearFilter" onchange="filterData()">
+                        <!-- Thêm các option cho năm từ 2020 đến 2030 -->
+                        <option value="{{ $selectedYear }}" selected>{{ $selectedYear }}</option>
+
+                        @for ($year =2024; $year >= 2010; $year--)
+                        <option value="{{ $year }}">{{ $year }}</option>
+                    @endfor
+                    </select>
+                </div>
+
                 <div class="container-fluid">
                     <div class="row">
                         <!-- chart card section start -->
@@ -257,22 +271,13 @@
                             <div class="card o-hidden card-hover">
                                 <div class="card-header border-0 pb-1">
                                     <div class="card-header-title">
-                                        <h4>Biểu đồ doanh số theo tháng</h4>
+                                        <h4>Monthly revenue chart</h4>
+
+
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
-                                    <div class="form-group" style="display: flex; align-items: center;" >
-                                        <strong>Chọn năm:</strong>
-                                        <select class="form-control" id="yearFilter" onchange="filterData()">
-                                            <!-- Thêm các option cho năm từ 2020 đến 2030 -->
-                                            <option value="{{ $selectedYear }}" selected>{{ $selectedYear }}</option>
 
-                                            @for ($year =2024; $year >= 2010; $year--)
-                                            <option value="{{ $year }}">{{ $year }}</option>
-                                        @endfor
-                                        </select>
-
-                                    </div>
                                     <canvas id="report-chart"></canvas>
                                 </div>
                             </div>
@@ -311,15 +316,17 @@
                                             w-image
                                             w-image table border-0">
                                                 <tbody>
+
+                                                    @foreach($topProducts as $product)
                                                     <tr>
                                                         <td>
                                                             <div class="best-product-box">
                                                                 <div class="product-image">
-                                                                    <img src="assets/images/product/1.png"
+                                                                    <img src="{{ asset('front-end/assets/images/product/' . $product->product->image) }}"
                                                                         class="img-fluid" alt="Product">
                                                                 </div>
                                                                 <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
+                                                                    <h5>{{ $product->product->name }}</h5>
                                                                     <h6>26-08-2022</h6>
                                                                 </div>
                                                             </div>
@@ -328,118 +335,28 @@
                                                         <td>
                                                             <div class="product-detail-box">
                                                                 <h6>Price</h6>
-                                                                <h5>$29.00</h5>
+                                                                <h5>${{ $product->product->price }}</h5>
                                                             </div>
                                                         </td>
 
                                                         <td>
                                                             <div class="product-detail-box">
                                                                 <h6>Orders</h6>
-                                                                <h5>62</h5>
+                                                                <h5>{{ $product->total_quantity }}</h5>
                                                             </div>
                                                         </td>
 
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Stock</h6>
-                                                                <h5>510</h5>
-                                                            </div>
-                                                        </td>
 
                                                         <td>
                                                             <div class="product-detail-box">
                                                                 <h6>Amount</h6>
-                                                                <h5>$1,798</h5>
+                                                                <h5>${{ $product->product->price * $product->total_quantity }}</h5>
                                                             </div>
                                                         </td>
                                                     </tr>
 
-                                                    <tr>
-                                                        <td>
-                                                            <div class="best-product-box">
-                                                                <div class="product-image">
-                                                                    <img src="assets/images/product/2.png"
-                                                                        class="img-fluid" alt="Product">
-                                                                </div>
-                                                                <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>26-08-2022</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
+                                                @endforeach
 
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$29.00</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Orders</h6>
-                                                                <h5>62</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Stock</h6>
-                                                                <h5>510</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Amount</h6>
-                                                                <h5>$1,798</h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="best-product-box">
-                                                                <div class="product-image">
-                                                                    <img src="assets/images/product/3.png"
-                                                                        class="img-fluid" alt="Product">
-                                                                </div>
-                                                                <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>26-08-2022</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$29.00</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Orders</h6>
-                                                                <h5>62</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Stock</h6>
-                                                                <h5>510</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Amount</h6>
-                                                                <h5>$1,798</h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -847,39 +764,45 @@
             </div>
             <!-- index body end -->
 
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+            {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+            <script src="{{ asset('back-end/assets/js/chart/apex-chart/chart.js') }}"></script>
   <script>
-        // Dữ liệu doanh số theo tháng
-                    var totalAmounts = <?php echo json_encode($totalAmounts); ?>;
+var totalOrders = <?php echo json_encode($totalOrder); ?>;
+var totalBills = <?php echo json_encode($totalAmounts); ?>;
 
-            // Lấy thẻ canvas từ HTML
-            var ctx = document.getElementById('report-chart').getContext('2d');
+// Lấy thẻ canvas từ HTML
+var ctx = document.getElementById('report-chart').getContext('2d');
 
-            // Tạo biểu đồ cột
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    // labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-                    datasets: [{
-                        label: 'Doanh số theo tháng',
-                        data: totalAmounts,
-                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Màu nền của cột
-                        borderColor: 'rgba(54, 162, 235, 1)', // Màu viền của cột
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
+// Tạo biểu đồ cột
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+
+        datasets: [{
+            label: 'Total Orders',
+            data: totalOrders,
+            backgroundColor: 'rgba(255, 99, 132, 0.5)', // Màu nền của cột cho số lượng đơn hàng (order)
+            borderColor: 'rgba(255, 99, 132, 1)', // Màu viền của cột cho số lượng đơn hàng (order)
+            borderWidth: 1
+        },
+        {
+            label: 'Total Bills $:dollar',
+            data: totalBills,
+            backgroundColor: 'rgba(54, 162, 235, 0.5)', // Màu nền của cột cho tổng số hóa đơn (total bill)
+            borderColor: 'rgba(54, 162, 235, 1)', // Màu viền của cột cho tổng số hóa đơn (total bill)
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
                 }
-            });
-
+            }]
+        }
+    }
+});
 
             function filterData() {
         var selectedYear = document.getElementById('yearFilter').value;
@@ -887,6 +810,8 @@
         window.location.href = '{{ route("showDashboard") }}?year=' + selectedYear;
 
     }
+
+
 
     </script>
 

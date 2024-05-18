@@ -187,8 +187,8 @@
                                     <h4>weight</h4>
                                 </div>
                                 <select class="form-select" id="selectedAttribute" name="attribute">
-                                    @foreach ($product->attributes as $attribute)
-                                        <option value="{{ $attribute->id }}">{{ $attribute->value }}</option>
+                                    @foreach ($productAttribute as $value)
+                                    <option value="{{ $value->attribute->id}}">{{ $value->attribute->value}}</option>
                                     @endforeach
                                 </select>
                             </div>
