@@ -164,7 +164,7 @@
                         <ul>
                             <li>
                                 <h4>Subtotal</h4>
-                                <h4 class="price">${{ number_format($subTotal, 2) }}</h4>
+                                <h4 class="price">${{ number_format($subTotals, 2) }}</h4>
                             </li>
 
                             <li>
@@ -182,7 +182,7 @@
                     <ul class="summery-total">
                         <li class="list-total border-top-0">
                             <h4>Total (USD)</h4>
-                            <h4 class="price theme-color">${{ number_format($totalUSD, 2) }}</h4>
+                            <h4 class="price theme-color">${{ number_format($totalUSDs, 2) }}</h4>
                         </li>
                     </ul>
 

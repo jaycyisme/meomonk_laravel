@@ -72,7 +72,9 @@ class CartController extends Controller
         $subTotal = 0;
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
+
         }
+// dd($subTotal);
         return $subTotal;
     }
 
