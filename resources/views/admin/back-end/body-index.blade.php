@@ -11,7 +11,7 @@
                                     <div class="media align-items-center static-top-widget">
                                         <div class="media-body p-0">
                                             <span class="m-0">Total Revenue</span>
-                                            <h4 class="mb-0 counter">$6659
+                                            <h4 class="mb-0 counter">${{ $totalMoney }}
                                                 <span class="badge badge-light-primary grow">
                                                     <i data-feather="trending-up"></i>8.5%</span>
                                             </h4>
@@ -30,7 +30,7 @@
                                     <div class="media static-top-widget">
                                         <div class="media-body p-0">
                                             <span class="m-0">Total Orders</span>
-                                            <h4 class="mb-0 counter">9856
+                                            <h4 class="mb-0 counter">{{ $totalBills }}
                                                 <span class="badge badge-light-danger grow">
                                                     <i data-feather="trending-down"></i>8.5%</span>
                                             </h4>
@@ -69,7 +69,7 @@
                                     <div class="media static-top-widget">
                                         <div class="media-body p-0">
                                             <span class="m-0">Total Customers</span>
-                                            <h4 class="mb-0 counter">4.6k
+                                            <h4 class="mb-0 counter">{{ $totalActiveUsers }}
                                                 <span class="badge badge-light-success grow">
                                                     <i data-feather="trending-down"></i>8.5%</span>
                                             </h4>
@@ -257,14 +257,27 @@
                             <div class="card o-hidden card-hover">
                                 <div class="card-header border-0 pb-1">
                                     <div class="card-header-title">
-                                        <h4>Revenue Report</h4>
+                                        <h4>Biểu đồ doanh số theo tháng</h4>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
-                                    <div id="report-chart"></div>
+                                    <div class="form-group" style="display: flex; align-items: center;" >
+                                        <strong>Chọn năm:</strong>
+                                        <select class="form-control" id="yearFilter" onchange="filterData()">
+                                            <!-- Thêm các option cho năm từ 2020 đến 2030 -->
+                                            <option value="{{ $selectedYear }}" selected>{{ $selectedYear }}</option>
+
+                                            @for ($year =2024; $year >= 2010; $year--)
+                                            <option value="{{ $year }}">{{ $year }}</option>
+                                        @endfor
+                                        </select>
+
+                                    </div>
+                                    <canvas id="report-chart"></canvas>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Earning chart  end-->
 
 
@@ -634,13 +647,13 @@
                         <!-- Earning chart star-->
                         <div class="col-xl-6">
                             <div class="card o-hidden card-hover">
-                                <div class="card-header border-0 mb-0">
+                                <div class="card-header border-0 pb-1">
                                     <div class="card-header-title">
-                                        <h4>Earning</h4>
+                                        <h4>Revenue Report</h4>
                                     </div>
                                 </div>
                                 <div class="card-body p-0">
-                                    <div id="bar-chart-earning"></div>
+                                    <div id="report-chart"></div>
                                 </div>
                             </div>
                         </div>
@@ -833,4 +846,49 @@
                 <!-- Container-fluid Ends-->
             </div>
             <!-- index body end -->
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+        // Dữ liệu doanh số theo tháng
+                    var totalAmounts = <?php echo json_encode($totalAmounts); ?>;
+
+            // Lấy thẻ canvas từ HTML
+            var ctx = document.getElementById('report-chart').getContext('2d');
+
+            // Tạo biểu đồ cột
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    // labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                    datasets: [{
+                        label: 'Doanh số theo tháng',
+                        data: totalAmounts,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Màu nền của cột
+                        borderColor: 'rgba(54, 162, 235, 1)', // Màu viền của cột
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+
+            function filterData() {
+        var selectedYear = document.getElementById('yearFilter').value;
+        // Chuyển hướng đến trang mới với năm được chọn
+        window.location.href = '{{ route("showDashboard") }}?year=' + selectedYear;
+
+    }
+
+    </script>
+
+
 @endsection

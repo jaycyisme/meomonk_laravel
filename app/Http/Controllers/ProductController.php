@@ -400,6 +400,12 @@ public function listProduct(Request $request) {
 
         $productAttribute = ProductAttribute::where('product_id', $id)->get();
 
+
+
+
+        $productAttribute = ProductAttribute::where('product_id', $id)->get();
+
+
         $category_id = $product->category->id;
         switch ($category_id) {
             case 3:
