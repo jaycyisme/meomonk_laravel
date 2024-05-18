@@ -183,7 +183,7 @@
                                                     @foreach ($cartItems as $key => $value)
                                                     <li class="product-box-contain">
                                                         <div class="drop-cart">
-                                                            <a href="product-left-thumbnail.php" class="drop-image">
+                                                            <a href="{{ route('productDetail', ['id' => $value['productId']]) }}" class="drop-image">
                                                                 <img src="{{ asset('front-end/assets/images/product/') }}/{{ $value['image'] }}"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
@@ -192,7 +192,7 @@
                                                                 <a href="{{ route('productDetail', ['id' => $value['productId']]) }}">
                                                                     <h5>{{ $value['name'] }}</h5>
                                                                 </a>
-                                                                <h6><span>{{ $value['quantity'] }} x</span> ${{ $value['price'] }}</h6>
+                                                                <h6><span>{{ $value['quantity'] }} x</span> ${{ number_format($value['price'], 2) }}</h6>
                                                                 <button class="close-button close_button">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>
@@ -204,13 +204,12 @@
 
                                                 <div class="price-box">
                                                     <h5>Total :</h5>
-                                                    <h4 class="theme-color fw-bold">${{ $totalUSD }}</h4>
+                                                    <h4 class="theme-color fw-bold">${{ number_format($totalUSD, 2) }}</h4>
                                                 </div>
 
                                                 <div class="button-group">
                                                     <a href="{{ route('cart.index') }}" class="btn btn-sm cart-button">View Cart</a>
-                                                    <a href="{{ route('checkout') }}" class="btn btn-sm cart-button theme-bg-color
-                                                    text-white">Checkout</a>
+                                                    <a href="{{ route('checkout') }}" class="btn btn-sm cart-button theme-bg-color text-white">Checkout</a>
                                                 </div>
                                             </div>
                                         </div>

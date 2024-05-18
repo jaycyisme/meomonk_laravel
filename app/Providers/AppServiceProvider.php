@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Helper\Cart;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
-use App\Helper\Cart;
-use Illuminate\Support\ServiceProvider;
+use App\Models\Attribute;
+use App\Models\ProductAttribute;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,11 +47,34 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $cart = app(Cart::class);  // get the Cart instance
             $cartItems = $cart->list();
+
+            $prices = []; // Khởi tạo mảng $prices trống
+
+            // Update prices based on attributes
+            foreach ($cartItems as &$item) {
+                $product = Product::find($item['productId']);
+                if ($product) {
+                    $attribute = Attribute::find($item['attribute']);
+                    if ($attribute) {
+                        // Tìm product attribute tương ứng
+                        $productAttribute = ProductAttribute::where('product_id', $item['productId'])
+                                                            ->where('attribute_id', $attribute->id)
+                                                            ->first();
+                        if ($productAttribute) {
+                            // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
+                            $item['price'] = $product->price * (1 + $item['percent'] / 100);
+                            // Thêm giá trị price vào mảng $prices
+                            $prices[] = $item['price'];
+                        }
+                    }
+                }
+            }
+
             $subTotal = $this->calculateSubtotal($cartItems);
             $couponDiscount = session()->has('coupon') ? session('coupon')->discount : 0;
             $totalUSD = $subTotal - $couponDiscount;
 
-            $view->with(compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
+            $view->with(compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD', 'prices'));
         });
     }
 

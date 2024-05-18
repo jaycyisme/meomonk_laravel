@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Cart;
+use App\Models\Bill;
 use App\Models\Brand;
 use App\Models\Coupon;
 use App\Models\Product;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+session_start();
 class CartController extends Controller
 {
     public function index(Cart $cart) {
@@ -120,7 +121,34 @@ class CartController extends Controller
 
         $quantity = $request->has('quantity') ? $request->quantity : 1;
         $attribute = $request->attribute;
-        $cart->add($product, $quantity, $attribute_id , $percent,$attributeName );
+
+        $bill_id = session('bill');
+
+        if (!$bill_id) {
+            $bill = Bill::create([
+                'total_money' => 0,  // Initially 0, will be updated later
+                'trading_code' => uniqid(),  // Generate a unique trading code
+                'create_time' => now(),
+                'update_time' => now(),
+                'bill_status_id' => 1,  // Assuming 1 is the default status
+                'payment_method_id' => 1,  // Assuming 1 is the default payment method
+                'is_active' => false,
+            ]);
+            session(['bill' => $bill->id]);
+        } else {
+            $bill = Bill::find($bill_id);
+        }
+
+        // Thêm BillProduct
+        $bill->billProducts()->create([
+            'product_id' => $product->id,
+            'quantity' => $quantity,
+            'price' => $product->price,
+        ]);
+
+        $cart->add($product, $quantity, $attribute_id , $percent, $attributeName);
+
+
 
         return redirect()->route('cart.index');
     }

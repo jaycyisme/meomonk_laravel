@@ -40,7 +40,7 @@ Route::get('/blog-list', [PagesController::class, 'blogList']);
 
 // Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
 
-Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
+// Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
 
 Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact-us');
 
@@ -274,4 +274,7 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.r
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
 
 
-Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');
+// Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
+Route::post('/update-bill-status', [CheckoutController::class, 'updateBillStatus'])->name('updateBillStatus');

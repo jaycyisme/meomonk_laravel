@@ -18,13 +18,13 @@ return new class extends Migration
             $table->date('create_time');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->date('update_time');
-            $table->unsignedBigInteger('bill_status_id');
+            $table->unsignedBigInteger('bill_status_id')->nullable();
             $table->unsignedBigInteger('payment_method_id');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('bill_status_id')->references('id')->on('bill_status')->onDelete('cascade');
+            // $table->foreign('bill_status_id')->references('id')->on('bill_status')->onDelete('cascade');
             $table->foreign('payment_method_id')->references('id')->on('payment_method')->onDelete('cascade');
         });
     }
