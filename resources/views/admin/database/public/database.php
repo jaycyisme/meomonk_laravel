@@ -1,4 +1,4 @@
-<?php    
+<?php
     class access_db
     {
         private $host="localhost"; #Địa chỉ ip máy chủ
@@ -17,7 +17,7 @@
                 die( "Lỗi kết nối".$this->ocon->connect_error);
             }
         }
-        
+
         public function _viewTable($tablename)
         {
             $sql="SELECT * FROM $tablename";
@@ -30,13 +30,13 @@
             }
             return $data;
         }
-        
+
         public function _search_query(string $sql)
         {
             $result=$this->ocon->query($sql);
             return $result->fetch_assoc();
         }
-        
+
         public function excute($_query)
         {
             if($this->ocon->query($_query)===TRUE)
@@ -45,7 +45,7 @@
                 return FALSE;
         }
     }
-    
+
     $db = new access_db("meomonk");
 
 ?>
