@@ -28,6 +28,7 @@ class CartController extends Controller
         }
         $totalUSD = $subTotal - $couponDiscount;
 
+        $prices = []; // Khởi tạo mảng $prices trống
 
         // Update prices based on attributes
         foreach ($cartItems as &$item) {
@@ -41,20 +42,26 @@ class CartController extends Controller
                                                         ->first();
                     if ($productAttribute) {
                         $originalPrice = $item['price'];
+
                         // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
                         $item['price'] = $product->price * (1 + $item['percent'] / 100);
-                        // echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
+
+                        // Thêm giá trị price vào mảng $prices
+                        $prices[] = $item['price'];
                     }
                 }
             }
         }
 
 
+        $price = [];
 
 
 
 
-        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
+
+
+        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD','prices'));
     }
 
 
@@ -101,15 +108,15 @@ class CartController extends Controller
         }
 
         $percent = $productAttribute->percent;
+
         $attributeName = $attribute->value;
-        // dd($request->attribute);
+        // dd($percent);
 
         $quantity = $request->has('quantity') ? $request->quantity : 1;
         $attribute = $request->attribute;
         $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
 
         return redirect()->route('cart.index');
-
     }
 
     public function remove($id, Cart $cart) {

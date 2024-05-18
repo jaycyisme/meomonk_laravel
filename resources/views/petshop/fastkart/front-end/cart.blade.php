@@ -74,33 +74,34 @@
                     <div class="table-responsive-xl">
                         <table class="table">
                             <tbody>
-                                @foreach ($cartItems as $key => $value)
+                                @foreach ($cartItems as $values)
                                 <tr class="product-box-contain">
                                     <td class="product-detail">
                                         <div class="product border-0">
-                                            <a href="{{ route('productDetail', ['id' => $value['productId']]) }}" class="product-image">
-                                                <img src="{{ asset('front-end/assets/images/product/') }}/{{ $value['image'] }}"
+                                            <a href="{{ route('productDetail', ['id' => $values['productId']]) }}" class="product-image">
+                                                <img src="{{ asset('front-end/assets/images/product/') }}/{{ $values['image'] }}"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <div class="product-detail">
                                                 <ul>
                                                     <li class="name">
-                                                        <a href="{{ route('productDetail', ['id' => $value['productId']]) }}" class="truncate">{{ $value['name'] }}>{{ $value['name'] }}</a>
+                                                        <a href="{{ route('productDetail', ['id' => $values['productId']]) }}" class="truncate">{{ $values['name'] }}>{{ $values['name'] }}</a>
                                                     </li>
                                                     {{-- Hiển thị thông tin thuộc tính của sản phẩm --}}
-                                                    <li class="text-content">Attribute: {{ $value['attributeName'] }}</li>
+                                                    <li class="text-content">Attribute: {{ $values['attributeName'] }}</li>
                                                     <li>
                                                         <h5 class="text-content d-inline-block">Price :</h5>
-                                                        <span>{{ $value['price'] }}</span>
+                                                        <span>{{ $prices[$loop->index] }}</span>
+
                                                     </li>
                                                     <li class="quantity-price-box">
                                                         <div class="cart_qty">
                                                             <input class="form-control input-number qty-input"
-                                                                type="text" name="quantity" value="{{ $value['quantity'] }}" readonly>
+                                                                type="text" name="quantity" value="{{ $values['quantity'] }}" readonly>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <h5>Total: {{ $value['quantity'] * $value['price'] }}</h5>
+                                                        <h5>Total: {{ $values['quantity'] * $prices[$loop->index] }}</h5>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -109,7 +110,7 @@
 
                                     <td class="price">
                                         <h4 class="table-title text-content">Price</h4>
-                                        <h5>{{ $value['price'] }}</h5>
+                                        <h5>{{ $prices[$loop->index] }}</h5>
                                     </td>
 
                                     <td class="quantity">
@@ -118,7 +119,7 @@
                                             <div class="cart_qty">
                                                 <div class="input-group">
                                                     <input class="form-control input-number qty-input"
-                                                        type="text" name="quantity" value="{{ $value['quantity'] }}" readonly>
+                                                        type="text" name="quantity" value="{{ $values['quantity'] }}" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,15 +127,16 @@
 
                                     <td class="subtotal">
                                         <h4 class="table-title text-content">Total</h4>
-                                        <h5>{{ $value['quantity'] * $value['price'] }}</h5>
+                                        <h5>{{ $values['quantity'] * $prices[$loop->index]}}</h5>
                                     </td>
 
                                     <td class="save-remove">
                                         <h4 class="table-title text-content">Action</h4>
-                                        <a class="remove close_button" href="{{ route('cart.remove', ['id' => $value['productId']]) }}">Remove</a>
+                                        <a class="remove close_button" href="{{ route('cart.remove', ['id' => $values['productId']]) }}">Remove</a>
                                     </td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

@@ -29,7 +29,7 @@ class Cart {
             'percent' => $percent,
             'attributeName' => $attributeName
         ];
-
+        // dd($percent);
         $this->items[$product->id] = $item;
         session(['cart' => $this->items]);
     }

@@ -183,17 +183,17 @@
 
                             <div class="product-package">
                                 <div class="product-title">
-
-                                    <h4>weight</h4>
+                                    <h4>Weight</h4>
                                 </div>
                                 <select class="form-select" id="selectedAttribute" name="attribute">
                                     @foreach ($productAttribute as $value)
+
                                     <option value="{{ $value->attribute->id}}">{{ $value->attribute->value}}</option>
+
+
                                     @endforeach
                                 </select>
                             </div>
-
-
 
                             <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"
                                 data-hours="1" data-minutes="2" data-seconds="3">
