@@ -500,5 +500,31 @@
             });
         });
     </script>
+
+<script>
+    function proceedToCheckout() {
+        // Gửi một POST request đến route updateBillStatus
+        fetch('{{ route("updateBillStatus") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => {
+            if (response.ok) {
+                // Nếu cập nhật thành công, chuyển hướng đến trang checkout
+                window.location.href = '{{ route("checkout") }}';
+            } else {
+                // Nếu có lỗi, hiển thị thông báo lỗi
+                console.error('Failed to update bill status.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
 </body>
 </html>

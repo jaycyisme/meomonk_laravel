@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Cart;
+use App\Models\Bill;
 use App\Models\Brand;
 use App\Models\Coupon;
 use App\Models\Product;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+session_start();
 class CartController extends Controller
 {
     public function index(Cart $cart) {
@@ -65,8 +66,6 @@ class CartController extends Controller
     }
 
 
-
-
     private function calculateSubtotal($cartItems)
     {
         $subTotal = 0;
@@ -80,30 +79,68 @@ class CartController extends Controller
 
 
     public function add(Request $request, Cart $cart) {
+
         $product = Product::find($request->id);
 
-        if (!$product) {
-            return redirect()->back()->with('error_message', 'Product not found.');
+        $attribute = Attribute::find($request->attribute);
+
+        $productAttribute = ProductAttribute::where('product_id', $request->id)
+        ->where('attribute_id', $request->attribute)
+        ->first();
+
+        if ($request->has('attribute')) {
+            $attribute = Attribute::find($request->attribute);
+            $productAttribute = ProductAttribute::where('product_id', $request->id)
+                                                ->where('attribute_id', $request->attribute)
+                                                ->first();
+        } else {
+            // Lấy attribute đầu tiên của ProductAttribute
+            $productAttribute = ProductAttribute::where('product_id', $request->id)->first();
+            if ($productAttribute) {
+                $attribute = Attribute::find($productAttribute->attribute_id);
+            } else {
+                // Handle the case where there is no product attribute
+                // You might want to add some error handling or default behavior here
+                return redirect()->back()->with('error_message', 'No attribute available for this product.');
+            }
         }
 
-        // Lấy thông tin thuộc tính
-        $attributeId = $request->attribute;
-        $productAttribute = ProductAttribute::where('product_id', $product->id)
-            ->where('attribute_id', $attributeId)
-            ->first();
-
-        if (!$productAttribute) {
-            return redirect()->back()->with('error_message', 'Product attribute not found.');
+        // Nếu không tìm thấy product hoặc product attribute, redirect về trang trước
+        if (!$product || !$productAttribute) {
+            return redirect()->back()->with('error_message', 'Product or attribute not found.');
         }
 
-        // Tính toán giá của sản phẩm dựa trên thuộc tính
-        $price = $productAttribute->price;
-
-        // Cập nhật giỏ hàng
-        $quantity = $request->has('quantity') ? $request->quantity : 1;
         $percent = $productAttribute->percent;
-        $attributeName = $productAttribute->attribute->value;
-        $cart->add($product, $quantity, $attributeId, $percent, $attributeName, $price);
+
+        $attributeName = $attribute->value;
+        // dd($percent);
+
+        $quantity = $request->has('quantity') ? $request->quantity : 1;
+        $attribute = $request->attribute;
+        $bill_id = session('bill');
+        if (!$bill_id) {
+            $bill = Bill::create([
+                'total_money' => 0,  // Initially 0, will be updated later
+                'trading_code' => uniqid(),  // Generate a unique trading code
+                'create_time' => now(),
+                'update_time' => now(),
+                'bill_status_id' => 1,  // Assuming 1 is the default status
+                'payment_method_id' => 1,  // Assuming 1 is the default payment method
+                'is_active' => false,
+            ]);
+            session(['bill' => $bill->id]);
+        } else {
+            $bill = Bill::find($bill_id);
+        }
+
+        // Thêm BillProduct
+        $bill->billProducts()->create([
+            'product_id' => $product->id,
+            'quantity' => $quantity,
+            'price' => $product->price,
+        ]);
+
+        $cart->add($product, $quantity, $request->attribute, $percent, $attributeName);
 
         return redirect()->route('cart.index');
     }

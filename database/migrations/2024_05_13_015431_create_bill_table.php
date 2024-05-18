@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('update_time');
             $table->unsignedBigInteger('bill_status_id');
             $table->unsignedBigInteger('payment_method_id');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

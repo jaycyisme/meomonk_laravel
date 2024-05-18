@@ -4,11 +4,11 @@ namespace App\Helper;
 
 use Illuminate\Http\Request;
 use App\Models\ProductAttribute;
+use App\Models\Bill;
+use App\Models\BillProduct;
 
 class Cart {
     private $items = [];
-    private $total_quantity = 0;
-    private $total_price = 0;
 
     public function __construct() {
         $this->items = session('cart') ? session('cart') : [];
@@ -26,7 +26,6 @@ class Cart {
         if ($selectedAttribute) {
             $productPrice = $selectedAttribute->price;
         } else {
-            // Nếu không tìm thấy giá trị thuộc tính, sử dụng giá mặc định của sản phẩm
             $productPrice = $product->price;
         }
 
@@ -34,7 +33,7 @@ class Cart {
             'productId' => $product->id,
             'name' => $product->name,
             'productSupplier' => $product->supplier->name,
-            'price' => $productPrice, // Sử dụng giá dựa trên thuộc tính
+            'price' => $productPrice,
             'image' => $product->image,
             'quantity' => $quantity,
             'attribute' => $attribute,
@@ -49,12 +48,9 @@ class Cart {
     public function calculateSubtotal() {
         $subtotal = 0;
         foreach ($this->items as $item) {
-            // Tính giá của từng sản phẩm
             $productPrice = $item['price'];
             $quantity = $item['quantity'];
             $itemTotal = $productPrice * $quantity;
-
-            // Thêm giá của sản phẩm này vào tổng giá
             $subtotal += $itemTotal;
         }
         return $subtotal;
