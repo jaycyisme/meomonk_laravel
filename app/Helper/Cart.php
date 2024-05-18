@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Helper;
 
 use Illuminate\Http\Request;
+use App\Models\ProductAttribute;
 
 class Cart {
     private $items = [];
@@ -16,22 +18,45 @@ class Cart {
         return $this->items;
     }
 
-    public function add($product, $quantity = 1 , $attribute, $percent, $attributeName ) {
+    public function add($product, $quantity = 1, $attribute, $percent, $attributeName) {
+        $selectedAttribute = ProductAttribute::where('product_id', $product->id)
+            ->where('attribute_id', $attribute)
+            ->first();
+
+        if ($selectedAttribute) {
+            $productPrice = $selectedAttribute->price;
+        } else {
+            // Nếu không tìm thấy giá trị thuộc tính, sử dụng giá mặc định của sản phẩm
+            $productPrice = $product->price;
+        }
 
         $item = [
             'productId' => $product->id,
             'name' => $product->name,
             'productSupplier' => $product->supplier->name,
-            'price' => $product->price,
+            'price' => $productPrice, // Sử dụng giá dựa trên thuộc tính
             'image' => $product->image,
             'quantity' => $quantity,
             'attribute' => $attribute,
             'percent' => $percent,
             'attributeName' => $attributeName
         ];
-        // dd($percent);
+
         $this->items[$product->id] = $item;
         session(['cart' => $this->items]);
     }
 
+    public function calculateSubtotal() {
+        $subtotal = 0;
+        foreach ($this->items as $item) {
+            // Tính giá của từng sản phẩm
+            $productPrice = $item['price'];
+            $quantity = $item['quantity'];
+            $itemTotal = $productPrice * $quantity;
+
+            // Thêm giá của sản phẩm này vào tổng giá
+            $subtotal += $itemTotal;
+        }
+        return $subtotal;
+    }
 }

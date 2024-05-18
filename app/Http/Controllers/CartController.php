@@ -19,14 +19,7 @@ class CartController extends Controller
 
         $cartItems = $cart->list();
 
-        $subTotal = $this->calculateSubtotal($cartItems);
-        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
-        $couponDiscount = 0;
-        if (session()->has('coupon')) {
-            $coupon = session('coupon');
-            $couponDiscount = $coupon->discount;
-        }
-        $totalUSD = $subTotal - $couponDiscount;
+
 
         $prices = []; // Khởi tạo mảng $prices trống
 
@@ -54,15 +47,24 @@ class CartController extends Controller
         }
 
 
-        $price = [];
 
 
+        $subTotals = $this->calculateSubtotal($cartItems);
+        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
+        $couponDiscount = 0;
+        if (session()->has('coupon')) {
+            $coupon = session('coupon');
+            $couponDiscount = $coupon->discount;
+        }
+        $totalUSDs = $subTotals - $couponDiscount;
+
+// dd($totalUSD);
 
 
-
-
-        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD','prices'));
+        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotals', 'couponDiscount', 'totalUSDs','prices'));
     }
+
+
 
 
     private function calculateSubtotal($cartItems)
@@ -76,45 +78,30 @@ class CartController extends Controller
 
 
     public function add(Request $request, Cart $cart) {
-
         $product = Product::find($request->id);
 
-        $attribute = Attribute::find($request->attribute);
-
-        $productAttribute = ProductAttribute::where('product_id', $request->id)
-        ->where('attribute_id', $request->attribute)
-        ->first();
-
-        if ($request->has('attribute')) {
-            $attribute = Attribute::find($request->attribute);
-            $productAttribute = ProductAttribute::where('product_id', $request->id)
-                                                ->where('attribute_id', $request->attribute)
-                                                ->first();
-        } else {
-            // Lấy attribute đầu tiên của ProductAttribute
-            $productAttribute = ProductAttribute::where('product_id', $request->id)->first();
-            if ($productAttribute) {
-                $attribute = Attribute::find($productAttribute->attribute_id);
-            } else {
-                // Handle the case where there is no product attribute
-                // You might want to add some error handling or default behavior here
-                return redirect()->back()->with('error_message', 'No attribute available for this product.');
-            }
+        if (!$product) {
+            return redirect()->back()->with('error_message', 'Product not found.');
         }
 
-        // Nếu không tìm thấy product hoặc product attribute, redirect về trang trước
-        if (!$product || !$productAttribute) {
-            return redirect()->back()->with('error_message', 'Product or attribute not found.');
+        // Lấy thông tin thuộc tính
+        $attributeId = $request->attribute;
+        $productAttribute = ProductAttribute::where('product_id', $product->id)
+            ->where('attribute_id', $attributeId)
+            ->first();
+
+        if (!$productAttribute) {
+            return redirect()->back()->with('error_message', 'Product attribute not found.');
         }
 
-        $percent = $productAttribute->percent;
+        // Tính toán giá của sản phẩm dựa trên thuộc tính
+        $price = $productAttribute->price;
 
-        $attributeName = $attribute->value;
-        // dd($percent);
-
+        // Cập nhật giỏ hàng
         $quantity = $request->has('quantity') ? $request->quantity : 1;
-        $attribute = $request->attribute;
-        $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
+        $percent = $productAttribute->percent;
+        $attributeName = $productAttribute->attribute->value;
+        $cart->add($product, $quantity, $attributeId, $percent, $attributeName, $price);
 
         return redirect()->route('cart.index');
     }
