@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bill;
 use App\Models\BillProduct;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,14 +58,13 @@ class DashboardController extends Controller
 
             $totalOrder[$month] = $orderbil;
         }
-
-
         // dd( $selectedYears);
 
         $topProducts = BillProduct::topFiveProducts($selectedYear);
 
+        $categories = Category::where('is_active', 1)->get();
 
-        return view('admin.back-end.body-index', compact('products', 'totalQuantity','totalBills','totalMoney', 'totalActiveUsers', 'totalAmounts','selectedYear','topProducts','totalOrder' ));
+        return view('admin.back-end.body-index', compact('products', 'totalQuantity','totalBills','totalMoney', 'totalActiveUsers', 'totalAmounts','selectedYear','topProducts','totalOrder' ,'categories'));
         // return view('admin.back-end.add-new-product', compact('attributes'));
     }
 }

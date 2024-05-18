@@ -83,14 +83,19 @@ class CartController extends Controller
 
         $attribute = Attribute::find($request->attribute);
 
-        $productAttribute = ProductAttribute::where('product_id', $request->id)
-        ->where('attribute_id', $request->attribute)
-        ->first();
+        if ($request->has('attribute')) {
+
+            $attribute_id = $request->input('attribute');
+        } else {
+            $productAttribute = ProductAttribute::where('product_id', $request->id)->first();
+            $attribute_id = $productAttribute->attribute_id;
+        }
+
 
         if ($request->has('attribute')) {
             $attribute = Attribute::find($request->attribute);
             $productAttribute = ProductAttribute::where('product_id', $request->id)
-                                                ->where('attribute_id', $request->attribute)
+                                                ->where('attribute_id', $attribute_id)
                                                 ->first();
         } else {
             // Lấy attribute đầu tiên của ProductAttribute
@@ -104,7 +109,6 @@ class CartController extends Controller
             }
         }
 
-        // Nếu không tìm thấy product hoặc product attribute, redirect về trang trước
         if (!$product || !$productAttribute) {
             return redirect()->back()->with('error_message', 'Product or attribute not found.');
         }
@@ -116,7 +120,7 @@ class CartController extends Controller
 
         $quantity = $request->has('quantity') ? $request->quantity : 1;
         $attribute = $request->attribute;
-        $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
+        $cart->add($product, $quantity, $attribute_id , $percent,$attributeName );
 
         return redirect()->route('cart.index');
     }

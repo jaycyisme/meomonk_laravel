@@ -42,7 +42,7 @@
                                     <div class="product-main no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" id="img-1"
+                                                <img src="{{ asset('front-end/assets/images/product/' .  $product->image) }}" id="img-1"
                                                     data-zoom-image="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="
                                                     img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
@@ -717,14 +717,27 @@
                                                         </li>
 
                                                     </ul>
-
                                                     <div class="review-title-2">
-                                                        <h4 class="fw-bold">Review this product</h4>
-                                                        <p>Let other customers know what you think</p>
-                                                        <button class="btn" type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#writereview">Write a
-                                                            review</button>
+                                                        <form action="{{ route('addReview') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                            <h4 class="fw-bold">Review this product</h4>
+                                                            <p>Let other customers know what you think</p>
+                                                            <textarea class="form-control" rows="5" placeholder="Write your review here" name="description"></textarea>
+                                                            <label for="rating">Rating:</label>
+                                                            <select class="form-select" id="rating" name="rating">
+                                                                <option value="1">1 star</option>
+                                                                <option value="2">2 stars</option>
+                                                                <option value="3">3 stars</option>
+                                                                <option value="4">4 stars</option>
+                                                                <option value="5">5 stars</option>
+                                                            </select>
+                                                            <button class="btn" type="submit">Write a review</button>
+                                                        </form>
                                                     </div>
+
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1640,4 +1653,23 @@
     </div>
 </section>
 <!-- Related Product Section End -->
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if there's a success message available in session
+        if ("{{ session('success') }}") {
+            // Display the success message as an alert
+            alert('{{ session('success') }}');
+        }
+
+        if ("{{ session('error') }}") {
+            // Display the success message as an alert
+            alert('{{ session('error') }}');
+        }
+
+
+
+
+    });
+</script>
 @endsection
