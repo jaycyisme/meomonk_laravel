@@ -216,8 +216,6 @@ Route::put('/all-users/{id}', [UserController::class, 'update'])->name('updateUs
 
 
 
-
-
 //Bill
 
 Route::get('/order-list', [BillController::class, 'index'])->name('orderList');
@@ -227,11 +225,6 @@ Route::delete('/order-list/{id}', [BillController::class, 'destroy'])->name('ord
 Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.edit');
 
 Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
-
-Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail');
-
-Route::post('/orders/{id}/edit-item', [BillController::class, 'editItems'])->name('orders.editItems');
-
 
 
 
@@ -278,5 +271,4 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.r
 Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
 
 
-Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
+Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');
