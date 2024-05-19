@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(RankCustomer::class, 'rank_customer_id');
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
 }

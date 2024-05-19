@@ -236,7 +236,16 @@ Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail')
 
 
 
+
+
+//Userdash board
+
+
 Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('userDashboard');
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('userDashboard');
+// });
 
 
 
