@@ -103,7 +103,7 @@
                         <div class="product-box-3 h-100">
                             <div class="product-header">
                                 <div class="product-image">
-                                    <a href="product-left-2.php">
+                                    <a href="{{ route('productDetail', ['id' => $search_product->id]) }}">
                                         <img src="{{ asset('front-end/assets/images/product/' . $search_product->image) }}"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
@@ -142,7 +142,7 @@
                             <div class="product-footer">
                                 <div class="product-detail">
                                     <span class="span-name">{{ $search_product->category->name }}</span>
-                                    <a href="product-left-thumbnail.php">
+                                    <a href="{{ route('productDetail', ['id' => $search_product->id]) }}">
                                         <h5 class="name">{{ $search_product->name }}</h5>
                                     </a>
                                     <div class="product-rating mt-2">

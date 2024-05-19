@@ -164,7 +164,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="{{ asset('front-end/assets/images/Banner/3RD/4.png') }}" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{ asset('front-end/assets/images/Banner/3RD/1.png') }}" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -713,7 +713,7 @@
                     <div class="best-selling-slider product-wrapper wow fadeInUp">
                         <div>
                             <ul class="product-list">
-                                @foreach ($food_products->slice(0, 4) as $food_product)
+                                @foreach ($food_products as $food_product)
                                 <li>
                                     <div class="offer-product">
                                         <a href="{{ route('productDetail', ['id' => $food_product->id]) }}" class="offer-image">
@@ -738,7 +738,7 @@
 
                         <div>
                             <ul class="product-list">
-                                @foreach ($toy_products->slice(0, 4) as $toy_product)
+                                @foreach ($toy_products as $toy_product)
                                 <li>
                                     <div class="offer-product">
                                         <a href="{{ route('productDetail', ['id' => $toy_product->id]) }}" class="offer-image">
@@ -763,7 +763,7 @@
 
                         <div>
                             <ul class="product-list">
-                                @foreach ($pharmacy_products->slice(0, 4) as $pharmacy_product)
+                                @foreach ($pharmacy_products as $pharmacy_product)
                                 <li>
                                     <div class="offer-product">
                                         <a href="{{ route('productDetail', ['id' => $pharmacy_product->id]) }}" class="offer-image">

@@ -18,17 +18,39 @@ class HomeController extends Controller
         $food_products = Product::where('category_id', 3)
                         ->orWhere('category_id', 4)
                         ->get();
-        $toy_products = Product::where('category_id', 5)
-                        ->where('is_active', 1)
+                        $food_products = Product::select('product.*', DB::raw('SUM(bill_product.quantity) as total_quantity'))
+                        ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
+                        ->whereIn('product.category_id', [3, 4])
+                        ->where('product.is_active', 1)
+                        ->groupBy('product.id')
+                        ->orderByDesc('total_quantity')
+                        ->take(4)
                         ->get();
-        $pharmacy_products = Product::where('category_id', 6)
-                         ->where('is_active', 1)
+
+        $toy_products = Product::select('product.*', DB::raw('SUM(bill_product.quantity) as total_quantity'))
+                        ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
+                        ->where('product.category_id', 5)
+                        ->where('product.is_active', 1)
+                        ->groupBy('product.id')
+                        ->orderByDesc('total_quantity')
+                        ->take(4)
                         ->get();
+
+        $pharmacy_products = Product::select('product.*', DB::raw('SUM(bill_product.quantity) as total_quantity'))
+                        ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
+                        ->where('product.category_id', 6)
+                        ->where('product.is_active', 1)
+                        ->groupBy('product.id')
+                        ->orderByDesc('total_quantity')
+                        ->take(4)
+                        ->get();
+
         $service_products = Product::where('category_id', 7)
                         ->where('is_active', 1)
                         ->get();
 
-        return view('.petshop.fastkart.front-end.index', compact('categories', 'products', 'food_products', 'brands', 'food_products', 'toy_products', 'pharmacy_products', 'service_products'));
+        return view('.petshop.fastkart.front-end.index', compact('categories', 'products', 'food_products', 'brands', 'food_products', 'toy_products', 'pharmacy_products',
+         'service_products'));
     }
 
     public function search(Request $request) {

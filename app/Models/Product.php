@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -49,6 +50,42 @@ class Product extends Model
     public function billProducts()
     {
         return $this->hasMany(BillProduct::class, 'product_id');
+    }
+
+    public static function topFourFoodProducts()
+    {
+        return self::select('bp.product_id', DB::raw('SUM(bp.quantity) as total_quantity'))
+            ->join('bill_product as bp', 'product.id', '=', 'bp.product_id')
+            ->join('product as p', 'bp.product_id', '=', 'p.id')
+            ->whereIn('p.category_id', [3, 4])
+            ->groupBy('bp.product_id')
+            ->orderByDesc('total_quantity')
+            ->limit(4)
+            ->get();
+    }
+
+    public static function topFourPharmacyProducts()
+    {
+        return self::select('bp.product_id', DB::raw('SUM(bp.quantity) as total_quantity'))
+            ->join('bill_product as bp', 'product.id', '=', 'bp.product_id')
+            ->join('product as p', 'bp.product_id', '=', 'p.id')
+            ->where('p.category_id', 6)
+            ->groupBy('bp.product_id')
+            ->orderByDesc('total_quantity')
+            ->limit(4)
+            ->get();
+    }
+
+    public static function topFourToyProducts()
+    {
+        return self::select('bp.product_id', DB::raw('SUM(bp.quantity) as total_quantity'))
+            ->join('bill_product as bp', 'product.id', '=', 'bp.product_id')
+            ->join('product as p', 'bp.product_id', '=', 'p.id')
+            ->where('p.category_id', 5)
+            ->groupBy('bp.product_id')
+            ->orderByDesc('total_quantity')
+            ->limit(4)
+            ->get();
     }
 
 }
