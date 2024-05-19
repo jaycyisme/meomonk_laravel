@@ -134,22 +134,25 @@ class ProductController extends Controller
 
             $attributeIds = $request->input('attribute_id.*');
             $percents = $request->input('percent.*');
+            if (is_array($attributeIds) > 0 && count($attributeIds) === count($percents)) {
+                if (isset($attributeIds) && !empty($attributeIds)) {
+                    $count = count($attributeIds);
 
-            if (isset($attributeIds) && !empty($attributeIds)) {
-                $count = count($attributeIds);
+                    for ($i = 0; $i < $count; $i++) {
+                        $attributeId = $attributeIds[$i];
+                        $percent = $percents[$i];
 
-                for ($i = 0; $i < $count; $i++) {
-                    $attributeId = $attributeIds[$i];
-                    $percent = $percents[$i];
+                        // Tạo một đối tượng ProductAttribute mới và lưu vào cơ sở dữ liệu
+                        $productAttribute = new ProductAttribute();
+                        $productAttribute->attribute_id = $attributeId;
+                        $productAttribute->product_id = $newProductId;
+                        $productAttribute->percent = $percent;
 
-                    // Tạo một đối tượng ProductAttribute mới và lưu vào cơ sở dữ liệu
-                    $productAttribute = new ProductAttribute();
-                    $productAttribute->attribute_id = $attributeId;
-                    $productAttribute->product_id = $newProductId;
-                    $productAttribute->percent = $percent;
-
-                    $productAttribute->save();
+                        $productAttribute->save();
+                    }
                 }
+            }else{
+                return redirect()->back()->with('error', 'Fill in the attribute');
             }
 
 
