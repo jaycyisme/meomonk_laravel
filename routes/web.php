@@ -48,7 +48,7 @@ Route::get('/faq', [PagesController::class, 'faq']);
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 
-Route::get('/order-success', [PagesController::class, 'orderSuccess']);
+Route::get('/order-success', [PagesController::class, 'orderSuccess'])->name('orderSuccess');
 
 Route::get('/order-user-tracking', [PagesController::class, 'orderUserTracking']);
 

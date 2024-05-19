@@ -124,7 +124,7 @@ class CartController extends Controller
 
         $bill_id = session('bill');
 
-        if (!$bill_id) {
+        if (!$bill_id || Bill::find($bill_id)->is_active) {
             $bill = Bill::create([
                 'total_money' => 0,  // Initially 0, will be updated later
                 'trading_code' => uniqid(),  // Generate a unique trading code

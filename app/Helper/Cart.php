@@ -55,4 +55,9 @@ class Cart {
         }
         return $subtotal;
     }
+
+    public function clear() {
+        $this->items = [];
+        session(['cart' => $this->items]);
+    }
 }

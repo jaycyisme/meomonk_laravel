@@ -52,6 +52,7 @@ class CheckoutController extends Controller
 
         $totalUSDs = $subTotal + $shipping + $tax - $couponDiscount;
 
+
         $offers = [
             "Combo: BB Royal Almond/Badam Californian, Extra Bold 100 gm...",
             "Combo: Royal Cashew Californian, Extra Bold 100 gm + BB Royal Honey 500 gm"
@@ -65,6 +66,15 @@ class CheckoutController extends Controller
         $user_id = Session::get('user_id');
         if (!$user_id) {
             return redirect()->route('login')->with('error_message', 'Please login to proceed.');
+        }
+
+        $bill_id  = Session::get('bill');
+        // dd($bill_id);
+        if ($bill_id) {
+            $bill = Bill::find($bill_id);
+            if ($bill && !$bill->user_id) {
+                $bill->update(['user_id' => $user_id]);
+            }
         }
 
 
@@ -85,6 +95,8 @@ class CheckoutController extends Controller
 
 
         $totalUSD = $request->input('cartItem');
+        $totalUSD = floatval(str_replace(',', '', $totalUSD));
+        $totalUSD = number_format($totalUSD, 2, '.', '');
 
         $bill_id  = Session::get('bill');
 
@@ -94,8 +106,6 @@ class CheckoutController extends Controller
             if ($bill && $bill->user_id) {
                 $bill->is_active = true;
                 $bill->total_money = $totalUSD;
-
-
                 $bill->save();
             }
 
@@ -103,8 +113,11 @@ class CheckoutController extends Controller
 
 
 
+
         // Tính toán số điểm mới
-        $pointIncrement = $totalUSDs / 10;
+        $pointIncrement = $totalUSD / 10;
+
+        // dd($totalUSDs);
 
         // Lấy thông tin user từ session
         $user = User::find($user_id);
@@ -115,9 +128,11 @@ class CheckoutController extends Controller
 
             // Kiểm tra và cập nhật rank_customer_id của user
             $this->updateRankCustomer($user);
-            // Session::put('bill', null);
+            $cart->clear();
+            Session::put('bill', null);
+            Session::put('coupon', null);
 
-            return redirect()->back()->with('success', 'Bill status updated successfully.');
+            return redirect()->route('orderSuccess');
         }
 
         return redirect()->back()->with('error', 'Failed to update bill status.');

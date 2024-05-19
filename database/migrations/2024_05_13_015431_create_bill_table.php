@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bill', function (Blueprint $table) {
             $table->id();
-            $table->double('total_money');
+            $table->decimal('total_money', 15, 2);
             $table->string('trading_code');
             $table->date('create_time');
             $table->unsignedBigInteger('user_id')->nullable();
