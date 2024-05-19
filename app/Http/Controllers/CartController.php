@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Cart;
+use App\Models\Bill;
 use App\Models\Brand;
 use App\Models\Coupon;
 use App\Models\Product;
@@ -12,22 +13,16 @@ use Illuminate\Http\Request;
 use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+session_start();
 class CartController extends Controller
 {
     public function index(Cart $cart) {
 
         $cartItems = $cart->list();
 
-        $subTotal = $this->calculateSubtotal($cartItems);
-        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
-        $couponDiscount = 0;
-        if (session()->has('coupon')) {
-            $coupon = session('coupon');
-            $couponDiscount = $coupon->discount;
-        }
-        $totalUSD = $subTotal - $couponDiscount;
 
+
+        $prices = []; // Khởi tạo mảng $prices trống
 
         // Update prices based on attributes
         foreach ($cartItems as &$item) {
@@ -41,9 +36,12 @@ class CartController extends Controller
                                                         ->first();
                     if ($productAttribute) {
                         $originalPrice = $item['price'];
+
                         // Tính toán giá mới dựa trên giá gốc và phần trăm của thuộc tính
                         $item['price'] = $product->price * (1 + $item['percent'] / 100);
-                        // echo "Product ID: " . $product->id . ", Original Price: " . $originalPrice . ", Price with Attribute: " . $item['price'] . "<br>";
+
+                        // Thêm giá trị price vào mảng $prices
+                        $prices[] = $item['price'];
                     }
                 }
             }
@@ -52,9 +50,19 @@ class CartController extends Controller
 
 
 
+        $subTotals = $this->calculateSubtotal($cartItems);
+        // $couponDiscount = $this->calculateCouponDiscount($subTotal, 'COUPON_CODE_HERE');
+        $couponDiscount = 0;
+        if (session()->has('coupon')) {
+            $coupon = session('coupon');
+            $couponDiscount = $coupon->discount;
+        }
+        $totalUSDs = $subTotals - $couponDiscount;
+
+// dd($totalUSD);
 
 
-        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD'));
+        return view('petshop.fastkart.front-end.cart', compact('cartItems', 'subTotals', 'couponDiscount', 'totalUSDs','prices'));
     }
 
 
@@ -63,7 +71,9 @@ class CartController extends Controller
         $subTotal = 0;
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
+
         }
+// dd($subTotal);
         return $subTotal;
     }
 
@@ -74,14 +84,19 @@ class CartController extends Controller
 
         $attribute = Attribute::find($request->attribute);
 
-        $productAttribute = ProductAttribute::where('product_id', $request->id)
-        ->where('attribute_id', $request->attribute)
-        ->first();
+        if ($request->has('attribute')) {
+
+            $attribute_id = $request->input('attribute');
+        } else {
+            $productAttribute = ProductAttribute::where('product_id', $request->id)->first();
+            $attribute_id = $productAttribute->attribute_id;
+        }
+
 
         if ($request->has('attribute')) {
             $attribute = Attribute::find($request->attribute);
             $productAttribute = ProductAttribute::where('product_id', $request->id)
-                                                ->where('attribute_id', $request->attribute)
+                                                ->where('attribute_id', $attribute_id)
                                                 ->first();
         } else {
             // Lấy attribute đầu tiên của ProductAttribute
@@ -95,21 +110,47 @@ class CartController extends Controller
             }
         }
 
-        // Nếu không tìm thấy product hoặc product attribute, redirect về trang trước
         if (!$product || !$productAttribute) {
             return redirect()->back()->with('error_message', 'Product or attribute not found.');
         }
 
         $percent = $productAttribute->percent;
+
         $attributeName = $attribute->value;
-        // dd($request->attribute);
+        // dd($percent);
 
         $quantity = $request->has('quantity') ? $request->quantity : 1;
         $attribute = $request->attribute;
-        $cart->add($product, $quantity,$request->attribute , $percent,$attributeName );
+
+        $bill_id = session('bill');
+
+        if (!$bill_id || Bill::find($bill_id)->is_active) {
+            $bill = Bill::create([
+                'total_money' => 0,  // Initially 0, will be updated later
+                'trading_code' => uniqid(),  // Generate a unique trading code
+                'create_time' => now(),
+                'update_time' => now(),
+                'bill_status_id' => 1,  // Assuming 1 is the default status
+                'payment_method_id' => 1,  // Assuming 1 is the default payment method
+                'is_active' => false,
+            ]);
+            session(['bill' => $bill->id]);
+        } else {
+            $bill = Bill::find($bill_id);
+        }
+
+        // Thêm BillProduct
+        $bill->billProducts()->create([
+            'product_id' => $product->id,
+            'quantity' => $quantity,
+            'price' => $product->price,
+        ]);
+
+        $cart->add($product, $quantity, $attribute_id , $percent, $attributeName);
+
+
 
         return redirect()->route('cart.index');
-
     }
 
     public function remove($id, Cart $cart) {

@@ -572,77 +572,43 @@
                 <div class="right-side-summery-box">
                     <div class="summery-box-2">
                         <div class="summery-header">
-                            <h3>Order Summery</h3>
+                            <h3>Order Summary</h3>
                         </div>
 
                         <ul class="summery-contain">
+                            @foreach ($cartItems as $item)
                             <li>
-                                <img src="../assets/images/vegetable/product/1.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Bell pepper <span>X 1</span></h4>
-                                <h4 class="price">$32.34</h4>
+                                <img src="{{ asset('front-end/assets/images/product/') }}/{{ $item['image'] }}" class="img-fluid blur-up lazyloaded checkout-image" alt="">
+                                <h4>{{ $item['name'] }} <span>X {{ $item['quantity'] }}</span></h4>
+                                <h4 class="price">${{ number_format($item['price'], 2) }}</h4>
                             </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/2.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Eggplant <span>X 3</span></h4>
-                                <h4 class="price">$12.23</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/3.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Onion <span>X 2</span></h4>
-                                <h4 class="price">$18.27</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/4.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Potato <span>X 1</span></h4>
-                                <h4 class="price">$26.90</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/5.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Baby Chili <span>X 1</span></h4>
-                                <h4 class="price">$19.28</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/6.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Broccoli <span>X 2</span></h4>
-                                <h4 class="price">$29.69</h4>
-                            </li>
+                            @endforeach
                         </ul>
 
                         <ul class="summery-total">
                             <li>
                                 <h4>Subtotal</h4>
-                                <h4 class="price">$111.81</h4>
+                                <h4 class="price">${{ number_format($subTotal, 2) }}</h4>
                             </li>
 
                             <li>
                                 <h4>Shipping</h4>
-                                <h4 class="price">$8.90</h4>
+                                <h4 class="price">${{ number_format($shipping, 2) }}</h4>
                             </li>
 
                             <li>
                                 <h4>Tax</h4>
-                                <h4 class="price">$29.498</h4>
+                                <h4 class="price">${{ number_format($tax, 2) }}</h4>
                             </li>
 
                             <li>
                                 <h4>Coupon/Code</h4>
-                                <h4 class="price">$-23.10</h4>
+                                <h4 class="price">${{ number_format(-$couponDiscount, 2) }}</h4>
                             </li>
 
                             <li class="list-total">
                                 <h4>Total (USD)</h4>
-                                <h4 class="price">$19.28</h4>
+                                <h4 class="price">${{ number_format($subTotal + $shipping + $tax - $couponDiscount, 2) }}</h4>
                             </li>
                         </ul>
                     </div>
@@ -658,20 +624,43 @@
                         </div>
 
                         <ul class="offer-detail">
+                            @foreach ($offers as $offer)
                             <li>
-                                <p>Combo: BB Royal Almond/Badam Californian, Extra Bold 100 gm...</p>
+                                <p>{{ $offer }}</p>
                             </li>
-                            <li>
-                                <p>combo: Royal Cashew Californian, Extra Bold 100 gm + BB Royal Honey 500 gm</p>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
-
-                    <button class="btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold">Place Order</button>
+                    <form action="{{ route('updateBillStatus') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="cartItem" value="{{ number_format($subTotal + $shipping + $tax - $couponDiscount, 2) }}">
+                        <button type="submit" class="btn btn-animation proceed-btn fw-bold">Proceed To Checkout</button>
+                    </form>
                 </div>
             </div>
+
+
         </div>
     </div>
 </section>
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if there's a success message available in session
+        if ("{{ session('success') }}") {
+            // Display the success message as an alert
+            alert('{{ session('success') }}');
+        }
+
+        if ("{{ session('error') }}") {
+            // Display the success message as an alert
+            alert('{{ session('error') }}');
+        }
+
+
+
+
+    });
+</script>
 <!-- Checkout section End -->
 @endsection

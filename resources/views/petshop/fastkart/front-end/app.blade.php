@@ -7,6 +7,7 @@
     <meta name="description" content="Fastkart" />
     <meta name="keywords" content="Fastkart" />
     <meta name="author" content="Fastkart" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href=" {{ asset('front-end/assets/images/favicon/1.png') }}" type="image/x-icon" />
     <title>On-demand last-mile delivery</title>
 
@@ -500,5 +501,57 @@
             });
         });
     </script>
+
+{{-- <script>
+    function proceedToCheckout() {
+        // Gửi một POST request đến route updateBillStatus
+        fetch('{{ route("updateBillStatus") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => {
+            if (response.ok) {
+                // Nếu cập nhật thành công, chuyển hướng đến trang checkout
+                window.location.href = '{{ route("checkout") }}';
+            } else {
+                // Nếu có lỗi, hiển thị thông báo lỗi
+                console.error('Failed to update bill status.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script> --}}
+
+
+<script>
+    document.getElementById('proceedToCheckoutBtn').addEventListener('click', function() {
+        fetch('{{ route("updateBillStatus") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Nếu cập nhật thành công, chuyển hướng đến trang thanh toán hoặc thực hiện hành động khác
+                window.location.href = '{{ route("payment") }}';
+            } else {
+                console.error(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
 </body>
 </html>

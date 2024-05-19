@@ -11,12 +11,6 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 
-
-use App\Http\Controllers\UserDashboardController;
-
-
-
-
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -27,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Bill;
+use App\Models\Review;
 
 //FRONT_END
 
@@ -44,7 +40,7 @@ Route::get('/blog-list', [PagesController::class, 'blogList']);
 
 // Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
 
-Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
+// Route::get('/checkout', [PagesController::class, 'checkout'])->name('checkout');
 
 Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact-us');
 
@@ -52,7 +48,7 @@ Route::get('/faq', [PagesController::class, 'faq']);
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 
-Route::get('/order-success', [PagesController::class, 'orderSuccess']);
+Route::get('/order-success', [PagesController::class, 'orderSuccess'])->name('orderSuccess');
 
 Route::get('/order-user-tracking', [PagesController::class, 'orderUserTracking']);
 
@@ -158,7 +154,8 @@ Route::delete('/products/{id}', [productController::class, 'softDelete'])->name(
 // dashboard
 Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('showDashboard');
 
-
+//review
+Route::post('/addReview', [ReviewController::class, 'store'])->name('addReview');
 
 
 
@@ -232,6 +229,7 @@ Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.ed
 
 Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
 
+<<<<<<< HEAD
 Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail');
 
 
@@ -249,6 +247,8 @@ Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('
 
 
 
+=======
+>>>>>>> c47ea75371257dec22f9c1aa1a2e538409473e13
 
 
 
@@ -278,6 +278,8 @@ Route::post('/verify-otp', [AuthenticationController::class, 'verifyOtp'])->name
 
 Route::post('/login-func', [AuthenticationController::class, 'login'])->name('loginFunction');
 
+Route::get('/user-logout', [AuthenticationController::class, 'logOut'])->name('userLogOut');
+
 
 
 
@@ -289,3 +291,10 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/add-cart', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart.applyCoupon');
+
+
+// Route::get('/login-checkout', [CheckoutController::class, 'login_checkout'])->name('loginCheckout');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
+Route::post('/update-bill-status', [CheckoutController::class, 'updateBillStatus'])->name('updateBillStatus');
