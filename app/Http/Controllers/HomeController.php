@@ -14,7 +14,9 @@ class HomeController extends Controller
     public function index() {
         $categories = Category::where('is_active', 1)->get();
         $brands = Brand::all();
-        $products = Product::where('is_active', 1)->get();
+        $products = Product::where('is_active', 1)
+                        ->where('product.quantity', '>', 0)
+                        ->get();
         $food_products = Product::where('category_id', 3)
                         ->orWhere('category_id', 4)
                         ->get();
@@ -22,6 +24,7 @@ class HomeController extends Controller
                         ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
                         ->whereIn('product.category_id', [3, 4])
                         ->where('product.is_active', 1)
+                        ->where('product.quantity', '>', 0)
                         ->groupBy('product.id')
                         ->orderByDesc('total_quantity')
                         ->take(4)
@@ -31,6 +34,7 @@ class HomeController extends Controller
                         ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
                         ->where('product.category_id', 5)
                         ->where('product.is_active', 1)
+                        ->where('product.quantity', '>', 0)
                         ->groupBy('product.id')
                         ->orderByDesc('total_quantity')
                         ->take(4)
@@ -40,6 +44,7 @@ class HomeController extends Controller
                         ->join('bill_product', 'product.id', '=', 'bill_product.product_id')
                         ->where('product.category_id', 6)
                         ->where('product.is_active', 1)
+                        ->where('product.quantity', '>', 0)
                         ->groupBy('product.id')
                         ->orderByDesc('total_quantity')
                         ->take(4)
@@ -55,7 +60,9 @@ class HomeController extends Controller
 
     public function search(Request $request) {
         $keywords = $request->keywords_submit;
-        $search_product = Product::where('name', 'like', '%'.$keywords.'%')->get();
+        $search_product = Product::where('name', 'like', '%'.$keywords.'%')
+                                    ->where('product.quantity', '>', 0)
+                                    ->get();
 
         return view('.petshop.fastkart.front-end.search', compact('keywords', 'search_product'));
     }

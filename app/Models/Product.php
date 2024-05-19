@@ -88,4 +88,9 @@ class Product extends Model
             ->get();
     }
 
+    public function saleQuantity()
+    {
+        return BillProduct::where('product_id', $this->id)->sum('quantity');
+    }
+
 }

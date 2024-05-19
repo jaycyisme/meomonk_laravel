@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\Cart;
 use App\Models\Bill;
 use App\Models\User;
+use App\Models\Product;
 use App\Models\RankCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -63,6 +64,15 @@ class CheckoutController extends Controller
 
 
     public function updateBillStatus(Request $request, Cart $cart) {
+
+        $cartItems = $cart->list();
+
+        foreach ($cartItems as &$item) {
+            $product = Product::find($item['productId']);
+            $product->update(['quantity' => $product->quantity - $item['quantity']]);
+        }
+
+
         $user_id = Session::get('user_id');
         if (!$user_id) {
             return redirect()->route('login')->with('error_message', 'Please login to proceed.');
