@@ -109,7 +109,7 @@ class PagesController extends Controller
     }
 
     public function wishList() {
-        return view('.petshop.fastkart.front-end.wish-list');
+        return view('.petshop.fastkart.front-end.wishlist');
     }
 
     //BACK_END

@@ -156,7 +156,7 @@
                                         </div>
                                     </li>
                                     <li class="right-side">
-                                        <a href="contact-us.php" class="delivery-login-box">
+                                        <a href="{{ route('contact-us') }}" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
                                             </div>
@@ -167,7 +167,7 @@
                                         </a>
                                     </li>
                                     <li class="right-side">
-                                        <a href="{{ route('wishList') }}" class="btn p-0 position-relative header-wishlist">
+                                        <a href="{{ route('wishlist.index') }}" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -175,7 +175,7 @@
                                         <div class="onhover-dropdown header-badge">
                                             <button onclick="location.href = '{{ route('cart.index') }}';" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2 <span class="visually-hidden">unread messages</span> </span>
+                                                {{-- <span class="position-absolute top-0 start-100 translate-middle badge">2 <span class="visually-hidden">unread messages</span> </span> --}}
                                             </button>
 
                                             <div class="onhover-div">

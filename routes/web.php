@@ -1,30 +1,31 @@
 <?php
 
 
-use App\Http\Controllers\AttributeController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CartController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-
-use App\Http\Controllers\BillController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\HomeController;
-
-use App\Models\Category;
-use Controller\UserControllers;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\dashboard;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\UserController;
 use App\Models\Bill;
 use App\Models\Review;
+use App\Models\Category;
+use Controller\UserControllers;
+use App\Http\Controllers\dashboard;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\CartController;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishListController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthenticationController;
 
 //FRONT_END
 
@@ -78,7 +79,7 @@ Route::get('/sign-up', [PagesController::class, 'signUp'])->name('signUp');
 
 Route::get('/user-dashboard', [PagesController::class, 'userDashboard']);
 
-Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList');
+// Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList');
 
 
 
@@ -278,3 +279,7 @@ Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
 Route::post('/update-bill-status', [CheckoutController::class, 'updateBillStatus'])->name('updateBillStatus');
+
+Route::post('/wishlist/add', [WishListController::class, 'add'])->name('wishlist.add');
+Route::post('/wishlist/remove', [WishListController::class, 'remove'])->name('wishlist.remove');
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
