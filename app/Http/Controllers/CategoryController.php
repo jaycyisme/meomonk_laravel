@@ -79,29 +79,26 @@ class CategoryController extends Controller
 
         // Xử lý ảnh
         if ($request->hasFile('image_url')) {
-            $oldImagePath = public_path('back-end/assets/images/store-images/' . $category->image_url);
+            $oldImagePath = public_path('front-end/assets/images/category/' . $category->image_url);
         if (file_exists($oldImagePath)) {
             File::delete($oldImagePath);
         }
 
         $imageName = 'image_url' . time() . '.' . $request->file('image_url')->extension();
-        $request->file('image_url')->move(public_path('back-end/assets/images/store-images'), $imageName);
+        $request->file('image_url')->move(public_path('front-end/assets/images/category/'), $imageName);
         $category->image_url = $imageName;
         }
 
         if ($request->hasFile('icon_url')) {
-            $oldIconPath = public_path('back-end/assets/images/store-icons/' . $category->icon_url);
+            $oldIconPath = public_path('front-end/assets/images/category/' . $category->icon_url);
         if (file_exists($oldIconPath)) {
             File::delete($oldIconPath);
         }
 
-        $oldIconFrontPath = public_path('front-end/assets/images/category/' . $category->icon_url);
-        if (file_exists($oldIconFrontPath)) {
-            File::delete($oldIconFrontPath);
-        }
+
 
         $iconName = 'icon_url' . time() . '.' . $request->file('icon_url')->extension();
-        $request->file('icon_url')->move(public_path('back-end/assets/images/store-icons'), $iconName);
+        $request->file('icon_url')->move(public_path('front-end/assets/images/category/'), $iconName);
         // $request->file('icon_url')->move(public_path('front-end/assets/images/category'), $iconName);
         $category->icon_url = $iconName;
         }

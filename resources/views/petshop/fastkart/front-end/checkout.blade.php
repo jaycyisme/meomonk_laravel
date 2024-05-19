@@ -633,7 +633,8 @@
                     </div>
                     <form action="{{ route('updateBillStatus') }}" method="POST">
                         @csrf
-                    <button onclick="proceedToCheckout()" class="btn btn-animation proceed-btn fw-bold">Proceed To Checkout</button>
+                        <input type="hidden" name="cartItem" value="{{ number_format($subTotal + $shipping + $tax - $couponDiscount, 2) }}">
+                        <button type="submit" class="btn btn-animation proceed-btn fw-bold">Proceed To Checkout</button>
                     </form>
                 </div>
             </div>
@@ -642,5 +643,24 @@
         </div>
     </div>
 </section>
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if there's a success message available in session
+        if ("{{ session('success') }}") {
+            // Display the success message as an alert
+            alert('{{ session('success') }}');
+        }
+
+        if ("{{ session('error') }}") {
+            // Display the success message as an alert
+            alert('{{ session('error') }}');
+        }
+
+
+
+
+    });
+</script>
 <!-- Checkout section End -->
 @endsection

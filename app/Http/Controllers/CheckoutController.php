@@ -7,6 +7,7 @@ use App\Models\Bill;
 use App\Models\User;
 use App\Models\RankCustomer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 session_start();
@@ -28,7 +29,9 @@ class CheckoutController extends Controller
             return redirect()->route('login')->with('error_message', 'Please login to proceed.');
         }
 
-        $bill_id = session('bill');
+        // $bill_id = session('bill');
+        $bill_id  = Session::get('bill');
+        // dd($bill_id);
         if ($bill_id) {
             $bill = Bill::find($bill_id);
             if ($bill && !$bill->user_id) {
@@ -67,6 +70,7 @@ class CheckoutController extends Controller
 
 
         $cartItems = $cart->list();
+
         $subTotal = $this->calculateSubtotal($cartItems);
         $shipping = 8.90; // Giá trị vận chuyển cố định, bạn có thể thay đổi theo nhu cầu
         $tax = $subTotal * 0.0; // Giả sử thuế là 10% của tổng giá trị
@@ -79,17 +83,26 @@ class CheckoutController extends Controller
 
         $totalUSDs = $subTotal + $shipping + $tax - $couponDiscount;
 
-        $bill_id = Session::get('bill');
+
+        $totalUSD = $request->input('cartItem');
+
+        $bill_id  = Session::get('bill');
+
+        // dd($bill_id);
         if ($bill_id) {
             $bill = Bill::find($bill_id);
-            if ($bill && !$bill->user_id) {
-                $bill->update(['is_active' => false]);
+            if ($bill && $bill->user_id) {
+                $bill->is_active = true;
+                $bill->total_money = $totalUSD;
 
-                $bill->update(['total_money' => $totalUSDs]);
 
-                dd($bill->total_money);
+                $bill->save();
             }
+
         }
+
+
+
         // Tính toán số điểm mới
         $pointIncrement = $totalUSDs / 10;
 
@@ -102,12 +115,12 @@ class CheckoutController extends Controller
 
             // Kiểm tra và cập nhật rank_customer_id của user
             $this->updateRankCustomer($user);
-            Session::put('bill', null);
+            // Session::put('bill', null);
 
-            return redirect()->route('checkout')->with('success_message', 'Bill status updated successfully.');
+            return redirect()->back()->with('success', 'Bill status updated successfully.');
         }
 
-        return redirect()->route('cart.index')->with('error_message', 'Failed to update bill status.');
+        return redirect()->back()->with('error', 'Failed to update bill status.');
     }
 
 
@@ -116,6 +129,7 @@ class CheckoutController extends Controller
         foreach ($cartItems as $item) {
             $subTotal += $item['price'] * $item['quantity'];
         }
+
         return $subTotal;
     }
 

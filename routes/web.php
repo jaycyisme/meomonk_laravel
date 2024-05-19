@@ -21,8 +21,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Bill;
+use App\Models\Review;
 
 //FRONT_END
 
@@ -152,7 +154,8 @@ Route::delete('/products/{id}', [productController::class, 'softDelete'])->name(
 // dashboard
 Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('showDashboard');
 
-
+//review
+Route::post('/addReview', [ReviewController::class, 'store'])->name('addReview');
 
 
 
