@@ -67,7 +67,7 @@ Route::get('/product-pharmacy', [PagesController::class, 'productPharmacy']);
 
 Route::get('/product-color', [PagesController::class, 'productColor']);
 
-Route::get('/search', [PagesController::class, 'search']);
+// Route::get('/search', [PagesController::class, 'search']);
 
 Route::get('/shop-service', [PagesController::class, 'shopService'])->name('shopService');
 
@@ -283,3 +283,6 @@ Route::post('/update-bill-status', [CheckoutController::class, 'updateBillStatus
 Route::post('/wishlist/add', [WishListController::class, 'add'])->name('wishlist.add');
 Route::post('/wishlist/remove', [WishListController::class, 'remove'])->name('wishlist.remove');
 Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+
+
+Route::post('/search', [HomeController::class, 'search'])->name('search');
