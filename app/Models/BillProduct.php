@@ -28,6 +28,7 @@ class BillProduct extends Model
     {
         return self::select('product_id', DB::raw('SUM(quantity) as total_quantity'))
             ->join('bill', 'bill_product.bill_id', '=', 'bill.id')
+            ->where('bill.is_active', 1)
             ->whereYear('bill.create_time', $year)
             ->groupBy('product_id')
             ->orderByDesc('total_quantity')

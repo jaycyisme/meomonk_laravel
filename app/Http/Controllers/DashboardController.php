@@ -58,8 +58,10 @@ class DashboardController extends Controller
         $topProducts = BillProduct::topFiveProducts($selectedYear);
 
         $categories = Category::where('is_active', 1)->get();
+        $topUsers = Bill::topFiveUsersByTotalMoney($selectedYear);
 
-        return view('admin.back-end.body-index', compact('products', 'totalQuantity','totalBills','totalMoney', 'totalActiveUsers', 'totalAmounts','selectedYear','topProducts','totalOrder' ,'categories'));
+
+        return view('admin.back-end.body-index', compact('products', 'totalQuantity','totalBills','totalMoney', 'totalActiveUsers', 'totalAmounts','selectedYear','topProducts','totalOrder' ,'categories','topUsers'));
         // return view('admin.back-end.add-new-product', compact('attributes'));
     }
 }

@@ -262,7 +262,7 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 Route::get('/user-logout', [AuthenticationController::class, 'logOut'])->name('userLogOut');
 
 
-
+Route::get('/app', [AuthenticationController::class, 'app'])->name('app');
 
 
 // CART

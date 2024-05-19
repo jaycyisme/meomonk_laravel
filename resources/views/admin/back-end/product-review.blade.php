@@ -30,40 +30,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>01</td>
-                                        <td>Maureen Biologist</td>
-                                        <td>Outwear & Coats</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
+
                                     @foreach ($reviews as $review)
                                     <tr>
                                         <td>{{$review->id}}</td>

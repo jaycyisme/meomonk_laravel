@@ -16,6 +16,15 @@ class AuthenticationController extends Controller
 {
 
 
+    public function app()
+    {
+        $id= Session::get('user_id');
+        $user  = User::find($id);
+
+        if ($user) {
+            return view('admin.back-end.app', compact('user'));
+        }
+    }
 
     public function AuthLogin() {
         $user_id = Session::get('user_id');

@@ -9,9 +9,11 @@ use App\Models\Category;
 use App\Models\Attribute;
 use App\Models\ProductAttribute;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -85,6 +87,31 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with(compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD', 'prices', 'user'));
         });
+
+
+        $id = Session::get('user_id');
+        $users = User::find($id);
+
+
+        view()->composer('admin.back-end.app', function ($view)  {
+            $id = Session::get('user_id');
+            $users = User::find($id);
+            $view->with(compact('users'));
+        });
+
+        // View::composer('admin.back-end.app', function ($view) {
+        //     $id = Session::get('user_id');
+        //     $user = User::find($id);
+
+        //     // Truyền dữ liệu người dùng sang view 'admin.back-end.app'
+        //     $view->with('user', $user);
+        // });
+
+
+        // view()->composer('admin.back-end.app', function ($view) use ($users) {
+        //     $view->with(compact('users'));
+        // });
+
     }
 
     private function calculateSubtotal($cartItems)
