@@ -156,8 +156,8 @@ Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('show
 
 //review
 Route::post('/addReview', [ReviewController::class, 'store'])->name('addReview');
-
-
+Route::get('/product-review', [ReviewController::class, 'index'])->name('productReview');
+Route::delete('/product-review/{id}', [ReviewController::class, 'Delete'])->name('DeleteReview');
 
 Route::get('/all-users', [PagesController::class, 'allUsers'])->name('allUsers');
 Route::get('/add-new-user', [PagesController::class, 'addNewUser'])->name('addNewUser');
@@ -176,7 +176,7 @@ Route::get('/currency-rates', [PagesController::class, 'currencyRates'])->name('
 // Route::get('/coupon-list', [PagesController::class, 'couponList'])->name('couponList');
 Route::get('/create-coupon', [PagesController::class, 'addNewCoupon'])->name('addNewCoupon');
 
-Route::get('/product-review', [PagesController::class, 'productReview'])->name('productReview');
+// Route::get('/product-review', [PagesController::class, 'productReview'])->name('productReview');
 
 Route::get('/support-ticket', [PagesController::class, 'supportTicket'])->name('supportTicket');
 
