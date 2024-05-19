@@ -868,9 +868,22 @@
                                 @endforeach
                 </div>
 
-                <div class="pagination-wrapper">
-                    {{ $products->links() }}
-                </div>
+                <nav class="custom-pagination">
+                    <ul class="pagination justify-content-center">
+                        @if ($products->previousPageUrl())
+                            <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}&category={{ $categoryFilter }}">Previous</a></li>
+                        @endif
+
+                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                            <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $url }}&category={{ $categoryFilter }}">{{ $page }}</a></li>
+                        @endforeach
+
+                        @if ($products->nextPageUrl())
+                            <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}&category={{ $categoryFilter }}">Next</a></li>
+                        @endif
+                    </ul>
+                </nav>
+
             </div>
         </div>
     </div>

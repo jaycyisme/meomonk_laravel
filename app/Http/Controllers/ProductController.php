@@ -324,7 +324,7 @@ public function listProduct(Request $request) {
         $productsQuery->where('category_id', $categoryFilter);
     }
 
-    // Sử dụng paginate trực tiếp trên query builder
+
     $products = $productsQuery->paginate(12);
 
     $categories = Category::where('is_active', true)
@@ -347,19 +347,23 @@ public function listProduct(Request $request) {
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
+        } else {
+            $productsQuery->where('category_id', $id);
         }
+        $products = $productsQuery->where('is_active', true)
+        ->with('category')
+        ->paginate(10);
 
-        $products = $productsQuery->where('category_id', $id)
-                                    ->where('is_active', true)
-                                    ->with('category')
-                                    ->paginate(12);
-        $categories = Category::where('is_active', true)
-                                ->withCount('products')
-                                ->get();
+    $categories = Category::where('is_active', true)
+        ->withCount('products')
+        ->get();
+
         $brands = Brand::all();
         $pageNumber = $request->input('page', 1);
         return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter','pageNumber'));
     }
+
+
 
     public function listProductBrand($id, Request $request) {
         $categoryFilter = $request->input('category');
@@ -406,6 +410,7 @@ public function listProduct(Request $request) {
         $averageRatings = $reviews->avg('rate');
         $averageRating = number_format($averageRatings, 3);
         $category_id = $product->category->id;
+
         switch ($category_id) {
             case 3:
             case 4:
