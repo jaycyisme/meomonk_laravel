@@ -662,7 +662,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="product-main-rating">
-                                                        <h2>3.40
+                                                        <h2>  {{$averageRating}}
                                                             <i data-feather="star"></i>
                                                         </h2>
 
@@ -671,7 +671,7 @@
                                                 </div>
 
                                                 <div class="col-xl-12">
-                                                    <ul class="product-rating-list">
+                                                    {{-- <ul class="product-rating-list">
                                                         <li>
                                                             <div class="rating-product">
                                                                 <h5>5<i data-feather="star"></i></h5>
@@ -723,7 +723,7 @@
                                                             </div>
                                                         </li>
 
-                                                    </ul>
+                                                    </ul> --}}
                                                     <div class="review-title-2">
                                                         <form action="{{ route('addReview') }}" method="POST">
                                                             @csrf
@@ -753,268 +753,39 @@
                                     <div class="col-xl-7">
                                         <div class="review-people">
                                             <ul class="review-list">
+                                                @foreach ($reviews as $review)
                                                 <li>
                                                     <div class="people-box">
-                                                        <div>
+                                                        {{-- <div>
                                                             <div class="people-image people-text">
                                                                 <img alt="user" class="img-fluid "
                                                                     src="{{asset('front-end')}}/assets/images/review/1.jpg">
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="people-comment">
                                                             <div class="people-name"><a href="javascript:void(0)"
-                                                                    class="name">Jack Doe</a>
+                                                                    class="name">{{$review->user->name}}</a>
                                                                 <div class="date-time">
-                                                                    <h6 class="text-content"> 29 Sep 2023
-                                                                        06:40:PM
+                                                                    <h6 class="text-content">{{$review->created_at}}
                                                                     </h6>
                                                                     <div class="product-rating">
                                                                         <ul class="rating">
+                                                                            @for ($i = 1; $i <= 5; $i++)
                                                                             <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
+                                                                                <i data-feather="star" class="{{ $i <= $review->rate ? 'fill' : '' }}"></i>
                                                                             </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"></i>
-                                                                            </li>
+                                                                        @endfor
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="reply">
-                                                                <p>Avoid this product. The quality is
-                                                                    terrible, and
-                                                                    it started falling apart almost
-                                                                    immediately. I
-                                                                    wish I had read more reviews before
-                                                                    buying.
-                                                                    Lesson learned.</p>
+                                                                <p>{{$review->description}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image people-text">
-                                                                <img alt="user" class="img-fluid "
-                                                                    src="{{asset('front-end')}}/assets/images/review/2.jpg">
-                                                            </div>
-                                                        </div>
-                                                        <div class="people-comment">
-                                                            <div class="people-name"><a href="javascript:void(0)"
-                                                                    class="name">Jessica
-                                                                    Miller</a>
-                                                                <div class="date-time">
-                                                                    <h6 class="text-content"> 29 Sep 2023
-                                                                        06:34:PM
-                                                                    </h6>
-                                                                    <div class="product-rating">
-                                                                        <div class="product-rating">
-                                                                            <ul class="rating">
-                                                                                <li>
-                                                                                    <i data-feather="star"
-                                                                                        class="fill"></i>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <i data-feather="star"
-                                                                                        class="fill"></i>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <i data-feather="star"
-                                                                                        class="fill"></i>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <i data-feather="star"
-                                                                                        class="fill"></i>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <i data-feather="star"></i>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="reply">
-                                                                <p>Honestly, I regret buying this item. The
-                                                                    quality
-                                                                    is subpar, and it feels like a waste of
-                                                                    money. I
-                                                                    wouldn't recommend it to anyone.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image people-text">
-                                                                <img alt="user" class="img-fluid "
-                                                                    src="{{asset('front-end')}}/assets/images/review/3.jpg">
-                                                            </div>
-                                                        </div>
-                                                        <div class="people-comment">
-                                                            <div class="people-name"><a href="javascript:void(0)"
-                                                                    class="name">Rome Doe</a>
-                                                                <div class="date-time">
-                                                                    <h6 class="text-content"> 29 Sep 2023
-                                                                        06:18:PM
-                                                                    </h6>
-                                                                    <div class="product-rating">
-                                                                        <ul class="rating">
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"></i>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="reply">
-                                                                <p>I am extremely satisfied with this
-                                                                    purchase. The
-                                                                    item arrived promptly, and the quality
-                                                                    is
-                                                                    exceptional. It's evident that the
-                                                                    makers paid
-                                                                    attention to detail. Overall, a
-                                                                    fantastic buy!
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image people-text">
-                                                                <img alt="user" class="img-fluid "
-                                                                    src="{{asset('front-end')}}/assets/images/review/4.jpg">
-                                                            </div>
-                                                        </div>
-                                                        <div class="people-comment">
-                                                            <div class="people-name"><a href="javascript:void(0)"
-                                                                    class="name">Sarah
-                                                                    Davis</a>
-                                                                <div class="date-time">
-                                                                    <h6 class="text-content"> 29 Sep 2023
-                                                                        05:58:PM
-                                                                    </h6>
-                                                                    <div class="product-rating">
-                                                                        <ul class="rating">
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"></i>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="reply">
-                                                                <p>I am genuinely delighted with this item.
-                                                                    It's a
-                                                                    total winner! The quality is superb, and
-                                                                    it has
-                                                                    added so much convenience to my daily
-                                                                    routine.
-                                                                    Highly satisfied customer!</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image people-text">
-                                                                <img alt="user" class="img-fluid "
-                                                                    src="{{asset('front-end')}}/assets/images/review/5.jpg">
-                                                            </div>
-                                                        </div>
-                                                        <div class="people-comment">
-                                                            <div class="people-name"><a href="javascript:void(0)"
-                                                                    class="name">John Doe</a>
-                                                                <div class="date-time">
-                                                                    <h6 class="text-content"> 29 Sep 2023
-                                                                        05:22:PM
-                                                                    </h6>
-                                                                    <div class="product-rating">
-                                                                        <ul class="rating">
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"
-                                                                                    class="fill"></i>
-                                                                            </li>
-                                                                            <li>
-                                                                                <i data-feather="star"></i>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="reply">
-                                                                <p>Very impressed with this purchase. The
-                                                                    item is of
-                                                                    excellent quality, and it has exceeded
-                                                                    my
-                                                                    expectations.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>

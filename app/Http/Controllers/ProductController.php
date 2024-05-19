@@ -11,6 +11,7 @@ use App\Models\Attribute;
 use Illuminate\Http\Request;
 use App\Models\ProductStatus;
 use App\Models\ProductAttribute;
+use App\Models\Review;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
@@ -408,6 +409,10 @@ public function listProduct(Request $request) {
 
         $services_related = Product::where('category_id', $product->category_id)->get();
 
+
+        $reviews = Review::where('product_id', $id)->get();
+        $averageRatings = $reviews->avg('rate');
+        $averageRating = number_format($averageRatings, 3);
         $category_id = $product->category->id;
         switch ($category_id) {
             case 3:
@@ -427,6 +432,6 @@ public function listProduct(Request $request) {
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related'));
+        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related','reviews','averageRating'));
     }
 }

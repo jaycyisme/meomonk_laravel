@@ -40,7 +40,6 @@
         </ul>
     </div>
     <!-- mobile fix menu end -->
-
     <!-- Home Section Start -->
     <section class="home-section pt-2">
         <div class="container-fluid-lg">
@@ -48,7 +47,7 @@
                 <div class="col-xl-8 ratio_65">
                     <div class="home-contain h-100">
                         <div class="h-100">
-                            <img src="{{ asset('front-end/assets/images/vegetable/banner/1.jpg') }}" class="bg-img blur-up lazyload" alt="" />
+                            <img src="{{ asset('front-end/assets/images/Banner/1ST/1ST.png') }}" class="bg-img blur-up lazyload" alt="" />
                         </div>
                         <div class="home-detail p-center-left w-75">
                             <div>
@@ -74,7 +73,7 @@
                     <div class="row g-4">
                         <div class="col-xl-12 col-md-6">
                             <div class="home-contain">
-                                <img src="{{ asset('front-end/assets/images/vegetable/banner/2.jpg') }}" class="bg-img blur-up lazyload"
+                                <img src="{{ asset('front-end/assets/images/Banner/2ND/1.png') }}" class="bg-img blur-up lazyload"
                                     alt="" />
                                 <div class="home-detail p-center-left home-p-sm w-75">
                                     <div>
@@ -92,7 +91,7 @@
 
                         <div class="col-xl-12 col-md-6">
                             <div class="home-contain">
-                                <img src="{{ asset('front-end/assets/images/vegetable/banner/3.jpg') }}" class="bg-img blur-up lazyload"
+                                <img src="{{ asset('front-end/assets/images/Banner/2ND/2.png') }}" class="bg-img blur-up lazyload"
                                     alt="" />
                                 <div class="home-detail p-center-left home-p-sm w-75">
                                     <div>
@@ -120,7 +119,7 @@
             <div class="banner-slider">
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{ asset('front-end/assets/images/Banner/3RD/1.png') }}" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -135,7 +134,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{ asset('front-end/assets/images/Banner/3RD/2.png') }}" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -150,7 +149,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{ asset('front-end/assets/images/Banner/3RD/3.png') }}" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
@@ -165,7 +164,7 @@
 
                 <div>
                     <div class="banner-contain hover-effect">
-                        <img src="{{asset('front-end')}}/assets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="" />
+                        <img src="{{ asset('front-end/assets/images/Banner/3RD/4.png') }}" class="bg-img blur-up lazyload" alt="" />
                         <div class="banner-details">
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
