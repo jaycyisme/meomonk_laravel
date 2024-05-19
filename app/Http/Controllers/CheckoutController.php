@@ -79,7 +79,7 @@ class CheckoutController extends Controller
 
         $totalUSDs = $subTotal + $shipping + $tax - $couponDiscount;
 
-        $bill_id = session('bill');
+        $bill_id = Session::get('bill');
         if ($bill_id) {
             $bill = Bill::find($bill_id);
             if ($bill && !$bill->user_id) {
