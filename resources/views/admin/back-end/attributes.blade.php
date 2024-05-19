@@ -136,7 +136,7 @@
 });
 
 </script>
-{{-- <script> --}}
+{{--
     document.addEventListener('DOMContentLoaded', function () {
         const productForm = document.getElementById('productForm');
 
@@ -161,7 +161,7 @@
         const selectedOption = attributeSelect.options[attributeSelect.selectedIndex];
         const selectedText = selectedOption.textContent;
         alert("Selected Attribute: " + selectedText);
-    }
+    } --}}
     </script>
-    >
+
 @endsection

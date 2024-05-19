@@ -114,14 +114,21 @@ class ProductController extends Controller
             }
 
             if ($request->hasFile('Thumbnail4')) {
-                $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail3')->extension();
-                $request->file('Thumbnail4')->move($directory, $thumbnailName3);
+                $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail4')->extension();
+                $request->file('Thumbnail4')->move($directory, $thumbnailName4);
 
                 $product->thumbnail4= $thumbnailName4;
             }
 
 
-            $product->save();
+            $checksave = $product->save();
+
+            if( $checksave ){
+
+            }else{
+                return redirect()->back()->with('error', 'erro!');
+            }
+
 
             $newProductId = $product->id;
 
