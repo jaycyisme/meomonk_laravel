@@ -281,7 +281,7 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                         <input class="form-control input-number qty-input" type="text"
-                                            name="quantity" value="1">
+                                            name="quantity" value="1" max="{{ $product->quantity }}">
                                         <button type="button" class="qty-right-plus bg-gray"
                                             data-type="plus" data-field="">
                                             <i class="fa fa-plus"></i>
@@ -325,7 +325,7 @@
                                     <ul class="product-info-list product-info-list-2">
                                         <li>Type : <a href="javascript:void(0)">{{ $product->category->name }}</a></li>
                                         <li>MFG : <a href="javascript:void(0)">{{ $product->created_at }}</a></li>
-                                        <li>Stock : <a href="javascript:void(0)">{{ $product->productStatus->name }}</a></li>
+                                        <li>Stock : <a href="javascript:void(0)">{{ $product->quantity }}</a></li>
                                         <li>Tags : <a href="javascript:void(0)">{{ $product->brand->name }}</a></li>
                                     </ul>
                                 </div>

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->decimal('total_money', 15, 2);
             $table->string('trading_code');
-            $table->date('create_time');
+            $table->date('create_time')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->date('update_time');
+            $table->date('update_time')->nullable();
             $table->unsignedBigInteger('bill_status_id')->nullable();
             $table->unsignedBigInteger('payment_method_id');
             $table->boolean('is_active')->default(false);

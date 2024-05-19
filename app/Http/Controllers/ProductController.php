@@ -325,7 +325,8 @@ class ProductController extends Controller
 public function listProduct(Request $request) {
     $categoryFilter = $request->input('category');
 
-    $productsQuery = Product::where('is_active', true);
+    $productsQuery = Product::where('is_active', true)
+                            ->where('product.quantity', '>', 0);
 
     if ($categoryFilter) {
         $productsQuery->where('category_id', $categoryFilter);
@@ -350,7 +351,8 @@ public function listProduct(Request $request) {
     public function listProductCategory($id, Request $request) {
         $categoryFilter = $request->input('category');
 
-        $productsQuery = Product::where('is_active', true);
+        $productsQuery = Product::where('is_active', true)
+                        ->where('product.quantity', '>', 0);
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
@@ -375,7 +377,8 @@ public function listProduct(Request $request) {
     public function listProductBrand($id, Request $request) {
         $categoryFilter = $request->input('category');
 
-        $productsQuery = Product::where('is_active', true);
+        $productsQuery = Product::where('is_active', true)
+        ->where('product.quantity', '>', 0);
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
@@ -412,11 +415,14 @@ public function listProduct(Request $request) {
 
         $productAttribute = ProductAttribute::where('product_id', $id)->get();
 
-        $foods_related = Product::where('category_id', $product->category_id)->get();
+        $foods_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
 
-        $toys_related = Product::where('category_id', $product->category_id)->get();
+        $toys_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
 
-        $pharmacies_related = Product::where('category_id', $product->category_id)->get();
+        $pharmacies_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
 
         $services_related = Product::where('category_id', $product->category_id)->get();
 
@@ -425,6 +431,11 @@ public function listProduct(Request $request) {
         $averageRatings = $reviews->avg('rate');
         $averageRating = number_format($averageRatings, 3);
         $category_id = $product->category->id;
+
+        $product = Product::find($id);
+        if ($product) {
+            $saleQuantity = $product->saleQuantity();
+        }
 
         switch ($category_id) {
             case 3:
@@ -444,6 +455,6 @@ public function listProduct(Request $request) {
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related','reviews','averageRating'));
+        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related','reviews','averageRating', 'saleQuantity'));
     }
 }
