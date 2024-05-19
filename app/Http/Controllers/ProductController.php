@@ -405,6 +405,14 @@ public function listProduct(Request $request) {
 
         $productAttribute = ProductAttribute::where('product_id', $id)->get();
 
+        $foods_related = Product::where('category_id', $product->category_id)->get();
+
+        $toys_related = Product::where('category_id', $product->category_id)->get();
+
+        $pharmacies_related = Product::where('category_id', $product->category_id)->get();
+
+        $services_related = Product::where('category_id', $product->category_id)->get();
+
 
         $reviews = Review::where('product_id', $id)->get();
         $averageRatings = $reviews->avg('rate');
@@ -429,6 +437,6 @@ public function listProduct(Request $request) {
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('product', 'productAttribute','reviews','averageRating'));
+        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related','reviews','averageRating'));
     }
 }

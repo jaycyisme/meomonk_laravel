@@ -15,8 +15,6 @@ class DashboardController extends Controller
 {
 
     public function index(Request $request){
-
-
         $selectedYear = $request->input('year', date('Y'));
         $products = Product::where('is_active', 1)->get();
         $totalQuantity = $products->sum('quantity');
@@ -27,11 +25,8 @@ class DashboardController extends Controller
         $totalBills = $bills->count();
         $totalMoney = $bills->sum('total_money');
 
-
-
         $user = User::where('is_active', 1)->get();
         $totalActiveUsers = User::where('is_active', 1)->count();
-
 
         $totalBills = $bills->count();
         $totalAmounts = [];

@@ -210,18 +210,18 @@
 
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Orders</h6>
+                                                                <h6>Quantity Sold</h6>
                                                                 <h5>{{ $product->total_quantity }}</h5>
                                                             </div>
                                                         </td>
 
-
+{{--
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Amount</h6>
+                                                                <h6>Order Count</h6>
                                                                 <h5>${{ $product->product->price * $product->total_quantity }}</h5>
                                                             </div>
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
 
                                                 @endforeach

@@ -8,7 +8,9 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Attribute;
 use App\Models\ProductAttribute;
+use App\Models\User;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -74,7 +76,14 @@ class AppServiceProvider extends ServiceProvider
             $couponDiscount = session()->has('coupon') ? session('coupon')->discount : 0;
             $totalUSD = $subTotal - $couponDiscount;
 
-            $view->with(compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD', 'prices'));
+            $user = null;
+            $user_id = Session::get('user_id');
+            if ($user_id) {
+                $user = User::find($user_id);
+            }
+
+
+            $view->with(compact('cartItems', 'subTotal', 'couponDiscount', 'totalUSD', 'prices', 'user'));
         });
     }
 
