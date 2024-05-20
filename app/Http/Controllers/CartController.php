@@ -120,6 +120,12 @@ class CartController extends Controller
         // dd($percent);
 
         $quantity = $request->has('quantity') ? $request->quantity : 1;
+
+        if ($quantity > $product->quantity) {
+            // Nếu có, giảm giá trị 'quantity' xuống còn bằng số lượng hiện có
+            $quantity = $product->quantity;
+        }
+
         $attribute = $request->attribute;
 
         $bill_id = session('bill');

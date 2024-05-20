@@ -80,5 +80,16 @@ class UserController extends Controller
         }
 
 
+    public function app()
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('allUsers')->with('success', 'User deleted successfully');
+        } else {
+            return redirect()->route('allUsers')->with('error', 'User not found');
+        }
+    }
+
 }
 

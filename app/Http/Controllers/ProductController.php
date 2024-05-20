@@ -11,6 +11,7 @@ use App\Models\Attribute;
 use Illuminate\Http\Request;
 use App\Models\ProductStatus;
 use App\Models\ProductAttribute;
+use App\Models\Review;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
@@ -113,35 +114,45 @@ class ProductController extends Controller
             }
 
             if ($request->hasFile('Thumbnail4')) {
-                $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail3')->extension();
-                $request->file('Thumbnail4')->move($directory, $thumbnailName3);
+                $thumbnailName4 = 'Thumbnail4.' . time() . '.' . $request->file('Thumbnail4')->extension();
+                $request->file('Thumbnail4')->move($directory, $thumbnailName4);
 
                 $product->thumbnail4= $thumbnailName4;
             }
 
 
-            $product->save();
+            $checksave = $product->save();
+
+            if( $checksave ){
+
+            }else{
+                return redirect()->back()->with('error', 'erro!');
+            }
+
 
             $newProductId = $product->id;
 
             $attributeIds = $request->input('attribute_id.*');
             $percents = $request->input('percent.*');
+            if (is_array($attributeIds) > 0 && count($attributeIds) === count($percents)) {
+                if (isset($attributeIds) && !empty($attributeIds)) {
+                    $count = count($attributeIds);
 
-            if (isset($attributeIds) && !empty($attributeIds)) {
-                $count = count($attributeIds);
+                    for ($i = 0; $i < $count; $i++) {
+                        $attributeId = $attributeIds[$i];
+                        $percent = $percents[$i];
 
-                for ($i = 0; $i < $count; $i++) {
-                    $attributeId = $attributeIds[$i];
-                    $percent = $percents[$i];
+                        // Tạo một đối tượng ProductAttribute mới và lưu vào cơ sở dữ liệu
+                        $productAttribute = new ProductAttribute();
+                        $productAttribute->attribute_id = $attributeId;
+                        $productAttribute->product_id = $newProductId;
+                        $productAttribute->percent = $percent;
 
-                    // Tạo một đối tượng ProductAttribute mới và lưu vào cơ sở dữ liệu
-                    $productAttribute = new ProductAttribute();
-                    $productAttribute->attribute_id = $attributeId;
-                    $productAttribute->product_id = $newProductId;
-                    $productAttribute->percent = $percent;
-
-                    $productAttribute->save();
+                        $productAttribute->save();
+                    }
                 }
+            }else{
+                return redirect()->back()->with('error', 'Fill in the attribute');
             }
 
 
@@ -317,13 +328,14 @@ class ProductController extends Controller
 public function listProduct(Request $request) {
     $categoryFilter = $request->input('category');
 
-    $productsQuery = Product::where('is_active', true);
+    $productsQuery = Product::where('is_active', true)
+                            ->where('product.quantity', '>', 0);
 
     if ($categoryFilter) {
         $productsQuery->where('category_id', $categoryFilter);
     }
 
-    // Sử dụng paginate trực tiếp trên query builder
+
     $products = $productsQuery->paginate(12);
 
     $categories = Category::where('is_active', true)
@@ -342,28 +354,34 @@ public function listProduct(Request $request) {
     public function listProductCategory($id, Request $request) {
         $categoryFilter = $request->input('category');
 
-        $productsQuery = Product::where('is_active', true);
+        $productsQuery = Product::where('is_active', true)
+                        ->where('product.quantity', '>', 0);
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
+        } else {
+            $productsQuery->where('category_id', $id);
         }
+        $products = $productsQuery->where('is_active', true)
+        ->with('category')
+        ->paginate(10);
 
-        $products = $productsQuery->where('category_id', $id)
-                                    ->where('is_active', true)
-                                    ->with('category')
-                                    ->paginate(12);
-        $categories = Category::where('is_active', true)
-                                ->withCount('products')
-                                ->get();
+    $categories = Category::where('is_active', true)
+        ->withCount('products')
+        ->get();
+
         $brands = Brand::all();
         $pageNumber = $request->input('page', 1);
         return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter','pageNumber'));
     }
 
+
+
     public function listProductBrand($id, Request $request) {
         $categoryFilter = $request->input('category');
 
-        $productsQuery = Product::where('is_active', true);
+        $productsQuery = Product::where('is_active', true)
+        ->where('product.quantity', '>', 0);
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
@@ -400,7 +418,28 @@ public function listProduct(Request $request) {
 
         $productAttribute = ProductAttribute::where('product_id', $id)->get();
 
+        $foods_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
+
+        $toys_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
+
+        $pharmacies_related = Product::where('category_id', $product->category_id)
+        ->where('product.quantity', '>', 0)->get();
+
+        $services_related = Product::where('category_id', $product->category_id)->get();
+
+
+        $reviews = Review::where('product_id', $id)->get();
+        $averageRatings = $reviews->avg('rate');
+        $averageRating = number_format($averageRatings, 3);
         $category_id = $product->category->id;
+
+        $product = Product::find($id);
+        if ($product) {
+            $saleQuantity = $product->saleQuantity();
+        }
+
         switch ($category_id) {
             case 3:
             case 4:
@@ -419,6 +458,6 @@ public function listProduct(Request $request) {
                 $viewName = '.petshop.fastkart.front-end.product-pharmacy';
         }
 
-        return view($viewName, compact('product', 'productAttribute'));
+        return view($viewName, compact('product', 'productAttribute', 'foods_related', 'toys_related', 'pharmacies_related', 'services_related','reviews','averageRating', 'saleQuantity'));
     }
 }

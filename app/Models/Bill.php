@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Bill extends Model
 {
@@ -39,6 +40,16 @@ class Bill extends Model
     }
 
 
-
+    public static function topFiveUsersByTotalMoney($year)
+    {
+        return self::select('user_id', DB::raw('SUM(total_money) as total_spent'))
+        ->where('is_active', 1)
+        ->whereYear('create_time', $year)
+        ->groupBy('user_id')
+        ->orderByDesc('total_spent')
+        ->limit(5)
+        ->with('user')
+        ->get();
+    }
 
 }

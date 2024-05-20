@@ -553,5 +553,24 @@
         });
     });
 </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const quantityInput = document.querySelector('.qty-input');
+    const maxQuantity = parseInt(quantityInput.getAttribute('max'));
+    const originalQuantity = parseInt(quantityInput.value);
+
+    quantityInput.addEventListener('change', function () {
+        let newQuantity = parseInt(quantityInput.value);
+        if (newQuantity > maxQuantity) {
+            // Nếu giá trị mới lớn hơn số lượng hiện có, hiển thị thông báo
+            alert('Số lượng vượt quá số lượng hiện có của sản phẩm.');
+            // Hoặc có thể đặt lại giá trị về giá trị ban đầu
+            quantityInput.value = originalQuantity;
+        }
+    });
+});
+</script>
 </body>
 </html>

@@ -1,31 +1,33 @@
 <?php
 
 
-use App\Http\Controllers\AttributeController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CartController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-
-use App\Http\Controllers\BillController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\HomeController;
-
-use App\Models\Category;
-use Controller\UserControllers;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\dashboard;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserDashboardController;
 use App\Models\Bill;
 use App\Models\Review;
+use App\Models\Category;
+use Controller\UserControllers;
+use App\Http\Controllers\dashboard;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\CartController;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishListController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\UserDashboardController;
+
 
 //FRONT_END
 
@@ -67,7 +69,7 @@ Route::get('/product-pharmacy', [PagesController::class, 'productPharmacy']);
 
 Route::get('/product-color', [PagesController::class, 'productColor']);
 
-Route::get('/search', [PagesController::class, 'search']);
+// Route::get('/search', [PagesController::class, 'search']);
 
 Route::get('/shop-service', [PagesController::class, 'shopService'])->name('shopService');
 
@@ -79,7 +81,7 @@ Route::get('/sign-up', [PagesController::class, 'signUp'])->name('signUp');
 
 Route::get('/user-dashboard', [PagesController::class, 'userDashboard']);
 
-Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList');
+// Route::get('/wish-list', [PagesController::class, 'wishList'])->name('wishList');
 
 
 
@@ -157,8 +159,8 @@ Route::get('/show-dashboard', [DashboardController::class, 'index'])->name('show
 
 //review
 Route::post('/addReview', [ReviewController::class, 'store'])->name('addReview');
-
-
+Route::get('/product-review', [ReviewController::class, 'index'])->name('productReview');
+Route::delete('/product-review/{id}', [ReviewController::class, 'Delete'])->name('DeleteReview');
 
 Route::get('/all-users', [PagesController::class, 'allUsers'])->name('allUsers');
 Route::get('/add-new-user', [PagesController::class, 'addNewUser'])->name('addNewUser');
@@ -177,7 +179,7 @@ Route::get('/currency-rates', [PagesController::class, 'currencyRates'])->name('
 // Route::get('/coupon-list', [PagesController::class, 'couponList'])->name('couponList');
 Route::get('/create-coupon', [PagesController::class, 'addNewCoupon'])->name('addNewCoupon');
 
-Route::get('/product-review', [PagesController::class, 'productReview'])->name('productReview');
+// Route::get('/product-review', [PagesController::class, 'productReview'])->name('productReview');
 
 Route::get('/support-ticket', [PagesController::class, 'supportTicket'])->name('supportTicket');
 
@@ -288,7 +290,7 @@ Route::post('/login-func', [AuthenticationController::class, 'login'])->name('lo
 Route::get('/user-logout', [AuthenticationController::class, 'logOut'])->name('userLogOut');
 
 
-
+Route::get('/app', [AuthenticationController::class, 'app'])->name('app');
 
 
 // CART
@@ -305,3 +307,10 @@ Route::post('/apply-coupon', [CartController::class, 'applyCoupon'])->name('cart
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::post('/payment', [CheckoutController::class, 'payment'])->name('payment');
 Route::post('/update-bill-status', [CheckoutController::class, 'updateBillStatus'])->name('updateBillStatus');
+
+Route::post('/wishlist/add', [WishListController::class, 'add'])->name('wishlist.add');
+Route::post('/wishlist/remove', [WishListController::class, 'remove'])->name('wishlist.remove');
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist.index');
+
+
+Route::post('/search', [HomeController::class, 'search'])->name('search');

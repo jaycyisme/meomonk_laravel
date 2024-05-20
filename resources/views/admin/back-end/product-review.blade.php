@@ -30,62 +30,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>01</td>
-                                        <td>Maureen Biologist</td>
-                                        <td>Outwear & Coats</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
 
+                                    @foreach ($reviews as $review)
                                     <tr>
-                                        <td>02</td>
-                                        <td>Caroline Harris</td>
-                                        <td>Slim Fit Plastic Coat</td>
+                                        <td>{{$review->id}}</td>
+                                        <td>{{$review->user->name}}</td>
+                                        <td>{{$review->product->name}}</td>
                                         <td>
                                             <ul class="rating">
+                                                @for ($i = 1; $i <= 5; $i++)
                                                 <li>
-                                                    <i class="fas fa-star theme-color"></i>
+                                                    <i class="fas fa-star {{ $i <= $review->rate ? 'theme-color' : '' }}"></i>
                                                 </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
+                                            @endfor
                                             </ul>
                                         </td>
                                         <td
@@ -94,326 +51,24 @@
                                                 white-space: nowrap;
                                                 overflow: hidden;
                                                 text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
+                                        >{{$review->description}}</td>
+                                        <td class="td-check" >
+                                            {{-- {{ route('product.show', $product->id) }} --}}
+                                            <a href="{{ route('productDetail', ['id' => $review->product->id]) }}"><i class="ri-eye-line"></i></a>
+                                            <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure?')) { document.getElementById('delete-form-{{ $review->id }}').submit(); }">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </a>
+                                            <form id="delete-form-{{ $review->id }}" action="{{ route('DeleteReview', ['id' => $review->id]) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                         </td>
                                     </tr>
+                                @endforeach
 
-                                    <tr>
-                                        <td>03</td>
-                                        <td>Lucy Morile</td>
-                                        <td>Men's Sweatshirt</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <td>04</td>
-                                        <td>Jennifer Straight</td>
-                                        <td>Men's Hoodie t-shirt</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-cross">
-                                            <i class="ri-close-circle-line"></i>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <td>05</td>
-                                        <td>Kevin Millett</td>
-                                        <td>Outwear & Coats</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <td>06</td>
-                                        <td>czxc</td>
-                                        <td>Slim Fit Plastic Coat</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-cross">
-                                            <i class="ri-close-circle-line"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>07</td>
-                                        <td>Kevin Millett</td>
-                                        <td>Men's Sweatshirt</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-cross">
-                                            <i class="ri-close-circle-line"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>08</td>
-                                        <td>Dillon Bradshaw</td>
-                                        <td>Men's Hoodie t-shirt</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>09</td>
-                                        <td>Lorna Bonner</td>
-                                        <td>Outwear & Coats</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-cross">
-                                            <i class="ri-close-circle-line"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Richard Johnson</td>
-                                        <td>Slim Fit Plastic Coat </td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>11</td>
-                                        <td>Lorraine McDowell</td>
-                                        <td>Men's Sweatshirt</td>
-                                        <td>
-                                            <ul class="rating">
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star theme-color"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fas fa-star"></i>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td
-                                            style="
-                                                max-width: 300px;
-                                                white-space: nowrap;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;"
-                                        >The Product is No Longer Needed</td>
-                                        <td class="td-check">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

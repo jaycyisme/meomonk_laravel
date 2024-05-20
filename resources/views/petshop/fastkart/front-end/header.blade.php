@@ -122,16 +122,21 @@
                                         <i class="fa-solid fa-angle-down"></i>
                                     </button>
                                 </div>
+                            </form>
 
+                            <form action="{{ route('search') }}" method="POST">
+                                @csrf
                                 <div class="search-box">
                                     <div class="input-group">
-                                        <input type="search" class="form-control" placeholder="I'm searching for...">
-                                        <button class="btn" type="button" id="button-addon2">
+                                        <input name="keywords_submit" type="search" class="form-control" placeholder="I'm searching for...">
+                                        <button class="btn" type="submit" id="button-addon2">
                                             <i data-feather="search"></i>
                                         </button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
+
 
                             <div class="rightside-box">
                                 <div class="search-full">
@@ -156,7 +161,7 @@
                                         </div>
                                     </li>
                                     <li class="right-side">
-                                        <a href="contact-us.php" class="delivery-login-box">
+                                        <a href="{{ route('contact-us') }}" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
                                             </div>
@@ -167,7 +172,7 @@
                                         </a>
                                     </li>
                                     <li class="right-side">
-                                        <a href="{{ route('wishList') }}" class="btn p-0 position-relative header-wishlist">
+                                        <a href="{{ route('wishlist.index') }}" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -175,7 +180,7 @@
                                         <div class="onhover-dropdown header-badge">
                                             <button onclick="location.href = '{{ route('cart.index') }}';" type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2 <span class="visually-hidden">unread messages</span> </span>
+                                                {{-- <span class="position-absolute top-0 start-100 translate-middle badge">2 <span class="visually-hidden">unread messages</span> </span> --}}
                                             </button>
 
                                             <div class="onhover-div">

@@ -210,18 +210,18 @@
 
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Orders</h6>
+                                                                <h6>Quantity Sold</h6>
                                                                 <h5>{{ $product->total_quantity }}</h5>
                                                             </div>
                                                         </td>
 
-
+{{--
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Amount</h6>
+                                                                <h6>Order Count</h6>
                                                                 <h5>${{ $product->product->price * $product->total_quantity }}</h5>
                                                             </div>
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
 
                                                 @endforeach
@@ -235,8 +235,9 @@
                         <!-- Best Selling Product End -->
 
 
-                        {{-- <!-- Recent orders start-->
-                        <div class="col-xl-6">
+                       <!-- Recent orders start-->
+
+                            <div class="col-xl-6">
                             <div class="card o-hidden card-hover">
                                 <div class="card-header card-header-top card-header--2 px-0 pt-0">
                                     <div class="card-header-title">
@@ -263,268 +264,44 @@
                                         <div class="table-responsive">
                                             <table class="best-selling-table table border-0">
                                                 <tbody>
+
+
+                                                    @foreach($topUsers as $user)
                                                     <tr>
                                                         <td>
                                                             <div class="best-product-box">
                                                                 <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>#64548</h6>
+                                                                    <h5>Id</h5>
+                                                                    <h6>{{$user->user_id }}</h6>
                                                                 </div>
                                                             </div>
                                                         </td>
 
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Date Placed</h6>
-                                                                <h5>5/1/22</h5>
+                                                                <h6>Name</h6>
+                                                                <h5>{{ $user->user->name }}</h5>
                                                             </div>
                                                         </td>
 
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$250.00</h5>
+                                                                <h6>Gmail</h6>
+                                                                <h5>{{ $user->user->email }}</h5>
                                                             </div>
                                                         </td>
 
                                                         <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Order Status</h6>
-                                                                <h5>Completed</h5>
-                                                            </div>
-                                                        </td>
+
 
                                                         <td>
                                                             <div class="product-detail-box">
-                                                                <h6>Payment</h6>
-                                                                <h5 class="text-danger">Unpaid</h5>
+                                                                <h6>Total Money</h6>
+                                                                <h5 class="text-danger">{{ number_format($user->total_spent, 2) }}</h5>
                                                             </div>
                                                         </td>
                                                     </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="best-product-box">
-                                                                <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>26-08-2022</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Date Placed</h6>
-                                                                <h5>5/1/22</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$250.00</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Order Status</h6>
-                                                                <h5>Completed</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Payment</h6>
-                                                                <h5 class="theme-color">Paid</h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="best-product-box">
-                                                                <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>26-08-2022</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Date Placed</h6>
-                                                                <h5>5/1/22</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$250.00</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Order Status</h6>
-                                                                <h5>Completed</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Payment</h6>
-                                                                <h5 class="theme-color">Paid</h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="best-product-box">
-                                                                <div class="product-name">
-                                                                    <h5>Aata Buscuit</h5>
-                                                                    <h6>26-08-2022</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Date Placed</h6>
-                                                                <h5>5/1/22</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Price</h6>
-                                                                <h5>$250.00</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Order Status</h6>
-                                                                <h5>Completed</h5>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="product-detail-box">
-                                                                <h6>Payment</h6>
-                                                                <h5 class="theme-color">Paid</h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Recent orders end-->
-
-                        <!-- Earning chart star-->
-                        <div class="col-xl-6">
-                            <div class="card o-hidden card-hover">
-                                <div class="card-header border-0 pb-1">
-                                    <div class="card-header-title">
-                                        <h4>Revenue Report</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div id="report-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Earning chart end-->
- --}}
-
-                        <!-- Transactions start-->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card o-hidden card-hover">
-                                <div class="card-header border-0">
-                                    <div class="card-header-title">
-                                        <h4>Transactions</h4>
-                                    </div>
-                                </div>
-
-                                <div class="card-body pt-0">
-                                    <div>
-                                        <div class="table-responsive">
-                                            <table class="user-table transactions-table table border-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="transactions-icon">
-                                                                <i class="ri-shield-line"></i>
-                                                            </div>
-                                                            <div class="transactions-name">
-                                                                <h6>Wallets</h6>
-                                                                <p>Starbucks</p>
-                                                            </div>
-                                                        </td>
-
-                                                        <td class="lost">-$74</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="td-color-1">
-                                                            <div class="transactions-icon">
-                                                                <i class="ri-check-line"></i>
-                                                            </div>
-                                                            <div class="transactions-name">
-                                                                <h6>Bank Transfer</h6>
-                                                                <p>Add Money</p>
-                                                            </div>
-                                                        </td>
-
-                                                        <td class="success">+$125</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="td-color-2">
-                                                            <div class="transactions-icon">
-                                                                <i class="ri-exchange-dollar-line"></i>
-                                                            </div>
-                                                            <div class="transactions-name">
-                                                                <h6>Paypal</h6>
-                                                                <p>Add Money</p>
-                                                            </div>
-                                                        </td>
-
-                                                        <td class="lost">-$50</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="td-color-3">
-                                                            <div class="transactions-icon">
-                                                                <i class="ri-bank-card-line"></i>
-                                                            </div>
-                                                            <div class="transactions-name">
-                                                                <h6>Mastercard</h6>
-                                                                <p>Ordered Food</p>
-                                                            </div>
-                                                        </td>
-
-                                                        <td class="lost">-$40</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="td-color-4 pb-0">
-                                                            <div class="transactions-icon">
-                                                                <i class="ri-bar-chart-grouped-line"></i>
-                                                            </div>
-                                                            <div class="transactions-name">
-                                                                <h6>Transfer</h6>
-                                                                <p>Refund</p>
-                                                            </div>
-                                                        </td>
-
-                                                        <td class="success pb-0">+$90</td>
-                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

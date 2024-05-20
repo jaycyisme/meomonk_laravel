@@ -69,7 +69,7 @@
 
                                                 <td>
                                                     <ul>
-                                                        <li><a href="{{ route('product.show', $product->id) }}"><i class="ri-eye-line"></i></a></li>
+                                                        <li><a href=" {{ route('productDetail', ['id' => $product->id]) }}"><i class="ri-eye-line"></i></a></li>
                                                         <li><a href="{{ route('product.edit', $product->id) }}"><i class="ri-pencil-line"></i></a></li>
                                                         <li>
                                                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-id="{{ $product->id }}"class="delete-product">

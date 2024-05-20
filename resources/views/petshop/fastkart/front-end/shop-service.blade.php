@@ -756,7 +756,7 @@
                                 <div class="product-detail">
                                     <span class="span-name">{{ $product->category->name }}</span>
                                     <a href="{{ route('productDetail', ['id' => $product->id]) }}">
-                                        <h5 class="name">{{ $product->name }}</h5>
+                                        <h5 class="name" style="text-align: center;">{{ $product->name }}</h5>
                                     </a>
                                     <p class="text-content mt-1 mb-2 product-content">{{ $product->description }}.</p>
                                     <div class="product-rating mt-2">
@@ -784,7 +784,7 @@
                                         {{-- <del>$15.15</del> --}}
                                     </h5>
                                     <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
+                                        <button class="btn btn-add-cart addcart-button">Book
                                             <span class="add-icon bg-light-gray">
                                                 <i class="fa-solid fa-plus"></i>
                                             </span>

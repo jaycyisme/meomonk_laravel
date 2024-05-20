@@ -765,10 +765,7 @@
                 <div
                     class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
                     @foreach ($products as $product)
-                                <form action="{{ route('cart.add') }}" method="POST">
-                                    @csrf
 
-                                <input type="hidden" name="id" value="{{ $product->id }}">
                                 {{-- <input type="hidden" name="attribute" id="selectedAttributeValue" value=""> --}}
                                 <div>
                                     <div class="row m-0">
@@ -796,15 +793,23 @@
 
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Wishlist">
-                                                            <a href="wishlist.php" class="notifi-wishlist">
-                                                                <i data-feather="heart"></i>
-                                                            </a>
+                                                            <form action="{{ route('wishlist.add') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                                                <button type="submit" class="notifi-wishlist" title="Add to Wishlist" style="border: none;
+                                                                background: none;
+                                                                /* width: 17px; */
+                                                                height: auto;
+                                                                color: #4a5568;">
+                                                                    <i data-feather="heart" style="border: none;"></i>
+                                                                </button>
+                                                            </form>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <div class="product-detail">
                                                     <a href="{{ route('productDetail', ['id' => $product->id]) }}">
-                                                        <h6 class="name">
+                                                        <h6 class="name" style="text-align: center;">
                                                             {{ $product->name }}
                                                         </h6>
                                                     </a>
@@ -838,12 +843,18 @@
                                                     </div>
 
                                                     <div class="add-to-cart-box">
-                                                        <button type="submit" class="btn btn-add-cart addcart-button">
+                                                        <form action="{{ route('cart.add') }}" method="POST">
+                                                            @csrf
+
+                                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                                        <button type="submit" type="submit" class="btn btn-add-cart addcart-button">
                                                             Add To Cart
                                                             <span class="add-icon">
                                                                 <i class="fa-solid fa-plus"></i>
                                                             </span>
                                                         </button>
+
+                                                        </form>
                                                         {{-- <div class="cart_qty qty-box">
                                                             <div class="input-group">
                                                                 <button type="button" class="qty-left-minus"
@@ -864,13 +875,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                </form>
                                 @endforeach
                 </div>
 
-                <div class="pagination-wrapper">
-                    {{ $products->links() }}
-                </div>
+                <nav class="custom-pagination">
+                    <ul class="pagination justify-content-center">
+                        @if ($products->previousPageUrl())
+                            <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}&category={{ $categoryFilter }}">Previous</a></li>
+                        @endif
+
+                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                            <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $url }}&category={{ $categoryFilter }}">{{ $page }}</a></li>
+                        @endforeach
+
+                        @if ($products->nextPageUrl())
+                            <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}&category={{ $categoryFilter }}">Next</a></li>
+                        @endif
+                    </ul>
+                </nav>
+
             </div>
         </div>
     </div>
