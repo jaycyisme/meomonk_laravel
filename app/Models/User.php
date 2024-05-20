@@ -64,7 +64,6 @@ class User extends Authenticatable
         return $this->belongsTo(RankCustomer::class, 'rank_customer_id');
     }
 
-<<<<<<< HEAD
     public function addresses()
     {
         return $this->hasMany(Address::class);
@@ -73,11 +72,9 @@ class User extends Authenticatable
 
         public function orders()
     {
-        return $this->hasMany(Bill::class);
-=======
+        return $this->hasMany(Bill::class);}
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
->>>>>>> a6fe5381ea1e38201475e417ef41f59559671a2b
     }
 }

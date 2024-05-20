@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\Cart;
 use App\Models\Bill;
 use App\Models\User;
+use App\Models\Address;
 use App\Models\Product;
 use App\Models\RankCustomer;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class CheckoutController extends Controller
         if (!$user_id) {
             return redirect()->route('login')->with('error_message', 'Please login to proceed.');
         }
+
+        $addresses = Address::where('user_id', $user_id)->get();
+
 
         // $bill_id = session('bill');
         $bill_id  = Session::get('bill');
@@ -59,7 +63,7 @@ class CheckoutController extends Controller
             "Combo: Royal Cashew Californian, Extra Bold 100 gm + BB Royal Honey 500 gm"
         ];
 
-        return view('petshop.fastkart.front-end.checkout', compact('cartItems', 'subTotal', 'shipping', 'tax', 'couponDiscount', 'totalUSDs', 'offers'));
+        return view('petshop.fastkart.front-end.checkout', compact('cartItems', 'subTotal', 'shipping', 'tax', 'couponDiscount', 'totalUSDs', 'offers', 'addresses'));
     }
 
 
