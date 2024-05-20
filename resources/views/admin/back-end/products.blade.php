@@ -11,12 +11,12 @@
                                 <h5>Products List</h5>
                                 <div class="right-options">
                                     <ul>
-                                        <li>
+                                        {{-- <li>
                                             <a href="javascript:void(0)">import</a>
                                         </li>
                                         <li>
                                             <a href="javascript:void(0)">Export</a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a class="btn btn-solid" href="{{ route('addNewProducts') }}">Add Product</a>
                                         </li>

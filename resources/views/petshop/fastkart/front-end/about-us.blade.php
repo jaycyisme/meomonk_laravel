@@ -74,7 +74,7 @@
                     <div class="col-6">
                         <div class="fresh-image-2">
                             <div>
-                                <img src="../assets/images/inner-page/about-us/1.jpg"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/about-us/1.jpg"
                                     class="bg-img blur-up lazyload" alt="">
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="col-6">
                         <div class="fresh-image">
                             <div>
-                                <img src="../assets/images/inner-page/about-us/2.jpg"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/about-us/2.jpg"
                                     class="bg-img blur-up lazyload" alt="">
                             </div>
                         </div>
@@ -231,12 +231,12 @@
                     <div>
                         <div class="team-box">
                             <div class="team-image">
-                                <img src="../assets/images/inner-page/user/1.jpg" class="img-fluid blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/user/1.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
 
                             <div class="team-name">
-                                <h3>Anna Baranov</h3>
+                                <h3>Bui Van Tai</h3>
                                 <h5>Marketing</h5>
                                 <p>cheeseburger airedale mozzarella the big cheese fondue.</p>
                                 <ul class="team-media">
@@ -271,12 +271,12 @@
                     <div>
                         <div class="team-box">
                             <div class="team-image">
-                                <img src="../assets/images/inner-page/user/2.jpg" class="img-fluid blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/user/2.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
 
                             <div class="team-name">
-                                <h3>Anna Baranov</h3>
+                                <h3>Do Quoc Tuan</h3>
                                 <h5>Marketing</h5>
                                 <p>cheese on toast mozzarella bavarian bergkase smelly cheese cheesy feet.</p>
                                 <ul class="team-media">
@@ -311,12 +311,12 @@
                     <div>
                         <div class="team-box">
                             <div class="team-image">
-                                <img src="../assets/images/inner-page/user/3.jpg" class="img-fluid blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/user/3.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
 
                             <div class="team-name">
-                                <h3>Anna Baranov</h3>
+                                <h3>Nong Quoc Viet</h3>
                                 <h5>Marketing</h5>
                                 <p>camembert de normandie. Bocconcini rubber cheese fromage frais port-salut.</p>
                                 <ul class="team-media">
@@ -351,54 +351,14 @@
                     <div>
                         <div class="team-box">
                             <div class="team-image">
-                                <img src="../assets/images/inner-page/user/4.jpg" class="img-fluid blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/user/4.jpg" class="img-fluid blur-up lazyload"
                                     alt="">
                             </div>
 
                             <div class="team-name">
-                                <h3>Anna Baranov</h3>
+                                <h3>Pham Duong Khai</h3>
                                 <h5>Marketing</h5>
                                 <p>Fondue stinking bishop goat. Macaroni cheese croque monsieur cottage cheese.</p>
-                                <ul class="team-media">
-                                    <li>
-                                        <a href="https://www.facebook.com/" class="fb-bg">
-                                            <i class="fa-brands fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="https://in.pinterest.com/" class="pint-bg">
-                                            <i class="fa-brands fa-pinterest-p"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="https://twitter.com/" class="twitter-bg">
-                                            <i class="fa-brands fa-twitter"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="https://www.instagram.com/" class="insta-bg">
-                                            <i class="fa-brands fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="team-box">
-                            <div class="team-image">
-                                <img src="../assets/images/inner-page/user/1.jpg" class="img-fluid blur-up lazyload"
-                                    alt="">
-                            </div>
-
-                            <div class="team-name">
-                                <h3>Anna Baranov</h3>
-                                <h5>Marketing</h5>
-                                <p>squirty cheese cheddar macaroni cheese airedale cheese triangles.</p>
                                 <ul class="team-media">
                                     <li>
                                         <a href="https://www.facebook.com/" class="fb-bg">
@@ -475,7 +435,7 @@
 
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/1.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/1.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -517,7 +477,7 @@
                                 organic search and content marketing."</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/2.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/2.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -559,7 +519,7 @@
                                 Company. When it comes to content marketing."</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/3.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/3.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -601,7 +561,7 @@
                                 brand."</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/4.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/4.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -643,7 +603,7 @@
                                 customers is incredible."</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/1.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/1.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -686,7 +646,7 @@
 
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/2.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/2.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -728,7 +688,7 @@
                                 the Olympics!"</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/3.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/3.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -770,7 +730,7 @@
                                 them Knicks? What kind of a father would I be if I said no?."</p>
                             <div class="reviewer-profile">
                                 <div class="reviewer-image">
-                                    <img src="../assets/images/inner-page/user/4.jpg" class="blur-up lazyload"
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/user/4.jpg" class="blur-up lazyload"
                                         alt="">
                                 </div>
 
@@ -802,14 +762,14 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <div class="blog-image">
-                                    <a href="blog-detail.php" class="rounded-3">
-                                        <img src="../assets/images/veg-2/blog/1.jpg" class="bg-img blur-up lazyload"
+                                    <a href="{{ route('blogDetail') }}" class="rounded-3">
+                                        <img src="{{asset('front-end')}}/assets/images/veg-2/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="blog-detail.php" class="blog-detail d-block">
+                            <a href="{{ route('blogDetail') }}" class="blog-detail d-block">
                                 <h6>Farmart</h6>
                                 <h5>Fresh Meat Saugage</h5>
                             </a>
@@ -820,14 +780,14 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <div class="blog-image">
-                                    <a href="blog-detail.php" class="rounded-3">
-                                        <img src="../assets/images/veg-2/blog/2.jpg" class="bg-img blur-up lazyload"
+                                    <a href="{{ route('blogDetail') }}" class="rounded-3">
+                                        <img src="{{asset('front-end')}}/assets/images/veg-2/blog/2.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="blog-detail.php" class="blog-detail d-block">
+                            <a href="{{ route('blogDetail') }}" class="blog-detail d-block">
                                 <h6>Soda Brand</h6>
                                 <h5>Soda 500ml - 20% OFF</h5>
                             </a>
@@ -838,14 +798,14 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <div class="blog-image">
-                                    <a href="blog-detail.php" class="rounded-3">
-                                        <img src="../assets/images/veg-2/blog/3.jpg" class="bg-img blur-up lazyload"
+                                    <a href="{{ route('blogDetail') }}" class="rounded-3">
+                                        <img src="{{asset('front-end')}}/assets/images/veg-2/blog/3.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="blog-detail.php" class="blog-detail d-block">
+                            <a href="{{ route('blogDetail') }}" class="blog-detail d-block">
                                 <h6>Beer Brand</h6>
                                 <h5>Soda 500ml - 20% OFF</h5>
                             </a>
@@ -856,14 +816,14 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <div class="blog-image">
-                                    <a href="blog-detail.php" class="rounded-3">
-                                        <img src="../assets/images/veg-2/blog/4.jpg" class="bg-img blur-up lazyload"
+                                    <a href="{{ route('blogDetail') }}" class="rounded-3">
+                                        <img src="{{asset('front-end')}}/assets/images/veg-2/blog/4.jpg" class="bg-img blur-up lazyload"
                                             alt="">
                                     </a>
                                 </div>
                             </div>
 
-                            <a href="blog-detail.php" class="blog-detail d-block">
+                            <a href="{{ route('blogDetail') }}" class="blog-detail d-block">
                                 <h6>Beer Brand</h6>
                                 <h5>Fresh Beer -30% OFF</h5>
                             </a>
@@ -873,13 +833,13 @@
                     <div>
                         <div class="blog-box">
                             <div class="blog-image">
-                                <a href="blog-detail.php" class="rounded-3">
-                                    <img src="../assets/images/veg-2/blog/5.jpg" class="bg-img blur-up lazyload"
+                                <a href="{{ route('blogDetail') }}" class="rounded-3">
+                                    <img src="{{asset('front-end')}}/assets/images/veg-2/blog/5.jpg" class="bg-img blur-up lazyload"
                                         alt="">
                                 </a>
                             </div>
 
-                            <a href="blog-detail.php" class="blog-detail d-block">
+                            <a href="{{ route('blogDetail') }}" class="blog-detail d-block">
                                 <h6>Milk Brand</h6>
                                 <h5>Fresh Milk</h5>
                             </a>

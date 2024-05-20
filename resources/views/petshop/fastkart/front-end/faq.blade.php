@@ -84,7 +84,7 @@
                     <div>
                         <div class="faq-top-box">
                             <div class="faq-box-icon">
-                                <img src="../assets/images/inner-page/faq/start.png" class="blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/faq/start.png" class="blur-up lazyload"
                                     alt="">
                             </div>
 
@@ -99,7 +99,7 @@
                     <div>
                         <div class="faq-top-box">
                             <div class="faq-box-icon">
-                                <img src="../assets/images/inner-page/faq/help.png" class="blur-up lazyload" alt="">
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/faq/help.png" class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="faq-box-contain">
@@ -111,7 +111,7 @@
                     <div>
                         <div class="faq-top-box">
                             <div class="faq-box-icon">
-                                <img src="../assets/images/inner-page/faq/price.png" class="blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/faq/price.png" class="blur-up lazyload"
                                     alt="">
                             </div>
 
@@ -124,7 +124,7 @@
                     <div>
                         <div class="faq-top-box">
                             <div class="faq-box-icon">
-                                <img src="../assets/images/inner-page/faq/contact.png" class="blur-up lazyload"
+                                <img src="{{asset('front-end')}}/assets/images/inner-page/faq/contact.png" class="blur-up lazyload"
                                     alt="">
                             </div>
 

@@ -232,6 +232,10 @@
 
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
+                                                <li>
+                                                    <a href="{{ route('userDashboard') }}">User
+                                                        Dashboard</a>
+                                                </li>
                                                 <li class="product-box-contain">
                                                     <i></i>
                                                     <a href="{{ route('login') }}">Log In</a>
@@ -399,10 +403,10 @@
                                                     <li>
                                                         <a class="dropdown-item" href="{{ route('faq') }}">Faq</a>
                                                     </li>
-                                                    <li>
+                                                    {{-- <li>
                                                         <a class="dropdown-item" href="{{ route('userDashboard') }}">User
                                                             Dashboard</a>
-                                                    </li>
+                                                    </li> --}}
                                                 </ul>
                                             </li>
 

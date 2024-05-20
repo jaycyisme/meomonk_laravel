@@ -17,7 +17,7 @@ class BillSeeder extends Seeder
             'total_money' => 1200.00,
             'trading_code' => 'T123456',
             'create_time' => null,
-            'user_id' => 1,
+            'user_id' => 2,
             'update_time' => null,
             'bill_status_id' => 1,
             'payment_method_id' => 1,

@@ -465,6 +465,8 @@ class ProductController extends Controller
         }
 
         switch ($category_id) {
+            case 1:
+            case 2:
             case 3:
             case 4:
                 $viewName = '.petshop.fastkart.front-end.product-food';

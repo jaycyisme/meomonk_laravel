@@ -610,7 +610,7 @@
                                                             <i class="fa-solid fa-plus"></i>
                                                         </span>
                                                     </button>
-                                                    <div class="cart_qty qty-box">
+                                                    {{-- <div class="cart_qty qty-box">
                                                         <div class="input-group">
                                                             <button type="button" class="qty-left-minus"
                                                                 data-type="minus" data-field="">
@@ -623,7 +623,7 @@
                                                                 <i class="fa fa-plus"></i>
                                                             </button>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

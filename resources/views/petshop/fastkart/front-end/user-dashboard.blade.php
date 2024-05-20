@@ -113,11 +113,11 @@
                                 data-bs-target="#pills-order" type="button"><i
                                     data-feather="shopping-bag"></i>Order</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-wishlist-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-wishlist" type="button"><i data-feather="heart"></i>
                                 Wishlist</button>
-                        </li>
+                        </li> --}}
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-card-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-card" type="button" role="tab"><i
@@ -128,11 +128,11 @@
                                 data-bs-target="#pills-address" type="button" role="tab">
                                <i data-feather="map-pin"></i>Address</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab"><i data-feather="user"></i>
                                 Profile</button>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </div>
@@ -171,7 +171,7 @@
                                                     alt="">
                                                 <div class="total-detail">
                                                     <h5>Total Order</h5>
-                                                    <h3>3658</h3>
+                                                    <h3>{{$totalOrders}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -183,8 +183,8 @@
                                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/svg/pending.svg" class="blur-up lazyload"
                                                     alt="">
                                                 <div class="total-detail">
-                                                    <h5>Total Pending Order</h5>
-                                                    <h3>254</h3>
+                                                    <h5>Total Point</h5>
+                                                    <h3>{{ $user->point }}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -196,8 +196,8 @@
                                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/svg/wishlist.svg"
                                                     class="blur-up lazyload" alt="">
                                                 <div class="total-detail">
-                                                    <h5>Total Wishlist</h5>
-                                                    <h3>32158</h3>
+                                                    <h5>Rank Customer</h5>
+                                                    <h3>{{ $user->rankCustomer->name }}</h3>
                                                 </div>
                                             </div>
                                         </div>

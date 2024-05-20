@@ -45,7 +45,7 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Toy',
             'icon_url' => 'toy.svg',
-            'image_url' => 'biscuit.svg',
+            'image_url' => 'toy.svg',
         ]);
 
         #6 Pharmacy

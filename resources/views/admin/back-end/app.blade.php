@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <form class="form-inline search-full" action="javascript:void(0)" method="get">
+                {{-- <form class="form-inline search-full" action="javascript:void(0)" method="get">
                     <div class="form-group w-100">
                         <div class="Typeahead Typeahead--twitterUsers">
                             <div class="u-posRelative">
@@ -108,7 +108,7 @@
                             <div class="Typeahead-menu"></div>
                         </div>
                     </div>
-                </form>
+                </form> --}}
                 <div class="nav-right col-6 pull-right right-header p-0">
                     <ul class="nav-menus">
                         <li>
@@ -163,22 +163,16 @@
                         </li>
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
-                                @php
-                                $id = session('user_id');
-
-                                $user = \App\Models\User::find($id);
-
-                            @endphp
                                 <img class="user-profile rounded-circle" src="{{ asset('back-end/assets/images/users/4.jpg') }}" alt="">
                                 <div class="user-name-hide media-body">
-                                    <span>{{ $user->name }}</span>
+                                    <span>Admin</span>
 
 
                             <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
-                                <li>
+                                {{-- <li>
                                     <a href="all-users.html">
                                         <i data-feather="users"></i>
                                         <span>Users</span>
@@ -201,7 +195,7 @@
                                         <i data-feather="settings"></i>
                                         <span>Settings</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                         href="javascript:void(0)">
@@ -338,12 +332,12 @@
                                     </ul>
                                 </li> --}}
 
-                                <li class="sidebar-list">
+                                {{-- <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('media') }}">
                                         <i class="ri-price-tag-3-line"></i>
                                         <span>Media</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
@@ -409,14 +403,14 @@
                                     </a>
                                 </li>
 
-                                <li class="sidebar-list">
+                                {{-- <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('supportTicket') }}">
                                         <i class="ri-phone-line"></i>
                                         <span>Support Ticket</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
-                                <li class="sidebar-list">
+                                {{-- <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-settings-line"></i>
                                         <span>Settings</span>
@@ -433,7 +427,7 @@
                                         <i class="ri-file-chart-line"></i>
                                         <span>Reports</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
 <!--                                <li class="sidebar-list">-->
 <!--                                    <a class="sidebar-link sidebar-title link-nav" href="list-page.html">-->

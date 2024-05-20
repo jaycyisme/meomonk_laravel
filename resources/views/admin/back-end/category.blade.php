@@ -131,18 +131,14 @@
                     deleteForm.action = `/category/${categoryId}`;
                 });
             });
-
-            // Kiểm tra nếu có session success thì hiển thị modal thành công
             @if(session('success'))
             const successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
             successModal.show();
-            // Xóa session success sau khi hiển thị modal để tránh hiển thị lại khi tải lại trang
-            @php
-                Session::forget('success');
-            @endphp
             @endif
+
         });
-    </script>
+        </script>
+
 <!-- Container-fluid end -->
 
 @endsection
