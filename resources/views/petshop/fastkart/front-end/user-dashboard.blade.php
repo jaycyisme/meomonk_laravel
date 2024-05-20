@@ -126,8 +126,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-address" type="button" role="tab">
-                                <a class="nav-link" id="pills-address-tab" href="{{ route('user.address', ['userId' => Auth::id()]) }}" role="tab"><i
-                                    data-feather="map-pin"></i>Address</button>
+                               <i data-feather="map-pin"></i>Address</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
@@ -172,12 +171,12 @@
                                                     alt="">
                                                 <div class="total-detail">
                                                     <h5>Total Order</h5>
-                                                    <h3>3658</h3>
+                                                    <h3>{{$totalOrders}}</h3>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                        {{-- <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
                                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/svg/pending.svg"
                                                     class="img-1 blur-up lazyload" alt="">
@@ -188,7 +187,7 @@
                                                     <h3>254</h3>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
@@ -212,21 +211,24 @@
                                 <div class="row g-4">
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Contact Information <a href="javascript:void(0)"
-                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a>
+                                            <h4>Contact Information
+                                                 {{-- <a href="javascript:void(0)"
+                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a> --}}
                                             </h4>
                                         </div>
                                         <div class="dashboard-detail">
                                             <h6 class="text-content">{{$name}}</h6>
                                             <h6 class="text-content">{{$email}}</h6>
-                                            <a href="javascript:void(0)">Change Password</a>
+                                            {{-- <a href="javascript:void(0)">Change Password</a> --}}
                                         </div>
                                     </div>
 
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Newsletters <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a></h4>
+                                            <h4>Newsletters
+                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a> --}}
+                                                </h4>
                                         </div>
                                         <div class="dashboard-detail">
                                             <h6 class="text-content">You are currently not subscribed to any
@@ -236,30 +238,46 @@
 
                                     <div class="col-12">
                                         <div class="dashboard-content-title">
-                                            <h4>Address Book <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a></h4>
+                                            <h4>Address Book
+                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a> --}}
+                                                </h4>
                                         </div>
 
                                         <div class="row g-4">
                                             <div class="col-xxl-6">
                                                 <div class="dashboard-detail">
                                                     <h6 class="text-content">Default Billing Address</h6>
-                                                    <h6 class="text-content">You have not set a default billing
-                                                        address.</h6>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile">Edit Address</a>
+                                                    @foreach ($addresses as $address)
+                                                    @if ($address->is_default)
+                                                        <li>
+
+                                                                <h6>{{ $address->address_line_1 }}</h6>
+
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                                    {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile">Edit Address</a> --}}
                                                 </div>
                                             </div>
 
-                                            <div class="col-xxl-6">
+                                            {{-- <div class="col-xxl-6">
                                                 <div class="dashboard-detail">
                                                     <h6 class="text-content">Default Shipping Address</h6>
-                                                    <h6 class="text-content">You have not set a default shipping
-                                                        address.</h6>
+                                                    @foreach ($addresses as $address)
+                                                        @if ($address->is_default)
+                                                            <li>
+
+                                                                    <h6>{{ $address->address_line_1 }}</h6>
+
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
                                                     <a href="javascript:void(0)" data-bs-toggle="modal"
                                                         data-bs-target="#editProfile">Edit Address</a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -474,167 +492,51 @@
                                     </span>
                                 </div>
 
+
                                 <div class="order-contain">
+                                    @foreach ($orderHistory as $order)
+                                        @foreach ($order->billProducts as $billProduct)
+                                            <div class="order-box dashboard-bg-box">
+                                                <div class="order-container">
+                                                    <div class="order-icon">
+                                                        <i data-feather="box"></i>
+                                                    </div>
+                                                    <div class="order-detail">
+                                                        <h4>Delivers <span>{{ $order->billStatus->name }}</span></h4>
+                                                    </div>
+                                                </div>
 
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
-
-                                            <div class="order-detail">
-                                                <h4>Delivers <span>Pending</span></h4>
-                                                <h6 class="text-content">Gouda parmesan caerphilly mozzarella
-                                                    cottage cheese cauliflower cheese taleggio gouda.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/1.png"
-                                                    class="blur-up lazyload" alt="">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>Fantasy Crunchy Choco Chip Cookies</h3>
-                                                </a>
-                                                <p class="text-content">Cheddar dolcelatte gouda. Macaroni cheese
-                                                    cheese strings feta halloumi cottage cheese jarlsberg cheese
-                                                    triangles say cheese.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
+                                                <div class="product-order-detail">
+                                                    <div class="product-image-and-details" style="display: flex; align-items: flex-start;">
+                                                        <a href="javascript:void(0)">
+                                                            <img src="{{ asset('front-end/assets/images/product/' . $billProduct->product->image) }}" style="max-width: 150px; margin-right: 20px;" class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+                                                        <div class="order-wrap" style="flex: 1;">
+                                                            <a href="product-left-thumbnail.php">
+                                                                <h3>{{ $billProduct->product->name }}</h3>
+                                                            </a>
+                                                            <div class="size-box">
+                                                                <h6 class="text-content">Sold By : </h6>
+                                                                <h5>{{ $billProduct->product->brand->name }}</h5>
                                                             </div>
+                                                            <p class="text-content">{{ $billProduct->product->description }}</p>
+                                                            <ul class="product-size">
+                                                                <li>
+                                                                    <div class="size-box">
+                                                                        <h6 class="text-content">Price : </h6>
+                                                                        <h5>${{ $billProduct->product->price }}</h5>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
                                                         </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
-
-                                            <div class="order-detail">
-                                                <h4>Delivered <span class="success-bg">Success</span></h4>
-                                                <h6 class="text-content">Cheese on toast cheesy grin cheesy grin
-                                                    cottage cheese caerphilly everyone loves cottage cheese the big
-                                                    cheese.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/2.png" alt=""
-                                                    class="blur-up lazyload">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>Cold Brew Coffee Instant Coffee 50 g</h3>
-                                                </a>
-                                                <p class="text-content">Pecorino paneer port-salut when the cheese
-                                                    comes out everybody's happy red leicester mascarpone blue
-                                                    castello cauliflower cheese.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                        @endforeach
+                                    @endforeach
                                 </div>
-                            </div>
-                        </div>
+
+
 
                         <div class="tab-pane fade" id="pills-address" role="tabpanel">
                             <div class="dashboard-address">
@@ -648,118 +550,61 @@
                                         </span>
                                     </div>
 
-                                    <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
-                                        data-bs-toggle="modal" data-bs-target="#add-address"><i data-feather="plus"
-                                            class="me-2"></i> Add New Address</button>
+                                    <a href="{{ route('addresses.create') }}" class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3">
+                                        <i data-feather="plus" class="me-2"></i> Add New Address
+                                    </a>
                                 </div>
 
-                                <div class="row g-sm-4 g-3">
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault2" checked>
-                                                </div>
+                                <form id="address-form" action="{{ route('address.set_default') }}" method="POST">
+                                    @csrf
+                                    <div class="row g-sm-4 g-3">
+                                        @foreach ($addresses as $address)
+                                            <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                                <div class="address-box">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="address_id" id="address_{{ $address->id }}" value="{{ $address->id }}" {{ $address->is_default ? 'checked' : '' }} onchange="document.getElementById('address-form').submit();">
+                                                        </div>
+                                                        <div class="label">
+                                                            <label>Home</label>
+                                                        </div>
+                                                        <div class="table-responsive address-table">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Address :</td>
+                                                                        <td>
+                                                                            <p>{{ $address->address_line_1 }}</p>
+                                                                            <p>{{ $address->address_line_2 }}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>City :</td>
+                                                                        <td>
+                                                                            <p>{{ $address->city }}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Zip Code :</td>
+                                                                        <td>{{ $address->zip_code }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
 
-                                                <div class="label">
-                                                    <label>Home</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Jack Jennas</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>8424 James Lane South San Francisco, CA 94080
-                                                                    </p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+380</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>{{$phone_number}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <div class="button-group">
+                                                        <a href="{{ route('addresses.edit', ['id' => $address->id]) }}" class="btn btn-sm add-button w-100"><i data-feather="edit"></i> Edit</a>
+                                                        <button class="btn btn-sm add-button w-100 delete-address" data-id="{{ $address->id }}" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i data-feather="trash-2"></i> Remove</button>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
+                                </form>
 
 
 
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault1">
-                                                </div>
-
-                                                <div class="label">
-                                                    <label>Home 2</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Gary M. Bailey</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>2135 Burning Memory Lane Philadelphia, PA
-                                                                        19135</p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+26</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 215-335-9916</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -849,7 +694,7 @@
                                     </div>
                                     <div class="profile-name-detail">
                                         <div class="d-sm-flex align-items-center d-block">
-                                            <h3>Vicki E. Pope</h3>
+                                            <h3>{{$name}}</h3>
                                             <div class="product-rating profile-rating">
                                                 <ul class="rating">
                                                     <li>
@@ -877,26 +722,31 @@
 
                                     <div class="location-profile">
                                         <ul>
-                                            <li>
-                                                <div class="location-box">
-                                                    <i data-feather="map-pin"></i>
-                                                    <h6>Downers Grove, IL</h6>
-                                                </div>
-                                            </li>
+                                            @foreach ($addresses as $address)
+                                            @if ($address->is_default)
+                                                <li>
+                                                    <div class="location-box">
+                                                        <i data-feather="map-pin"></i>
+                                                        <h6>{{ $address->address_line_1 }}</h6>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endforeach
+
 
                                             <li>
                                                 <div class="location-box">
                                                     <i data-feather="mail"></i>
-                                                    <h6>vicki.pope@gmail.com</h6>
+                                                    <h6>{{$email}}</h6>
                                                 </div>
                                             </li>
 
-                                            <li>
+                                            {{-- <li>
                                                 <div class="location-box">
                                                     <i data-feather="check-square"></i>
                                                     <h6>Licensed for 2 years</h6>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
 
@@ -933,7 +783,17 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Address :</td>
-                                                            <td>549 Sulphur Springs Road, Downers, IL</td>
+                                                            <td>
+                                                             @foreach ($addresses as $address)
+                                                                    @if ($address->is_default)
+                                                                        <li>
+                                                                                <h6>{{ $address->address_line_1 }}</h6>
+
+                                                                            </div>
+                                                                        </li>
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -985,6 +845,66 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal Xác Nhận Xóa -->
+    <div class="modal fade theme-modal remove-address" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box">
+                        <p>The permission for the use/group, preview is inherited from the object, object will create a
+                            new permission for this object</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                    <form id="delete-form" method="POST" action="">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-address');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const addressId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/addresses/${addressId}`;
+            // Không cần gọi modal.show() nữa vì modal đã được kích hoạt bằng Bootstrap's data attributes
+        });
+    });
+
+    // Không cần đoạn này nếu modal được kích hoạt bởi Bootstrap
+    // const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    // confirmDeleteButton.addEventListener('click', function() {
+    //     const deleteForm = document.getElementById('delete-form');
+    //     deleteForm.submit();
+    // });
+});
+
+    </script>
+
+
+
+
+
+
+
 </section>
 <!-- User Dashboard Section End -->
 @endsection

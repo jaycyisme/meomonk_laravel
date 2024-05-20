@@ -23,6 +23,7 @@ use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDashboardController;
 use App\Models\Bill;
 use App\Models\Review;
 
@@ -229,10 +230,7 @@ Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.ed
 
 Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
 
-<<<<<<< HEAD
 Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail');
-
-
 
 
 
@@ -241,14 +239,23 @@ Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail')
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('userDashboard');
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('userDashboard');
-// });
+
+
+Route::get('/add-new-address', [UserDashboardController::class, 'create'])->name('addresses.create');
+
+Route::post('/store-address', [UserDashboardController::class, 'store'])->name('addresses.store');
+
+Route::delete('/addresses/{id}', [UserDashboardController::class, 'destroy'])->name('addresses.destroy');
+
+Route::get('/addresses/{id}/edit', [UserDashboardController::class, 'edit'])->name('addresses.edit');
+
+Route::put('/addresses/{id}', [UserDashboardController::class, 'update'])->name('addresses.update');
+
+Route::post('/set-default-address', [UserDashboardController::class, 'setDefaultAddress'])->name('address.set_default');
 
 
 
-=======
->>>>>>> c47ea75371257dec22f9c1aa1a2e538409473e13
+
 
 
 

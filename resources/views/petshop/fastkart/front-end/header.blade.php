@@ -395,7 +395,7 @@
                                                         <a class="dropdown-item" href="faq.php">Faq</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="user-dashboard.php">User
+                                                        <a class="dropdown-item" href="{{ route('userDashboard') }}">User
                                                             Dashboard</a>
                                                     </li>
                                                 </ul>
