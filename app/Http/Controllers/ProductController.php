@@ -386,36 +386,40 @@ class ProductController extends Controller
 
     public function listProductBrand($id, Request $request) {
         $categoryFilter = $request->input('category');
+        $priceRange = $request->input('price_range');
 
         $productsQuery = Product::where('is_active', true)
-        ->where('product.quantity', '>', 0);
+                                ->where('quantity', '>', 0);
 
         if ($categoryFilter) {
             $productsQuery->where('category_id', $categoryFilter);
         }
 
+        if ($priceRange) {
+            [$minPrice, $maxPrice] = explode('-', $priceRange);
+            $productsQuery->whereBetween('price', [(int)$minPrice, (int)$maxPrice]);
+        }
+
         $products = $productsQuery->where('brand_id', $id)
-                                    ->where('is_active', true)
-                                    ->with('brand')
-                                    ->paginate(12);
+                                  ->with('brand')
+                                  ->paginate(12);
+
         $categories = Category::where('is_active', true)
-                       ->withCount('products')
-                       ->get();
+                              ->withCount('products')
+                              ->get();
+
         $brands = Brand::all();
 
         $pageNumber = $request->input('page', 1);
-        return view('.petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter', 'pageNumber'));
+        return view('petshop.fastkart.front-end.shop-category', compact('products', 'categories', 'brands', 'categoryFilter', 'pageNumber', 'priceRange'));
     }
 
     public function listService() {
         $products = Product::where('category_id', 7)->get();
-        $categories = Product::where('is_active', true)
-                       ->get();
+        $categories = Product::where('is_active', true)->get();
         $brands = Brand::all();
-        return view('.petshop.fastkart.front-end.shop-service', compact('products', 'categories', 'brands'));
-
+        return view('petshop.fastkart.front-end.shop-service', compact('products', 'categories', 'brands'));
     }
-
 
 
     public function productDetail($id) {

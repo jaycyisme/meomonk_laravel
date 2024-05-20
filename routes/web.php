@@ -26,14 +26,16 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\UserDashboardController;
+
 
 //FRONT_END
 
 Route::get('/index', [HomeController::class, 'index'])->name('index');
 
-Route::get('/about-us', [PagesController::class, 'aboutUs']);
+Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
 
-Route::get('/blog-detail', [PagesController::class, 'blogDetail']);
+Route::get('/blog-detail', [PagesController::class, 'blogDetail'])->name('blogDetail');
 
 Route::get('/blog-grid', [PagesController::class, 'blogGrid'])->name('blogGrid');
 
@@ -45,7 +47,7 @@ Route::get('/blog-list', [PagesController::class, 'blogList']);
 
 Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact-us');
 
-Route::get('/faq', [PagesController::class, 'faq']);
+Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 
@@ -229,6 +231,32 @@ Route::delete('/order-list/{id}', [BillController::class, 'destroy'])->name('ord
 Route::get('/orders/{id}/edit',[BillController::class, 'edit'])->name('orders.edit');
 
 Route::put('/orders/{id}', [BillController::class, 'update'])->name('orders.update');
+
+Route::get('/orders/{id}', [BillController::class, 'show'])->name('orderDetail');
+
+
+
+//Userdash board
+
+
+Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('userDashboard');
+
+
+
+Route::get('/add-new-address', [UserDashboardController::class, 'create'])->name('addresses.create');
+
+Route::post('/store-address', [UserDashboardController::class, 'store'])->name('addresses.store');
+
+Route::delete('/addresses/{id}', [UserDashboardController::class, 'destroy'])->name('addresses.destroy');
+
+Route::get('/addresses/{id}/edit', [UserDashboardController::class, 'edit'])->name('addresses.edit');
+
+Route::put('/addresses/{id}', [UserDashboardController::class, 'update'])->name('addresses.update');
+
+Route::post('/set-default-address', [UserDashboardController::class, 'setDefaultAddress'])->name('address.set_default');
+
+
+
 
 
 

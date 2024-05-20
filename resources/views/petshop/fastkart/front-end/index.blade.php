@@ -57,10 +57,10 @@
                                     <span class="daily">Daily Needs</span>
                                 </h1>
                                 <p class="w-75 d-none d-sm-block">
-                                    Vegetables contain many vitamins and minerals that are good
+                                    Cat IAMS contain many vitamins and minerals that are good
                                     for your health.
                                 </p>
-                                <button onclick="location.href = 'shop-left-sidebar.php';"
+                                <button onclick="location.href = '{{ route('productDetail', ['id' => 5]) }}';"
                                     class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">
                                     Shop Now <i class="fa-solid fa-right-long icon"></i>
                                 </button>
@@ -80,9 +80,9 @@
                                         <h2 class="mt-0 text-danger">
                                             45% <span class="discount text-title">OFF</span>
                                         </h2>
-                                        <h3 class="theme-color">Nut Collection</h3>
-                                        <p class="w-75">We deliver organic vegetables & fruits</p>
-                                        <a href="shop-left-sidebar.php" class="shop-button">Shop Now <i
+                                        <h3 class="theme-color">Services Collection</h3>
+                                        <p class="w-75">We provide numerous special services</p>
+                                        <a href="{{ route('contact-us') }}" class="shop-button">Book Now <i
                                                 class="fa-solid fa-right-long"></i></a>
                                     </div>
                                 </div>
@@ -98,9 +98,9 @@
                                         <h3 class="mt-0 theme-color fw-bold">Healthy Food</h3>
                                         <h4 class="text-danger">Organic Market</h4>
                                         <p class="organic">
-                                            Start your daily shopping with some Organic food
+                                            Start your daily shopping with some Quality food
                                         </p>
-                                        <a href="shop-left-sidebar.php" class="shop-button">Shop Now <i
+                                        <a href="{{ route('listProduct') }}" class="shop-button">Shop Now <i
                                                 class="fa-solid fa-right-long"></i></a>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                                 <h5>Hot Deals on New Items</h5>
                                 <h6 class="text-content">Daily Essentials Eggs & Dairy</h6>
                             </div>
-                            <a href="shop-left-sidebar.php" class="banner-button text-white">Shop Now <i
+                            <a href="{{ route('listProduct') }}" class="banner-button text-white">Shop Now <i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
                     </div>
@@ -139,9 +139,9 @@
                             <div class="banner-box">
                                 <h6 class="text-danger">5% OFF</h6>
                                 <h5>Buy More & Save More</h5>
-                                <h6 class="text-content">Fresh Vegetables</h6>
+                                <h6 class="text-content">Fresh Food</h6>
                             </div>
-                            <a href="shop-left-sidebar.php" class="banner-button text-white">Shop Now <i
+                            <a href="{{ route('listProduct') }}" class="banner-button text-white">Shop Now <i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                                 <h5>Organic Meat Prepared</h5>
                                 <h6 class="text-content">Delivered to Your Home</h6>
                             </div>
-                            <a href="shop-left-sidebar.php" class="banner-button text-white">Shop Now <i
+                            <a href="{{ route('listProduct') }}" class="banner-button text-white">Shop Now <i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                                 <h5>Buy More & Save More</h5>
                                 <h6 class="text-content">Nuts & Snacks</h6>
                             </div>
-                            <a href="shop-left-sidebar.php" class="banner-button text-white">Shop Now <i
+                            <a href="{{ route('listProduct') }}" class="banner-button text-white">Shop Now <i
                                     class="fa-solid fa-right-long ms-2"></i></a>
                         </div>
                     </div>
@@ -208,21 +208,21 @@
                                 <li>
                                     <div class="category-list">
                                         <h5 class="ms-0 text-title">
-                                            <a href="shop-left-sidebar.php">Value of the Day</a>
+                                            <a href="{{ route('listProduct') }}">Value of the Day</a>
                                         </h5>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="category-list">
                                         <h5 class="ms-0 text-title">
-                                            <a href="shop-left-sidebar.php">Top 50 Offers</a>
+                                            <a href="{{ route('listProduct') }}">Top 50 Offers</a>
                                         </h5>
                                     </div>
                                 </li>
                                 <li class="mb-0">
                                     <div class="category-list">
                                         <h5 class="ms-0 text-title">
-                                            <a href="shop-left-sidebar.php">New Arrivals</a>
+                                            <a href="{{ route('listProduct') }}">New Arrivals</a>
                                         </h5>
                                     </div>
                                 </li>
@@ -241,7 +241,7 @@
                                             Products
                                         </h3>
                                         <h3 class="fw-light">every hour</h3>
-                                        <button onclick="location.href = 'shop-left-sidebar.php';"
+                                        <button onclick="location.href = '{{ route('listProduct') }}';"
                                             class="btn btn-animation btn-md mend-auto">
                                             Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                         </button>
@@ -264,7 +264,7 @@
                                             Vegetables
                                         </h2>
                                         <p class="mb-3">Super Offer to 50% Off</p>
-                                        <button onclick="location.href = 'shop-left-sidebar.php';"
+                                        <button onclick="location.href = '{{ route('listProduct') }}';"
                                             class="btn btn-animation btn-md mend-auto">
                                             Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                         </button>
@@ -278,21 +278,21 @@
                                 <h3>New Product</h3>
 
                                 <ul class="product-list border-0 p-0 d-block">
-                                    @foreach ($products->slice(3, 4) as $product)
+                                    @foreach ($new_products as $new_product)
                                     <li>
                                         <div class="offer-product">
-                                            <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="offer-image">
-                                                <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}"
+                                            <a href="{{ route('productDetail', ['id' => $new_product->id]) }}" class="offer-image">
+                                                <img src="{{ asset('front-end/assets/images/product/' . $new_product->image) }}"
                                                     class="blur-up lazyload" alt="" />
                                             </a>
 
                                             <div class="offer-detail">
                                                 <div>
-                                                    <a href="{{ route('productDetail', ['id' => $product->id]) }}" class="text-title">
-                                                        <h6 class="name">{{ $product->name }}</h6>
+                                                    <a href="{{ route('productDetail', ['id' => $new_product->id]) }}" class="text-title">
+                                                        <h6 class="name">{{ $new_product->name }}</h6>
                                                     </a>
                                                     <span>1KG</span>
-                                                    <h6 class="price theme-color">$ {{ $product->price }}</h6>
+                                                    <h6 class="price theme-color">$ {{ $new_product->price }}</h6>
                                                 </div>
                                             </div>
                                         </div>

@@ -34,6 +34,11 @@ class Bill extends Model
         return $this->hasMany(BillProduct::class, 'bill_id');
     }
 
+        public function get_order()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
 
     public static function topFiveUsersByTotalMoney($year)
     {

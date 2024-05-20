@@ -134,10 +134,7 @@
                 deleteForm.action = `/all-users/${userId}`;
             });
         });
-        @if(session('success'))
-        const successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
-        successModal.show();
-    @endif
+
     });
 </script>
 

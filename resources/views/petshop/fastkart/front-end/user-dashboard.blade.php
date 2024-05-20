@@ -96,8 +96,8 @@
                             </div>
 
                             <div class="profile-name">
-                                <h3>Vicki E. Pope</h3>
-                                <h6 class="text-content">vicki.pope@gmail.com</h6>
+                                <h3>{{ $name }}</h3>
+                                <h6 class="text-content">{{ $email }}</h6>
                             </div>
                         </div>
                     </div>
@@ -125,25 +125,15 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-address" type="button" role="tab"><i
-                                    data-feather="map-pin"></i>Address</button>
+                                data-bs-target="#pills-address" type="button" role="tab">
+                               <i data-feather="map-pin"></i>Address</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab"><i data-feather="user"></i>
                                 Profile</button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-download-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-download" type="button" role="tab"><i
-                                    data-feather="download"></i>Download</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-security-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-security" type="button" role="tab"><i
-                                    data-feather="shield"></i>
-                                Privacy</button>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -165,7 +155,7 @@
                                 </div>
 
                                 <div class="dashboard-user-name">
-                                    <h6 class="text-content">Hello, <b class="text-title">Vicki E. Pope</b></h6>
+                                    <h6 class="text-content">Hello, <b class="text-title">{{ $name }}</b></h6>
                                     <p class="text-content">From your My Account Dashboard you have the ability to
                                         view a snapshot of your recent account activity and update your account
                                         information. Select a link below to view or edit information.</p>
@@ -181,12 +171,12 @@
                                                     alt="">
                                                 <div class="total-detail">
                                                     <h5>Total Order</h5>
-                                                    <h3>3658</h3>
+                                                    <h3>{{$totalOrders}}</h3>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                        {{-- <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
                                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/svg/pending.svg"
                                                     class="img-1 blur-up lazyload" alt="">
@@ -197,7 +187,7 @@
                                                     <h3>254</h3>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
@@ -221,21 +211,24 @@
                                 <div class="row g-4">
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Contact Information <a href="javascript:void(0)"
-                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a>
+                                            <h4>Contact Information
+                                                 {{-- <a href="javascript:void(0)"
+                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a> --}}
                                             </h4>
                                         </div>
                                         <div class="dashboard-detail">
-                                            <h6 class="text-content">MARK JECNO</h6>
-                                            <h6 class="text-content">vicki.pope@gmail.com</h6>
-                                            <a href="javascript:void(0)">Change Password</a>
+                                            <h6 class="text-content">{{$name}}</h6>
+                                            <h6 class="text-content">{{$email}}</h6>
+                                            {{-- <a href="javascript:void(0)">Change Password</a> --}}
                                         </div>
                                     </div>
 
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Newsletters <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a></h4>
+                                            <h4>Newsletters
+                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a> --}}
+                                                </h4>
                                         </div>
                                         <div class="dashboard-detail">
                                             <h6 class="text-content">You are currently not subscribed to any
@@ -245,30 +238,46 @@
 
                                     <div class="col-12">
                                         <div class="dashboard-content-title">
-                                            <h4>Address Book <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a></h4>
+                                            <h4>Address Book
+                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a> --}}
+                                                </h4>
                                         </div>
 
                                         <div class="row g-4">
                                             <div class="col-xxl-6">
                                                 <div class="dashboard-detail">
                                                     <h6 class="text-content">Default Billing Address</h6>
-                                                    <h6 class="text-content">You have not set a default billing
-                                                        address.</h6>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile">Edit Address</a>
+                                                    @foreach ($addresses as $address)
+                                                    @if ($address->is_default)
+                                                        <li>
+
+                                                                <h6>{{ $address->address_line_1 }}</h6>
+
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                                    {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile">Edit Address</a> --}}
                                                 </div>
                                             </div>
 
-                                            <div class="col-xxl-6">
+                                            {{-- <div class="col-xxl-6">
                                                 <div class="dashboard-detail">
                                                     <h6 class="text-content">Default Shipping Address</h6>
-                                                    <h6 class="text-content">You have not set a default shipping
-                                                        address.</h6>
+                                                    @foreach ($addresses as $address)
+                                                        @if ($address->is_default)
+                                                            <li>
+
+                                                                    <h6>{{ $address->address_line_1 }}</h6>
+
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
                                                     <a href="javascript:void(0)" data-bs-toggle="modal"
                                                         data-bs-target="#editProfile">Edit Address</a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -467,243 +476,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
-                                        <div class="product-box-3 theme-bg-white h-100">
-                                            <div class="product-header">
-                                                <div class="product-image">
-                                                    <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/cake/product/5.png"
-                                                            class="img-fluid blur-up lazyload" alt="">
-                                                    </a>
 
-                                                    <div class="product-header-top">
-                                                        <button class="btn wishlist-button close_button">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="product-footer">
-                                                <div class="product-detail">
-                                                    <span class="span-name">Snacks</span>
-                                                    <a href="product-left-thumbnail.php">
-                                                        <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g
-                                                        </h5>
-                                                    </a>
-                                                    <p class="text-content mt-1 mb-2 product-content">Cheddar
-                                                        cheddar pecorino hard cheese hard cheese cheese and biscuits
-                                                        bocconcini babybel. Cow goat paneer cream cheese fromage
-                                                        cottage cheese cauliflower cheese jarlsberg.</p>
-                                                    <h6 class="unit mt-1">100 G</h6>
-                                                    <h5 class="price">
-                                                        <span class="theme-color">$10.25</span>
-                                                        <del>$12.36</del>
-                                                    </h5>
-                                                    <div class="add-to-cart-box mt-2">
-                                                        <button class="btn btn-add-cart addcart-button"
-                                                            tabindex="0">Add
-                                                            <span class="add-icon">
-                                                                <i class="fa-solid fa-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                        <div class="cart_qty qty-box">
-                                                            <div class="input-group">
-                                                                <button type="button" class="qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus"></i>
-                                                                </button>
-                                                                <input class="form-control input-number qty-input"
-                                                                    type="text" name="quantity" value="0">
-                                                                <button type="button" class="qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
-                                        <div class="product-box-3 theme-bg-white h-100">
-                                            <div class="product-header">
-                                                <div class="product-image">
-                                                    <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/cake/product/6.png"
-                                                            class="img-fluid blur-up lazyload" alt="">
-                                                    </a>
-
-                                                    <div class="product-header-top">
-                                                        <button class="btn wishlist-button close_button">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="product-footer">
-                                                <div class="product-detail">
-                                                    <span class="span-name">Vegetable</span>
-                                                    <a href="product-left-thumbnail.php">
-                                                        <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                                    </a>
-                                                    <p class="text-content mt-1 mb-2 product-content">Bavarian
-                                                        bergkase smelly cheese swiss cut the cheese lancashire who
-                                                        moved my cheese manchego melted cheese. Red leicester paneer
-                                                        cow when the cheese comes out everybody's happy croque
-                                                        monsieur goat melted cheese port-salut.</p>
-                                                    <h6 class="unit mt-1">550 G</h6>
-                                                    <h5 class="price">
-                                                        <span class="theme-color">$14.25</span>
-                                                        <del>$16.57</del>
-                                                    </h5>
-                                                    <div class="add-to-cart-box mt-2">
-                                                        <button class="btn btn-add-cart addcart-button"
-                                                            tabindex="0">Add
-                                                            <span class="add-icon">
-                                                                <i class="fa-solid fa-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                        <div class="cart_qty qty-box">
-                                                            <div class="input-group">
-                                                                <button type="button" class="qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus"></i>
-                                                                </button>
-                                                                <input class="form-control input-number qty-input"
-                                                                    type="text" name="quantity" value="0">
-                                                                <button type="button" class="qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
-                                        <div class="product-box-3 theme-bg-white h-100">
-                                            <div class="product-header">
-                                                <div class="product-image">
-                                                    <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/cake/product/7.png"
-                                                            class="img-fluid blur-up lazyload" alt="">
-                                                    </a>
-
-                                                    <div class="product-header-top">
-                                                        <button class="btn wishlist-button close_button">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="product-footer">
-                                                <div class="product-detail">
-                                                    <span class="span-name">Vegetable</span>
-                                                    <a href="product-left-thumbnail.php">
-                                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                                    </a>
-                                                    <p class="text-content mt-1 mb-2 product-content">Melted cheese
-                                                        babybel chalk and cheese. Port-salut port-salut cream cheese
-                                                        when the cheese comes out everybody's happy cream cheese
-                                                        hard cheese cream cheese red leicester.</p>
-                                                    <h6 class="unit mt-1">1 Kg</h6>
-                                                    <h5 class="price">
-                                                        <span class="theme-color">$12.68</span>
-                                                        <del>$14.69</del>
-                                                    </h5>
-                                                    <div class="add-to-cart-box mt-2">
-                                                        <button class="btn btn-add-cart addcart-button"
-                                                            tabindex="0">Add
-                                                            <span class="add-icon">
-                                                                <i class="fa-solid fa-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                        <div class="cart_qty qty-box">
-                                                            <div class="input-group">
-                                                                <button type="button" class="qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus"></i>
-                                                                </button>
-                                                                <input class="form-control input-number qty-input"
-                                                                    type="text" name="quantity" value="0">
-                                                                <button type="button" class="qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-3 col-lg-6 col-md-4 col-sm-6">
-                                        <div class="product-box-3 theme-bg-white h-100">
-                                            <div class="product-header">
-                                                <div class="product-image">
-                                                    <a href="product-left-thumbnail.php">
-                                                        <img src="../assets/images/cake/product/2.png"
-                                                            class="img-fluid blur-up lazyload" alt="">
-                                                    </a>
-
-                                                    <div class="product-header-top">
-                                                        <button class="btn wishlist-button close_button">
-                                                            <i data-feather="x"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="product-footer">
-                                                <div class="product-detail">
-                                                    <span class="span-name">Vegetable</span>
-                                                    <a href="product-left-thumbnail.php">
-                                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                                    </a>
-                                                    <p class="text-content mt-1 mb-2 product-content">Squirty cheese
-                                                        cottage cheese cheese strings. Red leicester paneer danish
-                                                        fontina queso lancashire when the cheese comes out
-                                                        everybody's happy cottage cheese paneer.</p>
-                                                    <h6 class="unit mt-1">250 ml</h6>
-                                                    <h5 class="price">
-                                                        <span class="theme-color">$08.02</span>
-                                                        <del>$15.15</del>
-                                                    </h5>
-                                                    <div class="add-to-cart-box mt-2">
-                                                        <button class="btn btn-add-cart addcart-button"
-                                                            tabindex="0">Add
-                                                            <span class="add-icon">
-                                                                <i class="fa-solid fa-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                        <div class="cart_qty qty-box">
-                                                            <div class="input-group">
-                                                                <button type="button" class="qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus"></i>
-                                                                </button>
-                                                                <input class="form-control input-number qty-input"
-                                                                    type="text" name="quantity" value="0">
-                                                                <button type="button" class="qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -719,318 +492,51 @@
                                     </span>
                                 </div>
 
+
                                 <div class="order-contain">
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
+                                    @foreach ($orderHistory as $order)
+                                        @foreach ($order->billProducts as $billProduct)
+                                            <div class="order-box dashboard-bg-box">
+                                                <div class="order-container">
+                                                    <div class="order-icon">
+                                                        <i data-feather="box"></i>
+                                                    </div>
+                                                    <div class="order-detail">
+                                                        <h4>Delivers <span>{{ $order->billStatus->name }}</span></h4>
+                                                    </div>
+                                                </div>
 
-                                            <div class="order-detail">
-                                                <h4>Delivers <span>Pending</span></h4>
-                                                <h6 class="text-content">Gouda parmesan caerphilly mozzarella
-                                                    cottage cheese cauliflower cheese taleggio gouda.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/1.png"
-                                                    class="blur-up lazyload" alt="">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>Fantasy Crunchy Choco Chip Cookies</h3>
-                                                </a>
-                                                <p class="text-content">Cheddar dolcelatte gouda. Macaroni cheese
-                                                    cheese strings feta halloumi cottage cheese jarlsberg cheese
-                                                    triangles say cheese.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
+                                                <div class="product-order-detail">
+                                                    <div class="product-image-and-details" style="display: flex; align-items: flex-start;">
+                                                        <a href="javascript:void(0)">
+                                                            <img src="{{ asset('front-end/assets/images/product/' . $billProduct->product->image) }}" style="max-width: 150px; margin-right: 20px;" class="img-fluid blur-up lazyload" alt="">
+                                                        </a>
+                                                        <div class="order-wrap" style="flex: 1;">
+                                                            <a href="product-left-thumbnail.php">
+                                                                <h3>{{ $billProduct->product->name }}</h3>
+                                                            </a>
+                                                            <div class="size-box">
+                                                                <h6 class="text-content">Sold By : </h6>
+                                                                <h5>{{ $billProduct->product->brand->name }}</h5>
                                                             </div>
+                                                            <p class="text-content">{{ $billProduct->product->description }}</p>
+                                                            <ul class="product-size">
+                                                                <li>
+                                                                    <div class="size-box">
+                                                                        <h6 class="text-content">Price : </h6>
+                                                                        <h5>${{ $billProduct->product->price }}</h5>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
                                                         </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
-
-                                            <div class="order-detail">
-                                                <h4>Delivered <span class="success-bg">Success</span></h4>
-                                                <h6 class="text-content">Cheese on toast cheesy grin cheesy grin
-                                                    cottage cheese caerphilly everyone loves cottage cheese the big
-                                                    cheese.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/2.png" alt=""
-                                                    class="blur-up lazyload">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>Cold Brew Coffee Instant Coffee 50 g</h3>
-                                                </a>
-                                                <p class="text-content">Pecorino paneer port-salut when the cheese
-                                                    comes out everybody's happy red leicester mascarpone blue
-                                                    castello cauliflower cheese.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
-
-                                            <div class="order-detail">
-                                                <h4>Delivere <span>Pending</span></h4>
-                                                <h6 class="text-content">Cheesy grin boursin cheesy grin cheesecake
-                                                    blue castello cream cheese lancashire melted cheese.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/3.png" alt=""
-                                                    class="blur-up lazyload">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>Peanut Butter Bite Premium Butter Cookies 600 g</h3>
-                                                </a>
-                                                <p class="text-content">Cow bavarian bergkase mascarpone paneer
-                                                    squirty cheese fromage frais cheese slices when the cheese comes
-                                                    out everybody's happy.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
-                                            </div>
-
-                                            <div class="order-detail">
-                                                <h4>Delivered <span class="success-bg">Success</span></h4>
-                                                <h6 class="text-content">Caerphilly port-salut parmesan pecorino
-                                                    croque monsieur dolcelatte melted cheese cheese and wine.</h6>
-                                            </div>
-                                        </div>
-
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.php" class="order-image">
-                                                <img src="../assets/images/vegetable/product/4.png"
-                                                    class="blur-up lazyload" alt="">
-                                            </a>
-
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.php">
-                                                    <h3>SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h3>
-                                                </a>
-                                                <p class="text-content">The big cheese cream cheese pepper jack
-                                                    cheese slices danish fontina everyone loves cheese on toast
-                                                    bavarian bergkase.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endforeach
                                 </div>
-                            </div>
-                        </div>
+
+
 
                         <div class="tab-pane fade" id="pills-address" role="tabpanel">
                             <div class="dashboard-address">
@@ -1044,270 +550,61 @@
                                         </span>
                                     </div>
 
-                                    <button class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3"
-                                        data-bs-toggle="modal" data-bs-target="#add-address"><i data-feather="plus"
-                                            class="me-2"></i> Add New Address</button>
+                                    <a href="{{ route('addresses.create') }}" class="btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 mt-3">
+                                        <i data-feather="plus" class="me-2"></i> Add New Address
+                                    </a>
                                 </div>
 
-                                <div class="row g-sm-4 g-3">
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault2" checked>
-                                                </div>
+                                <form id="address-form" action="{{ route('address.set_default') }}" method="POST">
+                                    @csrf
+                                    <div class="row g-sm-4 g-3">
+                                        @foreach ($addresses as $address)
+                                            <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
+                                                <div class="address-box">
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="address_id" id="address_{{ $address->id }}" value="{{ $address->id }}" {{ $address->is_default ? 'checked' : '' }} onchange="document.getElementById('address-form').submit();">
+                                                        </div>
+                                                        <div class="label">
+                                                            <label>Home</label>
+                                                        </div>
+                                                        <div class="table-responsive address-table">
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Address :</td>
+                                                                        <td>
+                                                                            <p>{{ $address->address_line_1 }}</p>
+                                                                            <p>{{ $address->address_line_2 }}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>City :</td>
+                                                                        <td>
+                                                                            <p>{{ $address->city }}</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Zip Code :</td>
+                                                                        <td>{{ $address->zip_code }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
 
-                                                <div class="label">
-                                                    <label>Home</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Jack Jennas</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>8424 James Lane South San Francisco, CA 94080
-                                                                    </p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+380</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 812-710-3798</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <div class="button-group">
+                                                        <a href="{{ route('addresses.edit', ['id' => $address->id]) }}" class="btn btn-sm add-button w-100"><i data-feather="edit"></i> Edit</a>
+                                                        <button class="btn btn-sm add-button w-100 delete-address" data-id="{{ $address->id }}" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i data-feather="trash-2"></i> Remove</button>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
+                                </form>
 
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault3">
-                                                </div>
 
-                                                <div class="label">
-                                                    <label>Office</label>
-                                                </div>
 
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Terry S. Sutton</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>2280 Rose Avenue Kenner, LA 70062</p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+25</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 504-228-0969</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault4">
-                                                </div>
-
-                                                <div class="label">
-                                                    <label>Neighbour</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Juan M. McKeon</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>1703 Carson Street Lexington, KY 40593</p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+78</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 859-257-0509</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault5">
-                                                </div>
-
-                                                <div class="label">
-                                                    <label>Home 2</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Gary M. Bailey</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>2135 Burning Memory Lane Philadelphia, PA
-                                                                        19135</p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+26</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 215-335-9916</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6">
-                                        <div class="address-box">
-                                            <div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jack"
-                                                        id="flexRadioDefault1">
-                                                </div>
-
-                                                <div class="label">
-                                                    <label>Home 2</label>
-                                                </div>
-
-                                                <div class="table-responsive address-table">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td colspan="2">Gary M. Bailey</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Address :</td>
-                                                                <td>
-                                                                    <p>2135 Burning Memory Lane Philadelphia, PA
-                                                                        19135</p>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Pin Code :</td>
-                                                                <td>+26</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Phone :</td>
-                                                                <td>+ 215-335-9916</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="button-group">
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile"><i data-feather="edit"></i>
-                                                    Edit</button>
-                                                <button class="btn btn-sm add-button w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i data-feather="trash-2"></i>
-                                                    Remove</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -1376,102 +673,6 @@
                                                 delete</a>
                                         </div>
                                     </div>
-
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                        <div class="payment-card-detail">
-                                            <div class="card-details card-visa">
-                                                <div class="card-number">
-                                                    <h4>XXXX - XXXX - XXXX - 1536</h4>
-                                                </div>
-
-                                                <div class="valid-detail">
-                                                    <div class="title">
-                                                        <span>valid</span>
-                                                        <span>thru</span>
-                                                    </div>
-                                                    <div class="date">
-                                                        <h3>12/23</h3>
-                                                    </div>
-                                                    <div class="primary">
-                                                        <span class="badge bg-pill badge-light">primary</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="name-detail">
-                                                    <div class="name">
-                                                        <h5>Leah Heather</h5>
-                                                    </div>
-                                                    <div class="card-img">
-                                                        <img src="../assets/images/payment-icon/2.jpg"
-                                                            class="img-fluid blur-up lazyloaded" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i
-                                                        class="far fa-minus-square"></i> delete</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="edit-card-mobile">
-                                            <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                            <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                delete</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-sm-6">
-                                        <div class="payment-card-detail">
-                                            <div class="card-details debit-card">
-                                                <div class="card-number">
-                                                    <h4>XXXX - XXXX - XXXX - 1366</h4>
-                                                </div>
-
-                                                <div class="valid-detail">
-                                                    <div class="title">
-                                                        <span>valid</span>
-                                                        <span>thru</span>
-                                                    </div>
-                                                    <div class="date">
-                                                        <h3>05/21</h3>
-                                                    </div>
-                                                    <div class="primary">
-                                                        <span class="badge bg-pill badge-light">primary</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="name-detail">
-                                                    <div class="name">
-                                                        <h5>mark jecno</h5>
-                                                    </div>
-                                                    <div class="card-img">
-                                                        <img src="../assets/images/payment-icon/3.jpg"
-                                                            class="img-fluid blur-up lazyloaded" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="edit-card">
-                                                <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                    href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#removeProfile"><i
-                                                        class="far fa-minus-square"></i> delete</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="edit-card-mobile">
-                                            <a data-bs-toggle="modal" data-bs-target="#editCard"
-                                                href="javascript:void(0)"><i class="far fa-edit"></i> edit</a>
-                                            <a href="javascript:void(0)"><i class="far fa-minus-square"></i>
-                                                delete</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1493,7 +694,7 @@
                                     </div>
                                     <div class="profile-name-detail">
                                         <div class="d-sm-flex align-items-center d-block">
-                                            <h3>Vicki E. Pope</h3>
+                                            <h3>{{$name}}</h3>
                                             <div class="product-rating profile-rating">
                                                 <ul class="rating">
                                                     <li>
@@ -1521,26 +722,31 @@
 
                                     <div class="location-profile">
                                         <ul>
-                                            <li>
-                                                <div class="location-box">
-                                                    <i data-feather="map-pin"></i>
-                                                    <h6>Downers Grove, IL</h6>
-                                                </div>
-                                            </li>
+                                            @foreach ($addresses as $address)
+                                            @if ($address->is_default)
+                                                <li>
+                                                    <div class="location-box">
+                                                        <i data-feather="map-pin"></i>
+                                                        <h6>{{ $address->address_line_1 }}</h6>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endforeach
+
 
                                             <li>
                                                 <div class="location-box">
                                                     <i data-feather="mail"></i>
-                                                    <h6>vicki.pope@gmail.com</h6>
+                                                    <h6>{{$email}}</h6>
                                                 </div>
                                             </li>
 
-                                            <li>
+                                            {{-- <li>
                                                 <div class="location-box">
                                                     <i data-feather="check-square"></i>
                                                     <h6>Licensed for 2 years</h6>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
 
@@ -1572,13 +778,22 @@
                                                         <tr>
                                                             <td>Phone Number :</td>
                                                             <td>
-                                                                <a href="javascript:void(0)"> +91 846 - 547 -
-                                                                    210</a>
+                                                                <a href="javascript:void(0)">{{$phone_number}}</a>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>Address :</td>
-                                                            <td>549 Sulphur Springs Road, Downers, IL</td>
+                                                            <td>
+                                                             @foreach ($addresses as $address)
+                                                                    @if ($address->is_default)
+                                                                        <li>
+                                                                                <h6>{{ $address->address_line_1 }}</h6>
+
+                                                                            </div>
+                                                                        </li>
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -1594,7 +809,7 @@
                                                         <tr>
                                                             <td>Email :</td>
                                                             <td>
-                                                                <a href="javascript:void(0)">vicki.pope@gmail.com
+                                                                <a href="javascript:void(0)">{{$email}}
                                                                     <span data-bs-toggle="modal"
                                                                         data-bs-target="#editProfile">Edit</span></a>
                                                             </td>
@@ -1624,631 +839,72 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-download" role="tabpanel">
-                            <div class="dashboard-download">
-                                <div class="title">
-                                    <h2>My Download</h2>
-                                    <span class="title-leaf">
-                                        <svg class="icon-width bg-gray">
-                                            <use xlink:href="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></use>
-                                        </svg>
-                                    </span>
-                                </div>
 
-                                <div class="download-detail dashboard-bg-box">
-                                    <form>
-                                        <div class="input-group download-form">
-                                            <input type="text" class="form-control"
-                                                placeholder="Search your download">
-                                            <button class="btn theme-bg-color text-light" type="button"
-                                                id="button-addon2">Search</button>
-                                        </div>
-                                    </form>
-
-                                    <div class="select-filter-box">
-                                        <select class="form-select">
-                                            <option selected="">All marketplaces</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-
-
-                                        <ul class="nav nav-pills filter-box" id="pills-tab" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="pills-data-tab"
-                                                    data-bs-toggle="pill" data-bs-target="#pills-data"
-                                                    type="button">Data Purchased</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="pills-title-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-title" type="button">Title</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="pills-rating-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-rating" type="button">My Rating</button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="pills-recent-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#pills-recent" type="button">Recent
-                                                    Updates</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-data" role="tabpanel">
-                                            <div class="download-table">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Image</th>
-                                                                <th>Name</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/1.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Sheltos - Real Estate Angular 17 Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/2.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Oslo - Multipurpose Shopify Theme. Fast, Clean,
-                                                                    and
-                                                                    Flexible. OS 2.0</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/3.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Boho - React JS Admin Dashboard Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-title">
-                                            <div class="download-table">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Image</th>
-                                                                <th>Name</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/1.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Sheltos - Real Estate Angular 17 Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/2.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Oslo - Multipurpose Shopify Theme. Fast, Clean,
-                                                                    and
-                                                                    Flexible. OS 2.0</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/3.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Boho - React JS Admin Dashboard Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-rating">
-                                            <div class="download-table">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Image</th>
-                                                                <th>Name</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/1.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Sheltos - Real Estate Angular 17 Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/2.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Oslo - Multipurpose Shopify Theme. Fast, Clean,
-                                                                    and
-                                                                    Flexible. OS 2.0</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/3.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Boho - React JS Admin Dashboard Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-recent">
-                                            <div class="download-table">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Image</th>
-                                                                <th>Name</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/1.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Sheltos - Real Estate Angular 17 Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/2.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Oslo - Multipurpose Shopify Theme. Fast, Clean,
-                                                                    and
-                                                                    Flexible. OS 2.0</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>
-                                                                    <img src="../assets/images/theme-icon/3.png"
-                                                                        class="img-fluid" alt="">
-                                                                </td>
-                                                                <td>Boho - React JS Admin Dashboard Template</td>
-                                                                <td>
-                                                                    <div class="dropdown download-dropdown">
-                                                                        <button class="btn dropdown-toggle"
-                                                                            type="button"
-                                                                            data-bs-toggle="dropdown">Download</button>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">All files
-                                                                                    & documentation</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (PDF)</a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a class="dropdown-item"
-                                                                                    href="#">License
-                                                                                    certificate & purchase code
-                                                                                    (text)</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-security" role="tabpanel">
-                            <div class="dashboard-privacy">
-                                <div class="dashboard-bg-box">
-                                    <div class="dashboard-title mb-4">
-                                        <h3>Privacy</h3>
-                                    </div>
-
-                                    <div class="privacy-box">
-                                        <div class="d-flex align-items-start">
-                                            <h6>Allows others to see my profile</h6>
-                                            <div class="form-check form-switch switch-radio ms-auto">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="redio">
-                                                <label class="form-check-label" for="redio"></label>
-                                            </div>
-                                        </div>
-
-                                        <p class="text-content">all peoples will be able to see my profile</p>
-                                    </div>
-
-                                    <div class="privacy-box">
-                                        <div class="d-flex align-items-start">
-                                            <h6>who has save this profile only that people see my profile</h6>
-                                            <div class="form-check form-switch switch-radio ms-auto">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="redio2">
-                                                <label class="form-check-label" for="redio2"></label>
-                                            </div>
-                                        </div>
-
-                                        <p class="text-content">all peoples will not be able to see my profile</p>
-                                    </div>
-
-                                    <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Save
-                                        Changes</button>
-                                </div>
-
-                                <div class="dashboard-bg-box mt-4">
-                                    <div class="dashboard-title mb-4">
-                                        <h3>Account settings</h3>
-                                    </div>
-
-                                    <div class="privacy-box">
-                                        <div class="d-flex align-items-start">
-                                            <h6>Deleting Your Account Will Permanently</h6>
-                                            <div class="form-check form-switch switch-radio ms-auto">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="redio3">
-                                                <label class="form-check-label" for="redio3"></label>
-                                            </div>
-                                        </div>
-                                        <p class="text-content">Once your account is deleted, you will be logged out
-                                            and will be unable to log in back.</p>
-                                    </div>
-
-                                    <div class="privacy-box">
-                                        <div class="d-flex align-items-start">
-                                            <h6>Deleting Your Account Will Temporary</h6>
-                                            <div class="form-check form-switch switch-radio ms-auto">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="redio4">
-                                                <label class="form-check-label" for="redio4"></label>
-                                            </div>
-                                        </div>
-
-                                        <p class="text-content">Once your account is deleted, you will be logged out
-                                            and you will be create new account</p>
-                                    </div>
-
-                                    <button class="btn theme-bg-color btn-md fw-bold mt-4 text-white">Delete My
-                                        Account</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- Modal Xác Nhận Xóa -->
+    <div class="modal fade theme-modal remove-address" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel22">Are You Sure?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="remove-box">
+                        <p>The permission for the use/group, preview is inherited from the object, object will create a
+                            new permission for this object</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold" data-bs-dismiss="modal">No</button>
+                    <form id="delete-form" method="POST" action="">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-animation btn-md fw-bold">Yes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const deleteButtons = document.querySelectorAll('.delete-address');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const addressId = this.getAttribute('data-id');
+            const deleteForm = document.getElementById('delete-form');
+            deleteForm.action = `/addresses/${addressId}`;
+            // Không cần gọi modal.show() nữa vì modal đã được kích hoạt bằng Bootstrap's data attributes
+        });
+    });
+
+    // Không cần đoạn này nếu modal được kích hoạt bởi Bootstrap
+    // const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    // confirmDeleteButton.addEventListener('click', function() {
+    //     const deleteForm = document.getElementById('delete-form');
+    //     deleteForm.submit();
+    // });
+});
+
+    </script>
+
+
+
+
+
+
+
 </section>
 <!-- User Dashboard Section End -->
 @endsection

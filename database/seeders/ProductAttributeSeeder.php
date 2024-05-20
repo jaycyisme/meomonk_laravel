@@ -15,7 +15,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 1,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -33,7 +33,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 2,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -51,7 +51,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 3,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -69,7 +69,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 4,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -87,7 +87,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 5,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -105,7 +105,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 6,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -123,7 +123,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 7,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -141,7 +141,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 8,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -159,7 +159,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 9,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -177,7 +177,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 10,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -195,7 +195,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 11,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -213,7 +213,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 12,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -231,7 +231,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 13,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -249,7 +249,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 14,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -267,7 +267,7 @@ class ProductAttributeSeeder extends Seeder
         ProductAttribute::create([
             'attribute_id' => 2,
             'product_id' => 15,
-            'percent' => 1,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
@@ -281,6 +281,317 @@ class ProductAttributeSeeder extends Seeder
             'product_id' => 15,
             'percent' => 100,
         ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 16,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 16,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 16,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 17,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 17,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 17,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 18,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 18,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 18,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 19,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 19,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 19,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 20,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 20,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 20,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 21,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 21,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 21,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 22,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 22,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 22,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 23,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 23,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 23,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 24,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 24,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 24,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 25,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 25,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 25,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 26,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 26,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 26,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 27,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 27,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 27,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 28,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 28,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 28,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 29,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 29,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 29,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 30,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 30,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 30,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 31,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 31,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 31,
+            'percent' => 100,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 2,
+            'product_id' => 32,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 3,
+            'product_id' => 32,
+            'percent' => 50,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 4,
+            'product_id' => 32,
+            'percent' => 100,
+        ]);
+
+
+
+
+
 
 
         // Pharmacy
@@ -338,175 +649,175 @@ class ProductAttributeSeeder extends Seeder
             'percent' => 0,
         ]);
 
-        ProductAttribute::create([
-            'attribute_id' => 7,
-            'product_id' => 42,
-            'percent' => 0,
-        ]);
+        // ProductAttribute::create([
+        //     'attribute_id' => 7,
+        //     'product_id' => 42,
+        //     'percent' => 0,
+        // ]);
 
-        ProductAttribute::create([
-            'attribute_id' => 7,
-            'product_id' => 43,
-            'percent' => 0,
-        ]);
+        // ProductAttribute::create([
+        //     'attribute_id' => 7,
+        //     'product_id' => 43,
+        //     'percent' => 0,
+        // ]);
 
-        ProductAttribute::create([
-            'attribute_id' => 7,
-            'product_id' => 44,
-            'percent' => 0,
-        ]);
+        // ProductAttribute::create([
+        //     'attribute_id' => 7,
+        //     'product_id' => 44,
+        //     'percent' => 0,
+        // ]);
 
-        ProductAttribute::create([
-            'attribute_id' => 7,
-            'product_id' => 45,
-            'percent' => 0,
-        ]);
+        // ProductAttribute::create([
+        //     'attribute_id' => 7,
+        //     'product_id' => 45,
+        //     'percent' => 0,
+        // ]);
 
 
 
         // Toys
         ProductAttribute::create([
             'attribute_id' => 1,
+            'product_id' => 42,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 5,
+            'product_id' => 42,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 6,
+            'product_id' => 42,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 1,
+            'product_id' => 43,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 5,
+            'product_id' => 43,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 6,
+            'product_id' => 43,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 1,
+            'product_id' => 44,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 5,
+            'product_id' => 44,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 6,
+            'product_id' => 44,
+            'percent' => 0,
+        ]);
+
+        // ProductAttribute::create([
+        //     'attribute_id' => 1,
+        //     'product_id' => 49,
+        //     'percent' => 0,
+        // ]);
+
+        // ProductAttribute::create([
+        //     'attribute_id' => 5,
+        //     'product_id' => 49,
+        //     'percent' => 0,
+        // ]);
+
+        // ProductAttribute::create([
+        //     'attribute_id' => 6,
+        //     'product_id' => 49,
+        //     'percent' => 0,
+        // ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 1,
+            'product_id' => 45,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 5,
+            'product_id' => 45,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 6,
+            'product_id' => 45,
+            'percent' => 0,
+        ]);
+
+        ProductAttribute::create([
+            'attribute_id' => 1,
             'product_id' => 46,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 5,
             'product_id' => 46,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 6,
             'product_id' => 46,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 1,
             'product_id' => 47,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 5,
             'product_id' => 47,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 6,
             'product_id' => 47,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 1,
             'product_id' => 48,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 5,
             'product_id' => 48,
-            'percent' => 10,
+            'percent' => 0,
         ]);
 
         ProductAttribute::create([
             'attribute_id' => 6,
             'product_id' => 48,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 1,
-            'product_id' => 49,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 5,
-            'product_id' => 49,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 6,
-            'product_id' => 49,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 1,
-            'product_id' => 50,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 5,
-            'product_id' => 50,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 6,
-            'product_id' => 50,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 1,
-            'product_id' => 51,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 5,
-            'product_id' => 51,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 6,
-            'product_id' => 51,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 1,
-            'product_id' => 52,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 5,
-            'product_id' => 52,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 6,
-            'product_id' => 52,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 1,
-            'product_id' => 53,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 5,
-            'product_id' => 53,
-            'percent' => 10,
-        ]);
-
-        ProductAttribute::create([
-            'attribute_id' => 6,
-            'product_id' => 53,
-            'percent' => 10,
+            'percent' => 0,
         ]);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\RankCustomer;
+use App\Models\Address;
+use App\Models\Bill;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,6 +64,15 @@ class User extends Authenticatable
         return $this->belongsTo(RankCustomer::class, 'rank_customer_id');
     }
 
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+
+        public function orders()
+    {
+        return $this->hasMany(Bill::class);}
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');

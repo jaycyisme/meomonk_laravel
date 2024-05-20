@@ -226,7 +226,7 @@
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                        <span>Price aaaaaaaaaaaaaaa</span>
+                                        <span>Price </span>
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse show">
