@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Session;
 use App\Models\Attribute;
 
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
-    public function index(){
 
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('attributes');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
+    public function index(){
+        $this->AuthLogin();
         $attributes = Attribute::all();
         return view('admin.back-end.attributes', compact('attributes'));
         // return view('admin.back-end.add-new-product', compact('attributes'));
@@ -18,12 +28,13 @@ class AttributeController extends Controller
 
 
     public function addNewAttributes(){
+        $this->AuthLogin();
         $attributes = Attribute::all();
         return view('admin.back-end.add-new-attributes', compact('attributes'));
     }
 
     public function store(Request $request){
-
+        $this->AuthLogin();
         if (!$request->filled('name') || !$request->filled('value')) {
 
             return redirect()->back()->with('error', 'Please enter complete data.');
@@ -58,6 +69,7 @@ class AttributeController extends Controller
 
 
     public function edit($id) {
+        $this->AuthLogin();
         $attribute = Attribute::find($id);
         if (!$attribute) {
             return redirect()->back()->with('error', 'Attribute not found!');
@@ -66,6 +78,7 @@ class AttributeController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $this->AuthLogin();
         $request->validate([
             'name' => 'required|string|max:255',
             'value' => 'required|string|max:255',
@@ -96,6 +109,7 @@ class AttributeController extends Controller
     }
 
     public function delete($id){
+        $this->AuthLogin();
         $attribute = Attribute::findOrFail($id);
         $attribute->delete();
 

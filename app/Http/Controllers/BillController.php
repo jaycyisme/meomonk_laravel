@@ -7,13 +7,23 @@ use App\Models\Bill;
 use App\Models\BillProduct;
 use App\Models\BillStatus;
 use App\Models\PaymentMethod;
-
+use Illuminate\Support\Facades\Session;
 
 class BillController extends Controller
 {
+
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('orderList');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
     public function index(){
 
-
+        $this->AuthLogin();
               $orders = Bill::where('is_active',1)
               ->with(['paymentMethod', 'billStatus'],'billProducts.product')->get();
 
@@ -32,6 +42,7 @@ class BillController extends Controller
 
     public function destroy($id)
     {
+        $this->AuthLogin();
         $bill = Bill::find($id);
 
         $bill->is_active = 0;
@@ -41,7 +52,7 @@ class BillController extends Controller
     }
 
     public function edit($id){
-
+        $this->AuthLogin();
         $order = Bill::find($id);
         $totalPrice = 0;
         foreach ($order->billProducts as $billProduct) {
@@ -56,7 +67,7 @@ class BillController extends Controller
 
     public function update(Request $request, $id){
 
-
+        $this->AuthLogin();
         $order = Bill::findOrFail($id);
 
         $order->payment_method_id = $request->input('payment_method');
@@ -73,6 +84,7 @@ class BillController extends Controller
 
     public function show($id)
     {
+        $this->AuthLogin();
         $bill = Bill::with('billProducts.product')->find($id);
 
         if (!$bill) {

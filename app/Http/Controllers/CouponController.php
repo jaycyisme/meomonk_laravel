@@ -5,17 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Coupon;
 use App\Models\CouponStatus;
+use Illuminate\Support\Facades\Session;
 
 class CouponController extends Controller
 {
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('couponList');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
     public function index()
     {
+        $this->AuthLogin();
         $coupons = Coupon::all(); // Lấy danh sách tất cả các coupon
         return view('admin.back-end.coupon-list', compact('coupons'));
     }
 
     public function create()
     {
+        $this->AuthLogin();
         $coupons = Coupon::all();
         $coupon_status = CouponStatus::all();
         return view('admin.back-end.create-coupon', compact('coupons', 'coupon_status'));
@@ -23,6 +35,7 @@ class CouponController extends Controller
 
     public function store(Request $request)
     {
+        $this->AuthLogin();
         // Validate dữ liệu từ request
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
@@ -52,6 +65,7 @@ class CouponController extends Controller
 
     public function edit($id)
     {
+        $this->AuthLogin();
         $coupon = Coupon::findOrFail($id);
         $coupon_status = CouponStatus::all();
         return view('admin.back-end.edit-coupon', compact('coupon', 'coupon_status'));
@@ -59,6 +73,7 @@ class CouponController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->AuthLogin();
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'code' => 'required|string|max:10|unique:coupon,code,' . $id,
@@ -78,6 +93,7 @@ class CouponController extends Controller
 
     public function destroy($id)
     {
+        $this->AuthLogin();
         // Xóa coupon theo ID
         $coupon = Coupon::find($id);
 

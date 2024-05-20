@@ -16,12 +16,23 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
+
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('products');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
     public function index()
     {
+        $this->AuthLogin();
         $products = Product::where('is_active', 1)->get();
         return view('admin.back-end.products', compact('products'));
         // return view('admin.back-end.products');
@@ -29,6 +40,7 @@ class ProductController extends Controller
     }
 
     public function addNewProducts(){
+        $this->AuthLogin();
         $products = Product::where('is_active', 1)->get();
         $attributes = Attribute::select('name')->distinct()->get();
         $Animals = Animal::all();
@@ -44,6 +56,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $this->AuthLogin();
         if (!$request->filled('name') || !$request->filled('price') || !$request->filled('description') || !$request->filled('quantity') ) {
             return redirect()->back()->with('error', 'Please enter complete data.');
         }
@@ -166,7 +179,7 @@ class ProductController extends Controller
 
 
     public function edit($id) {
-
+        $this->AuthLogin();
         $attributes = Attribute::select('name')->distinct()->get();
         $Animals = Animal::all();
         $Categorys = Category::all();
@@ -310,7 +323,7 @@ class ProductController extends Controller
     }
 
     public function softDelete($id){
-
+        $this->AuthLogin();
         $product = Product::find($id);
 
         if ($product) {

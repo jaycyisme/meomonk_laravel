@@ -9,8 +9,20 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+
+    public function AuthLogin() {
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('productReview');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
+
     public function store(Request $request){
         // dd($request->all());
+        $this->AuthLogin();
         $description = $request->input('description') ?? ' ';
 
         $user_id = Session::get('user_id');
@@ -32,6 +44,7 @@ class ReviewController extends Controller
 
     public function index()
     {
+        $this->AuthLogin();
         $reviews = Review::all();
         return view('admin.back-end.product-review', compact('reviews'));
     }
@@ -39,7 +52,7 @@ class ReviewController extends Controller
 
     public function delete($id)
     {
-
+        $this->AuthLogin();
         $review = Review::findOrFail($id);
         $review ->delete();
         return redirect()->back()->with('success', '$review deleted successfully!');
