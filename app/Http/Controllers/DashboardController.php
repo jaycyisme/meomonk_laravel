@@ -10,11 +10,23 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
+    public function AuthLogin() {
+
+        $admin_id = Session::get('admin_id');
+        if($admin_id) {
+            return redirect()->route('couponList');
+        }else {
+            return redirect()->route('adminLogin')->send();
+        }
+    }
+
 
     public function index(Request $request){
+        $this->AuthLogin();
         $selectedYear = $request->input('year', date('Y'));
         $products = Product::where('is_active', 1)->get();
         $totalQuantity = $products->sum('quantity');
