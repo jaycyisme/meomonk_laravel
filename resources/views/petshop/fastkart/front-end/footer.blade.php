@@ -60,13 +60,13 @@
                             </div>
 
                             <div class="footer-logo-contain">
-                                <p>We are a friendly bar serving a variety of cocktails, wines and beers. Our bar is a
+                                <p>We are a friendly bar serving a variety of pets food, pharmacies and services. Our shop is a
                                     perfect place for a couple.</p>
 
                                 <ul class="address">
                                     <li>
                                         <i data-feather="home"></i>
-                                        <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                        <a href="javascript:void(0)">1418 EAUT Road, CA 96052, VN</a>
                                     </li>
                                     <li>
                                         <i data-feather="mail"></i>
@@ -84,24 +84,12 @@
 
                         <div class="footer-contain">
                             <ul>
+                                @foreach($categories_products as $category_product)
                                 <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Vegetables & Fruit</a>
+                                    <a href="{{ route('listProductCategory', ['id' => $category_product->id]) }}"
+                                        class="text-content">{{ $category_product->name }}</a>
                                 </li>
-                                <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Beverages</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Meats & Seafood</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Frozen Foods</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Biscuits & Snacks</a>
-                                </li>
-                                <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Grocery & Staples</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -114,19 +102,19 @@
                         <div class="footer-contain">
                             <ul>
                                 <li>
-                                    <a href="index.php" class="text-content">Home</a>
+                                    <a href="{{ route('index') }}" class="text-content">Home</a>
                                 </li>
                                 <li>
-                                    <a href="shop-left-sidebar.php" class="text-content">Shop</a>
+                                    <a href="{{ route('listProduct') }}" class="text-content">Shop</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.php" class="text-content">About Us</a>
+                                    <a href="{{ route('aboutUs') }}" class="text-content">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="blog-list.php" class="text-content">Blog</a>
+                                    <a href="{{ route('blogGrid') }}" class="text-content">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact-us.php" class="text-content">Contact Us</a>
+                                    <a href="{{ route('contact-us') }}" class="text-content">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -140,22 +128,16 @@
                         <div class="footer-contain">
                             <ul>
                                 <li>
-                                    <a href="order-success.php" class="text-content">Your Order</a>
+                                    <a href="{{ route('cart.index') }}" class="text-content">Your Order</a>
                                 </li>
                                 <li>
-                                    <a href="user-dashboard.php" class="text-content">Your Account</a>
+                                    <a href="{{ route('userDashboard') }}" class="text-content">Your Account</a>
                                 </li>
                                 <li>
-                                    <a href="order-tracking.php" class="text-content">Track Order</a>
+                                    <a href="{{ route('wishlist.index') }}" class="text-content">Your Wishlist</a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.php" class="text-content">Your Wishlist</a>
-                                </li>
-                                <li>
-                                    <a href="search.php" class="text-content">Search</a>
-                                </li>
-                                <li>
-                                    <a href="faq.php" class="text-content">FAQ</a>
+                                    <a href="{{ route('faq') }}" class="text-content">FAQ</a>
                                 </li>
                             </ul>
                         </div>
@@ -173,7 +155,7 @@
                                         <i data-feather="phone"></i>
                                         <div class="contact-number">
                                             <h6 class="text-content">Hotline 24/7 :</h6>
-                                            <h5>+91 888 104 2340</h5>
+                                            <h5>+84 867 551 656</h5>
                                         </div>
                                     </div>
                                 </li>
@@ -213,7 +195,7 @@
 
             <div class="sub-footer section-small-space">
                 <div class="reserve">
-                    <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
+                    <h6 class="text-content">©2024 Fastkart</h6>
                 </div>
 
                 <div class="payment">

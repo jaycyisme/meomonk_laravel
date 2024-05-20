@@ -304,7 +304,7 @@
 
                         <div class="section-t-space">
                             <div class="category-menu">
-                                <h3>Customer Comment</h3>
+                                <h3>Manager Comment</h3>
 
                                 <div class="review-box">
                                     <div class="review-contain">
@@ -312,10 +312,7 @@
                                             We Care About Our Customer Experience
                                         </h5>
                                         <p>
-                                            In publishing and graphic design, Lorem ipsum is a
-                                            placeholder text commonly used to demonstrate the visual
-                                            form of a document or a typeface without relying on
-                                            meaningful content.
+                                            Fastkart is an industry leading health and wellness company focused on improving the lives of pets, pet parents and our partners.
                                         </p>
                                     </div>
 
@@ -492,7 +489,7 @@
                                             <h4 class="text-russo fw-normal theme-color mb-2">
                                                 Testy Mushrooms
                                             </h4>
-                                            <button onclick="location.href = 'shop-left-sidebar.php';"
+                                            <button onclick="location.href = '{{ route('productDetail', ['id' => 6]) }}';"
                                                 class="btn btn-animation btn-sm mend-auto">
                                                 Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                             </button>
@@ -510,7 +507,7 @@
                                             <h4 class="text-russo fw-normal theme-color mb-2">
                                                 Fresh MEAT
                                             </h4>
-                                            <button onclick="location.href = 'shop-left-sidebar.php';"
+                                            <button onclick="location.href = '{{ route('productDetail', ['id' => 7]) }}p';"
                                                 class="btn btn-animation btn-sm mend-auto">
                                                 Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                             </button>
@@ -646,7 +643,7 @@
                                     <h3 class="lh-base fw-bold offer-text">
                                         Get $3 Cashback! Min Order of $30
                                     </h3>
-                                    <h6 class="coupon-code">Use Code : MEOMONK</h6>
+                                    <h6 class="coupon-code">Use Code : meomonk</h6>
                                 </div>
                             </div>
                         </div>
@@ -665,10 +662,9 @@
                                             </h2>
                                             <h3 class="mt-2 mb-3">TAKE ON THE DAY!</h3>
                                             <p class="text-content banner-text">
-                                                In publishing and graphic design, Lorem ipsum is a
-                                                placeholder text commonly used to demonstrate.
+                                                Fastkart is an industry leading health and wellness company focused on improving the lives of pets, pet parents and our partners.
                                             </p>
-                                            <button onclick="location.href = 'shop-left-sidebar.php';"
+                                            <button onclick="location.href = '{{ route('productDetail', ['id' => 17]) }}';"
                                                 class="btn btn-animation btn-sm mend-auto">
                                                 Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                             </button>
@@ -678,7 +674,7 @@
                             </div>
 
                             <div class="col-xxl-4 col-xl-12 col-md-5">
-                                <a href="shop-left-sidebar.php" class="banner-contain hover-effect h-100">
+                                <a href="{{ route('productDetail', ['id' => 26]) }}" class="banner-contain hover-effect h-100">
                                     <img src="{{asset('front-end')}}/assets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
                                         alt="" />
                                     <div class="banner-details p-center-left p-4 h-100">
@@ -796,11 +792,11 @@
                             <div class="banner-details p-center banner-b-space w-100 text-center">
                                 <div>
                                     <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
-                                    <h2 class="banner-title">VEGETABLE</h2>
+                                    <h2 class="banner-title">Pet Food</h2>
                                     <h5 class="lh-sm mx-auto mt-1 text-content">
                                         Save up to 5% OFF
                                     </h5>
-                                    <button onclick="location.href = 'shop-left-sidebar.php';"
+                                    <button onclick="location.href = '{{ route('listProduct') }}';"
                                         class="btn btn-animation btn-sm mx-auto mt-sm-3 mt-2">
                                         Shop Now <i class="fa-solid fa-arrow-right icon"></i>
                                     </button>
@@ -823,15 +819,15 @@
                         <div>
                             <div class="blog-box">
                                 <div class="blog-box-image">
-                                    <a href="blog-detail.php" class="blog-image">
+                                    <a href="{{ route('blogDetail') }}" class="blog-image">
                                         <img src="{{asset('front-end')}}/assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
 
-                                <a href="blog-detail.php" class="blog-detail">
-                                    <h6>20 March, 2022</h6>
-                                    <h5>Fresh Vegetable Online</h5>
+                                <a href="{{ route('blogDetail') }}" class="blog-detail">
+                                    <h6>20 March, 2023</h6>
+                                    <h5>Fresh Food Online</h5>
                                 </a>
                             </div>
                         </div>
@@ -839,15 +835,15 @@
                         <div>
                             <div class="blog-box">
                                 <div class="blog-box-image">
-                                    <a href="blog-detail.php" class="blog-image">
+                                    <a href="{{ route('blogDetail') }}" class="blog-image">
                                         <img src="{{asset('front-end')}}/assets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
 
-                                <a href="blog-detail.php" class="blog-detail">
-                                    <h6>10 April, 2022</h6>
-                                    <h5>Fresh Combo Fruit</h5>
+                                <a href="{{ route('blogDetail') }}" class="blog-detail">
+                                    <h6>10 April, 2023</h6>
+                                    <h5>Fresh Combo Food</h5>
                                 </a>
                             </div>
                         </div>
@@ -855,13 +851,13 @@
                         <div>
                             <div class="blog-box">
                                 <div class="blog-box-image">
-                                    <a href="blog-detail.php" class="blog-image">
+                                    <a href="{{ route('blogDetail') }}" class="blog-image">
                                         <img src="{{asset('front-end')}}/assets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
 
-                                <a href="blog-detail.php" class="blog-detail">
+                                <a href="{{ route('blogDetail') }}" class="blog-detail">
                                     <h6>10 April, 2022</h6>
                                     <h5>Nuts to Eat for Better Health</h5>
                                 </a>
@@ -871,13 +867,13 @@
                         <div>
                             <div class="blog-box">
                                 <div class="blog-box-image">
-                                    <a href="blog-detail.php" class="blog-image">
+                                    <a href="{{ route('blogDetail') }}" class="blog-image">
                                         <img src="{{asset('front-end')}}/assets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
                                             alt="" />
                                     </a>
                                 </div>
 
-                                <a href="blog-detail.php" class="blog-detail">
+                                <a href="{{ route('blogDetail') }}" class="blog-detail">
                                     <h6>20 March, 2022</h6>
                                     <h5>Fresh Vegetable Online</h5>
                                 </a>
