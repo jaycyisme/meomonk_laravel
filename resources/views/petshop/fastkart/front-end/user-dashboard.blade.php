@@ -171,12 +171,12 @@
                                                     alt="">
                                                 <div class="total-detail">
                                                     <h5>Total Order</h5>
-                                                    <h3>{{$totalOrders}}</h3>
+                                                    <h3>3658</h3>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {{-- <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
+                                        <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
                                                 <img src="https://themes.pixelstrap.com/fastkart/assets/images/svg/pending.svg"
                                                     class="img-1 blur-up lazyload" alt="">
@@ -187,7 +187,7 @@
                                                     <h3>254</h3>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
                                             <div class="total-contain">
@@ -211,24 +211,21 @@
                                 <div class="row g-4">
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Contact Information
-                                                 {{-- <a href="javascript:void(0)"
-                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a> --}}
+                                            <h4>Contact Information <a href="javascript:void(0)"
+                                                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit</a>
                                             </h4>
                                         </div>
                                         <div class="dashboard-detail">
                                             <h6 class="text-content">{{$name}}</h6>
                                             <h6 class="text-content">{{$email}}</h6>
-                                            {{-- <a href="javascript:void(0)">Change Password</a> --}}
+                                            <a href="javascript:void(0)">Change Password</a>
                                         </div>
                                     </div>
 
                                     <div class="col-xxl-6">
                                         <div class="dashboard-content-title">
-                                            <h4>Newsletters
-                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a> --}}
-                                                </h4>
+                                            <h4>Newsletters <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a></h4>
                                         </div>
                                         <div class="dashboard-detail">
                                             <h6 class="text-content">You are currently not subscribed to any
@@ -238,46 +235,30 @@
 
                                     <div class="col-12">
                                         <div class="dashboard-content-title">
-                                            <h4>Address Book
-                                                {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#editProfile">Edit</a> --}}
-                                                </h4>
+                                            <h4>Address Book <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                    data-bs-target="#editProfile">Edit</a></h4>
                                         </div>
 
                                         <div class="row g-4">
                                             <div class="col-xxl-6">
                                                 <div class="dashboard-detail">
                                                     <h6 class="text-content">Default Billing Address</h6>
-                                                    @foreach ($addresses as $address)
-                                                    @if ($address->is_default)
-                                                        <li>
-
-                                                                <h6>{{ $address->address_line_1 }}</h6>
-
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                                    {{-- <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#editProfile">Edit Address</a> --}}
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="col-xxl-6">
-                                                <div class="dashboard-detail">
-                                                    <h6 class="text-content">Default Shipping Address</h6>
-                                                    @foreach ($addresses as $address)
-                                                        @if ($address->is_default)
-                                                            <li>
-
-                                                                    <h6>{{ $address->address_line_1 }}</h6>
-
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
+                                                    <h6 class="text-content">You have not set a default billing
+                                                        address.</h6>
                                                     <a href="javascript:void(0)" data-bs-toggle="modal"
                                                         data-bs-target="#editProfile">Edit Address</a>
                                                 </div>
-                                            </div> --}}
+                                            </div>
+
+                                            <div class="col-xxl-6">
+                                                <div class="dashboard-detail">
+                                                    <h6 class="text-content">Default Shipping Address</h6>
+                                                    <h6 class="text-content">You have not set a default shipping
+                                                        address.</h6>
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                        data-bs-target="#editProfile">Edit Address</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -480,7 +461,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="tab-pane fade" id="pills-order" role="tabpanel">
                             <div class="dashboard-order">
                                 <div class="title">
@@ -492,51 +472,56 @@
                                     </span>
                                 </div>
 
-
                                 <div class="order-contain">
-                                    @foreach ($orderHistory as $order)
-                                        @foreach ($order->billProducts as $billProduct)
-                                            <div class="order-box dashboard-bg-box">
-                                                <div class="order-container">
-                                                    <div class="order-icon">
-                                                        <i data-feather="box"></i>
-                                                    </div>
-                                                    <div class="order-detail">
-                                                        <h4>Delivers <span>{{ $order->billStatus->name }}</span></h4>
-                                                    </div>
-                                                </div>
 
-                                                <div class="product-order-detail">
-                                                    <div class="product-image-and-details" style="display: flex; align-items: flex-start;">
-                                                        <a href="javascript:void(0)">
-                                                            <img src="{{ asset('front-end/assets/images/product/' . $billProduct->product->image) }}" style="max-width: 150px; margin-right: 20px;" class="img-fluid blur-up lazyload" alt="">
-                                                        </a>
-                                                        <div class="order-wrap" style="flex: 1;">
-                                                            <a href="product-left-thumbnail.php">
-                                                                <h3>{{ $billProduct->product->name }}</h3>
+                                    <div class="order-contain">
+                                        @foreach ($orderHistory as $order)
+                                            @foreach ($order->billProducts as $billProduct)
+                                                <div class="order-box dashboard-bg-box">
+                                                    <div class="order-container">
+                                                        <div class="order-icon">
+                                                            <i data-feather="box"></i>
+                                                        </div>
+                                                        <div class="order-detail">
+                                                            <h4>Delivers <span>{{ $order->billStatus->name }}</span></h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-order-detail">
+                                                        <div class="product-image-and-details" style="display: flex; align-items: flex-start;">
+                                                            <a href="javascript:void(0)">
+                                                                <img src="{{ asset('front-end/assets/images/product/' . $billProduct->product->image) }}" style="max-width: 150px; margin-right: 20px;" class="img-fluid blur-up lazyload" alt="">
                                                             </a>
-                                                            <div class="size-box">
-                                                                <h6 class="text-content">Sold By : </h6>
-                                                                <h5>{{ $billProduct->product->brand->name }}</h5>
+                                                            <div class="order-wrap" style="flex: 1;">
+                                                                <a href="product-left-thumbnail.php">
+                                                                    <h3>{{ $billProduct->product->name }}</h3>
+                                                                </a>
+                                                                <div class="size-box">
+                                                                    <h6 class="text-content">Sold By : </h6>
+                                                                    <h5>{{ $billProduct->product->brand->name }}</h5>
+                                                                </div>
+                                                                <p class="text-content">{{ $billProduct->product->description }}</p>
+                                                                <ul class="product-size">
+                                                                    <li>
+                                                                        <div class="size-box">
+                                                                            <h6 class="text-content">Price : </h6>
+                                                                            <h5>${{ $billProduct->product->price }}</h5>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
-                                                            <p class="text-content">{{ $billProduct->product->description }}</p>
-                                                            <ul class="product-size">
-                                                                <li>
-                                                                    <div class="size-box">
-                                                                        <h6 class="text-content">Price : </h6>
-                                                                        <h5>${{ $billProduct->product->price }}</h5>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
                                         @endforeach
-                                    @endforeach
+                                    </div>
+
+
+
                                 </div>
-
-
+                            </div>
+                        </div>
 
                         <div class="tab-pane fade" id="pills-address" role="tabpanel">
                             <div class="dashboard-address">
@@ -602,7 +587,6 @@
                                         @endforeach
                                     </div>
                                 </form>
-
 
 
                             </div>
@@ -694,7 +678,7 @@
                                     </div>
                                     <div class="profile-name-detail">
                                         <div class="d-sm-flex align-items-center d-block">
-                                            <h3>{{$name}}</h3>
+                                        <h3>{{$name}}</h3>
                                             <div class="product-rating profile-rating">
                                                 <ul class="rating">
                                                     <li>
@@ -715,9 +699,6 @@
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <a href="javascript:void(0)" data-bs-toggle="modal"
-                                            data-bs-target="#editProfile">Edit</a>
                                     </div>
 
                                     <div class="location-profile">
@@ -740,13 +721,6 @@
                                                     <h6>{{$email}}</h6>
                                                 </div>
                                             </li>
-
-                                            {{-- <li>
-                                                <div class="location-box">
-                                                    <i data-feather="check-square"></i>
-                                                    <h6>Licensed for 2 years</h6>
-                                                </div>
-                                            </li> --}}
                                         </ul>
                                     </div>
 
@@ -799,43 +773,6 @@
                                                 </table>
                                             </div>
 
-                                            <div class="dashboard-title mb-3">
-                                                <h3>Login Details</h3>
-                                            </div>
-
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Email :</td>
-                                                            <td>
-                                                                <a href="javascript:void(0)">{{$email}}
-                                                                    <span data-bs-toggle="modal"
-                                                                        data-bs-target="#editProfile">Edit</span></a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Password :</td>
-                                                            <td>
-                                                                <a href="javascript:void(0)">●●●●●●
-                                                                    <span data-bs-toggle="modal"
-                                                                        data-bs-target="#editProfile">Edit</span></a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-5">
-                                            <div class="profile-image">
-                                                <img src="../assets/images/inner-page/dashboard-profile.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
 
@@ -845,8 +782,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- Modal Xác Nhận Xóa -->
     <div class="modal fade theme-modal remove-address" id="exampleModalToggle" aria-hidden="true" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -876,7 +811,6 @@
         </div>
     </div>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
     const deleteButtons = document.querySelectorAll('.delete-address');
@@ -885,24 +819,14 @@
             const addressId = this.getAttribute('data-id');
             const deleteForm = document.getElementById('delete-form');
             deleteForm.action = `/addresses/${addressId}`;
-            // Không cần gọi modal.show() nữa vì modal đã được kích hoạt bằng Bootstrap's data attributes
+
         });
     });
 
-    // Không cần đoạn này nếu modal được kích hoạt bởi Bootstrap
-    // const confirmDeleteButton = document.getElementById('confirmDeleteButton');
-    // confirmDeleteButton.addEventListener('click', function() {
-    //     const deleteForm = document.getElementById('delete-form');
-    //     deleteForm.submit();
-    // });
+
 });
 
     </script>
-
-
-
-
-
 
 
 </section>

@@ -30,12 +30,14 @@ class CategoryController extends Controller
 
     public function create()
     {
+        $this->AuthLogin();
         $categories = Category::all();
         return view('admin.back-end.add-new-category', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $this->AuthLogin();
     $request->validate([
         'name' => 'required',
         'icon_url' => 'required|mimes:jpg,png,jpeg,svg|max:5048',
@@ -63,11 +65,13 @@ class CategoryController extends Controller
     }
 
     public function edit($id) {
+        $this->AuthLogin();
         $categories = Category::find($id);
         return view('admin.back-end.edit-category', compact('categories'));
     }
 
     public function update(Request $request, $id) {
+        $this->AuthLogin();
         $request->validate([
             'name' => 'required',
             'image_url' => 'nullable|mimes:jpg,png,jpeg,svg|max:5048',
@@ -112,6 +116,7 @@ class CategoryController extends Controller
 
     public function softDelete($id)
     {
+        $this->AuthLogin();
         $category = Category::find($id);
         // Xác định đường dẫn của hình ảnh và biểu tượng
         $image_url = public_path('back-end/assets/images/store-images/' . $category->image_url);
