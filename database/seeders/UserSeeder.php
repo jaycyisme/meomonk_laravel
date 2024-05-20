@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'email' => 'user@example.com',
             'username' => 'user',
             'password' => Hash::make('user'),
-            'point' => 0,
+            'point' => 120,
             'phone_number' => '123456789',
             'rank_customer_id' => 1,
             'user_status_id' => 1,

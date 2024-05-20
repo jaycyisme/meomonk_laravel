@@ -803,7 +803,8 @@
                                                     <a href="{{ route('productDetail', ['id' => $product->id]) }}">
                                                         <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
                                                     </a>
-                                                    <ul class="product-option">
+                                                    <ul class="product-option" style="    display: flex;
+                                                    justify-content: center;">
                                                         {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="View">
                                                             <a href="javascript:void(0)" data-bs-toggle="modal"

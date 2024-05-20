@@ -730,7 +730,8 @@
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
-                                    <ul class="product-option">
+                                    <ul class="product-option" style="    display: flex;
+                                    justify-content: center;">
                                         {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                 data-bs-target="#view">
