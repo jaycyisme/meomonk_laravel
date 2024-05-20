@@ -397,7 +397,7 @@
                                             <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
                                         </a>
                                         <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                     <i data-feather="eye"></i>
                                                 </a>
@@ -406,7 +406,7 @@
                                                 <a href="compare.php">
                                                     <i data-feather="refresh-cw"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                 <form action="{{ route('wishlist.add') }}" method="POST">
                                                     @csrf
@@ -541,7 +541,7 @@
                                                         class="img-fluid blur-up lazyload" alt="" />
                                                 </a>
                                                 <ul class="product-option">
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                    {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                                         <a href="javascript:void(0)" data-bs-toggle="modal"
                                                             data-bs-target="#view">
                                                             <i data-feather="eye"></i>
@@ -553,7 +553,7 @@
                                                         <a href="compare.php">
                                                             <i data-feather="refresh-cw"></i>
                                                         </a>
-                                                    </li>
+                                                    </li> --}}
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="Wishlist">

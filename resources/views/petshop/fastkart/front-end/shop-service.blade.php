@@ -731,7 +731,7 @@
                                     </a>
 
                                     <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                        {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                 data-bs-target="#view">
                                                 <i data-feather="eye"></i>
@@ -742,13 +742,22 @@
                                             <a href="compare.php">
                                                 <i data-feather="refresh-cw"></i>
                                             </a>
-                                        </li>
+                                        </li> --}}
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.php" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Wishlist">
+                                                            <form action="{{ route('wishlist.add') }}" method="POST">
+                                                                @csrf
+                                                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                                                <button type="submit" class="notifi-wishlist" title="Add to Wishlist" style="border: none;
+                                                                background: none;
+                                                                /* width: 17px; */
+                                                                height: auto;
+                                                                color: #4a5568;">
+                                                                    <i data-feather="heart" style="border: none;"></i>
+                                                                </button>
+                                                            </form>
+                                                        </li>
                                     </ul>
                                 </div>
                             </div>

@@ -804,7 +804,7 @@
                                                         <img src="{{ asset('front-end/assets/images/product/' . $product->image) }}" class="img-fluid blur-up lazyload" alt="{{ $product->name }}" />
                                                     </a>
                                                     <ul class="product-option">
-                                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="View">
                                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                                 data-bs-target="#view">
@@ -817,7 +817,7 @@
                                                             <a href="compare.php">
                                                                 <i data-feather="refresh-cw"></i>
                                                             </a>
-                                                        </li>
+                                                        </li> --}}
 
                                                         <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Wishlist">

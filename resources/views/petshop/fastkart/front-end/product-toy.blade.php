@@ -306,10 +306,10 @@
                                 </form>
                                 </a>
 
-                                <a href="compare.php">
+                                {{-- <a href="compare.php">
                                     <i data-feather="shuffle"></i>
                                     <span>Add To Compare</span>
-                                </a>
+                                </a> --}}
                             </div>
 
                             <div class="pickup-box">
@@ -1082,7 +1082,7 @@
                                     </a>
 
                                     <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                        {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                             <a href="javascript:void(0)" data-bs-toggle="modal"
                                                 data-bs-target="#view">
                                                 <i data-feather="eye"></i>
@@ -1093,7 +1093,7 @@
                                             <a href="compare.php">
                                                 <i data-feather="refresh-cw"></i>
                                             </a>
-                                        </li>
+                                        </li> --}}
 
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                             <form action="{{ route('wishlist.add') }}" method="POST">
