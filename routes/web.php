@@ -33,9 +33,9 @@ use App\Http\Controllers\UserDashboardController;
 
 Route::get('/index', [HomeController::class, 'index'])->name('index');
 
-Route::get('/about-us', [PagesController::class, 'aboutUs']);
+Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('aboutUs');
 
-Route::get('/blog-detail', [PagesController::class, 'blogDetail']);
+Route::get('/blog-detail', [PagesController::class, 'blogDetail'])->name('blogDetail');
 
 Route::get('/blog-grid', [PagesController::class, 'blogGrid'])->name('blogGrid');
 
@@ -47,7 +47,7 @@ Route::get('/blog-list', [PagesController::class, 'blogList']);
 
 Route::get('/contact-us', [PagesController::class, 'contactUs'])->name('contact-us');
 
-Route::get('/faq', [PagesController::class, 'faq']);
+Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 

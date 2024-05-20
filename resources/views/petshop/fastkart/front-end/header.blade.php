@@ -391,13 +391,13 @@
                                                     data-bs-toggle="dropdown">Pages</a>
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="about-us.php">About Us</a>
+                                                        <a class="dropdown-item" href="{{ route('aboutUs') }}">About Us</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="contact-us.php">Contact</a>
+                                                        <a class="dropdown-item" href="{{ route('contact-us') }}">Contact</a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="faq.php">Faq</a>
+                                                        <a class="dropdown-item" href="{{ route('faq') }}">Faq</a>
                                                     </li>
                                                     <li>
                                                         <a class="dropdown-item" href="{{ route('userDashboard') }}">User

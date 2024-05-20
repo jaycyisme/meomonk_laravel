@@ -17,6 +17,9 @@ class HomeController extends Controller
         $products = Product::where('is_active', 1)
                         ->where('product.quantity', '>', 0)
                         ->get();
+        $new_products = Product::where('is_active', 1)
+        ->where('product.quantity', '>', 0)
+        ->orderBy('id', 'desc')->take(4)->get();
         $food_products = Product::where('category_id', 3)
                         ->orWhere('category_id', 4)
                         ->get();
@@ -55,7 +58,7 @@ class HomeController extends Controller
                         ->get();
 
         return view('.petshop.fastkart.front-end.index', compact('categories', 'products', 'food_products', 'brands', 'food_products', 'toy_products', 'pharmacy_products',
-         'service_products'));
+         'service_products', 'new_products'));
     }
 
     public function search(Request $request) {

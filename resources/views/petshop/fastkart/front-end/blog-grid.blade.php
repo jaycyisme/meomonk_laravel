@@ -74,8 +74,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/1.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/1.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -86,10 +86,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Mark J.
                                             Speight</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>one pot creamy mediterranean chicken pasta cream.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -98,8 +98,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/2.jpg" class="bg-img" alt="">
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/2.jpg" class="bg-img" alt="">
                                 </a>
                             </div>
 
@@ -109,10 +109,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>rebeus
                                             hagrid</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Crispy Frozen Vegetable is the on the Tempura.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -121,8 +121,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.1s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/3.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/3.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                                 <label><i class="fa-solid fa-bolt-lightning"></i> popular</label>
@@ -134,10 +134,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Chris C.
                                             Hall</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>How to start regrowing green onions and other vegetables.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -146,8 +146,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.15s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/4.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/4.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -158,10 +158,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>James M.
                                             Martin</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Starting a vegetable garden: the basics.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -170,8 +170,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.2s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/5.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/5.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -182,10 +182,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Cecil M.
                                             Levis</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Adapt this simple pasta salad to whatever vegetable.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -194,8 +194,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.25s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/1.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/1.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -206,10 +206,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Mary R.
                                             Hernandez</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>With chefs idle and vegetables rotting, China's virus-hit.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -218,8 +218,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.3s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/2.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/2.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -230,10 +230,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Cheryl D.
                                             Moser</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Turn that bowl of pasta into a supercharged veggie vehicle.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -242,8 +242,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.35s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/3.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/3.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -255,10 +255,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Mina M.
                                             Short</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Health, care and skin on the for your organic.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -267,8 +267,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.4s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/4.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/4.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -279,10 +279,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Marie S.
                                             Santiago</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Fresh organicsm, brand, fresh and picnic place awesome.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -291,8 +291,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.45s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/3.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/3.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                                 <label><i class="fa-solid fa-bolt-lightning"></i> popular</label>
@@ -304,10 +304,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Mark J.
                                             Speight</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>With chefs idle and vegetables rotting, China's virus-hit.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -316,8 +316,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.5s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/4.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/4.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -328,10 +328,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>Chris C.
                                             Hall</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>Vegina good quality special liquide fesh vegetables.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -340,8 +340,8 @@
                     <div class="col-xxl-4 col-sm-6">
                         <div class="blog-box wow fadeInUp" data-wow-delay="0.55s">
                             <div class="blog-image">
-                                <a href="blog-detail.php">
-                                    <img src="../assets/images/inner-page/blog/5.jpg"
+                                <a href="{{ route('blogDetail') }}">
+                                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/5.jpg"
                                         class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
@@ -352,10 +352,10 @@
                                     <span class="super"><i data-feather="user"></i> <span>James M.
                                             Martin</span></span>
                                 </div>
-                                <a href="blog-detail.php">
+                                <a href="{{ route('blogDetail') }}">
                                     <h3>How to freeze fresh vegetables while preserving their best qualities.</h3>
                                 </a>
-                                <button onclick="location.href = 'blog-detail.php';" class="blog-button">Read More
+                                <button onclick="location.href = '{{ route('blogDetail') }}';" class="blog-button">Read More
                                     <i class="fa-solid fa-right-long"></i></button>
                             </div>
                         </div>
@@ -408,13 +408,13 @@
                                 <div class="accordion-body pt-0">
                                     <div class="recent-post-box">
                                         <div class="recent-box">
-                                            <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/1.jpg"
+                                            <a href="{{ route('blogDetail') }}" class="recent-image">
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/1.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <div class="recent-detail">
-                                                <a href="blog-detail.php">
+                                                <a href="{{ route('blogDetail') }}">
                                                     <h5 class="recent-name">Green onion knife and salad placed</h5>
                                                 </a>
                                                 <h6>25 Jan, 2022 <i data-feather="thumbs-up"></i></h6>
@@ -422,13 +422,13 @@
                                         </div>
 
                                         <div class="recent-box">
-                                            <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/2.jpg"
+                                            <a href="{{ route('blogDetail') }}" class="recent-image">
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/2.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <div class="recent-detail">
-                                                <a href="blog-detail.php">
+                                                <a href="{{ route('blogDetail') }}">
                                                     <h5 class="recent-name">Health and skin for your organic</h5>
                                                 </a>
                                                 <h6>25 Jan, 2022 <i data-feather="thumbs-up"></i></h6>
@@ -436,13 +436,13 @@
                                         </div>
 
                                         <div class="recent-box">
-                                            <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/3.jpg"
+                                            <a href="{{ route('blogDetail') }}" class="recent-image">
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/3.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <div class="recent-detail">
-                                                <a href="blog-detail.php">
+                                                <a href="{{ route('blogDetail') }}">
                                                     <h5 class="recent-name">Organics mix masala fresh & soft</h5>
                                                 </a>
                                                 <h6>25 Jan, 2022 <i data-feather="thumbs-up"></i></h6>
@@ -450,13 +450,13 @@
                                         </div>
 
                                         <div class="recent-box">
-                                            <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/4.jpg"
+                                            <a href="{{ route('blogDetail') }}" class="recent-image">
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/4.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
                                             <div class="recent-detail">
-                                                <a href="blog-detail.php">
+                                                <a href="{{ route('blogDetail') }}">
                                                     <h5 class="recent-name">Fresh organics brand and picnic</h5>
                                                 </a>
                                                 <h6>25 Jan, 2022 <i data-feather="thumbs-up"></i></h6>
@@ -594,7 +594,7 @@
                                         <li>
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/23.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/23.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -613,7 +613,7 @@
                                         <li>
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/24.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/24.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -632,7 +632,7 @@
                                         <li class="mb-0">
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/26.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/26.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 

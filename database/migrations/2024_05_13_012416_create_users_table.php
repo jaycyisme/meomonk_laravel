@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username', 100);
             $table->string('password', 100);
             $table->integer('point')->default(0);
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->unsignedBigInteger('rank_customer_id')->default(1);
             $table->unsignedBigInteger('user_status_id')->default(1);
             $table->boolean('is_active')->default(true);

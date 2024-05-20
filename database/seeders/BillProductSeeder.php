@@ -65,7 +65,13 @@ class BillProductSeeder extends Seeder
 
         BillProduct::create([
             'bill_id' => 1,
-            'product_id' => 46,
+            'product_id' => 42,
+            'quantity' => 1,
+        ]);
+
+        BillProduct::create([
+            'bill_id' => 1,
+            'product_id' => 43,
             'quantity' => 1,
         ]);
 
@@ -77,13 +83,7 @@ class BillProductSeeder extends Seeder
 
         BillProduct::create([
             'bill_id' => 1,
-            'product_id' => 50,
-            'quantity' => 1,
-        ]);
-
-        BillProduct::create([
-            'bill_id' => 1,
-            'product_id' => 53,
+            'product_id' => 48,
             'quantity' => 1,
         ]);
     }

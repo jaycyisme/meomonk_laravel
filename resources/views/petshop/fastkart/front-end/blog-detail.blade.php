@@ -92,7 +92,7 @@
                                     <div class="recent-post-box">
                                         <div class="recent-box">
                                             <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/1.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/1.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
@@ -106,7 +106,7 @@
 
                                         <div class="recent-box">
                                             <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/2.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/2.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
@@ -120,7 +120,7 @@
 
                                         <div class="recent-box">
                                             <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/3.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/3.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
@@ -134,7 +134,7 @@
 
                                         <div class="recent-box">
                                             <a href="blog-detail.php" class="recent-image">
-                                                <img src="../assets/images/inner-page/blog/4.jpg"
+                                                <img src="{{asset('front-end')}}/assets/images/inner-page/blog/4.jpg"
                                                     class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
@@ -281,7 +281,7 @@
                                         <li>
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/23.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/23.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -300,7 +300,7 @@
                                         <li>
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/24.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/24.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -319,7 +319,7 @@
                                         <li class="mb-0">
                                             <div class="offer-product">
                                                 <a href="shop-left-sidebar.php" class="offer-image">
-                                                    <img src="../assets/images/vegetable/product/26.png"
+                                                    <img src="{{asset('front-end')}}/assets/images/vegetable/product/26.png"
                                                         class="blur-up lazyload" alt="">
                                                 </a>
 
@@ -344,7 +344,7 @@
 
             <div class="col-xxl-9 col-xl-8 col-lg-7 ratio_50">
                 <div class="blog-detail-image rounded-3 mb-4">
-                    <img src="../assets/images/inner-page/blog/1.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="{{asset('front-end')}}/assets/images/inner-page/blog/1.jpg" class="bg-img blur-up lazyload" alt="">
                     <div class="blog-image-contain">
                         <ul class="contain-list">
                             <li>backpack</li>
@@ -445,7 +445,7 @@
                                         <span class="theme-color">Reply</span>
                                     </div>
                                     <div class="user-image">
-                                        <img src="../assets/images/inner-page/user/1.jpg"
+                                        <img src="{{asset('front-end')}}/assets/images/inner-page/user/1.jpg"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <div class="user-name">
                                             <h6>30 Jan, 2022</h6>
@@ -468,7 +468,7 @@
                                         <span class="theme-color">Reply</span>
                                     </div>
                                     <div class="user-image">
-                                        <img src="../assets/images/inner-page/user/2.jpg"
+                                        <img src="{{asset('front-end')}}/assets/images/inner-page/user/2.jpg"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <div class="user-name">
                                             <h6>30 Jan, 2022</h6>
@@ -492,7 +492,7 @@
                                         <span class="theme-color">Reply</span>
                                     </div>
                                     <div class="user-image">
-                                        <img src="../assets/images/inner-page/user/3.jpg"
+                                        <img src="{{asset('front-end')}}/assets/images/inner-page/user/3.jpg"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <div class="user-name">
                                             <h6>30 Jan, 2022</h6>

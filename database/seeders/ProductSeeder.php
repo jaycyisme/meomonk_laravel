@@ -599,7 +599,7 @@ class ProductSeeder extends Seeder
             'animal_id' => 2,
             'price' => 100,
             'description' => 'Dental Fresh Advanced Plaque and Tartar Water Additive for Dogs (17 Oz.)
-                                – Dog Teeth Cleaning Formula Targets Plaque & Tartar Build-Up, Eliminates Bad Breath, Whitens Teeth, Improves Oral Health',
+                                 Dog Teeth Cleaning Formula Targets Plaque & Tartar Build-Up, Eliminates Bad Breath, Whitens Teeth, Improves Oral Health',
             'image' => 'pharmacy-1.png',
             'thumbnail1' => null,
             'thumbnail2' => null,
@@ -758,77 +758,77 @@ class ProductSeeder extends Seeder
         ]);
 
         #Pharmacy 10:
-        Product::create([
-            'name' => 'Palmers for Pets',
-            'category_id' => 6,
-            'animal_id' => 1,
-            'price' => 100,
-            'description' => 'Palmers for Pets Cocoa Butter Fragrance Free Intensive Paw Repair Swivel Stick for Dogs |
-                                Cocoa Butter Paw Balm with Vitamin E, Peppermint Oil and Shea Butter for Rough & Dry Pads -0.5 oz (FF15588)',
-            'image' => 'pharmacy-1.png0',
-            'thumbnail1' => null,
-            'thumbnail2' => null,
-            'thumbnail3' => null,
-            'thumbnail4' => null,
-            'quantity' => 10,
-            'product_status_id' => 1,
-            'brand_id' => 14,
-            'supplier_id' => 3,
-        ]);
+        // Product::create([
+        //     'name' => 'Palmers for Pets',
+        //     'category_id' => 6,
+        //     'animal_id' => 1,
+        //     'price' => 100,
+        //     'description' => 'Palmers for Pets Cocoa Butter Fragrance Free Intensive Paw Repair Swivel Stick for Dogs |
+        //                         Cocoa Butter Paw Balm with Vitamin E, Peppermint Oil and Shea Butter for Rough & Dry Pads -0.5 oz (FF15588)',
+        //     'image' => 'pharmacy-1.png0',
+        //     'thumbnail1' => null,
+        //     'thumbnail2' => null,
+        //     'thumbnail3' => null,
+        //     'thumbnail4' => null,
+        //     'quantity' => 10,
+        //     'product_status_id' => 1,
+        //     'brand_id' => 14,
+        //     'supplier_id' => 3,
+        // ]);
 
         #Pharmacy 11:
-        Product::create([
-            'name' => 'FELIWAY Optimum',
-            'category_id' => 6,
-            'animal_id' => 1,
-            'price' => 100,
-            'description' => 'FELIWAY Optimum, Enhanced Calming Pheromone 30-day Refill – 6 Pack',
-            'image' => 'pharmacy-1.png1',
-            'thumbnail1' => null,
-            'thumbnail2' => null,
-            'thumbnail3' => null,
-            'thumbnail4' => null,
-            'quantity' => 10,
-            'product_status_id' => 1,
-            'brand_id' => 14,
-            'supplier_id' => 3,
-        ]);
+        // Product::create([
+        //     'name' => 'FELIWAY Optimum',
+        //     'category_id' => 6,
+        //     'animal_id' => 1,
+        //     'price' => 100,
+        //     'description' => 'FELIWAY Optimum, Enhanced Calming Pheromone 30-day Refill – 6 Pack',
+        //     'image' => 'pharmacy-1.png1',
+        //     'thumbnail1' => null,
+        //     'thumbnail2' => null,
+        //     'thumbnail3' => null,
+        //     'thumbnail4' => null,
+        //     'quantity' => 10,
+        //     'product_status_id' => 1,
+        //     'brand_id' => 14,
+        //     'supplier_id' => 3,
+        // ]);
 
         #Pharmacy 12:
-        Product::create([
-            'name' => 'Davis EML02 EarMed Mite Lotion',
-            'category_id' => 6,
-            'animal_id' => 1,
-            'price' => 100,
-            'description' => 'Davis EML02 EarMed Mite Lotion for Pets, 2 oz',
-            'image' => 'pharmacy-1.png2',
-            'thumbnail1' => null,
-            'thumbnail2' => null,
-            'thumbnail3' => null,
-            'thumbnail4' => null,
-            'quantity' => 12,
-            'product_status_id' => 1,
-            'brand_id' => 14,
-            'supplier_id' => 3,
-        ]);
+        // Product::create([
+        //     'name' => 'Davis EML02 EarMed Mite Lotion',
+        //     'category_id' => 6,
+        //     'animal_id' => 1,
+        //     'price' => 100,
+        //     'description' => 'Davis EML02 EarMed Mite Lotion for Pets, 2 oz',
+        //     'image' => 'pharmacy-1.png2',
+        //     'thumbnail1' => null,
+        //     'thumbnail2' => null,
+        //     'thumbnail3' => null,
+        //     'thumbnail4' => null,
+        //     'quantity' => 12,
+        //     'product_status_id' => 1,
+        //     'brand_id' => 14,
+        //     'supplier_id' => 3,
+        // ]);
 
         #Pharmacy 13:
-        Product::create([
-            'name' => 'Nutri-Vet Eye Rinse for Cats',
-            'category_id' => 6,
-            'animal_id' => 1,
-            'price' => 100,
-            'description' => 'Nutri-Vet Eye Rinse for Cats | Gentle Formula Removes Debris | Helps Reduce Irritation and Prevent Tear Stains | 4oz',
-            'image' => 'pharmacy-1.png3',
-            'thumbnail1' => null,
-            'thumbnail2' => null,
-            'thumbnail3' => null,
-            'thumbnail4' => null,
-            'quantity' => 12,
-            'product_status_id' => 1,
-            'brand_id' => 14,
-            'supplier_id' => 3,
-        ]);
+        // Product::create([
+        //     'name' => 'Nutri-Vet Eye Rinse for Cats',
+        //     'category_id' => 6,
+        //     'animal_id' => 1,
+        //     'price' => 100,
+        //     'description' => 'Nutri-Vet Eye Rinse for Cats | Gentle Formula Removes Debris | Helps Reduce Irritation and Prevent Tear Stains | 4oz',
+        //     'image' => 'pharmacy-1.png3',
+        //     'thumbnail1' => null,
+        //     'thumbnail2' => null,
+        //     'thumbnail3' => null,
+        //     'thumbnail4' => null,
+        //     'quantity' => 12,
+        //     'product_status_id' => 1,
+        //     'brand_id' => 14,
+        //     'supplier_id' => 3,
+        // ]);
 
     # Pet Toy
         #Dog Rope Toy 1:
@@ -886,22 +886,22 @@ class ProductSeeder extends Seeder
         ]);
 
         #Doggy Man 3:
-        Product::create([
-            'name' => 'Doggyman Henyapi Sheep',
-            'category_id' => 5,
-            'animal_id' => 2,
-            'price' => 100,
-            'description' => 'Doggyman Henyapi Sheep',
-            'image' => 'doggyman-sheep-1.png',
-            'thumbnail1' => null,
-            'thumbnail2' => null,
-            'thumbnail3' => null,
-            'thumbnail4' => null,
-            'quantity' => 10,
-            'product_status_id' => 1,
-            'brand_id' => 16,
-            'supplier_id' => 2,
-        ]);
+        // Product::create([
+        //     'name' => 'Doggyman Henyapi Sheep',
+        //     'category_id' => 5,
+        //     'animal_id' => 2,
+        //     'price' => 100,
+        //     'description' => 'Doggyman Henyapi Sheep',
+        //     'image' => 'doggyman-sheep-1.png',
+        //     'thumbnail1' => null,
+        //     'thumbnail2' => null,
+        //     'thumbnail3' => null,
+        //     'thumbnail4' => null,
+        //     'quantity' => 10,
+        //     'product_status_id' => 1,
+        //     'brand_id' => 16,
+        //     'supplier_id' => 2,
+        // ]);
 
         #Doggy Man 4:
         Product::create([

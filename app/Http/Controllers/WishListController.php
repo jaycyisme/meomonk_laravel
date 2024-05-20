@@ -56,8 +56,6 @@ class WishListController extends Controller
             ->delete();
     }
 
-    // Sau khi xóa thành công, bạn có thể chuyển hướng người dùng đến trang wishlist hoặc trang nào đó khác.
-    // Ví dụ chuyển hướng đến trang wishlist:
     return redirect()->route('wishlist.index')->with('success_message', 'Product removed from wishlist successfully.');
 }
 
