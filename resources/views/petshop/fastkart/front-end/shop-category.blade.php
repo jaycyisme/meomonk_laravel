@@ -226,23 +226,51 @@
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                        <span>Price</span>
+                                        <span>Price aaaaaaaaaaaaaaa</span>
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse show">
                                     <div class="accordion-body">
                                         <div class="range-slider">
-                                            <input type="text" class="js-range-slider" value="">
+                                            <!-- Thay thế input bằng các nút radio với Bootstrap CSS -->
+                                            <div id="priceRangeForm">
+                                                <div class="form-check" style="font-size: 1.25rem">
+                                                    <input class="form-check-input" type="radio" name="price_range" id="range1" value="0-100" {{ request('price_range') == '0-100' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="range1">
+                                                        $0 - $100
+                                                    </label>
+                                                </div>
+                                                <div class="form-check" style="font-size: 1.25rem">
+                                                    <input class="form-check-input" type="radio" name="price_range" id="range2" value="100-300" {{ request('price_range') == '100-300' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="range2">
+                                                        $100 - $300
+                                                    </label>
+                                                </div>
+                                                <div class="form-check" style="font-size: 1.25rem">
+                                                    <input class="form-check-input" type="radio" name="price_range" id="range3" value="300-500" {{ request('price_range') == '300-500' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="range3">
+                                                        $300 - $500
+                                                    </label>
+                                                </div>
+                                                <div class="form-check" style="font-size: 1.25rem">
+                                                    <input class="form-check-input" type="radio" name="price_range" id="range4" value="500-1000" {{ request('price_range') == '500-1000' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="range4">
+                                                        $500 - $1000
+                                                    </label>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingSix">
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#collapseSix">
-                                        <span>Rating</span>
+                                        <span>Rating </span>
                                     </button>
                                 </h2>
                                 <div id="collapseSix" class="accordion-collapse collapse show">
@@ -899,4 +927,18 @@
     </div>
 </section>
 <!-- Shop Section End -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const radioButtons = document.querySelectorAll('.form-check-input');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const priceRange = this.value;
+                const url = new URL(window.location.href);
+                url.searchParams.set('price_range', priceRange);
+                window.location.href = url.toString();
+            });
+        });
+    });
+</script>
 @endsection
